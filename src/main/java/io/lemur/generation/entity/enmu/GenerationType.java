@@ -6,7 +6,8 @@ package io.lemur.generation.entity.enmu;
  * @date 2014年12月25日
  */
 public enum GenerationType {
-    TABLE("table"), SEQUENCE("sequence"), IDENTITY("identity"), AUTO("auto");
+
+    TABLE ("table") , SEQUENCE ("sequence") , IDENTITY ("identity") , AUTO ("auto");
 
     private String value;
 

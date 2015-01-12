@@ -7,20 +7,20 @@ package io.lemur.generation.entity.enmu;
  */
 public enum TypeEnmu {
 
-    Entity("entity.ftl","/entity","/%sEntity.java"), 
-    IService("iservice.ftl","/service","/I%sService.java"), 
-    ServiceImpl("serviceImpl.ftl","/service/impl","/%sServiceImpl.java"), 
-    Controller("controller.ftl","/controller","/%sController.java"), 
-    Repository("repository.ftl","/repository","/%sRepository.java"), 
-    AddJsp("addjsp.ftl","/page","/%sAdd.jsp"), 
-    UpdateJsp("updatejsp.ftl","/page","/%sUpdate.jsp"), 
-    ListJsp("listjsp.ftl","","/%sList.jsp");
-    
+    Entity ("entity.ftl" , "/entity" , "/%sEntity.java") ,
+    IService ("iservice.ftl" , "/service" , "/I%sService.java") ,
+    ServiceImpl ("serviceImpl.ftl" , "/service/impl" , "/%sServiceImpl.java") ,
+    Controller ("controller.ftl" , "/controller" , "/%sController.java") ,
+    Repository ("repository.ftl" , "/repository" , "/%sRepository.java") ,
+    AddJsp ("addjsp.ftl" , "/page" , "/%sAdd.jsp") ,
+    UpdateJsp ("updatejsp.ftl" , "/page" , "/%sUpdate.jsp") ,
+    ListJsp ("listjsp.ftl" , "" , "/%sList.jsp");
+
     private String value;
     private String srcPackage;
     private String suffix;
 
-    private TypeEnmu(String value,String srcPackage,String suffix) {
+    private TypeEnmu(String value, String srcPackage, String suffix) {
         this.value = value;
         this.srcPackage = srcPackage;
         this.suffix = suffix;
