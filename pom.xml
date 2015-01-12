@@ -16,8 +16,8 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>https://git.oschina.net/jueyue/lemur.git</connection>
-		<developerConnection>https://git.oschina.net/jueyue/lemur.git</developerConnection>
+		<connection>https://git.oschina.net/jueyue/lemur-generation.git</connection>
+		<developerConnection>https://git.oschina.net/jueyue/lemur-generation.git</developerConnection>
 	</scm>
 
 	<properties>
