@@ -4,8 +4,8 @@
 #模板参数说明
 	isNeedDate 是否含有date类型
 	createTime 创建时间 yyyy-MM-dd HH:mm格式
-	params
 ```java
+#params 参数
 	/**
      * Java包名
      */
@@ -43,9 +43,10 @@
      */
     private String            packageName;
 ```
-	table
+
 ```java
-/**
+#table 参数
+	/**
      * 表名
      */
     private String                    tableName;
