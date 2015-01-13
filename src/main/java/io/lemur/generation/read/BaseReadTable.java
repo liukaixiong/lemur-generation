@@ -31,7 +31,7 @@ public abstract class BaseReadTable {
         Statement statement = null;
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(
-                String.format(sql, tableName, PropertiesUtil.getValue(PropertiesUtil.DB_NAME)));
+                String.format(sql, tableName, PropertiesUtil.getString(PropertiesUtil.DB_NAME)));
             DataBaseFieldEntity field;
             while (rs.next()) {
                 field = new DataBaseFieldEntity();
@@ -60,7 +60,7 @@ public abstract class BaseReadTable {
         Statement statement = null;
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(
-                String.format(sql, tableName, PropertiesUtil.getValue(PropertiesUtil.DB_NAME)));
+                String.format(sql, tableName, PropertiesUtil.getString(PropertiesUtil.DB_NAME)));
             String dbTableName = null;
             String comment = null;
             while (rs.next()) {

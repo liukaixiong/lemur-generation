@@ -22,6 +22,7 @@ public class PropertiesUtil {
     public static String DB_PASSWORD     = "db.password";
     public static String DB_TYPE         = "db.type";
     public static String GENERATION_PATH = "generation.path";
+    public static String IS_FORMAT       = "is.format";
 
     private PropertiesUtil() {
 
@@ -40,12 +41,20 @@ public class PropertiesUtil {
         }
     }
 
-    public static String getValue(String key) {
+    public static String getString(String key) {
         if (!resourceBundle.containsKey(key)) {
             LOGGER.error("{}没有找到,请和核对配置文件", key);
             throw new GenerationRunTimeException("未找到需要的参数");
         }
         return resourceBundle.getString(key);
+    }
+
+    public static boolean getBoolean(String key) {
+        if (!resourceBundle.containsKey(key)) {
+            LOGGER.error("{}没有找到,请和核对配置文件", key);
+            throw new GenerationRunTimeException("未找到需要的参数");
+        }
+        return Boolean.valueOf(resourceBundle.getString(key));
     }
 
     public static String getCommentSplit() {

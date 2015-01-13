@@ -15,7 +15,7 @@ public class ReadTableFactory {
     private static final String ORACLE = "oracle";
 
     public static IReadTable getReadTable() {
-        String dbType = PropertiesUtil.getValue(PropertiesUtil.DB_TYPE).trim();
+        String dbType = PropertiesUtil.getString(PropertiesUtil.DB_TYPE).trim();
         if (MYSQL.equalsIgnoreCase(dbType)) {
             return new ReadTableForMysqlImpl();
         }

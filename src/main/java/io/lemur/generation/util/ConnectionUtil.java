@@ -37,11 +37,11 @@ public class ConnectionUtil {
 
     private static void init() {
         try {
-            Class.forName(PropertiesUtil.getValue(PropertiesUtil.DB_DRIVER));
+            Class.forName(PropertiesUtil.getString(PropertiesUtil.DB_DRIVER));
             connection = DriverManager.getConnection(
-                PropertiesUtil.getValue(PropertiesUtil.DB_URL),
-                PropertiesUtil.getValue(PropertiesUtil.DB_USER_NAME),
-                PropertiesUtil.getValue(PropertiesUtil.DB_PASSWORD));
+                PropertiesUtil.getString(PropertiesUtil.DB_URL),
+                PropertiesUtil.getString(PropertiesUtil.DB_USER_NAME),
+                PropertiesUtil.getString(PropertiesUtil.DB_PASSWORD));
         } catch (Exception e) {
             throw new GenerationRunTimeException("创建 Connection 发生异常", e);
         }

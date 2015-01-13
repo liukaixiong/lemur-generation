@@ -74,8 +74,12 @@ public class FreemakParseImpl implements IParse {
                                 generationEntity.getEntityName())), "UTF-8");
                 Writer out = new StringWriter();
                 template.process(rootMap, out);
+                String sourceCode = out.toString();
                 //格式化文件
-                String sourceCode = CodeFromatter.format(out.toString());
+                if (PropertiesUtil.getBoolean(PropertiesUtil.IS_FORMAT)
+                    && generationEntity.getTypes()[i].getSuffix().endsWith(".java")) {
+                    sourceCode = CodeFromatter.format(sourceCode);
+                }
                 //输出
                 outWriter.write(sourceCode);
                 outWriter.close();
@@ -87,7 +91,7 @@ public class FreemakParseImpl implements IParse {
 
     private String getSrcPath(GenerationEntity generationEntity, DataBaseTableEntity tableEntity,
                               TypeEnmu type) {
-        return PropertiesUtil.getValue(PropertiesUtil.GENERATION_PATH)
+        return PropertiesUtil.getString(PropertiesUtil.GENERATION_PATH)
                + (generationEntity.getJavaPackage() + type.getSrcPackage()).replace(".", "/") + "/"
                + generationEntity.getPackageName();
     }
