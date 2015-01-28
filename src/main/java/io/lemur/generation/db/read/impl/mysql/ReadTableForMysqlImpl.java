@@ -5,8 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.base.GenFieldEntity;
+import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.exception.GenerationRunTimeException;
 import io.lemur.generation.db.read.BaseReadTable;
 import io.lemur.generation.db.read.IReadTable;
@@ -27,9 +27,9 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
     private static final Logger LOGGER     = LoggerFactory.getLogger(ReadTableForMysqlImpl.class);
 
     @Override
-    public DataBaseTableEntity read(String tableName) {
+    public GenBeanEntity read(String tableName) {
         try {
-            DataBaseTableEntity entity = getTableEntiy(tableName, TABLE_SQL);
+            GenBeanEntity entity = getTableEntiy(tableName, TABLE_SQL);
             entity.setName(NameUtil.getEntityHumpName(entity.getTableName()));
             entity.setFields(getTableFields(tableName, FIELDS_SQL));
             hanlderFields(entity.getFields());
@@ -45,8 +45,8 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
      * 
      * @param fields
      */
-    private void hanlderFields(List<DataBaseFieldEntity> fields) {
-        DataBaseFieldEntity entity;
+    private void hanlderFields(List<GenFieldEntity> fields) {
+        GenFieldEntity entity;
         for (int i = 0, le = fields.size(); i < le; i++) {
             entity = fields.get(i);
             entity.setChinaName(getFieldName(entity.getFieldName(), entity.getComment()));

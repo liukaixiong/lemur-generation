@@ -1,7 +1,7 @@
 package io.lemur.generation.db.parse;
 
+import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
 
 /**
  * 模板解析接口
@@ -16,6 +16,6 @@ public interface IParse {
      * @param types
      * @param tableEntity
      */
-    public void parse(GenerationEntity generationEntity, DataBaseTableEntity tableEntity);
+    public void parse(GenerationEntity generationEntity, GenBeanEntity tableEntity);
 
 }

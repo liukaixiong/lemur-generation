@@ -16,10 +16,10 @@ import org.apache.commons.lang.StringUtils;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import io.lemur.generation.base.GenFieldEntity;
+import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.entity.enmu.TypeEnmu;
-import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
 import io.lemur.generation.db.parse.IParse;
 import io.lemur.generation.util.CodeFromatter;
 import io.lemur.generation.util.PropertiesUtil;
@@ -43,7 +43,7 @@ public class FreemakParseImpl implements IParse {
     }
 
     @Override
-    public void parse(GenerationEntity generationEntity, DataBaseTableEntity tableEntity) {
+    public void parse(GenerationEntity generationEntity, GenBeanEntity tableEntity) {
 
         Map<String, Object> rootMap = new HashMap<String, Object>();
         rootMap.put("params", generationEntity);
@@ -89,7 +89,7 @@ public class FreemakParseImpl implements IParse {
         }
     }
 
-    private String getSrcPath(GenerationEntity generationEntity, DataBaseTableEntity tableEntity,
+    private String getSrcPath(GenerationEntity generationEntity, GenBeanEntity tableEntity,
                               TypeEnmu type) {
         return PropertiesUtil.getString(PropertiesUtil.GENERATION_PATH)
                + (generationEntity.getJavaPackage() + type.getSrcPackage()).replace(".", "/") + "/"
@@ -101,7 +101,7 @@ public class FreemakParseImpl implements IParse {
      * @param fields
      * @return
      */
-    private boolean judgeNeedDate(List<DataBaseFieldEntity> fields) {
+    private boolean judgeNeedDate(List<GenFieldEntity> fields) {
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).getType().equals("Date")) {
                 return true;

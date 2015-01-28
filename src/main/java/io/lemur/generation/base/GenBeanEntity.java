@@ -1,6 +1,4 @@
-package io.lemur.generation.db.entity.table;
-
-import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
+package io.lemur.generation.base;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +9,7 @@ import java.util.List;
  * @author JueYue
  * @date 2014年12月21日
  */
-public class DataBaseTableEntity implements Serializable {
+public class GenBeanEntity implements Serializable {
 
     private static final long         serialVersionUID = 1L;
     /**
@@ -33,13 +31,13 @@ public class DataBaseTableEntity implements Serializable {
     /**
      * 表字段
      */
-    private List<DataBaseFieldEntity> fields;
+    private List<GenFieldEntity> fields;
 
-    public List<DataBaseFieldEntity> getFields() {
+    public List<GenFieldEntity> getFields() {
         return fields;
     }
 
-    public void setFields(List<DataBaseFieldEntity> fields) {
+    public void setFields(List<GenFieldEntity> fields) {
         this.fields = fields;
     }
 

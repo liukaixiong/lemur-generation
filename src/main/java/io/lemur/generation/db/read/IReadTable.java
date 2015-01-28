@@ -1,6 +1,6 @@
 package io.lemur.generation.db.read;
 
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.base.GenBeanEntity;
 
 /**
  * 读取数据库表,获取数据库表的属性
@@ -15,6 +15,6 @@ public interface IReadTable {
      * @param tableName
      * @return
      */
-    public DataBaseTableEntity read(String tableName);
+    public GenBeanEntity read(String tableName);
 
 }

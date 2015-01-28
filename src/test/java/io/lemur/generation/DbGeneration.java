@@ -3,10 +3,10 @@ package io.lemur.generation;
 
 import org.apache.commons.lang.StringUtils;
 
+import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.entity.enmu.GenerationType;
 import io.lemur.generation.db.entity.enmu.TypeEnmu;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
 import io.lemur.generation.db.parse.IParse;
 import io.lemur.generation.db.parse.impl.freemark.FreemakParseImpl;
 import io.lemur.generation.db.read.ReadTableFactory;
@@ -26,7 +26,7 @@ public final class DbGeneration {
 
     public static void generation(GenerationEntity entity) {
 
-        DataBaseTableEntity tableEntity = ReadTableFactory.getReadTable().read(
+        GenBeanEntity tableEntity = ReadTableFactory.getReadTable().read(
             entity.getTableName());
         IParse parseImpl = new FreemakParseImpl();
         parseImpl.parse(entity, tableEntity);

@@ -1,7 +1,7 @@
 package io.lemur.generation.db.read;
 
-import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
-import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.base.GenFieldEntity;
+import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.exception.GenerationRunTimeException;
 import io.lemur.generation.util.ConnectionUtil;
 import io.lemur.generation.util.NameUtil;
@@ -25,16 +25,16 @@ public abstract class BaseReadTable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseReadTable.class);
 
-    protected List<DataBaseFieldEntity> getTableFields(String tableName, String sql)
+    protected List<GenFieldEntity> getTableFields(String tableName, String sql)
                                                                                     throws Exception {
-        List<DataBaseFieldEntity> list = new ArrayList<DataBaseFieldEntity>();
+        List<GenFieldEntity> list = new ArrayList<GenFieldEntity>();
         Statement statement = null;
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(
                 String.format(sql, tableName, PropertiesUtil.getString(PropertiesUtil.DB_NAME)));
-            DataBaseFieldEntity field;
+            GenFieldEntity field;
             while (rs.next()) {
-                field = new DataBaseFieldEntity();
+                field = new GenFieldEntity();
                 field.setCharmaxLength(rs.getString("charmaxLength"));
                 field.setComment(rs.getString("_comment"));
                 field.setFieldName(rs.getString("fieldName"));
@@ -56,7 +56,7 @@ public abstract class BaseReadTable {
         return list;
     }
 
-    protected DataBaseTableEntity getTableEntiy(String tableName, String sql) throws Exception {
+    protected GenBeanEntity getTableEntiy(String tableName, String sql) throws Exception {
         Statement statement = null;
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(
@@ -70,7 +70,7 @@ public abstract class BaseReadTable {
             if (StringUtils.isEmpty(dbTableName)) {
                 throw new GenerationRunTimeException("表不存在");
             } else {
-                DataBaseTableEntity entity = new DataBaseTableEntity();
+                GenBeanEntity entity = new GenBeanEntity();
                 if (StringUtils.isNotEmpty(comment)) {
                     String[] nameAndComment = comment.split(PropertiesUtil.getCommentSplit());
                     entity.setChinaName(comment);

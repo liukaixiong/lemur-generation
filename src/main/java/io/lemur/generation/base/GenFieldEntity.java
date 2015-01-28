@@ -1,4 +1,4 @@
-package io.lemur.generation.db.entity.field;
+package io.lemur.generation.base;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author JueYue
  * @date 2014年12月21日
  */
-public class DataBaseFieldEntity implements Serializable {
+public class GenFieldEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
