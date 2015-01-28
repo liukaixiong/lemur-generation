@@ -41,6 +41,7 @@
 		<org.eclipse.jdt.core.version>3.7.1</org.eclipse.jdt.core.version>
 		<aspectjtools.version>1.7.4</aspectjtools.version>
 		<org.eclipse.text.version>3.5.101</org.eclipse.text.version>
+		<jackson.version>2.1.5</jackson.version>
 
 		<!-- 测试包 -->
 		<junit.version>4.11</junit.version>
@@ -73,6 +74,31 @@
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>${freemark.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.lemur</groupId>
+			<artifactId>lemur-util</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>${jackson.version}</version>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

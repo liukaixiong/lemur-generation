@@ -1,7 +1,7 @@
-package io.lemur.generation.read;
+package io.lemur.generation.db;
 
 import io.lemur.generation.exception.GenerationRunTimeException;
-import io.lemur.generation.read.impl.mysql.ReadTableForMysqlImpl;
+import io.lemur.generation.db.impl.mysql.ReadTableForMysqlImpl;
 import io.lemur.generation.util.PropertiesUtil;
 
 /**
@@ -11,8 +11,13 @@ import io.lemur.generation.util.PropertiesUtil;
  */
 public class ReadTableFactory {
 
-    private static final String MYSQL  = "mysql";
-    private static final String ORACLE = "oracle";
+    private static final String MYSQL      = "mysql";
+
+    private static final String ORACLE     = "oracle";
+
+    private static final String SQLSERVER  = "sqlserver";
+
+    private static final String POSTGRESQL = "PostgreSQL";
 
     public static IReadTable getReadTable() {
         String dbType = PropertiesUtil.getString(PropertiesUtil.DB_TYPE).trim();

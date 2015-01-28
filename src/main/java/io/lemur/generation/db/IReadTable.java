@@ -1,4 +1,4 @@
-package io.lemur.generation.read;
+package io.lemur.generation.db;
 
 import io.lemur.generation.entity.table.DataBaseTableEntity;
 

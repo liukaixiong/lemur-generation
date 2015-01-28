@@ -1,4 +1,4 @@
-package io.lemur.generation.read.impl.mysql;
+package io.lemur.generation.db.impl.mysql;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import io.lemur.generation.entity.field.DataBaseFieldEntity;
 import io.lemur.generation.entity.table.DataBaseTableEntity;
 import io.lemur.generation.exception.GenerationRunTimeException;
-import io.lemur.generation.read.BaseReadTable;
-import io.lemur.generation.read.IReadTable;
+import io.lemur.generation.db.BaseReadTable;
+import io.lemur.generation.db.IReadTable;
 import io.lemur.generation.util.NameUtil;
 
 /**

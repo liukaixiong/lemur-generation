@@ -2,13 +2,13 @@ package io.lemur.generation;
 
 import org.apache.commons.lang.StringUtils;
 
+import io.lemur.generation.db.ReadTableFactory;
 import io.lemur.generation.entity.enmu.GenerationType;
 import io.lemur.generation.entity.enmu.TypeEnmu;
 import io.lemur.generation.entity.generation.GenerationEntity;
 import io.lemur.generation.entity.table.DataBaseTableEntity;
 import io.lemur.generation.parse.IParse;
 import io.lemur.generation.parse.impl.freemark.FreemakParseImpl;
-import io.lemur.generation.read.ReadTableFactory;
 
 /**
  * 生成类
@@ -18,7 +18,7 @@ import io.lemur.generation.read.ReadTableFactory;
  */
 public final class Generation {
 
-    private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.Entity, TypeEnmu.Repository };
+    private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.Entity };
 
     private static String     JAVA_PACKAGE = "io.lemur.users";
     private static String     JSP_PACKAGE  = "users";
@@ -34,9 +34,9 @@ public final class Generation {
     public static void main(String[] args) {
         GenerationEntity entiy = new GenerationEntity();
         entiy.setJavaPackage(JAVA_PACKAGE);
-        entiy.setEntityName("BaseUser");
+        entiy.setEntityName("MsmngRole");
         entiy.setPackageName("baseuser");
-        entiy.setTableName("t_s_base_user");
+        entiy.setTableName("msmng_role");
         entiy.setTypes(types);
         Generation.generation(entiy);
     }
