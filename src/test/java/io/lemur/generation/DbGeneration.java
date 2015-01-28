@@ -1,14 +1,15 @@
 package io.lemur.generation;
 
+
 import org.apache.commons.lang.StringUtils;
 
-import io.lemur.generation.db.ReadTableFactory;
-import io.lemur.generation.entity.enmu.GenerationType;
-import io.lemur.generation.entity.enmu.TypeEnmu;
-import io.lemur.generation.entity.generation.GenerationEntity;
-import io.lemur.generation.entity.table.DataBaseTableEntity;
-import io.lemur.generation.parse.IParse;
-import io.lemur.generation.parse.impl.freemark.FreemakParseImpl;
+import io.lemur.generation.db.entity.enmu.GenerationType;
+import io.lemur.generation.db.entity.enmu.TypeEnmu;
+import io.lemur.generation.db.entity.generation.GenerationEntity;
+import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.db.parse.IParse;
+import io.lemur.generation.db.parse.impl.freemark.FreemakParseImpl;
+import io.lemur.generation.db.read.ReadTableFactory;
 
 /**
  * 生成类
@@ -16,7 +17,7 @@ import io.lemur.generation.parse.impl.freemark.FreemakParseImpl;
  * @author JueYue
  * @date 2014年12月23日
  */
-public final class Generation {
+public final class DbGeneration {
 
     private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.Entity };
 
@@ -38,7 +39,7 @@ public final class Generation {
         entiy.setPackageName("baseuser");
         entiy.setTableName("msmng_role");
         entiy.setTypes(types);
-        Generation.generation(entiy);
+        DbGeneration.generation(entiy);
     }
 
 }

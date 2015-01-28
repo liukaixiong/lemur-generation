@@ -1,7 +1,7 @@
-package io.lemur.generation.entity.generation;
+package io.lemur.generation.db.entity.generation;
 
-import io.lemur.generation.entity.enmu.GenerationType;
-import io.lemur.generation.entity.enmu.TypeEnmu;
+import io.lemur.generation.db.entity.enmu.GenerationType;
+import io.lemur.generation.db.entity.enmu.TypeEnmu;
 
 import java.io.Serializable;
 

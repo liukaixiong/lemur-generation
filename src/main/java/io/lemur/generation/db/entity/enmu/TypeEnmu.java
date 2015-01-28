@@ -1,4 +1,4 @@
-package io.lemur.generation.entity.enmu;
+package io.lemur.generation.db.entity.enmu;
 
 /**
  * 生成类型

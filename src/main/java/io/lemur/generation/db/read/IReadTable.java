@@ -1,6 +1,6 @@
-package io.lemur.generation.db;
+package io.lemur.generation.db.read;
 
-import io.lemur.generation.entity.table.DataBaseTableEntity;
+import io.lemur.generation.db.entity.table.DataBaseTableEntity;
 
 /**
  * 读取数据库表,获取数据库表的属性

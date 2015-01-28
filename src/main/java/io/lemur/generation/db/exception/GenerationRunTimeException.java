@@ -1,4 +1,4 @@
-package io.lemur.generation.exception;
+package io.lemur.generation.db.exception;
 
 /**
  * 代码生成器业务异常

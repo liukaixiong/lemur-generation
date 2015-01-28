@@ -1,8 +1,8 @@
-package io.lemur.generation.db;
+package io.lemur.generation.db.read;
 
-import io.lemur.generation.entity.field.DataBaseFieldEntity;
-import io.lemur.generation.entity.table.DataBaseTableEntity;
-import io.lemur.generation.exception.GenerationRunTimeException;
+import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
+import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.db.exception.GenerationRunTimeException;
 import io.lemur.generation.util.ConnectionUtil;
 import io.lemur.generation.util.NameUtil;
 import io.lemur.generation.util.PropertiesUtil;

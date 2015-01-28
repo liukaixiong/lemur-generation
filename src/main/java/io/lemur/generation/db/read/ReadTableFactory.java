@@ -1,7 +1,7 @@
-package io.lemur.generation.db;
+package io.lemur.generation.db.read;
 
-import io.lemur.generation.exception.GenerationRunTimeException;
-import io.lemur.generation.db.impl.mysql.ReadTableForMysqlImpl;
+import io.lemur.generation.db.exception.GenerationRunTimeException;
+import io.lemur.generation.db.read.impl.mysql.ReadTableForMysqlImpl;
 import io.lemur.generation.util.PropertiesUtil;
 
 /**

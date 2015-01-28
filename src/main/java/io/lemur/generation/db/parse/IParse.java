@@ -1,7 +1,7 @@
-package io.lemur.generation.parse;
+package io.lemur.generation.db.parse;
 
-import io.lemur.generation.entity.generation.GenerationEntity;
-import io.lemur.generation.entity.table.DataBaseTableEntity;
+import io.lemur.generation.db.entity.generation.GenerationEntity;
+import io.lemur.generation.db.entity.table.DataBaseTableEntity;
 
 /**
  * 模板解析接口

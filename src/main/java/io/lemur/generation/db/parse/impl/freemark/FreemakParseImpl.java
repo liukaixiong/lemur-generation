@@ -1,4 +1,4 @@
-package io.lemur.generation.parse.impl.freemark;
+package io.lemur.generation.db.parse.impl.freemark;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,11 +16,11 @@ import org.apache.commons.lang.StringUtils;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import io.lemur.generation.entity.enmu.TypeEnmu;
-import io.lemur.generation.entity.field.DataBaseFieldEntity;
-import io.lemur.generation.entity.generation.GenerationEntity;
-import io.lemur.generation.entity.table.DataBaseTableEntity;
-import io.lemur.generation.parse.IParse;
+import io.lemur.generation.db.entity.enmu.TypeEnmu;
+import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
+import io.lemur.generation.db.entity.generation.GenerationEntity;
+import io.lemur.generation.db.entity.table.DataBaseTableEntity;
+import io.lemur.generation.db.parse.IParse;
 import io.lemur.generation.util.CodeFromatter;
 import io.lemur.generation.util.PropertiesUtil;
 

@@ -1,4 +1,4 @@
-package io.lemur.generation.entity.field;
+package io.lemur.generation.db.entity.field;
 
 import java.io.Serializable;
 

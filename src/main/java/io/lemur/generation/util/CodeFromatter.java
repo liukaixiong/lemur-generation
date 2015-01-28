@@ -1,6 +1,6 @@
 package io.lemur.generation.util;
 
-import io.lemur.generation.exception.GenerationRunTimeException;
+import io.lemur.generation.db.exception.GenerationRunTimeException;
 
 import java.io.FileInputStream;
 import java.util.HashMap;

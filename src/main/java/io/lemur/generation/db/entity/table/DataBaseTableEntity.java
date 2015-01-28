@@ -1,6 +1,6 @@
-package io.lemur.generation.entity.table;
+package io.lemur.generation.db.entity.table;
 
-import io.lemur.generation.entity.field.DataBaseFieldEntity;
+import io.lemur.generation.db.entity.field.DataBaseFieldEntity;
 
 import java.io.Serializable;
 import java.util.List;
