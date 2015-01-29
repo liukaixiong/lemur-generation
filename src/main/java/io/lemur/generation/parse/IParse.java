@@ -1,4 +1,4 @@
-package io.lemur.generation.db.parse;
+package io.lemur.generation.parse;
 
 import io.lemur.generation.base.GenBeanEntity;
 import io.lemur.generation.db.entity.generation.GenerationEntity;

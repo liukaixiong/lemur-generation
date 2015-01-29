@@ -1,15 +1,12 @@
-package io.lemur.generation;
+package io.lemur.generation.run;
 
-
-import org.apache.commons.lang.StringUtils;
 
 import io.lemur.generation.base.GenBeanEntity;
-import io.lemur.generation.db.entity.enmu.GenerationType;
 import io.lemur.generation.db.entity.enmu.TypeEnmu;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
-import io.lemur.generation.db.parse.IParse;
-import io.lemur.generation.db.parse.impl.freemark.FreemakParseImpl;
 import io.lemur.generation.db.read.ReadTableFactory;
+import io.lemur.generation.parse.IParse;
+import io.lemur.generation.parse.impl.FreemakParseImpl;
 
 /**
  * 生成类
@@ -19,10 +16,9 @@ import io.lemur.generation.db.read.ReadTableFactory;
  */
 public final class DbGeneration {
 
-    private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.Entity };
+    private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.JSONEntity };
 
-    private static String     JAVA_PACKAGE = "io.lemur.users";
-    private static String     JSP_PACKAGE  = "users";
+    private static String     JAVA_PACKAGE = "io.lemur.map.model.amap.direction";
 
     public static void generation(GenerationEntity entity) {
 

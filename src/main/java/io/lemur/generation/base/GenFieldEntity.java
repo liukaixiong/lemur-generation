@@ -52,6 +52,10 @@ public class GenFieldEntity implements Serializable {
      * 是否允许为空 Y/N
      **/
     private String            nullable;
+    /**
+     * 对象
+     */
+    private GenBeanEntity     bean;
 
     public String getFieldName() {
         return fieldName;
@@ -131,6 +135,14 @@ public class GenFieldEntity implements Serializable {
 
     public void setChinaName(String chinaName) {
         this.chinaName = chinaName;
+    }
+
+    public GenBeanEntity getBean() {
+        return bean;
+    }
+
+    public void setBean(GenBeanEntity bean) {
+        this.bean = bean;
     }
 
 }

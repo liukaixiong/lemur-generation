@@ -11,23 +11,23 @@ import java.util.List;
  */
 public class GenBeanEntity implements Serializable {
 
-    private static final long         serialVersionUID = 1L;
+    private static final long    serialVersionUID = 1L;
     /**
      * 表名
      */
-    private String                    tableName;
+    private String               tableName;
     /**
      * Java 表名
      */
-    private String                    name;
+    private String               name;
     /**
      * 中文名称
      */
-    private String                    chinaName;
+    private String               chinaName;
     /**
      * 注释
      */
-    private String                    comment;
+    private String               comment;
     /**
      * 表字段
      */

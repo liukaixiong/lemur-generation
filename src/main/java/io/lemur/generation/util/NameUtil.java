@@ -1,5 +1,7 @@
 package io.lemur.generation.util;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * 命名规则工具类
  * 
@@ -19,6 +21,9 @@ public class NameUtil {
      * @return
      */
     public static String getEntityHumpName(String name) {
+        if(StringUtils.isEmpty(name)){
+            return name;
+        }
         StringBuilder builder = new StringBuilder();
         name = name.toLowerCase();
         int index = 0;
