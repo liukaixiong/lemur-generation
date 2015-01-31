@@ -118,7 +118,7 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getPackageName() {
-        return packageName.toLowerCase();
+        return packageName == null ? null : packageName.toLowerCase();
     }
 
     public void setPackageName(String packageName) {
