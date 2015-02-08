@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**   
- * @Description: ${table.chinaName} ${table.comment!}
+ * @Description: ${table.chinaName!} ${table.comment!}
  * @author Lemur
  * @date ${createTime}
  * @version V1.0   

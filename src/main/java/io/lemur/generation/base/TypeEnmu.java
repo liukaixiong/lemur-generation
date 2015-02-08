@@ -1,4 +1,4 @@
-package io.lemur.generation.db.entity.enmu;
+package io.lemur.generation.base;
 
 /**
  * 生成类型
@@ -9,6 +9,7 @@ public enum TypeEnmu {
 
     Entity ("entity.ftl" , "/entity" , "/%sEntity.java") ,
     JSONEntity ("jsonentity.ftl" , "/entity" , "/%sEntity.java") ,
+    MybatisXml ("mybatis.ftl" , "/mapper" , "/%sMapper.xml") ,
     IService ("iservice.ftl" , "/service" , "/I%sService.java") ,
     ServiceImpl ("serviceImpl.ftl" , "/service/impl" , "/%sServiceImpl.java") ,
     Controller ("controller.ftl" , "/controller" , "/%sController.java") ,

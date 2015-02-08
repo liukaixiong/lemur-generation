@@ -18,7 +18,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import io.lemur.generation.base.GenFieldEntity;
 import io.lemur.generation.base.GenBeanEntity;
-import io.lemur.generation.db.entity.enmu.TypeEnmu;
+import io.lemur.generation.base.TypeEnmu;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
 import io.lemur.generation.parse.IParse;
 import io.lemur.generation.util.CodeFromatter;
