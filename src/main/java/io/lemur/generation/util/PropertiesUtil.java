@@ -21,7 +21,7 @@ public class PropertiesUtil {
     public static String DB_NAME         = "db.name";
     public static String DB_PASSWORD     = "db.password";
     public static String DB_TYPE         = "db.type";
-    public static String GENERATION_PATH = "generation.path";
+    public static String GENERATION_PATH = "generation.path.";
     public static String IS_FORMAT       = "is.format";
 
     private PropertiesUtil() {
@@ -70,6 +70,13 @@ public class PropertiesUtil {
             return ",";
         }
         return splitKey;
+    }
+
+    public static String getPath(String name) {
+        if (resourceBundle.containsKey(GENERATION_PATH + name)) {
+            return resourceBundle.getString(GENERATION_PATH + name);
+        }
+        return resourceBundle.getString(GENERATION_PATH + "default");
     }
 
 }

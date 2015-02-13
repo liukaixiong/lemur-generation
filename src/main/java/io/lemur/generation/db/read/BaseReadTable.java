@@ -101,7 +101,7 @@ public abstract class BaseReadTable {
     }
 
     protected String convertType(String dataType, String precision, String scale) {
-        if (dataType.contains("char")) {
+        if (dataType.contains("char") || dataType.contains("text")) {
             dataType = "String";
         } else if (dataType.contains("int")) {
             dataType = "Integer";

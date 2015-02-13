@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**   
  * @Description: ${table.chinaName!} ${table.comment!}
- * @author Lemur
+ * @author JueYue
  * @date ${createTime}
  * @version V1.0   
  */

@@ -91,9 +91,8 @@ public class FreemakParseImpl implements IParse {
 
     private String getSrcPath(GenerationEntity generationEntity, GenBeanEntity tableEntity,
                               TypeEnmu type) {
-        return PropertiesUtil.getString(PropertiesUtil.GENERATION_PATH)
-               + (generationEntity.getJavaPackage() + type.getSrcPackage()).replace(".", "/") + "/"
-               + generationEntity.getPackageName();
+        return PropertiesUtil.getPath(type.getValue().substring(0, type.getValue().indexOf(".")))
+               + (type.getSrcPackage()).replace(".", "/") + "/" + generationEntity.getPackageName();
     }
 
     /**

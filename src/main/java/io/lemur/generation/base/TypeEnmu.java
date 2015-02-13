@@ -11,7 +11,7 @@ public enum TypeEnmu {
     JSONEntity ("jsonentity.ftl" , "/entity" , "/%sEntity.java") ,
     MybatisXml ("mybatis.ftl" , "/mapper" , "/%sMapper.xml") ,
     IService ("iservice.ftl" , "/service" , "/I%sService.java") ,
-    ServiceImpl ("serviceImpl.ftl" , "/service/impl" , "/%sServiceImpl.java") ,
+    ServiceImpl ("serviceImpl.ftl" , "/service" , "/%sServiceImpl.java") ,
     Controller ("controller.ftl" , "/controller" , "/%sController.java") ,
     Repository ("repository.ftl" , "/repository" , "/%sRepository.java") ,
     AddJsp ("addjsp.ftl" , "/page" , "/%sAdd.jsp") ,

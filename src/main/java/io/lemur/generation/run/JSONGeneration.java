@@ -4,7 +4,7 @@ import java.util.Map;
 
 import io.lemur.common.util.ucode.ParseCode;
 import io.lemur.generation.base.GenBeanEntity;
-import io.lemur.generation.db.entity.enmu.TypeEnmu;
+import io.lemur.generation.base.TypeEnmu;
 import io.lemur.generation.db.entity.generation.GenerationEntity;
 import io.lemur.generation.json.parse.JsonParse;
 import io.lemur.generation.parse.IParse;
@@ -20,12 +20,12 @@ public final class JSONGeneration {
 
     private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.JSONEntity };
 
-    private static String     JAVA_PACKAGE = "io.lemur.map.model.amap.direction";
+    private static String     JAVA_PACKAGE = "io.lemur.map.model.amap.place";
 
     public static void generation(GenerationEntity entity) {
         JsonParse parse = new JsonParse();
-        parse.setNameModifier("AmapBusDirection%sModel");
-        Map<String, Object> map = new JsonParse().parseFile("D:/高德的url.txt", ParseCode.GBK);
+        parse.setNameModifier("AmapPlace%sModel");
+        Map<String, Object> map = new JsonParse().parseFile("D:/高德的url.txt", ParseCode.UTF8);
         if(map == null){
             return;
         }
@@ -37,9 +37,6 @@ public final class JSONGeneration {
     public static void main(String[] args) {
         GenerationEntity entiy = new GenerationEntity();
         entiy.setJavaPackage(JAVA_PACKAGE);
-        entiy.setEntityName("MsmngRole");
-        entiy.setPackageName("baseuser");
-        entiy.setTableName("msmng_role");
         entiy.setTypes(types);
         JSONGeneration.generation(entiy);
     }

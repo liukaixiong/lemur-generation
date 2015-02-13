@@ -15,7 +15,7 @@ import java.math.BigInteger;
 
 /**   
  * @Description: ${table.chinaName!} ${table.comment!}
- * @author Lemur
+ * @author JueYue
  * @date ${createTime}
  * @version V1.0   
  */
