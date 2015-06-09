@@ -3,6 +3,15 @@ package ${params.javaPackage}.entity.${params.packageName};
 <#if isNeedDate>
 import java.util.Date;
 </#if>
+<#if isNeedList>
+import java.util.List;
+</#if>
+<#if isNeedBigDecimal>
+import java.math.BigDecimal;
+</#if>
+<#if isNeedBigInteger>
+import java.math.BigInteger;
+</#if>
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

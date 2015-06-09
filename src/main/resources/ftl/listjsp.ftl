@@ -87,18 +87,11 @@
 					<table>
 						<thead>
 							<tr>
-								<th align="center">线路名称</th>
-								<th align="center">用户</th>
-								<th align="center">评价</th>
-								<th align="center">评分</th>
-								<th align="center">顶数量|踩数量</th>
-								<th align="center">状态</th>
-								<th align="center">评论时间</th>
-								<th align="center">举报人</br>举报时间</br>举报原因
-								</th>
-								<th align="center">操作人</br>操作时间
-								</th>
-								<th align="center">备注</th>
+								<#list table.fields as v>
+									<#if v.name != params.idName>
+										<th align="center">${v.chinaName}</th>
+									</#if>
+								</#list>
 								<th align="center">操作</th>
 							</tr>
 						</thead>
@@ -107,21 +100,11 @@
 								<c:when test="${'$'}{fn:length(list) > 0}">
 									<c:forEach var="ar" items="${'$'}{list}">
 										<tr>
-											<td align="center"><c:out value="${'$'}{ar.lineName}" /></td>
-											<td align="center"><c:out value="${'$'}{ar.userId} " /></td>
-											<td align="center"><c:out value="${'$'}{ar.contentOn}" /></td>
-											<td align="center"><c:out value="${'$'}{ar.score}" /></td>
-											<td align="center"><c:out value="${'$'}{ar.topNum}" />|<c:out
-													value="${'$'}{ar.stepNum}" /></td>
-											<td align="center"><c:out value="${'$'}{ar.status}" /></td>
-											<td align="center"><fmt:formatDate value="${'$'}{ar.time}"
-													type="both" /></td>
-											<td align="center"><c:out value="${'$'}{ar.reportUser} " />|<br>
-											<fmt:formatDate value="${'$'}{ar.reportTime}" type="both" />|<br>
-											<c:out value="${'$'}{ar.reportReason} " /></td>
-											<td align="center"><c:out value="${'$'}{ar.updateUser}" /></br>|<fmt:formatDate
-													value="${'$'}{ar.updateTime}" type="both" /></td>
-											<td align="center"></td>
+											<#list table.fields as v>
+												<#if v.name != params.idName>
+													<td align="center"><c:out value="${'$'}{ar.${v.name}}" /></td>
+												</#if>
+											</#list>
 											<td align="center"></td>
 										</tr>
 									</c:forEach>

@@ -5,7 +5,7 @@ import ${params.javaPackage}.entity.${params.packageName}.${params.entityName}En
 import com.github.abel533.mapper.QueryRepository;
 import org.springframework.stereotype.Repository;
 /**   
- * @Description: ${table.chinaName} ${table.comment!}
+ * @Description: ${table.chinaName!} ${table.comment!}
  * @author JueYue
  * @date ${createTime}
  * @version V1.0   
