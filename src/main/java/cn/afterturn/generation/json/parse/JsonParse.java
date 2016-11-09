@@ -1,10 +1,5 @@
 package cn.afterturn.generation.json.parse;
 
-import io.lemur.common.util.file.FileUtil;
-import io.lemur.common.util.json.JSONUtil;
-import io.lemur.common.util.logger.MyLogger;
-import io.lemur.common.util.ucode.ParseCode;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +7,10 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 
+import cn.afterturn.common.util.FileUtil;
+import cn.afterturn.common.util.JSONUtil;
+import cn.afterturn.common.util.LemurLogger;
+import cn.afterturn.common.util.ParseCode;
 import cn.afterturn.generation.base.GenBeanEntity;
 import cn.afterturn.generation.base.GenFieldEntity;
 import cn.afterturn.generation.util.NameUtil;
@@ -24,7 +23,7 @@ import cn.afterturn.generation.util.NameUtil;
 @SuppressWarnings("unchecked")
 public class JsonParse {
 
-    private static final Logger LOGGER       = MyLogger.getLogger();
+    private static final Logger LOGGER       = LemurLogger.getLogger();
 
     private String              nameModifier = "%s";
 

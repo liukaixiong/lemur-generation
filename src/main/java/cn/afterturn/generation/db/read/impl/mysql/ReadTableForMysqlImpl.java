@@ -59,4 +59,16 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
         }
     }
 
+    @Override
+    public List<String> getAllDB() {
+        
+        return null;
+    }
+
+    @Override
+    public List<String> getAllTable(String dbName) {
+        
+        return null;
+    }
+
 }

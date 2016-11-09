@@ -1,4 +1,4 @@
-package com.postaop.bus.map.controller.${params.packageName};
+package ${params.javaPackage}.controller.${params.packageName};
 
 import io.lemur.common.util.logger.MyLogger;
 

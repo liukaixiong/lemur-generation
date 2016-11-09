@@ -2,13 +2,13 @@ package cn.afterturn.generation.run;
 
 import java.util.Map;
 
+import cn.afterturn.common.util.ParseCode;
 import cn.afterturn.generation.base.GenBeanEntity;
 import cn.afterturn.generation.base.TypeEnmu;
 import cn.afterturn.generation.db.entity.generation.GenerationEntity;
 import cn.afterturn.generation.json.parse.JsonParse;
 import cn.afterturn.generation.parse.IParse;
 import cn.afterturn.generation.parse.impl.FreemakParseJsonImpl;
-import io.lemur.common.util.ucode.ParseCode;
 
 /**
  * 生成类

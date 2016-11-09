@@ -15,10 +15,11 @@ import cn.afterturn.generation.parse.impl.FreemakParseImpl;
  */
 public final class DbGeneration {
 
-    private static TypeEnmu[] types        = new TypeEnmu[] { TypeEnmu.Repository, TypeEnmu.Entity,
-            TypeEnmu.MybatisXml           };
+    private static TypeEnmu[] types = new TypeEnmu[] { TypeEnmu.Repository, TypeEnmu.Entity,
+                                                       TypeEnmu.ServiceImpl, TypeEnmu.Controller,
+                                                       TypeEnmu.IService,TypeEnmu.ListJsp };
 
-    private static String     JAVA_PACKAGE = "cn.linkea.qdcrm.common.dal.crmapp";
+    private static String JAVA_PACKAGE = "cn.afterturn.svn.analysis";
 
     public static void generation(GenerationEntity entity) {
 
@@ -30,9 +31,9 @@ public final class DbGeneration {
     public static void main(String[] args) {
         GenerationEntity entiy = new GenerationEntity();
         entiy.setJavaPackage(JAVA_PACKAGE);
-        entiy.setEntityName("ShopGoodsCategory");
-        entiy.setPackageName("goodscategory");
-        entiy.setTableName("t_shop_goods_category");
+        entiy.setEntityName("UserInfo");
+        entiy.setPackageName("userinfo");
+        entiy.setTableName("user_info");
         entiy.setTypes(types);
         DbGeneration.generation(entiy);
     }

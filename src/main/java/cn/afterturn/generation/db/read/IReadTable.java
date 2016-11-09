@@ -1,5 +1,7 @@
 package cn.afterturn.generation.db.read;
 
+import java.util.List;
+
 import cn.afterturn.generation.base.GenBeanEntity;
 
 /**
@@ -16,5 +18,17 @@ public interface IReadTable {
      * @return
      */
     public GenBeanEntity read(String tableName);
+    /**
+     * 查询所有的库
+     * @return
+     */
+    public List<String> getAllDB();
+    /**
+     * 查询所有的表
+     * @return
+     */
+    public List<String> getAllTable(String dbName);
+    
+    
 
 }

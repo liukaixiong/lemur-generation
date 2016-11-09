@@ -82,7 +82,7 @@ public abstract class BaseReadTable {
                 return entity;
             }
         } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e.fillInStackTrace());
+            LOGGER.error(e.getMessage(), e);
             throw new GenerationRunTimeException("查询表是否存在发生异常", e);
         } finally {
             if (statement != null) {
