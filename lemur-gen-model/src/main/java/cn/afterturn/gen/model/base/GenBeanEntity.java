@@ -1,4 +1,4 @@
-package cn.afterturn.gen.core.base;
+package cn.afterturn.gen.model.base;
 
 import java.io.Serializable;
 import java.util.List;

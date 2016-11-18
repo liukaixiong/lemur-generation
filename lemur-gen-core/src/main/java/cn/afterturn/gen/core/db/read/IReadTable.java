@@ -2,7 +2,7 @@ package cn.afterturn.gen.core.db.read;
 
 import java.util.List;
 
-import cn.afterturn.gen.core.base.GenBeanEntity;
+import cn.afterturn.gen.model.base.GenBeanEntity;
 
 /**
  * 读取数据库表,获取数据库表的属性
