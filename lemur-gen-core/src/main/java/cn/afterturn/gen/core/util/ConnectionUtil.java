@@ -15,36 +15,30 @@ import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
  */
 public class ConnectionUtil {
 
-    private static Connection connection;
+	private static ThreadLocal<Connection> connection = new ThreadLocal<>();
 
-    private ConnectionUtil() {
+	private ConnectionUtil() {
 
-    }
+	}
 
-    private static ConnectionUtil instance;
+	public static Statement createStatement() {
+		if (connection.get() == null) {
+			throw new GenerationRunTimeException("未发现数据库连接");
+		}
+		try {
+			return connection.get().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+		} catch (Exception e) {
+			throw new GenerationRunTimeException("创建 Statement 发生异常", e);
+		}
+	}
 
-    public static Statement createStatement() {
-        if (instance == null) {
-            init();
-        }
-        try {
-            return connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        } catch (Exception e) {
-            throw new GenerationRunTimeException("创建 Statement 发生异常", e);
-        }
-    }
-
-    private static void init() {
-        try {
-            Class.forName(PropertiesUtil.getString(PropertiesUtil.DB_DRIVER));
-            connection = DriverManager.getConnection(
-                PropertiesUtil.getString(PropertiesUtil.DB_URL),
-                PropertiesUtil.getString(PropertiesUtil.DB_USER_NAME),
-                PropertiesUtil.getString(PropertiesUtil.DB_PASSWORD));
-        } catch (Exception e) {
-            throw new GenerationRunTimeException("创建 Connection 发生异常", e);
-        }
-    }
+	public static void init(String deiver, String url, String username, String passwd) {
+		try {
+			Class.forName(deiver);
+			connection.set(DriverManager.getConnection(url, username, passwd));
+		} catch (Exception e) {
+			throw new GenerationRunTimeException("创建 Connection 发生异常", e);
+		}
+	}
 
 }
