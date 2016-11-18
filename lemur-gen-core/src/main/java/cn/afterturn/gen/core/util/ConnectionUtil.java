@@ -1,11 +1,11 @@
-package cn.afterturn.generation.util;
+package cn.afterturn.gen.core.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import cn.afterturn.generation.db.exception.GenerationRunTimeException;
+import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
 
 /**
  * 数据库连接工具类 主要是创建连接

@@ -1,11 +1,11 @@
-package cn.afterturn.generation.util;
+package cn.afterturn.gen.core.util;
 
 import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.afterturn.generation.db.exception.GenerationRunTimeException;
+import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
 
 /**
  * 配置文件读取工具
@@ -21,8 +21,6 @@ public class PropertiesUtil {
     public static String DB_NAME         = "db.name";
     public static String DB_PASSWORD     = "db.password";
     public static String DB_TYPE         = "db.type";
-    public static String GENERATION_PATH = "generation.path.";
-    public static String IS_FORMAT       = "is.format";
     public static String FILE_ENCODE       = "file.encode";
 
     private PropertiesUtil() {
@@ -71,13 +69,6 @@ public class PropertiesUtil {
             return ",";
         }
         return splitKey;
-    }
-
-    public static String getPath(String name) {
-        if (resourceBundle.containsKey(GENERATION_PATH + name)) {
-            return resourceBundle.getString(GENERATION_PATH + name);
-        }
-        return resourceBundle.getString(GENERATION_PATH + "default");
     }
 
 }

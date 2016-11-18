@@ -1,16 +1,16 @@
-package cn.afterturn.generation.db.read.impl.mysql;
+package cn.afterturn.gen.core.db.read.impl.mysql;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.afterturn.generation.base.GenBeanEntity;
-import cn.afterturn.generation.base.GenFieldEntity;
-import cn.afterturn.generation.db.exception.GenerationRunTimeException;
-import cn.afterturn.generation.db.read.BaseReadTable;
-import cn.afterturn.generation.db.read.IReadTable;
-import cn.afterturn.generation.util.NameUtil;
+import cn.afterturn.gen.core.base.GenBeanEntity;
+import cn.afterturn.gen.core.base.GenFieldEntity;
+import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
+import cn.afterturn.gen.core.db.read.BaseReadTable;
+import cn.afterturn.gen.core.db.read.IReadTable;
+import cn.afterturn.gen.core.util.NameUtil;
 
 /**
  * MySql数据库的实现类

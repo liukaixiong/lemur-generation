@@ -1,4 +1,4 @@
-package cn.afterturn.generation.db.entity.enmu;
+package cn.afterturn.gen.enmu;
 
 /**
  * 主键类型

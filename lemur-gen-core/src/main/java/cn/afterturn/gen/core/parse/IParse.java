@@ -1,7 +1,7 @@
-package cn.afterturn.generation.parse;
+package cn.afterturn.gen.core.parse;
 
-import cn.afterturn.generation.base.GenBeanEntity;
-import cn.afterturn.generation.db.entity.generation.GenerationEntity;
+import cn.afterturn.gen.core.base.GenBeanEntity;
+import cn.afterturn.gen.model.GenerationEntity;
 
 /**
  * 模板解析接口

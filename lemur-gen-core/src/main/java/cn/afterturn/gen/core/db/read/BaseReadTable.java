@@ -1,4 +1,4 @@
-package cn.afterturn.generation.db.read;
+package cn.afterturn.gen.core.db.read;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,12 +9,12 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cn.afterturn.generation.base.GenBeanEntity;
-import cn.afterturn.generation.base.GenFieldEntity;
-import cn.afterturn.generation.db.exception.GenerationRunTimeException;
-import cn.afterturn.generation.util.ConnectionUtil;
-import cn.afterturn.generation.util.NameUtil;
-import cn.afterturn.generation.util.PropertiesUtil;
+import cn.afterturn.gen.core.base.GenBeanEntity;
+import cn.afterturn.gen.core.base.GenFieldEntity;
+import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
+import cn.afterturn.gen.core.util.ConnectionUtil;
+import cn.afterturn.gen.core.util.NameUtil;
+import cn.afterturn.gen.core.util.PropertiesUtil;
 
 /**
  * 读表基础类

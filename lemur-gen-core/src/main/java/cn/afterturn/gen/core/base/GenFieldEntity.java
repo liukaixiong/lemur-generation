@@ -1,4 +1,4 @@
-package cn.afterturn.generation.base;
+package cn.afterturn.gen.core.base;
 
 import java.io.Serializable;
 

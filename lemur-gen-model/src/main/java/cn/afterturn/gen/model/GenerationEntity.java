@@ -1,11 +1,10 @@
-package cn.afterturn.generation.db.entity.generation;
+package cn.afterturn.gen.model;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang.StringUtils;
 
-import cn.afterturn.generation.base.TypeEnmu;
-import cn.afterturn.generation.db.entity.enmu.GenerationType;
+import cn.afterturn.gen.enmu.GenerationType;
 
 /**
  * 主键的参数
@@ -27,7 +26,7 @@ public class GenerationEntity implements Serializable {
     /**
      * 需要生成的对象
      */
-    private TypeEnmu[]        types            = TypeEnmu.values();
+    private Object[]          types;
     /**
      * 功能名称
      */
@@ -69,11 +68,11 @@ public class GenerationEntity implements Serializable {
         this.jspPackage = jspPackage;
     }
 
-    public TypeEnmu[] getTypes() {
+    public Object[] getTypes() {
         return types;
     }
 
-    public void setTypes(TypeEnmu[] types) {
+    public void setTypes(Object[] types) {
         this.types = types;
     }
 

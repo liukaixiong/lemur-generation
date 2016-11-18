@@ -3,4 +3,4 @@
  * @author JueYue
  * @date 2015年1月28日
  */
-package cn.afterturn.generation.db.read;
+package cn.afterturn.gen.core.db.read;

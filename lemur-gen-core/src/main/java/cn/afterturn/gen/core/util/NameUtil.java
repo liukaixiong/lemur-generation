@@ -1,4 +1,4 @@
-package cn.afterturn.generation.util;
+package cn.afterturn.gen.core.util;
 
 import org.apache.commons.lang.StringUtils;
 

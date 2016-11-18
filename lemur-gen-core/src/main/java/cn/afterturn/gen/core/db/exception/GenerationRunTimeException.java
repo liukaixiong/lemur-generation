@@ -1,4 +1,4 @@
-package cn.afterturn.generation.db.exception;
+package cn.afterturn.gen.core.db.exception;
 
 /**
  * 代码生成器业务异常

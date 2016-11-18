@@ -1,8 +1,8 @@
-package cn.afterturn.generation.db.read;
+package cn.afterturn.gen.core.db.read;
 
-import cn.afterturn.generation.db.exception.GenerationRunTimeException;
-import cn.afterturn.generation.db.read.impl.mysql.ReadTableForMysqlImpl;
-import cn.afterturn.generation.util.PropertiesUtil;
+import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
+import cn.afterturn.gen.core.db.read.impl.mysql.ReadTableForMysqlImpl;
+import cn.afterturn.gen.core.util.PropertiesUtil;
 
 /**
  * 读取库的工厂
@@ -17,7 +17,7 @@ public class ReadTableFactory {
 
     private static final String SQLSERVER  = "sqlserver";
 
-    private static final String POSTGRESQL = "PostgreSQL";
+    private static final String POSTGRESQL = "postgresql";
 
     public static IReadTable getReadTable() {
         String dbType = PropertiesUtil.getString(PropertiesUtil.DB_TYPE).trim();
