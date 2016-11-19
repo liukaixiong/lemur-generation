@@ -1,0 +1,29 @@
+# Server settings
+server:
+    port:8080
+    address:localhost
+
+# DATASOURCE
+jdbc:
+    driverClass: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/easycode?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+
+# SPRING PROFILES
+spring:       
+    # HTTP ENCODING
+    http:
+        encoding.charset: UTF-8
+        encoding.enable: true
+        encoding.force: true
+# MyBatis
+mybatis:
+    typeAliasesPackage: cn.afterturn.gen.repository.**
+    mapperLocations: classpath:/mapper/*.xml
+    configLocation: classpath:/mybatis-config.xml
+
+# LOGGING
+logging:
+    level:
+       com.ibatis:DEBUG

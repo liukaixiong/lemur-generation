@@ -57,6 +57,22 @@
 				<version>1.3.0</version>
 			</dependency>
 			<dependency>
+				<groupId>tk.mybatis</groupId>
+				<artifactId>mapper</artifactId>
+				<version>3.3.9</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>4.1.6</version>
+			</dependency>
+
+			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>1.2.7</version>
@@ -65,36 +81,6 @@
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjtools</artifactId>
-				<version>${aspectjtools.version}</version>
-				<optional>true</optional>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.jdt</groupId>
-				<artifactId>org.eclipse.jdt.core</artifactId>
-				<version>${org.eclipse.jdt.core.version}</version>
-				<optional>true</optional>
-				<exclusions>
-					<exclusion>
-						<groupId>*</groupId>
-						<artifactId>*</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.text</groupId>
-				<artifactId>org.eclipse.text</artifactId>
-				<version>${org.eclipse.text.version}</version>
-				<optional>true</optional>
-				<exclusions>
-					<exclusion>
-						<groupId>*</groupId>
-						<artifactId>*</artifactId>
-					</exclusion>
-				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -116,8 +102,25 @@
 				<artifactId>freemarker</artifactId>
 				<version>${freemark.version}</version>
 			</dependency>
-			
-			
+
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>lemur-util</artifactId>
+				<version>1.2</version>
+			</dependency>
+
 			<!-- 子模块管理 -->
 			<dependency>
 				<groupId>cn.afterturn</groupId>
@@ -127,6 +130,11 @@
 			<dependency>
 				<groupId>cn.afterturn</groupId>
 				<artifactId>lemur-gen-repository</artifactId>
+				<version>2.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>lemur-gen-service</artifactId>
 				<version>2.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
@@ -177,9 +185,6 @@
 		<commons.long.version>2.4</commons.long.version>
 		<freemark.version>2.3.19</freemark.version>
 		<!-- eclipse 格式化代码 -->
-		<org.eclipse.jdt.core.version>3.7.1</org.eclipse.jdt.core.version>
-		<aspectjtools.version>1.7.4</aspectjtools.version>
-		<org.eclipse.text.version>3.5.101</org.eclipse.text.version>
 		<jackson.version>2.1.5</jackson.version>
 	</properties>
 	<modules>
