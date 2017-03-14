@@ -27,4 +27,5 @@ spring:
     type-aliases-package: cn.afterturn.gen.model
     config-location: classpath:mybatis-configuration.xml
   logging:
-    file: log/whp-web.log
+    file: log/easycode.log
+  filepath: /home/file/
