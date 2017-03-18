@@ -5,7 +5,7 @@ define(['knockout'], function(ko) {
 		this.curPage = ko.observable(1);
 		this.pages = ko.observable(0);
 		this.total = ko.observable(0);
-		this.lineNumber = [20, 40, 60, 80]; // 显示行数
+		this.lineNumber = [1,2]; // 显示行数
 		this.curNumber = ko.observableArray([20]); // 显示行数选择监听
 		this.turnNumber = ko.observable(); // 跳转页数
 		/** ****************底部分页栏********************** */
