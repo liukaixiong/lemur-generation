@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**   
  * @Description: InnoDB free: 97280 kB kB
  * @author JueYue
@@ -70,6 +72,7 @@ public class DbInfoEntity implements java.io.Serializable {
      * 创建时间 
      **/
     @Column(name = "CRT_TIME", nullable = false)
+    @JsonFormat(pattern="YYYY-MM-DD")
     private Date              crtTime;
     /**
      * 修改人 

@@ -1,0 +1,29 @@
+<!--底部栏-->
+	<div class="col-md-7">
+		<form class="form-inline" style="color: #626262;">
+			<div class="col-md-4" style="line-height: 44px">
+				<label class="field select" style="width: 100%;height: 39px;">
+                        <label>显示行数</label>
+				<select data-bind="options:lineNumber,selectedOptions:curNumber" class="form-control" name="lineNumber" style="width: calc(100% - 70px);line-height: 20px;height: 39px;"></select>
+				<i class="arrow double"></i>
+				</label>
+			</div>
+			<div class="col-md-3" style="line-height: 44px;font-size: 14px;letter-spacing:5px;">
+				共<span data-bind="text:total"></span>条
+			</div>
+			<div class="col-md-5" style="line-height: 44px">
+				<button class="btn btn-default" data-bind="click:prePage">上一页</button>
+				<span data-bind="text:curPage"></span>
+				<span>/</span>
+				<span data-bind="text:pages"></span>
+				<button class="btn btn-default" data-bind="click:nextPage">下一页</button>
+				<label>跳转到</label>
+				<input type="text" class="form-control" data-bind="textInput:turnNumber" style="width: calc(100% - 300px);">
+				<button class="btn btn-default" data-bind="click:turnTo">GO</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-5 text-right" style="line-height: 44px">
+		<span class="footer-legal">© 2014-2017 <a href="http://www.miibeian.gov.cn" target="view_window">[沪ICP备15021088号]</a> Lemur 开源</span>
+	</div>
+<!--底部栏end-->

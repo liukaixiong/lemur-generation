@@ -4,6 +4,7 @@
  */
 package cn.afterturn.gen.controller;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ import com.github.pagehelper.PageInfo;
  * @date 2017-03-14 19:28
  * @version V1.0  
  */
-@Controller
-@RestController("dbinfo")
+@RestController
+@RequestMapping("dbinfo")
 public class DbInfoController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DbInfoController.class);
@@ -35,7 +36,7 @@ public class DbInfoController {
     @Autowired
     private IDbInfoService      dbInfoService;
 
-    @RequestMapping(params = "list", method = RequestMethod.POST)
+    @RequestMapping(value = "list")
     public ResponseModel DbInfoList(DbInfoEntity entity, RequestModel form) {
         PageInfo<DbInfoEntity> list = dbInfoService.getDbInfoPage(entity, form.getPage(),
             form.getPageSize());
@@ -46,20 +47,12 @@ public class DbInfoController {
      * 
      *  新增
      */
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ResponseModel saveDbInfo(String agentId,
-                                    @RequestBody(required = false) DbInfoEntity entity) {
+    @RequestMapping(value = "addOrUpdate", method = RequestMethod.POST)
+    public ResponseModel saveDbInfo(DbInfoEntity entity) {
+        if(StringUtils.isNotEmpty(entity.getId())){
+            return ResponseModel.ins(dbInfoService.updateDbInfo(entity));
+        }
         return ResponseModel.ins(dbInfoService.addDbInfo(entity));
-    }
-
-    /**
-     * 
-     *  修改
-     */
-    @RequestMapping(value = "update", method = RequestMethod.POST)
-    public ResponseModel updateDbInfo(String agentId,
-                                      @RequestBody(required = false) DbInfoEntity entity) {
-        return ResponseModel.ins(dbInfoService.updateDbInfo(entity));
     }
 
     /**

@@ -83,7 +83,8 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             this.openBox=function(){
                 $.magnificPopup.open({
                     items: {
-                        src: '#addPopup'
+                        src: '#addPopup',
+                        width : '800px'  
                     },
                     callbacks: {
                         beforeOpen: function (e) {

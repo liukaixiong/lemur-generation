@@ -2,7 +2,7 @@ define(['jquery','knockout','app-storage','http-client','dialog'], function($,ko
     var tmplHtml = '<header class="navbar navbar-fixed-top navbar-shadow" id="topHeader">'+
         '<div class="navbar-branding ">'+
         '<img src="../../images/common/LOGO.png" style="width: 60px;float:left;">'+
-        '<span class="navbar-brand" style="padding-left: 0px;"><b>运营平台</b></span>'+
+        '<span class="navbar-brand" style="padding-left: 0px;"><b>代码生成平台</b></span>'+
         '</div>'+
         '<div class="nav navbar-nav navbar-right" style="line-height: 60px;">'+
         '<span data-bind="text:userName"></span>'+
@@ -45,30 +45,20 @@ define(['jquery','knockout','app-storage','http-client','dialog'], function($,ko
             "module" : "系统管理",
             "className" : "but6",
             "menuList" : [{
-                "module" : "组织机构管理",
+                "module" : "用户管理",
                 "url" : "",
                 "className" : "but10",
             }, {
-                "module" : "平台权限管理",
-                "url" : "",
+                "module" : "数据库管理",
+                "url" : "/dbinfo",
                 "className" : "but9",
                 "menuList" : []
             }, {
-                "module" : "产品管理",
-                "url" : "/SysProduct",
+                "module" : "模板管理",
+                "url" : "/template",
                 "className" : "but8",
                 "menuList" : []
-            }, {
-                "module" : "角色权限管理",
-                "url" : "/SysRole",
-                "className" : "but8",
-                "menuList" : []
-            }, {
-                "module" : "操作员管理",
-                "url" : "/SysOperator",
-                "className" : "but8",
-                "menuList" : []
-            }, {
+            },{
                 "module" : "系统日志",
                 "url" : "/SysJournal",
                 "className" : "but8",
@@ -232,6 +222,26 @@ define(['jquery','knockout','app-storage','http-client','dialog'], function($,ko
             userViewModal.init();
             ko.applyBindings(userViewModal,document.getElementById('topHeader'));
             $('head').append('<link rel="shortcut icon" href="../../images/common/favicon.ico" type="image/x-icon" />');
+      
+      		// --------------使用组件化,模板开发项目
+        	//第一步：重写loadTemplate方法
+			var templateFromUrlLoader = {
+			    loadTemplate: function(name, templateConfig, callback) {
+			        if (templateConfig.fromUrl) {
+			            var fullUrl = '/' + templateConfig.fromUrl
+			            
+			            //ajax动态获取外部的file内容
+			            $.get(fullUrl, function(markupString) {
+			                ko.components.defaultLoader.loadTemplate(name, markupString, callback);
+			            });
+			        } else {
+			            callback(null);
+			        }
+			    }
+			};
+			
+			//替换原来的defaultLoader，实现新的templateFromUrlLoader
+			ko.components.loaders.unshift(templateFromUrlLoader);
         };
     };
     return new navInit();

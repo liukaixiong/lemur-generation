@@ -5,6 +5,11 @@
 
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.afterturn.gen.repository" />
+		<property name="properties">
+			<props>
+				<prop key="notEmpty">true</prop>
+			</props>
+		</property>
 	</bean>
 
 </beans>

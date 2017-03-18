@@ -5,8 +5,8 @@ requirejs(['jquery','jquery-ui', 'knockout', 'http-client', 'app-storage', 'vali
             this.params={};
             this.show=false;
             this.errData=ko.observable('');//验证提示信息
-            this.phoneNumber=ko.observable('');
-            this.password=ko.observable('');
+            this.phoneNumber=ko.observable('13112345678');
+            this.password=ko.observable('123456');
             this.pswMemory=function(a,m){
                 if(!self.show){
                     $(m.target).attr('src','../../images/login/checked.png');
@@ -44,12 +44,12 @@ requirejs(['jquery','jquery-ui', 'knockout', 'http-client', 'app-storage', 'vali
                 }
                 self.showErr(false);
                 self.params.password = password;
-                httpclient.postJSON(self.params,url,null,function(data){
+                location.href = '../dbinfo/index.html';
+               /* httpclient.postJSON(self.params,url,null,function(data){
                     var ext = data.ext;
                     ext = JSON.parse(ext);
                     appStorage.setUserInfo(ext);
-                    location.href = '../businessProfile/index.html';
-                })
+                })*/
             }
 
             //初始化

@@ -43,8 +43,7 @@ define(['jquery', 'app-storage','dialog'], function($, appStorage,dialog) {
                 headers: self.getHeaders(),
                 url: reqUrl,
                 type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
+                data: data,
                 dataType: 'JSON'
             });
             self.doCallback(deferred, success, fail);
@@ -74,8 +73,7 @@ define(['jquery', 'app-storage','dialog'], function($, appStorage,dialog) {
                 headers: self.getHeaders(),
                 url: reqUrl,
                 type: 'PUT',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
+                data: data,
                 dataType: 'JSON'
             });
             self.doCallback(deferred, success, fail);
@@ -102,7 +100,7 @@ define(['jquery', 'app-storage','dialog'], function($, appStorage,dialog) {
         }
         this.genReqUrl = function(url, params) {
             var paramsObj = (params == undefined)? {}:params;
-            return Opc.SERVER_NAME + '/opc' + url + '?' + $.param(paramsObj);
+            return Opc.SERVER_NAME + '' + url + '?' + $.param(paramsObj);
             //return location.origin + '/api' + url + '?' + $.param(paramsObj);
         }
         this.doCallback = function(deferred, success, fail) {

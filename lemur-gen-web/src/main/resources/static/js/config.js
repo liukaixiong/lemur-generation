@@ -31,7 +31,8 @@ requirejs.config({
         'main':'chart/main',
         'c3':'chart/c3.min',
         'd3':'chart/d3',
-        'minD3':'chart/d3.min'
+        'minD3':'chart/d3.min',
+        'pager':'pager'
 
     },
     shim: {

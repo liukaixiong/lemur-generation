@@ -54,5 +54,8 @@
 	        <!-- always总是返回PageInfo类型,check检查返回类型是否为PageInfo,none返回Page -->
 	        <property name="returnPageInfo" value="none"/>
 	    </plugin>
+	    <!-- 新增统一处理 -->
+	    <plugin interceptor="cn.afterturn.gen.repository.interceptor.InsertInterceptor"></plugin>
+	    <plugin interceptor="cn.afterturn.gen.repository.interceptor.UpdateInterceptor"></plugin>
 	</plugins>
 </configuration>

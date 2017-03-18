@@ -5443,7 +5443,7 @@ td.legendColorBox {
     position: relative;
     background: #FFF;
     width: auto;
-    max-width: 450px;
+    max-width: 800px;
     margin: 40px auto;
 }
 
@@ -27649,7 +27649,7 @@ body.timeline-page .panel-clone {
 }
 
 /*自定义样式*/
-#addPopup div.panel>div.panel-heading{
+#addOrUpdatePopup div.panel>div.panel-heading{
     background-color: #5d6782;
     color: #fff;
 }
