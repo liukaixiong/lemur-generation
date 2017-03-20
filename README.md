@@ -17,5 +17,5 @@
 	[EasyPoi](http://git.oschina.net/jueyue/easypoi)	
 	
 	前端
-	[amazeui](http://amazeui.org/)
+	[knockoutjs](http://knockoutjs.com)
 	[echarts](http://echarts.baidu.com/)
