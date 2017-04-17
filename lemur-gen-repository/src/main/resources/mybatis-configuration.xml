@@ -55,7 +55,7 @@
 	        <property name="returnPageInfo" value="none"/>
 	    </plugin>
 	    <!-- 新增统一处理 -->
-	    <plugin interceptor="cn.afterturn.gen.repository.interceptor.InsertInterceptor"></plugin>
-	    <plugin interceptor="cn.afterturn.gen.repository.interceptor.UpdateInterceptor"></plugin>
+	    <!-- <plugin interceptor="cn.afterturn.jpa.plugin.InsertInterceptor"></plugin>
+	    <plugin interceptor="cn.afterturn.jpa.plugin.UpdateInterceptor"></plugin> -->
 	</plugins>
 </configuration>

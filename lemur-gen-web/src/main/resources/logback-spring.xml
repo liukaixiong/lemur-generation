@@ -25,7 +25,7 @@
         <logger name="org.springframework.data" level="INFO" />
         <logger name="org.mybatis" level="DEBUG" />
         <logger name="com.gd" level="TRACE"/>
-        <logger name="o.s" level="INFO"/>
+        <logger name="o.s.b.f.s.DefaultListableBeanFactory" level="INFO"/>
     </springProfile>
 
     <springProfile name="product">
