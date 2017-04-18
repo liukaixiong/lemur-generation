@@ -23,9 +23,9 @@ import freemarker.template.Template;
  * @author JueYue
  * @date 2014年12月25日
  */
-public class FreemakParseImpl implements IParse {
+public class FreeMarkerParseImpl implements IParse {
 
-    private static final Logger               LOGGER         = LoggerFactory.getLogger(FreemakParseImpl.class);
+    private static final Logger               LOGGER         = LoggerFactory.getLogger(FreeMarkerParseImpl.class);
 
     private static final StringTemplateLoader resourceLoader = new StringTemplateLoader();
 

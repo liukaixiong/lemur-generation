@@ -35,7 +35,7 @@ public class FreemakParseImplTest {
 
     @Test
     public void testParse() {
-        IParse parse = new FreemakParseImpl();
+        IParse parse = new FreeMarkerParseImpl();
         GenerationEntity generationEntity = new GenerationEntity();
         generationEntity.setEntityName("小明");
         GenBeanEntity tableEntity = new GenBeanEntity();
