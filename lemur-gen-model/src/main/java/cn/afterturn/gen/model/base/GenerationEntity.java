@@ -18,7 +18,7 @@ public class GenerationEntity implements Serializable {
     /**
      * Java包名
      */
-    private String            javaPackage      = "io.lemur";
+    private String            javaPackage;
     /**
      * JSP包名,如果为空,使用javaPackage
      */

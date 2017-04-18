@@ -35,7 +35,7 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
             hanlderFields(entity.getFields());
             return entity;
         } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e.fillInStackTrace());
+            LOGGER.error(e.getMessage(), e);
             throw new GenerationRunTimeException("获取表格数据发生异常");
         }
     }

@@ -25,5 +25,14 @@
 			<groupId>cn.afterturn</groupId>
 			<artifactId>lemur-gen-model</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.ibeetl</groupId>
+			<artifactId>beetl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>

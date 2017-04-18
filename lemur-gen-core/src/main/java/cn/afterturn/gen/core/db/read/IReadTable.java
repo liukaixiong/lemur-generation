@@ -17,18 +17,18 @@ public interface IReadTable {
      * @param tableName
      * @return
      */
-    public GenBeanEntity read(String tableName);
+    public GenBeanEntity read(String dbName, String tableName);
+
     /**
      * 查询所有的库
      * @return
      */
     public List<String> getAllDB();
+
     /**
      * 查询所有的表
      * @return
      */
-    public List<String> getAllTable(String dbName);
-    
-    
+    public List<GenBeanEntity> getAllTable(String dbName);
 
 }

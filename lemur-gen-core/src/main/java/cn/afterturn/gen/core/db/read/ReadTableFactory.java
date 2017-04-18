@@ -3,7 +3,7 @@ package cn.afterturn.gen.core.db.read;
 import org.apache.commons.lang.StringUtils;
 
 import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
-import cn.afterturn.gen.core.db.read.impl.mysql.ReadTableForMysqlImpl;
+import cn.afterturn.gen.core.db.read.impl.ReadTableForMysqlImpl;
 import cn.afterturn.gen.core.util.PropertiesUtil;
 
 /**

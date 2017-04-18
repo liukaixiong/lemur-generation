@@ -1,5 +1,7 @@
 package cn.afterturn.gen.core.parse;
 
+import java.util.List;
+
 import cn.afterturn.gen.model.base.GenBeanEntity;
 import cn.afterturn.gen.model.base.GenerationEntity;
 
@@ -9,13 +11,15 @@ import cn.afterturn.gen.model.base.GenerationEntity;
  * @date 2014年12月23日
  */
 public interface IParse {
+
+    static final String GEN_PARAMS   = "g";
+    static final String TABLE_DETAIL = "t";
+
     /**
-     * 解析FLT 生成文件
-     * @param javaPackage
-     * @param jspPackage
-     * @param types
+     * 解析模板 生成文件
+     * @param generationEntity
      * @param tableEntity
      */
-    public void parse(GenerationEntity generationEntity, GenBeanEntity tableEntity);
+    public List<String> parse(GenerationEntity generationEntity, GenBeanEntity tableEntity, List<String> fileList);
 
 }
