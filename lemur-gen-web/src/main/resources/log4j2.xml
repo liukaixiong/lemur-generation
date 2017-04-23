@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout>
+				<pattern>%d %p %C{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+		</Console>
+		<RollingFile name="RollingFileInfo" fileName="/home/logs/gen/info.log"
+			filePattern="/home/logs/gen/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+			<Filters>
+				<ThresholdFilter level="INFO" />
+				<ThresholdFilter level="WARN" onMatch="DENY"
+					onMismatch="NEUTRAL" />
+			</Filters>
+			<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+		</RollingFile>
+
+		<RollingFile name="RollingFileWarn" fileName="/home/logs/gen/warn.log"
+			filePattern="/home/logs/gen/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+			<Filters>
+				<ThresholdFilter level="WARN" />
+				<ThresholdFilter level="ERROR" onMatch="DENY"
+					onMismatch="NEUTRAL" />
+			</Filters>
+			<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+		</RollingFile>
+
+		<RollingFile name="RollingFileError"
+			fileName="/home/logs/gen/error.log"
+			filePattern="/home/logs/gen/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">
+			<ThresholdFilter level="ERROR" />
+			<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.apache.catalina.util.LifecycleBase" level="error" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol"
+			level="error" />
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool"
+			level="error" />
+		<Logger name="org.springframework" level="info" />
+		<Root level="${logger.level}">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration> 

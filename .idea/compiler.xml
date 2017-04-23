@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lemur-gen-core" />
+        <module name="lemur-gen-model" />
+        <module name="lemur-gen-repository" />
+        <module name="lemur-gen-service" />
+        <module name="lemur-gen-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lemur-gen-core" target="1.7" />
+      <module name="lemur-gen-model" target="1.7" />
+      <module name="lemur-gen-parent" target="1.7" />
+      <module name="lemur-gen-repository" target="1.7" />
+      <module name="lemur-gen-service" target="1.7" />
+      <module name="lemur-gen-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

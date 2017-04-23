@@ -132,6 +132,13 @@
 				<version>${freemark.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<optional>true</optional>
+			</dependency>
+
 			<!-- 子模块管理 -->
 			<dependency>
 				<groupId>cn.afterturn</groupId>
@@ -146,6 +153,11 @@
 			<dependency>
 				<groupId>cn.afterturn</groupId>
 				<artifactId>lemur-gen-service</artifactId>
+				<version>2.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>lemur-gen-core</artifactId>
 				<version>2.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
@@ -167,7 +179,6 @@
 				<version>1.3.0</version>
 			</plugin>
 		</plugins>
-
 	</build>
 	<profiles>
 		<profile>
@@ -184,6 +195,25 @@
 					</plugin>
 				</plugins>
 			</build>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/easycode?characterEncoding=utf8&autoReconnect=true]]></jdbc.url>
+				<logger.level>DEBUG</logger.level>
+				<server.port>8080</server.port>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<properties>
+				<jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3308/easycode?characterEncoding=utf8&autoReconnect=true]]></jdbc.url>
+				<logger.level>INFO</logger.level>
+				<server.port>80</server.port>
+			</properties>
 		</profile>
 	</profiles>
 	<properties>

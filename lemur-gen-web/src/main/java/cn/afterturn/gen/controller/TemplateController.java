@@ -42,15 +42,8 @@ public class TemplateController {
     @RequestMapping(path = "list")
     @ResponseBody
     public ResponseModel TemplateList(TemplateEntity entity, RequestModel form) {
-        ResponseModel rm;
-        try {
-            PageInfo<TemplateEntity> list = templateService.getTemplatePage(entity, form.getPage(),
-                form.getPageSize());
-            rm = ResponseModel.ins(list);
-        } catch (Exception e) {
-            LOGGER.error(e.getMessage(), e);
-            rm = new ResponseModel(ResponseModel.SYSTEM_ERROR);
-        }
-        return rm;
+        PageInfo<TemplateEntity> list = templateService.getTemplatePage(entity, form.getPage(),
+            form.getPageSize());
+        return ResponseModel.ins(list);
     }
 }

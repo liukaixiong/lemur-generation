@@ -44,7 +44,7 @@ requirejs(['jquery','jquery-ui', 'knockout', 'http-client', 'app-storage', 'vali
                 }
                 self.showErr(false);
                 self.params.password = password;
-                location.href = '../dbinfo/index.html';
+                location.href = '/pages/dbinfo/index.html';
                /* httpclient.postJSON(self.params,url,null,function(data){
                     var ext = data.ext;
                     ext = JSON.parse(ext);

@@ -13,5 +13,9 @@
 			<groupId>cn.afterturn</groupId>
 			<artifactId>lemur-gen-repository</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>lemur-gen-core</artifactId>
+		</dependency>
 	</dependencies>
 </project>

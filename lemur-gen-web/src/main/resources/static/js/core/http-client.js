@@ -37,7 +37,10 @@ define(['jquery', 'app-storage','dialog'], function($, appStorage,dialog) {
             });
         };
         this.postJSON = function(data, url, params, success, fail) {
-            var paramsObj = (params == undefined)? {}:params;
+            var paramsObj = (params == undefined || typeof params === "function")? {}:params;
+            if(typeof params === "function"){
+            	success = params;
+            }
             var reqUrl = self.genReqUrl(url, paramsObj);
             var deferred = $.ajax({
                 headers: self.getHeaders(),

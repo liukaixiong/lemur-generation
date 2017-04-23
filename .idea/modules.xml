@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-core/lemur-gen-core.iml" filepath="$PROJECT_DIR$/lemur-gen-core/lemur-gen-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-model/lemur-gen-model.iml" filepath="$PROJECT_DIR$/lemur-gen-model/lemur-gen-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-parent.iml" filepath="$PROJECT_DIR$/lemur-gen-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-repository/lemur-gen-repository.iml" filepath="$PROJECT_DIR$/lemur-gen-repository/lemur-gen-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-service/lemur-gen-service.iml" filepath="$PROJECT_DIR$/lemur-gen-service/lemur-gen-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lemur-gen-web/lemur-gen-web.iml" filepath="$PROJECT_DIR$/lemur-gen-web/lemur-gen-web.iml" />
+    </modules>
+  </component>
+</project>

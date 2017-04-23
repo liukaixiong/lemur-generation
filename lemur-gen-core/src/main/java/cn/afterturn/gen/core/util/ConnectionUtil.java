@@ -15,30 +15,39 @@ import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
  */
 public class ConnectionUtil {
 
-	private static ThreadLocal<Connection> connection = new ThreadLocal<>();
+    private static ThreadLocal<Connection> connection = new ThreadLocal<>();
 
-	private ConnectionUtil() {
+    private ConnectionUtil() {
 
-	}
+    }
 
-	public static Statement createStatement() {
-		if (connection.get() == null) {
-			throw new GenerationRunTimeException("未发现数据库连接");
-		}
-		try {
-			return connection.get().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		} catch (Exception e) {
-			throw new GenerationRunTimeException("创建 Statement 发生异常", e);
-		}
-	}
+    public static Statement createStatement() {
+        if (connection.get() == null) {
+            throw new GenerationRunTimeException("未发现数据库连接");
+        }
+        try {
+            return connection.get().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        } catch (Exception e) {
+            throw new GenerationRunTimeException("创建 Statement 发生异常", e);
+        }
+    }
 
-	public static void init(String deiver, String url, String username, String passwd) {
-		try {
-			Class.forName(deiver);
-			connection.set(DriverManager.getConnection(url, username, passwd));
-		} catch (Exception e) {
-			throw new GenerationRunTimeException("创建 Connection 发生异常", e);
-		}
-	}
+    public static void init(String deiver, String url, String username, String passwd) {
+        try {
+            Class.forName(deiver);
+            connection.set(DriverManager.getConnection(url, username, passwd));
+        } catch (Exception e) {
+            throw new GenerationRunTimeException("创建 Connection 发生异常", e);
+        }
+    }
+
+    public static void close() {
+        try {
+            if (!connection.get().isClosed())
+                connection.get().close();
+        } catch (Exception e) {
+            throw new GenerationRunTimeException("关闭 Connection 发生异常", e);
+        }
+    }
 
 }

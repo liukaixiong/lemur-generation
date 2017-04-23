@@ -42,6 +42,14 @@ public class DbInfoController {
             form.getPageSize());
         return ResponseModel.ins(list);
     }
+    
+    
+    @RequestMapping(value = "queryAll")
+    public ResponseModel queryAllByUserId(DbInfoEntity entity, RequestModel form) {
+        PageInfo<DbInfoEntity> list = dbInfoService.getDbInfoPage(entity, 1,
+            Integer.MAX_VALUE);
+        return ResponseModel.ins(list);
+    }
 
     /**
      * 

@@ -1,13 +1,10 @@
 spring:
-  profiles:
-    active: dev
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/easycode?characterEncoding=utf8&autoReconnect=true
-    username: root
-    password: 123456
+    url: ${jdbc.url}
+    username: easycode
+    password: easycode
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    filters: stat,log4j,wall
     maxActive: 200
     initialSize: 10
     maxWait: 30000
@@ -20,12 +17,13 @@ spring:
     testOnReturn: false
     poolPreparedStatements: false
     maxOpenPreparedStatements: -1
-  server:
-    port: 8080
-  mybatis:
-    mapper-locations: classpath:mapper/*.xml
-    type-aliases-package: cn.afterturn.gen.model
-    config-location: classpath:mybatis-configuration.xml
-  logging:
-    file: log/easycode.log
-  filepath: /home/file/
+server:
+   port: ${server.port}
+    
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.afterturn.gen.model
+  config-location: classpath:mybatis-configuration.xml
+  
+logging:
+   config: classpath:log4j2.xml 

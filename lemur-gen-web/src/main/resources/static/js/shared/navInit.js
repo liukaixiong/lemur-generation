@@ -56,7 +56,12 @@ define(['jquery','knockout','app-storage','http-client','dialog'], function($,ko
             }, {
                 "module" : "模板管理",
                 "url" : "/template",
-                "className" : "but8",
+                "className" : "but3",
+                "menuList" : []
+            },{
+                "module" : "代码生成",
+                "url" : "/gen",
+                "className" : "but7",
                 "menuList" : []
             },{
                 "module" : "系统日志",

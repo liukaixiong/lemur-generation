@@ -14,7 +14,8 @@ requirejs.config({
     baseUrl: Opc.SERVER_NAME + '/js/',
     paths: {
         'knockout': 'shared/knockout-3.4.0',
-        'jquery': 'shared/jquery-1.11.1.min',
+        'jquery': 'https://cdn.bootcss.com/jquery/3.2.1/jquery',
+        'bootstrap': 'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min',
         'validate': 'shared/validate',
         'navInit':'shared/navInit',
         'http-client': 'core/http-client',
