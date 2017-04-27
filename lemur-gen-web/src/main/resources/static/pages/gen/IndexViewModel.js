@@ -4,7 +4,7 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
         var DbInfoViewModel = function () {
             var self = this;
 			this.databases = ko.observableArray();
-			this.dbconnects = ko.observableArray().extend({ deferred: true });
+			this.dbconnects = ko.observableArray();
 			this.tables = ko.observableArray();
 			this.templates = ko.observableArray();
             
@@ -41,6 +41,7 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             
             this.getTables=function(data){
             	self.curInfo.dbName = data.name;
+            	self.curInfo.tableName = null;
             	self.selectChange(data,'name','databases');
             	self.param(self.curInfo);
             	self.tables([]);
@@ -59,7 +60,7 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             			d.isSelected = !data.isSelected;
             		}
             		if(d.isSelected){
-            			self.curInfo.templates.push(data.id);
+            			self.curInfo.templates.push(d.id);
             		}
             	});
             	var temp = $.extend(true, [], self.templates());
@@ -72,6 +73,14 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             	});
             	var temp = $.extend(true, [], self[arrName]());
             	self[arrName](temp);
+            }
+            
+            this.genCode=function(){
+            	if(self.curInfo && self.curInfo.dbName && self.curInfo.tableName && self.curInfo.templates && self.curInfo.templates.length > 0){
+            		window.location.href='/gen/genCode?'+$.param(self.curInfo);
+            	}else{
+            		 dialog.alert('缺少必要参数');
+            	}
             }
            
             // 页面初始化

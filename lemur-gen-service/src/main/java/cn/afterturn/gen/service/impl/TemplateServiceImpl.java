@@ -1,5 +1,7 @@
 package cn.afterturn.gen.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,11 @@ public class TemplateServiceImpl implements ITemplateService {
     @Override
     public boolean deteleTemplate(TemplateEntity entity) {
         return templateRepository.deleteByPrimaryKey(entity.getId()) > 0;
+    }
+
+    @Override
+    public List<TemplateEntity> getTemplateByIds(String[] templates) {
+        return templateRepository.getTemplateByIds(templates);
     }
 
 }

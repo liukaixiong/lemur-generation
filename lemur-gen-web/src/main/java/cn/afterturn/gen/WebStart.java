@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-//@EnableScheduling
+@EnableScheduling
 @EnableTransactionManagement
 @ComponentScan("cn.afterturn.gen")
 public class WebStart {

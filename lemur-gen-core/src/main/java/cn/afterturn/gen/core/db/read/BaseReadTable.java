@@ -11,9 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.afterturn.gen.core.db.exception.GenerationRunTimeException;
-import cn.afterturn.gen.core.util.ConnectionUtil;
+import cn.afterturn.common.util.ConnectionUtil;
 import cn.afterturn.gen.core.util.NameUtil;
-import cn.afterturn.gen.core.util.PropertiesUtil;
 import cn.afterturn.gen.model.base.GenBeanEntity;
 import cn.afterturn.gen.model.base.GenFieldEntity;
 
@@ -26,12 +25,12 @@ public abstract class BaseReadTable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseReadTable.class);
 
-    protected List<GenFieldEntity> getTableFields(String tableName, String sql) throws Exception {
+    protected List<GenFieldEntity> getTableFields(String dbName, String tableName, String sql) throws Exception {
         List<GenFieldEntity> list = new ArrayList<GenFieldEntity>();
         Statement statement = null;
         try {
             ResultSet rs = ConnectionUtil.createStatement()
-                .executeQuery(String.format(sql, tableName, PropertiesUtil.getString(PropertiesUtil.DB_NAME)));
+                .executeQuery(String.format(sql, tableName, dbName));
             GenFieldEntity field;
             while (rs.next()) {
                 field = new GenFieldEntity();
@@ -144,7 +143,7 @@ public abstract class BaseReadTable {
 
     protected String getFieldName(String fieldName, String comment) {
         if (StringUtils.isNotEmpty(comment)) {
-            String[] nameAndComment = comment.split(PropertiesUtil.getCommentSplit());
+            String[] nameAndComment = comment.split(",");
             return nameAndComment[0];
         }
         return NameUtil.getEntityHumpName(fieldName);

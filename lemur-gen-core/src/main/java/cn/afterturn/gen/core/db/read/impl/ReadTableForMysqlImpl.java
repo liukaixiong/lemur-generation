@@ -35,7 +35,7 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
         try {
             GenBeanEntity entity = getTableEntiy(dbName, tableName, TABLE_SQL);
             entity.setName(NameUtil.getEntityHumpName(entity.getTableName()));
-            entity.setFields(getTableFields(tableName, FIELDS_SQL));
+            entity.setFields(getTableFields(dbName, tableName, FIELDS_SQL));
             hanlderFields(entity.getFields());
             return entity;
         } catch (Exception e) {

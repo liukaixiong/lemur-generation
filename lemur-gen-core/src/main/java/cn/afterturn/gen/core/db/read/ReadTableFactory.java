@@ -19,4 +19,11 @@ public class ReadTableFactory {
         }
         throw new GenerationRunTimeException("数据库不支持");
     }
+    
+    public static String getDeiver(String dbType){
+        if (MYSQL.equalsIgnoreCase(dbType)) {
+            return "com.mysql.jdbc.Driver";
+        }
+        throw new GenerationRunTimeException("数据库不支持");
+    }
 }

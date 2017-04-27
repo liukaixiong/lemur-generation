@@ -18,15 +18,11 @@ public class GenerationEntity implements Serializable {
     /**
      * Java包名
      */
-    private String            javaPackage;
+    private String            javaPackage      = "cn.afterturn.gen";
     /**
      * JSP包名,如果为空,使用javaPackage
      */
-    private String            jspPackage;
-    /**
-     * 需要生成的对象
-     */
-    private Object[]          types;
+    private String            jspPackage       = "cn.afterturn.gen";
     /**
      * 功能名称
      */
@@ -46,11 +42,11 @@ public class GenerationEntity implements Serializable {
     /**
      * 类名,不填使用表名
      */
-    private String            entityName;
+    private String            entityName       = "Lemru";
     /**
      * 包名,不填使用表名,小写
      */
-    private String            packageName;
+    private String            packageName      = "lemru";
 
     public String getJavaPackage() {
         return javaPackage;
@@ -66,14 +62,6 @@ public class GenerationEntity implements Serializable {
 
     public void setJspPackage(String jspPackage) {
         this.jspPackage = jspPackage;
-    }
-
-    public Object[] getTypes() {
-        return types;
-    }
-
-    public void setTypes(Object[] types) {
-        this.types = types;
     }
 
     public String getName() {

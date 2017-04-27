@@ -19,7 +19,7 @@ import java.util.List;
 
 import cn.afterturn.gen.core.db.read.ReadTableFactory;
 import cn.afterturn.gen.core.parse.ParseFactory;
-import cn.afterturn.gen.core.util.ConnectionUtil;
+import cn.afterturn.common.util.ConnectionUtil;
 import cn.afterturn.gen.model.base.GenBeanEntity;
 
 /**
@@ -35,14 +35,18 @@ public class CodeGenUtil {
      * @return
      */
     public static List<String> codeGen(CodeGenModel model) {
-        //Step 1 初始化数据库连接
-        ConnectionUtil.init(model.getDbType(), model.getUrl(), model.getUsername(), model.getPasswd());
-        //Step 2 读取数据源列表
-        GenBeanEntity tableEntity = ReadTableFactory.getReadTable(model.getDbType()).read(model.getDbName(),
-            model.getTableName());
-        //Step 3 解析模板,生产代码
-        return ParseFactory.getParse(model.getParseType()).parse(model.getGenerationEntity(), tableEntity,
-            model.getFileList());
+        try {
+            //Step 1 初始化数据库连接
+            ConnectionUtil.init(ReadTableFactory.getDeiver(model.getDbType()), model.getUrl(), model.getUsername(), model.getPasswd());
+            //Step 2 读取数据源列表
+            GenBeanEntity tableEntity = ReadTableFactory.getReadTable(model.getDbType()).read(model.getDbName(),
+                model.getTableName());
+            //Step 3 解析模板,生产代码
+            return ParseFactory.getParse(model.getParseType()).parse(model.getGenerationEntity(), tableEntity,
+                model.getFileList());
+        } finally {
+            ConnectionUtil.close();
+        }
     }
-
+    
 }

@@ -15,6 +15,7 @@
  */
 package cn.afterturn.gen.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.afterturn.gen.model.base.GenerationEntity;
@@ -27,23 +28,23 @@ import cn.afterturn.gen.model.base.GenerationEntity;
 public class CodeGenModel {
     
     //数据库类型
-    public String           dbType;
+    private String           dbType;
     //数据库地址
-    public String           url;
+    private String           url;
     //数据库名称
-    public String           dbName;
+    private String           dbName;
     //数据库连接用户
-    public String           username;
+    private String           username;
     //数据库密码
-    public String           passwd;
+    private String           passwd;
     //表名称
-    public String           tableName;
+    private String           tableName;
     //模板类型
-    public String           parseType;
+    private String           parseType;
     //生成的参数
-    public GenerationEntity generationEntity;
+    private GenerationEntity generationEntity;
     //文件列表
-    public List<String>     fileList;
+    private List<String>     fileList;
 
     public String getDbType() {
         return dbType;
@@ -115,6 +116,11 @@ public class CodeGenModel {
 
     public void setFileList(List<String> fileList) {
         this.fileList = fileList;
+    }
+    
+    public void setFile(String file) {
+        this.fileList = new ArrayList<>();
+        this.fileList.add(file);
     }
 
 }

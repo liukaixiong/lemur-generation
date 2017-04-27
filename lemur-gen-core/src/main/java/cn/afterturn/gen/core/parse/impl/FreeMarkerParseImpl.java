@@ -48,8 +48,8 @@ public class FreeMarkerParseImpl implements IParse {
         Template t;
         try {
             for (String file : fileList) {
-                resourceLoader.putTemplate(file, file);
-                t = cfg.getTemplate(file);
+                resourceLoader.putTemplate(file.hashCode()+"_FTL+KEY", file);
+                t = cfg.getTemplate(file.hashCode()+"_FTL+KEY");
                 Writer write = new StringWriter();
                 Map<String, Object> paramsMap = new HashMap<>();
                 paramsMap.put(IParse.GEN_PARAMS, generationEntity);

@@ -9,6 +9,7 @@
 		<result column="USER_ID" property="userId" />
 		<result column="TEMPLATE_DESC" property="templateDesc" />
 		<result column="FILE_NAME" property="fileName" />
+		<result column="TEMPLATE_TYPE" property="templateType" />
 	</resultMap>
 
 	<select id="selectList" resultMap="TemplateEntityMap">
@@ -38,5 +39,10 @@
 			</if>
 		</where>
 	</sql>
+	
+	<select id="getTemplateByIds" resultMap="TemplateEntityMap">
+		select * from t_system_template t where t.ID in 
+		<foreach collection="templates" item="it" open="(" close=")" separator=",">#{it}</foreach>
+	</select>
 
 </mapper>

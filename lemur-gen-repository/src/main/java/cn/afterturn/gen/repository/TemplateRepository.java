@@ -1,5 +1,8 @@
 package cn.afterturn.gen.repository;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import cn.afterturn.gen.model.TemplateEntity;
@@ -13,5 +16,7 @@ import tk.mybatis.mapper.common.Mapper;
  */
 @Repository("templateRepository")
 public interface TemplateRepository extends Mapper<TemplateEntity> {
+
+    List<TemplateEntity> getTemplateByIds(@Param("templates") String[] templates);
 
 }

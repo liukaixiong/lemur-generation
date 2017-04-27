@@ -1,5 +1,7 @@
 package cn.afterturn.gen.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 
 import cn.afterturn.gen.model.TemplateEntity;
@@ -40,5 +42,11 @@ public interface ITemplateService {
      * @return
      */
     public boolean deteleTemplate(TemplateEntity entity);
+    /**
+     * 根据ID查询模板
+     * @param templates
+     * @return
+     */
+    public List<TemplateEntity> getTemplateByIds(String[] templates);
 
 }

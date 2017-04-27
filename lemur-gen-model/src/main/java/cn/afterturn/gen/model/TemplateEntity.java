@@ -42,6 +42,10 @@ public class TemplateEntity implements java.io.Serializable {
      * 文件名称 
      **/
     private String            fileName;
+    /**
+     * 模板类型
+     **/
+    private String            templateType;
 
     /**
      *方法: 取得Id
@@ -146,5 +150,14 @@ public class TemplateEntity implements java.io.Serializable {
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    @Column(name = "TEMPLATE_TYPE", nullable = false, length = 20)
+    public String getTemplateType() {
+        return templateType;
+    }
+
+    public void setTemplateType(String templateType) {
+        this.templateType = templateType;
     }
 }
