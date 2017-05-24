@@ -30,14 +30,13 @@
 			<artifactId>freemarker</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>cn.afterturn</groupId>
+			<artifactId>lemur-util</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>cn.afterturn</groupId>
-			<artifactId>lemur-util</artifactId>
-		</dependency>
-
 	</dependencies>
 </project>
