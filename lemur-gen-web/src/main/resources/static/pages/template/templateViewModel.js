@@ -1,110 +1,152 @@
-requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-storage', 'validate','datepicker', 'popup', 'dialog'],
-    function ($,ui,navInit, ko, httpclient, appStorage, validate,datepicker, popup, dialog) {
-        navInit.init();
-        var ProductViewModel = function () {
-            var self = this;
-            //分页
-            this.curPage = ko.observable(1);
-            this.pages = ko.observable(0);
-            this.total = ko.observable(0);
-            this.lineNumber = [20,40, 60, 80];//显示行数
-            this.curNumber = ko.observableArray([20]);//显示行数选择监听
-            this.curNumber = ko.observableArray([1]);//显示行数选择监听
-            this.turnNumber = ko.observable();//跳转页数
-            /******************底部分页栏***********************/
-                //每页显示的条数选项，发生改变时，重新请求数据
-            this.computedNum =function(){
-                $('#content-footer select[name="lineNumber"]').change(function(){
-                    self.curPage(1);
-                    self.getData();
-                })
-            }
-            //上一页
-            this.prePage = function(){
-                var curPage = self.curPage();
-                if(curPage<=1){
-                    return;
-                }
-                self.curPage(curPage - 1);
-                self.getData();
-            };
-            //下一页
-            this.nextPage = function(){
-                var curPage = self.curPage();
-                var pages = self.pages();
-                if(curPage>=pages){
-                    return;
-                }
-                self.curPage(curPage + 1);
-                self.getData();
-            };
-            //跳页操作
-            this.turnTo = function(){
-                var num = self.turnNumber();
-                var total = self.total();
-                if(num<=0||num>total){
-                    dialog.alert('请输入正确的页码')
-                }else {
-                    self.curPage(num);
-                    self.getData();
-                }
-            }
-            /*****************底部分页栏end***********************/
-            this.dataList = ko.observableArray();
-            //查询参数
-            this.productName = ko.observable();//产品名称
-            this.param = ko.observable({});
-            //获取数据
-            this.getData = function(){
-            };
+requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-storage', 'validate','datepicker', 'popup', 'dialog','pager'],
+          function ($,ui,navInit, ko, httpclient, appStorage, validate,datepicker, popup, dialog, pager) {
+              navInit.init();
+              var TemplateInfoViewModel = function () {
+                  var self = this;
+                  this.templateList = ko.observableArray();
+                  this.errMsg = ko.observable();// 错误提示
+                  this.id = ko.observable();//Id
+                  this.templateName = ko.observable();//模板名称
+                  this.templatePath = ko.observable();//模板地址
+                  this.templateDesc = ko.observable();//模板描述
+                  this.fileName = ko.observable();//文件名称
+                  this.userId = ko.observable();//UserId
+                  this.templateType = ko.observable();//模板类型
+                  this.crtUserId = ko.observable();//创建人
+                  this.crtTime = ko.observable();//创建时间
+                  this.mdfUserId = ko.observable();//修改人
+                  this.mdfTime = ko.observable();//修改时间
+                  // 属性列表
+                  var fields = ["id","templateName","templatePath","templateDesc","fileName","userId","templateType","crtUserId","crtTime","mdfUserId","mdfTime"];
+                  var requireFields = ["notNeed","templateName","templatePath","templateDesc","fileName","notNeed","templateType","notNeed","notNeed","notNeed","notNeed"];
+                  var fieldName = ["ID","模板名称","模板地址","模板描述","文件名称","用户","模板类型","创建用户","创建时间","修改用户","修改时间"];
 
-            //查询
-            this.queryData=function(){
-            	var url = 'template/list';
-            	 var success = function(json){
-                     self.dataList(json.list);
-                     self.pages(json.pages);
-                     self.total(json.total);
-                 };
-            	httpclient.postJSON(url,param,success);
-            }
-            //重置
-            this.resetData=function(){
-                self.templateName('');
-            }
-            this.addClick = function(){
-                self.openBox();
-            }
-            //查看详细操作
-            this.viewDetails=function(){
+                  this.curtemplateInfo = ko.observable({});// 当前选中
 
-            }
-            //弹框显示
-            this.openBox=function(){
-                $.magnificPopup.open({
-                    items: {
-                        src: '#addPopup',
-                        width : '800px'  
-                    },
-                    callbacks: {
-                        beforeOpen: function (e) {
-                            this.st.mainClass = 'mfp-zoomIn';
-                        }
-                    },
-                    midClick: true
-                });
-            }
-            //弹窗关闭
-            this.close = function(){
-                $.magnificPopup.close();
-            };
+                  // 查询
+                  this.param = ko.observable({});// 查询参数
+                  // 查询按钮
+                  this.getData = function () {
+                      var param = self.param();
+                      param.templateName = self.templateName();
+                      param.pageNum = pager.curPage();
+                      param.pageSize = pager.curNumber()[0];
+                      var url = '/template/list';
+                      var success = function(data){
+                          if(data.key != '0000'){
+                              dialog.alert(data.msg);
+                              return;
+                          }
+                          var ext = data.result;
+                          self.templateList(ext.list);
+                          pager.pages(ext.pages);
+                          pager.total(ext.total);
+                      };
+                      // 模拟数据end
+                      httpclient.getJSON(url,param,success);
+                  };
+                  this.queryData=function(){
+                      pager.curPage(1);
+                      self.getData();
+                  };
+                  // 重置按钮
+                  this.resetData=function(){
+                      $(fields).each(function(){
+                          self[this]('');
+                      });
+                  };
 
-            //初始化
-            this.init=function(){
-                self.getData();
-            }
-        }
-        var productViewModel = new ProductViewModel();
-        ko.applyBindings(productViewModel, document.getElementById('content_wrapper'));
-        productViewModel.init();
-    });
+                  this.addOrUpdatetemplateInfo = function(){
+                      var isOk = true;
+                      var param = self.curtemplateInfo();
+                      $(requireFields).each(function(i,val){
+                          if(val != 'notNeed'){
+                              var v = self.curtemplateInfo()[fields[i]];
+                              if(!v){
+                                  self.errMsg('*'+fieldName[i]);
+                                  isOk = false;
+                                  return isOk;
+                              }
+                          }
+                      });
+                      if(!isOk){
+                          return;
+                      }
+                      self.errMsg('');
+                      var url = '/templateInfo/addOrUpdate';
+                      var success = function(data){
+                          if(data.key!=='0000'){
+                              self.errMsg(data.msg);
+                              return;
+                          }
+                          if(self.curtemplateInfo().id){
+                              dialog.alert('更新成功');
+                          }else{
+                              dialog.alert('添加成功');
+                          }
+                          pager.curPage(1);
+                          self.getData();
+                      };
+                      httpclient.postJSON(param,url,null,success);
+                  };
+
+
+                  this.addtemplateInfo = function(data){
+                      self.edittemplateInfo(new Object());
+                  }
+
+                  this.edittemplateInfo = function(data){
+                      self.errMsg('');
+                      self.curtemplateInfo(data);
+                      $.magnificPopup.open({
+                                               items: {
+                                                   src: '#addOrUpdatePopup'
+                                               },
+                                               callbacks: {
+                                                   beforeOpen: function (e) {
+                                                       this.st.mainClass = 'mfp-zoomIn';
+                                                   }
+                                               },
+                                               midClick: true
+                                           });
+                  };
+                  // 删除操作
+                  this.deletetemplateInfo=function(data){
+                      self.curtemplateInfo(data);
+                      dialog.confirm('确定删除该数据库连接？',function(){
+                          var curtemplateInfo = self.curtemplateInfo();
+                          var url = '/templateInfo/delete';
+                          var param = {
+                              id : curtemplateInfo.id
+                          };
+                          httpclient.getJSON(url,param, function (json) {
+                              if(json.key!=='0000'){
+                                  dialog.alert(json.msg);
+                                  return;
+                              }
+                              dialog.alert('删除成功');
+                              pager.curPage(1);
+                              self.getData();
+                          });
+                      });
+                  }
+                  // 弹窗关闭
+                  this.close = function(){
+                      $.magnificPopup.close();
+                  };
+                  // 页面初始化
+                  this.init=function(){
+                      self.getData();
+                  }
+              }
+
+              ko.components.register('footer', {
+                  viewModel: function(){return pager},
+                  template: { fromUrl: 'pages/common/footer.html' }
+              });
+
+
+              var templateInfoViewModel = new TemplateInfoViewModel();
+              ko.applyBindings(templateInfoViewModel, document.getElementById('content_wrapper'));
+              templateInfoViewModel.init();
+          });

@@ -8,8 +8,11 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
 			this.tables = ko.observableArray();
 			this.templates = ko.observableArray();
             
-            this.curInfo = ko.observable({});// 当前选中
-            
+            this.author = ko.observable();
+            this.javapackage = ko.observable();
+            this.jsppackage = ko.observable();
+            this.className = ko.observable();
+            this.name = ko.observable();
             // 查询
             this.param = ko.observable({});// 查询参数
             // 查询按钮
@@ -76,6 +79,11 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             }
             
             this.genCode=function(){
+                self.curInfo.author = self.author();
+                self.curInfo.javaPackage = self.javapackage();
+                self.curInfo.jspPackage = self.jsppackage();
+                self.curInfo.entityName = self.className();
+                self.curInfo.name = self.name();
             	if(self.curInfo && self.curInfo.dbName && self.curInfo.tableName && self.curInfo.templates && self.curInfo.templates.length > 0){
             		window.location.href='/gen/genCode?'+$.param(self.curInfo);
             	}else{
@@ -86,7 +94,9 @@ requirejs(['jquery','jquery-ui', 'navInit', 'knockout', 'http-client', 'app-stor
             // 页面初始化
             this.init=function(){
                 self.getData('/dbinfo/queryAll','dbconnects');
+                self.param().pageSize = 20;
                 self.getData('/template/list','templates');
+                self.param().pageSize = 10;
             }
         }
         var genViewModel = new DbInfoViewModel();

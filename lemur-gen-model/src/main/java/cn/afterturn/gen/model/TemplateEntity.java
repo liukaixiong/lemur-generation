@@ -1,5 +1,9 @@
 package cn.afterturn.gen.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,6 +50,28 @@ public class TemplateEntity implements java.io.Serializable {
      * 模板类型
      **/
     private String            templateType;
+
+    /**
+     * 创建人
+     **/
+    @Column(name = "CRT_USER_ID", nullable = false, length = 16)
+    private String            crtUserId;
+    /**
+     * 创建时间
+     **/
+    @Column(name = "CRT_TIME", nullable = false)
+    @JsonFormat(pattern="YYYY-MM-DD")
+    private Date crtTime;
+    /**
+     * 修改人
+     **/
+    @Column(name = "MDF_USER_ID", nullable = false, length = 16)
+    private String            mdfUserId;
+    /**
+     * 修改时间
+     **/
+    @Column(name = "MDF_TIME", nullable = false)
+    private Date              mdfTime;
 
     /**
      *方法: 取得Id
@@ -159,5 +185,37 @@ public class TemplateEntity implements java.io.Serializable {
 
     public void setTemplateType(String templateType) {
         this.templateType = templateType;
+    }
+
+    public String getCrtUserId() {
+        return crtUserId;
+    }
+
+    public void setCrtUserId(String crtUserId) {
+        this.crtUserId = crtUserId;
+    }
+
+    public Date getCrtTime() {
+        return crtTime;
+    }
+
+    public void setCrtTime(Date crtTime) {
+        this.crtTime = crtTime;
+    }
+
+    public String getMdfUserId() {
+        return mdfUserId;
+    }
+
+    public void setMdfUserId(String mdfUserId) {
+        this.mdfUserId = mdfUserId;
+    }
+
+    public Date getMdfTime() {
+        return mdfTime;
+    }
+
+    public void setMdfTime(Date mdfTime) {
+        this.mdfTime = mdfTime;
     }
 }

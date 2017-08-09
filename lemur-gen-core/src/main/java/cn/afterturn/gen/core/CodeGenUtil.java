@@ -15,6 +15,9 @@
  */
 package cn.afterturn.gen.core;
 
+import org.apache.commons.lang.time.DateFormatUtils;
+
+import java.util.Date;
 import java.util.List;
 
 import cn.afterturn.gen.core.db.read.ReadTableFactory;
@@ -36,6 +39,7 @@ public class CodeGenUtil {
      */
     public static List<String> codeGen(CodeGenModel model) {
         try {
+            model.getGenerationEntity().setDate(DateFormatUtils.format(new Date(),"yyyy-MM-dd HH:mm"));
             //Step 1 初始化数据库连接
             ConnectionUtil.init(ReadTableFactory.getDeiver(model.getDbType()), model.getUrl(), model.getUsername(), model.getPasswd());
             //Step 2 读取数据源列表

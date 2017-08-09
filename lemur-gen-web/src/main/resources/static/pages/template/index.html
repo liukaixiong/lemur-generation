@@ -1,232 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Lemur-Gen 代码模板</title>
-    <meta name="keywords" content="Bootstrap 3 Admin Dashboard Template Theme"/>
-    <meta name="description" content="AdminDesigns - Bootstrap 3 Admin Dashboard Theme">
-    <meta name="author" content="AdminDesigns">
+    <title>Lemur 代码生成器</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="../../css/theme.css" rel="stylesheet"/>
-    <link href="../../css/admin-forms.css" rel="stylesheet"/>
-    <link href="../../css/table.css" rel="stylesheet"/>
+    <link href="../../css/theme.css" rel="stylesheet" />
+    <link href="../../css/admin-forms.css" rel="stylesheet" />
+    <link href="../../css/table.css" rel="stylesheet" />
+    <link href="../../css/common.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../../js/magnific/magnific-popup.css">
-    <link href="index.css" rel="stylesheet"/>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="../../js/shared/shared/html5shiv.js"></script>
     <script src="../../js/shared/shared/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body class="hide">
 <section id="content_wrapper">
     <section class="content">
         <div class="col-md-12" style="background-color: #f4f6f9">
             <div class="col-md-6">
-                <h1 style="display: inline-block;margin-right: 10px">模板管理</h1>
+                <h1 style="display: inline-block;margin-right: 10px">代码模板</h1>
                 <h3 style="display: inline-block">模板管理</h3>
             </div>
             <div class="col-md-6 text-right" style="padding-right: 50px;line-height: 62px">
-                <button class="btn btn-info" data-bind="click:addClick">
+                <button class="btn btn-info" data-bind="click:addtemplateInfo">
                     <i class="glyphicon glyphicon-plus" style="margin:0 3px 3px 0 ;"></i>新增
                 </button>
             </div>
         </div>
-        <div class="col-md-12" style="padding: 20px 0;">
-            <div class="col-md-12">
-                <div class="row admin-form">
-                    <div style="overflow: hidden">
-                        <form class="form-inline">
-                            <div class="col-md-12">
-                                <div class="col-md-6" style="height: 42px;line-height: 42px">
-                                    <label style="float: left;">模板名称：</label>
-                                    <input type="text" data-bind="textInput:templateName" class="form-control" placeholder="模板名称">
-                                </div>
-                                <div class="col-md-6">
+        <div class="col-md-12" style="padding: 0;">
+            <div style="padding-top: 20px;overflow: hidden">
+                <div class="col-md-12">
+                    <div class="row admin-form">
+                        <div style="overflow: hidden">
+                            <form class="form-inline">
+                                <div class="col-md-12" style="line-height: 42px">
+                                    <input type="text" data-bind="textInput:templateName" placeholder="模板名称" class="form-control" />
                                     <button type="button" class="btn btn-primary mr10" data-bind="click:queryData">
                                         <span style="padding: 5px 20px;">查询</span>
                                     </button>
-                                    <button type="button" class="btn btn-dark" data-bind="click:resetData">
+                                    <button type="reset" class="btn btn-dark" data-bind="click:resetData">
                                         <span style="padding: 5px 20px;">重置</span>
                                     </button>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tableDiv">
+                <div>
+                    <div style="margin-top: 10px">
+                        <table class="ql-table-bordered" style="width: 100%;">
+                            <thead>
+                            <tr style="height: 45px;color:#525050">
+                                <th>模板名称</th>
+                                <th>用户</th>
+                                <th>模板地址</th>
+                                <th>文件名称</th>
+                                <th>类型</th>
+                                <th>模板描述</th>
+                                <th>创建时间</th>
+                                <th>修改时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody data-bind="foreach:templateList">
+                            <tr>
+                                <td data-bind="text:$data.templateName"></td>
+                                <td data-bind="text:$data.userId"></td>
+                                <td data-bind="text:$data.templatePath"></td>
+                                <td data-bind="text:$data.fileName"></td>
+                                <td data-bind="text:$data.templateType"></td>
+                                <td data-bind="text:$data.templateDesc"></td>
+                                <td data-bind="text:$data.code"></td>
+                                <td data-bind="text:$data.code"></td>
+                                <td>
+                                    <a class="btn btn-link">修改</a>
+                                    <a class="btn btn-link">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-12" style="margin-top: 10px;padding: 0;">
-            <div>
-                <div style="margin-top: 10px">
-                    <table class="ql-table-bordered" style="width: 100%;">
-                        <thead>
-                        <tr style="height: 45px;color:#525050">
-                            <th>模板名称</th>
-                            <th>用户</th>
-                            <th>模板地址</th>
-                            <th>模板描述</th>
-                            <th>创建时间</th>
-                            <th>修改时间</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody data-bind="foreach:dataList">
-                        <tr>
-                            <td data-bind="text:$data.templateName"></td>
-                            <td data-bind="text:$data.templatePath"></td>
-                            <td data-bind="text:$data.templateDesc"></td>
-                            <td data-bind="text:$data.code"></td>
-                            <td data-bind="text:$data.code"></td>
-                            <td>
-                                <a class="btn btn-link">修改</a>
-                                <a class="btn btn-link">权限配置</a>
-                                <a class="btn btn-link">删除</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!--弹窗-->
-        <div id="addPopup" class=" popup-basic popup-lg mfp-with-anim mfp-hide">
-            <!--新建产品-->
-            <div class="panel" >
+
+        <!--新增/修改弹窗-->
+        <div id="addOrUpdatePopup" class=" popup-basic mfp-with-anim mfp-hide">
+            <div class="panel">
                 <div class="panel-heading">
-                  <span class="panel-title">
-                    <i class="fa fa-rocket"></i>
-                      <span>新建产品</span>
-                  </span>
+							<span class="panel-title">
+                    		<i class="fa fa-rocket"></i>
+                      		<span>模板管理</span>
+							</span>
                 </div>
-                <!-- end .panel-heading section -->
                 <div class="panel-body p25 admin-form">
-                    <table style="width: 100%">
+                    <table>
                         <thead>
-                            <th width="100px"></th>
-                            <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-right">产品名称：</td>
-                                <td>
-                                    <input type="text" class="form-control m5">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right" style="line-height: 39px;">支付卡种：</td>
-                                <td data-bind="foreach:cardList">
-                                    <span class="m5">
-                                        <input type="checkbox"><span data-bind="text:name"></span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right" style="line-height: 39px;">支付方式：</td>
-                                <td data-bind="foreach:payWayList">
-                                    <span class="m5">
-                                        <input type="checkbox"><span data-bind="text:name"></span>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">事件主题：</td>
-                                <td>
-                                    <input type="text" class="form-control m5">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">退款事件主题：</td>
-                                <td>
-                                    <input type="text" class="form-control m5">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">订单详情地址：</td>
-                                <td>
-                                    <input type="text" class="form-control m5">
-                                </td>
-                            </tr>
-                            <tr style="line-height: 39px">
-                                <td class="text-right">其他设置：</td>
-                                <td>
-                                    <span class="m5">
-                                        <input type="checkbox">支持退款
-                                    </span>
-                                    <span class="m5">
-                                        <input type="checkbox">同步更新
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">权限配置：</td>
-                                <td data-bind="foreach:roleList">
-                                    <div>
-                                        <span class="m5">
-                                            <input type="checkbox">
-                                            <span data-bind="text:name"></span>
-                                        </span>
-                                        <div data-bind="foreach:$data.childs" class="m10 ml20">
-                                            <span class="m5">
-                                            <input type="checkbox">
-                                            <span data-bind="text:$data.name"></span>
-                                        </span>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
+                        <tr>
+                        <tr>
+                            <td class="text-right">模板名称：</td>
+                            <td>
+                                <input class="form-control mt5 mb5" data-bind="textInput:curtemplateInfo().templateName">
+                            </td>
+                            <td class="text-right">模板地址：</td>
+                            <td>
+                                <input class="form-control mt5 mb5" data-bind="textInput:curtemplateInfo().templatePath">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">类型：</td>
+                            <td >
+                                <input class="form-control mt5 mb5" data-bind="textInput:curtemplateInfo().templateType">
+                            </td>
+                            <td class="text-right">模板描述：</td>
+                            <td >
+                                <input class="form-control mt5 mb5" data-bind="textInput:curtemplateInfo().templateDesc">
+                            </td>
+                        </tr>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="panel-footer text-center">
-                    <button class="btn selectBtn btn-primary" data-bind="">确定</button>
+                    <button class="btn selectBtn btn-primary" data-bind="click:addOrUpdatetemplateInfo">确认</button>
                     <button class="btn selectBtn btn-primary" data-bind="click:close">取消</button>
                 </div>
             </div>
-            <!-- end: .panel -->
         </div>
+        <!--新增/修改弹窗end-->
+        <footer id='content-footer' class="affix" data-bind="component: { name: 'footer' }"></footer>
     </section>
-    <!--底部栏-->
-    <footer id='content-footer' class="affix">
-        <div class="col-md-7">
-            <form class="form-inline" style="color: #626262;">
-                <div class="col-md-4" style="line-height: 44px">
-                    <label class="field select" style="width: 100%;height: 39px;">
-                        <label>显示行数</label>
-                        <select data-bind="options:lineNumber,selectedOptions:curNumber"
-                                class="form-control" name="lineNumber"
-                                style="width: calc(100% - 70px);line-height: 20px;height: 39px;"></select>
-                        <i class="arrow double"></i>
-                    </label>
-                </div>
-                <div class="col-md-3" style="line-height: 44px;font-size: 14px;letter-spacing:5px;">
-                    共<span data-bind="text:total"></span>条
-                </div>
-                <div class="col-md-5" style="line-height: 44px">
-                    <button class="btn btn-default" data-bind="click:prePage">上一页</button>
-                    <span data-bind="text:curPage"></span>
-                    <span>/</span>
-                    <span data-bind="text:pages"></span>
-                    <button class="btn btn-default" data-bind="click:nextPage">下一页</button>
-                    <label>跳转到</label>
-                    <input type="text" class="form-control" data-bind="textInput:turnNumber" style="width: calc(100% - 300px);">
-                    <button class="btn btn-default" data-bind="click:turnTo">GO</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-5 text-right" style="line-height: 44px">
-            <span class="footer-legal">© 2014-2016 <a href="http://gen.aftertun.com" target="view_window">[Lemur Gen 模板广场]</a> JueYue版权所有</span>
-        </div>
-    </footer>
-    <!--底部栏end-->
-</section>
 
-
-<script type="text/javascript" src="../../js/shared/require.js"></script>
-<script type="text/javascript" src="../../js/config.js"></script>
-<script type="text/javascript" src="templateViewModel.js"></script>
+    <script type="text/javascript" src="../../js/shared/require.js"></script>
+    <script type="text/javascript" src="../../js/config.js"></script>
+    <script type="text/javascript" src="templateViewModel.js"></script>
 </body>
+
 </html>

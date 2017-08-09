@@ -47,6 +47,10 @@ public class GenerationEntity implements Serializable {
      * 包名,不填使用表名,小写
      */
     private String            packageName      = "lemru";
+    /** 生成时间 **/
+    private String            date;
+    /** 作者 **/
+    private String            author;
 
     public String getJavaPackage() {
         return javaPackage;
@@ -110,5 +114,21 @@ public class GenerationEntity implements Serializable {
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

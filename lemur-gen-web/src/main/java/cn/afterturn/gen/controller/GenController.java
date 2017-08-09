@@ -130,7 +130,11 @@ public class GenController {
         try {
             out = new ZipOutputStream(res.getOutputStream());
             for (int i = 0; i < fileList.size(); i++) {
-                out.putNextEntry(new ZipEntry(String.format(templateList.get(i).getFileName(), ge.getEntityName())));
+                if(templateList.get(i).getFileName().endsWith("js") || templateList.get(i).getFileName().endsWith("html")){
+                    out.putNextEntry(new ZipEntry(String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
+                }else{
+                    out.putNextEntry(new ZipEntry(String.format(templateList.get(i).getFileName(), ge.getEntityName())));
+                }
                 out.write(fileList.get(i).getBytes(), 0, fileList.get(i).getBytes().length);
                 out.closeEntry();
             }

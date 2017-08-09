@@ -1,1 +1,1 @@
-mvn -P no-test,pro clean package
+mvn -P no-test,dev clean package

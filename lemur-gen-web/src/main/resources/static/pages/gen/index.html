@@ -36,24 +36,21 @@
 					<div style="overflow: hidden">
 						<div class="row">
 							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="作者" class="form-control" />
+								<input type="text"  data-bind="textInput:author" placeholder="作者" class="form-control" />
 							</div>
 							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="Java包名" class="form-control" />
+								<input type="text"  data-bind="textInput:javapackage"  placeholder="Java包名" class="form-control" />
 							</div>
 							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="JSP包名,如果为空,使用Java包名" class="form-control" />
-							</div>
-							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="作者" class="form-control" />
+								<input type="text"  data-bind="textInput:jsppackage" placeholder="JSP包名,如果为空,使用Java包名" class="form-control" />
 							</div>
 						</div>
-						<div class="row" style="padding-top: 20px;">
+						<div class="row">
 							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="作者" class="form-control" />
+								<input type="text"  data-bind="textInput:className" placeholder="类名" class="form-control" />
 							</div>
 							<div class="col-md-3" style="line-height: 42px">
-								<input type="text" placeholder="作者" class="form-control" />
+								<input type="text"  data-bind="textInput:name" placeholder="功能" class="form-control" />
 							</div>
 						</div>
 					</div>
