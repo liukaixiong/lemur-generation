@@ -168,11 +168,6 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.0</version>
-			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -194,9 +189,9 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<jdbc.url><![CDATA[jdbc:mysql://127.0.0.1:3306/easycode?characterEncoding=utf8&autoReconnect=true]]></jdbc.url>
+				<jdbc.url><![CDATA[jdbc:mysql://192.168.1.198:3306/easycode?characterEncoding=utf8&autoReconnect=true]]></jdbc.url>
 				<logger.level>DEBUG</logger.level>
-				<server.port>8080</server.port>
+				<server.port>10099</server.port>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
