@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${tableinfo.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+			     <#input id="id" name="Id" underline="true" value="${tableinfo.id}"/>
+			     <#input id="content" name="表名称" underline="true" value="${tableinfo.content}"/>
+			     <#input id="createBy" name="CreateBy" underline="true" value="${tableinfo.createBy}"/>
+			     <#input id="createDate" name="CreateDate" underline="true" value="${tableinfo.createDate}"/>
+			     <#input id="isPagination" name="是否分页" underline="true" value="${tableinfo.isPagination}"/>
+			     <#input id="isExport" name="是否带出Excel" underline="true" value="${tableinfo.isExport}"/>
+			     <#input id="tableName" name="表名" underline="true" value="${tableinfo.tableName}"/>
+			     <#input id="updateBy" name="UpdateBy" underline="true" value="${tableinfo.updateBy}"/>
+			     <#input id="updateDate" name="UpdateDate" underline="true" value="${tableinfo.updateDate}"/>
+                </div>
+
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TableInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TableInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/biz/tableinfo/tableinfo_info.js"></script>
+@}

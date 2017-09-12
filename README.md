@@ -1,21 +1,8 @@
 #lemur-generation
-	升级到全新版本
-	提供web的代码生成服务,提供库的选择以及表的选择
 	
+	功能强大的代码生成器,一点就可以完成我们想要的,定制容易,二次开发简单,可远程可以本地
 	
-使用技术
+	一个通用版本的代码生成器,不单单局限于自己用,可以分享,可以浏览别人的代码
+	好的代码是可以共享,好的代码也是促进开发的
 
-	后端
-	spring
-	springmvc
-	springboot
-	mybatis
 	
-	[beetl2.0](http://git.oschina.net/xiandafu/beetl2.0)
-	[PageHelper](http://git.oschina.net/free/Mybatis_PageHelper)
-	[Mapper](http://git.oschina.net/free/Mapper)
-	[EasyPoi](http://git.oschina.net/jueyue/easypoi)	
-	
-	前端
-	[knockoutjs](http://knockoutjs.com)
-	[echarts](http://echarts.baidu.com/)

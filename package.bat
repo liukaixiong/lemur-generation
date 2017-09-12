@@ -1,1 +1,0 @@
-mvn -P no-test,dev clean package
