@@ -102,7 +102,9 @@ DbInfo.formParams = function() {
  */
 DbInfo.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+    queryData['alias'] = $("#alias").val();
+    queryData['dbUrl'] = $("#dbUrl").val();
+    queryData['dbType'] = $("#dbType").val();
     DbInfo.table.refresh({query: queryData});
 };
 

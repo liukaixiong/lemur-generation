@@ -10,6 +10,7 @@
         <result column="USER_ID" property="userId"/>
         <result column="TEMPLATE_DESC" property="templateDesc"/>
         <result column="FILE_NAME" property="fileName"/>
+        <result column="GROUP_ID" property="groupId"/>
         <result column="CRT_USER_ID" property="crtUserId"/>
         <result column="CRT_TIME" property="crtTime"/>
         <result column="MDF_USER_ID" property="mdfUserId"/>
@@ -33,7 +34,10 @@
     </select>
 
     <select id="selectPage" resultMap="BaseResultMap">
-        select * from T_SYSTEM_TEMPLATE t
+        select t.ID, t.Template_NAME, t.Template_path, t.USER_ID, t.Template_DESC, t.FILE_NAME,
+        g.name as GROUP_ID, t.TEMPLATE_TYPE,
+        t.CRT_USER_ID, t.CRT_TIME, t.MDF_USER_ID, t.MDF_TIME from T_SYSTEM_TEMPLATE t
+        LEFT OUTER JOIN t_system_template_group g ON  g.id = t.GROUP_ID
         <where>
             <include refid="select_content"/>
             ${w.sqlSegment}
@@ -59,17 +63,8 @@
         <if test="e.fileName != null and e.fileName != '' ">
             AND t.FILE_NAME = #{e.fileName}
         </if>
-        <if test="e.crtUserId != null and e.crtUserId != '' ">
-            AND t.CRT_USER_ID = #{e.crtUserId}
-        </if>
-        <if test="e.crtTime != null and e.crtTime != '' ">
-            AND t.CRT_TIME = #{e.crtTime}
-        </if>
-        <if test="e.mdfUserId != null and e.mdfUserId != '' ">
-            AND t.MDF_USER_ID = #{e.mdfUserId}
-        </if>
-        <if test="e.mdfTime != null and e.mdfTime != '' ">
-            AND t.MDF_TIME = #{e.mdfTime}
+        <if test="e.groupId != null and e.groupId != '' ">
+            AND t.GROUP_ID = #{e.groupId}
         </if>
         <if test="e.templateType != null and e.templateType != '' ">
             AND t.TEMPLATE_TYPE = #{e.templateType}

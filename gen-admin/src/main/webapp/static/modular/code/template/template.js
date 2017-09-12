@@ -16,15 +16,15 @@ Template.initColumn = function () {
         {field: 'selectItem', radio: true},
 	     {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
 	     {title: '模板名称', field: 'templateName', align: 'center', valign: 'middle'},
-	     {title: '模板地址', field: 'templatePath', align: 'center', valign: 'middle'},
-	     {title: 'UserId', field: 'userId', align: 'center', valign: 'middle'},
-	     {title: 'TemplateDesc', field: 'templateDesc', align: 'center', valign: 'middle'},
+	     //{title: '模板地址', field: 'templatePath', align: 'center', valign: 'middle'},
+         {title: '模板类型', field: 'templateType', align: 'center', valign: 'middle'},
+         {title: '所属组', field: 'groupId', align: 'center', valign: 'middle'},
+	     {title: '模板描述', field: 'templateDesc', align: 'center', valign: 'middle'},
 	     {title: '文件名称', field: 'fileName', align: 'center', valign: 'middle'},
 	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
 	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
 	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
 	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
-	     {title: '模板类型', field: 'templateType', align: 'center', valign: 'middle'},
     ];
 };
 
@@ -100,7 +100,9 @@ Template.formParams = function() {
  */
 Template.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+    queryData['templateName'] = $("#templateName").val();
+    queryData['templateType'] = $("#templateType").val();
+    queryData['groupId'] = $("#groupId").val();
     Template.table.refresh({query: queryData});
 };
 

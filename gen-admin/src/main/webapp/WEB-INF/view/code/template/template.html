@@ -10,7 +10,22 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-3">
-                                <#NameCon id="condition" name="名称" />
+                                <#NameCon id="templateName" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="templateType" name="类型" >
+                                    <option value="">全部</option>
+                                    <option value="beetl">beetl</option>
+                                    <option value="freeMarker">freeMarker</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="groupId" name="类型" >
+                                    <option value="">全部</option>
+                                    @ for(g in groups!){
+                                        <option value="${g.id}">${g.name}</option>
+                                    @}
+                                </#SelectCon>
                             </div>
                             <div class="col-sm-3">
                                 <#button name="搜索" icon="fa-search" clickFun="Template.search()"/>

@@ -97,7 +97,8 @@ TemplateGroup.formParams = function () {
  */
 TemplateGroup.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+    queryData['name'] = $("#name").val();
+    queryData['desc'] = $("#desc").val();
     TemplateGroup.table.refresh({query: queryData});
 };
 

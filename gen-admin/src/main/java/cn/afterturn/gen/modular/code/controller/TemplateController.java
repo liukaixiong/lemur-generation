@@ -18,8 +18,11 @@ import cn.afterturn.gen.common.constant.factory.PageFactory;
 import cn.afterturn.gen.common.exception.BizExceptionEnum;
 import cn.afterturn.gen.common.exception.BussinessException;
 import cn.afterturn.gen.core.base.controller.BaseController;
+import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ToolUtil;
+import cn.afterturn.gen.modular.code.model.TemplateGroupModel;
 import cn.afterturn.gen.modular.code.model.TemplateModel;
+import cn.afterturn.gen.modular.code.service.ITemplateGroupService;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
 
 /**
@@ -38,12 +41,17 @@ public class TemplateController extends BaseController {
 
     @Autowired
     private ITemplateService templateService;
+    @Autowired
+    private ITemplateGroupService templateGroupService;
 
     /**
      * 跳转到首页
      */
     @RequestMapping("")
-    public String index() {
+    public String index(Model modelMap) {
+        TemplateGroupModel model = new TemplateGroupModel();
+        model.setUserId(ShiroKit.getUser().getId());
+        modelMap.addAttribute("groups", templateGroupService.selectList(model));
         return PREFIX + "template.html";
     }
 
@@ -71,6 +79,7 @@ public class TemplateController extends BaseController {
     @ResponseBody
     public Object list(TemplateModel model) {
         Page<TemplateModel> page = new PageFactory<TemplateModel>().defaultPage();
+        model.setUserId(ShiroKit.getUser().getId().toString());
         page.setRecords(templateService.selectPage(page, model, new EntityWrapper<TemplateModel>()));
         return super.packForBT(page);
     }

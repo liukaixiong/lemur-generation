@@ -58,6 +58,11 @@ public class TemplateModel extends Model<TemplateModel> {
      */
     @TableField(value = "FILE_NAME")
     private String fileName;
+    /**
+     *  组ID
+     */
+    @TableField(value = "GROUP_ID")
+    private String groupId;
 
     /**
      * 创建人
@@ -123,6 +128,14 @@ public class TemplateModel extends Model<TemplateModel> {
      */
     public String getTemplatePath() {
         return templatePath;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     /**
