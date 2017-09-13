@@ -4,19 +4,19 @@
 <mapper namespace="cn.afterturn.gen.modular.system.dao.DeptDao">
 
     <select id="tree" resultType="cn.afterturn.gen.core.node.ZTreeNode">
-		select id,pid as pId,simplename as name,
-		(
-		CASE
-		WHEN (pId = 0 OR pId IS NULL) THEN
-			'true'
-		ELSE
-			'false'
-		END
-		) as isOpen from dept
-	</select>
+        select id,pid as pId,simplename as name,
+        (
+        CASE
+        WHEN (pId = 0 OR pId IS NULL) THEN
+        'true'
+        ELSE
+        'false'
+        END
+        ) as isOpen from t_system_dept
+    </select>
 
     <select id="list" resultType="map">
-        select * from dept
+        select * from t_system_dept
         <if test="condition != null and condition != ''">
             where simplename like CONCAT('%',#{condition},'%') or fullname like
             CONCAT('%',#{condition},'%')

@@ -20,14 +20,14 @@
 
 
     <select id="selectCount" resultMap="BaseResultMap">
-        select count(1) from T_SYSTEM_TEMPLATE t
+        select count(1) from t_code_template t
         <where>
             <include refid="select_content"/>
         </where>
     </select>
 
     <select id="selectList" resultMap="BaseResultMap">
-        select * from T_SYSTEM_TEMPLATE t
+        select * from t_code_template t
         <where>
             <include refid="select_content"/>
         </where>
@@ -36,8 +36,8 @@
     <select id="selectPage" resultMap="BaseResultMap">
         select t.ID, t.Template_NAME, t.Template_path, t.USER_ID, t.Template_DESC, t.FILE_NAME,
         g.name as GROUP_ID, t.TEMPLATE_TYPE,
-        t.CRT_USER_ID, t.CRT_TIME, t.MDF_USER_ID, t.MDF_TIME from T_SYSTEM_TEMPLATE t
-        LEFT OUTER JOIN t_system_template_group g ON  g.id = t.GROUP_ID
+        t.CRT_USER_ID, t.CRT_TIME, t.MDF_USER_ID, t.MDF_TIME from t_code_template t
+        LEFT OUTER JOIN t_code_template_group g ON g.id = t.GROUP_ID
         <where>
             <include refid="select_content"/>
             ${w.sqlSegment}

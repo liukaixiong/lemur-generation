@@ -4,27 +4,27 @@
 <mapper namespace="cn.afterturn.gen.modular.system.dao.RoleDao">
 
     <sql id="Base_Column_List">
-		id, num, pid, name, deptid, tips, version
-	</sql>
+        id, num, pid, name, deptid, tips, version
+    </sql>
 
     <select id="selectRoles" resultType="map">
         select
         <include refid="Base_Column_List"/>
-        from role
+        from t_system_role
         <if test="condition != null">
             where name like CONCAT('%',#{condition},'%')
         </if>
     </select>
 
     <delete id="deleteRolesById">
-		delete from relation where roleid = #{roleId}
-	</delete>
+        delete from t_system_relation where roleid = #{roleId}
+    </delete>
 
     <select id="roleTreeList" resultType="cn.afterturn.gen.core.node.ZTreeNode">
-		select id "id",pId
-		"pId",name as "name",(case when (pId=0 or pId is null) then 'true'
-		else 'false' end) "open" from role
-	</select>
+        select id "id",pId
+        "pId",name as "name",(case when (pId=0 or pId is null) then 'true'
+        else 'false' end) "open" from t_system_role
+    </select>
 
     <select id="roleTreeListByRoleId" resultType="cn.afterturn.gen.core.node.ZTreeNode">
         SELECT
@@ -48,12 +48,12 @@
         END
         ) "checked"
         FROM
-        role r
+        t_system_role r
         LEFT JOIN (
         SELECT
         ID
         FROM
-        role
+        t_system_role
         WHERE
         ID IN
 

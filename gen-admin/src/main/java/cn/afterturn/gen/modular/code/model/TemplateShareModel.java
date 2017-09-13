@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @author JueYue
  * @Date 2017-09-11 11:26
  */
-@TableName("t_system_template_share")
+@TableName("t_code_template_share")
 public class TemplateShareModel extends Model<TemplateShareModel> {
 
     private static final long serialVersionUID = 1L;

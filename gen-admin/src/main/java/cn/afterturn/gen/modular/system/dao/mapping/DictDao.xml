@@ -4,18 +4,18 @@
 <mapper namespace="cn.afterturn.gen.modular.system.dao.DictDao">
 
     <sql id="Base_Column_List">
-		id, num, pid, name, tips
-	</sql>
+        id, num, pid, name, tips
+    </sql>
 
     <select id="selectByCode" resultType="dict">
         select
         <include refid="Base_Column_List"/>
-        from dict
+        from t_system_dict
         where code = #{code}
     </select>
 
     <select id="list" resultType="map">
-        select * from dict
+        select * from t_system_dict
         where pid = 0
         <if test="condition != null and condition != ''">
             AND name like CONCAT('%',#{condition},'%')

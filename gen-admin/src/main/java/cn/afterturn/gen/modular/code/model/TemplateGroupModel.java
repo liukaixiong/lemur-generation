@@ -15,7 +15,7 @@ import java.util.Date;
  * @author JueYue
  * @Date 2017-09-12 13:42
  */
-@TableName("t_system_template_group")
+@TableName("t_code_template_group")
 public class TemplateGroupModel extends Model<TemplateGroupModel> {
 
     private static final long serialVersionUID = 1L;

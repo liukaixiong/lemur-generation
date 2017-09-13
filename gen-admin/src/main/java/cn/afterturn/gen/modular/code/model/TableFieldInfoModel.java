@@ -17,7 +17,7 @@ import java.util.Date;
  * @author JueYue
  * @Date 2017-09-11 11:36
  */
-@TableName("t_system_table_field")
+@TableName("t_code_table_field")
 public class TableFieldInfoModel extends Model<TableFieldInfoModel> {
 
     private static final long serialVersionUID = 1L;

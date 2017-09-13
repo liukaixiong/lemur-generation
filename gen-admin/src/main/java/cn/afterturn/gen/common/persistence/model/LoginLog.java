@@ -14,7 +14,7 @@ import java.util.Date;
  * @author stylefeng
  * @since 2017-07-11
  */
-@TableName("login_log")
+@TableName("t_system_login_log")
 public class LoginLog extends Model<LoginLog> {
 
     private static final long serialVersionUID = 1L;

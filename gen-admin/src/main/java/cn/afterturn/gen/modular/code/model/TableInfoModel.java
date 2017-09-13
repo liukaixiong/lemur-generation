@@ -17,7 +17,7 @@ import java.util.Date;
  * @author JueYue
  * @Date 2017-09-11 11:32
  */
-@TableName("t_system_table_head")
+@TableName("t_code_table_head")
 public class TableInfoModel extends Model<TableInfoModel> {
 
     private static final long serialVersionUID = 1L;
