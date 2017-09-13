@@ -15,6 +15,8 @@ import java.util.HashMap;
 
 import cn.afterturn.gen.common.constant.DSEnum;
 import cn.afterturn.gen.config.properties.DruidProperties;
+import cn.afterturn.gen.core.datascope.CodeInsertInterceptor;
+import cn.afterturn.gen.core.datascope.CodeUpdateInterceptor;
 import cn.afterturn.gen.core.datascope.DataScopeInterceptor;
 import cn.afterturn.gen.core.mutidatasource.DynamicDataSource;
 import cn.afterturn.gen.core.mutidatasource.config.MutiDataSourceProperties;
@@ -105,5 +107,15 @@ public class MybatisPlusConfig {
     @Bean
     public DataScopeInterceptor dataScopeInterceptor() {
         return new DataScopeInterceptor();
+    }
+
+    @Bean
+    public CodeInsertInterceptor codeInsertInterceptor() {
+        return new CodeInsertInterceptor();
+    }
+
+    @Bean
+    public CodeUpdateInterceptor codeUpdateInterceptor() {
+        return new CodeUpdateInterceptor();
     }
 }

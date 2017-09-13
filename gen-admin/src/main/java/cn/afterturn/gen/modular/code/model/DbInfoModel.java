@@ -61,7 +61,7 @@ public class DbInfoModel extends Model<DbInfoModel> {
      * UserId
      */
     @TableField(value = "USER_ID")
-    private String userId;
+    private Integer userId;
 
     /**
      * 数据库类型
@@ -73,7 +73,7 @@ public class DbInfoModel extends Model<DbInfoModel> {
      * 创建人
      */
     @TableField(value = "CRT_USER_ID")
-    private String crtUserId;
+    private Integer crtUserId;
 
     /**
      * 创建时间
@@ -85,7 +85,7 @@ public class DbInfoModel extends Model<DbInfoModel> {
      * 修改人
      */
     @TableField(value = "MDF_USER_ID")
-    private String mdfUserId;
+    private Integer mdfUserId;
 
     /**
      * 修改时间
@@ -181,14 +181,14 @@ public class DbInfoModel extends Model<DbInfoModel> {
     /**
      * 获取: UserId
      */
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     /**
      * 设置: UserId
      */
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -209,14 +209,14 @@ public class DbInfoModel extends Model<DbInfoModel> {
     /**
      * 获取: 创建人
      */
-    public String getCrtUserId() {
+    public Integer getCrtUserId() {
         return crtUserId;
     }
 
     /**
      * 设置: 创建人
      */
-    public void setCrtUserId(String crtUserId) {
+    public void setCrtUserId(Integer crtUserId) {
         this.crtUserId = crtUserId;
     }
 
@@ -237,14 +237,14 @@ public class DbInfoModel extends Model<DbInfoModel> {
     /**
      * 获取: 修改人
      */
-    public String getMdfUserId() {
+    public Integer getMdfUserId() {
         return mdfUserId;
     }
 
     /**
      * 设置: 修改人
      */
-    public void setMdfUserId(String mdfUserId) {
+    public void setMdfUserId(Integer mdfUserId) {
         this.mdfUserId = mdfUserId;
     }
 

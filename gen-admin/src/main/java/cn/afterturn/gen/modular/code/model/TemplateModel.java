@@ -68,7 +68,7 @@ public class TemplateModel extends Model<TemplateModel> {
      * 创建人
      */
     @TableField(value = "CRT_USER_ID")
-    private String crtUserId;
+    private Integer crtUserId;
 
     /**
      * 创建时间
@@ -80,7 +80,7 @@ public class TemplateModel extends Model<TemplateModel> {
      * 修改人
      */
     @TableField(value = "MDF_USER_ID")
-    private String mdfUserId;
+    private Integer mdfUserId;
 
     /**
      * 修改时间
@@ -190,14 +190,14 @@ public class TemplateModel extends Model<TemplateModel> {
     /**
      * 获取: 创建人
      */
-    public String getCrtUserId() {
+    public Integer getCrtUserId() {
         return crtUserId;
     }
 
     /**
      * 设置: 创建人
      */
-    public void setCrtUserId(String crtUserId) {
+    public void setCrtUserId(Integer crtUserId) {
         this.crtUserId = crtUserId;
     }
 
@@ -218,14 +218,14 @@ public class TemplateModel extends Model<TemplateModel> {
     /**
      * 获取: 修改人
      */
-    public String getMdfUserId() {
+    public Integer getMdfUserId() {
         return mdfUserId;
     }
 
     /**
      * 设置: 修改人
      */
-    public void setMdfUserId(String mdfUserId) {
+    public void setMdfUserId(Integer mdfUserId) {
         this.mdfUserId = mdfUserId;
     }
 

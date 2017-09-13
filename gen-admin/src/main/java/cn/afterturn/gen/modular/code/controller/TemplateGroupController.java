@@ -85,9 +85,6 @@ public class TemplateGroupController extends BaseController {
     @Permission
     @ResponseBody
     public Object add(TemplateGroupModel model) {
-        model.setUserId(ShiroKit.getUser().getId());
-        model.setCrtTime(new Date());
-        model.setCrtUserId(ShiroKit.getUser().getId().toString());
         templateGroupService.insert(model);
         return SUCCESS_TIP;
     }
@@ -111,8 +108,6 @@ public class TemplateGroupController extends BaseController {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
-        model.setMdfTime(new Date());
-        model.setMdfUserId(ShiroKit.getUser().getId().toString());
         templateGroupService.updateById(model);
         return super.SUCCESS_TIP;
     }

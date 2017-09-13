@@ -16,6 +16,7 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
 import java.sql.Connection;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -28,7 +29,7 @@ import cn.afterturn.gen.core.support.CollectionKit;
  * @author fengshuonan
  * @date 2017-07-23 21:26
  */
-@Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
+@Intercepts({@Signature(type = StatementHandler.class, method = "parameterize", args = {Statement.class})})
 public class DataScopeInterceptor implements Interceptor {
 
     @Override
@@ -78,6 +79,7 @@ public class DataScopeInterceptor implements Interceptor {
 
     @Override
     public Object plugin(Object target) {
+
         return Plugin.wrap(target, this);
     }
 

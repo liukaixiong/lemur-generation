@@ -75,20 +75,17 @@ public class DbInfoController extends BaseController {
     @ResponseBody
     public Object list(DbInfoModel model) {
         Page<DbInfoModel> page = new PageFactory<DbInfoModel>().defaultPage();
-        model.setUserId(ShiroKit.getUser().getId().toString());
+        model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(dbInfoService.selectPage(page, model, new EntityWrapper<DbInfoModel>()));
         return super.packForBT(page);
     }
 
 
-    @BussinessLog(value = "数据库管理新增", key = "companyid")
+    @BussinessLog(value = "数据库管理新增", key = "alias")
     @RequestMapping(value = "/add")
     @Permission
     @ResponseBody
     public Object add(DbInfoModel model) {
-        model.setUserId(ShiroKit.getUser().getId().toString());
-        model.setCrtTime(new Date());
-        model.setCrtUserId(ShiroKit.getUser().getId().toString());
         model.setDbDriver(DBType.getDbTypeByType(model.getDbType()).getDriver());
         dbInfoService.insert(model);
         return SUCCESS_TIP;
@@ -113,8 +110,6 @@ public class DbInfoController extends BaseController {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
-        model.setMdfTime(new Date());
-        model.setMdfUserId(ShiroKit.getUser().getId().toString());
         model.setDbDriver(DBType.getDbTypeByType(model.getDbType()).getDriver());
         dbInfoService.updateById(model);
         return super.SUCCESS_TIP;
