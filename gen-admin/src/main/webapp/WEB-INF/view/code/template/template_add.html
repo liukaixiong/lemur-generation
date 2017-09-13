@@ -7,22 +7,52 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-			     <#input id="id" name="Id" underline="true"/>
-			     <#input id="templateName" name="模板名称" underline="true"/>
-			     <#input id="templatePath" name="模板地址" underline="true"/>
-			     <#input id="userId" name="UserId" underline="true"/>
-			     <#input id="templateDesc" name="TemplateDesc" underline="true"/>
-			     <#input id="fileName" name="文件名称" underline="true"/>
-			     <#input id="crtUserId" name="创建人" underline="true"/>
-			     <#input id="crtTime" name="创建时间" underline="true"/>
-			     <#input id="mdfUserId" name="修改人" underline="true"/>
-			     <#input id="mdfTime" name="修改时间" underline="true"/>
-			     <#input id="templateType" name="模板类型" underline="true"/>
+                    <#input id="templateName" name="模板名称" underline="true"/>
+
                 </div>
 
                 <div class="col-sm-6">
-
+                    <#input id="templateDesc" name="描述" underline="true"/>
                 </div>
+                <div class="col-sm-6">
+                    <#input id="fileName" name="文件名称" underline="true"/>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="groupId" name="组" underline="true">
+                        @ for(g in groups!){
+                        <option value="${g.id}">${g.name}</option>
+                        @}
+                    </#Select>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="templateType" name="类型" underline="true" >
+                        <option value="beetl">beetl</option>
+                        <option value="freeMarker">freeMarker</option>
+                    </#Select>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="fileType" name="语言" underline="true" >
+                        <option value="C">C</option>
+                        <option value="C#">C#</option>
+                        <option value="C++">C++</option>
+                        <option value="GO">GO</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Html">Html</option>
+                        <option value="Xml">Xml</option>
+                        <option value="Objective-C">Objective-C</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Python">Python</option>
+                        <option value="SQL">SQL</option>
+                    </#Select>
+                </div>
+                <textarea id="file" name="file" class="form-control"
+                          rows="15"></textarea>
+                <pre  id="codeFile"  style="display:none;height: 310px;">
+                        <code class="${file.fileType!}">
+
+                        </code>
+                </pre>
             </div>
 
             <div class="row btn-group-m-t">

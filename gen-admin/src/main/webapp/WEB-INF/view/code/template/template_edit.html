@@ -7,21 +7,50 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-			     <#input id="id" name="Id" underline="true" value="${template.id}"/>
-			     <#input id="templateName" name="模板名称" underline="true" value="${template.templateName}"/>
-			     <#input id="templatePath" name="模板地址" underline="true" value="${template.templatePath}"/>
-			     <#input id="userId" name="UserId" underline="true" value="${template.userId}"/>
-			     <#input id="templateDesc" name="TemplateDesc" underline="true" value="${template.templateDesc}"/>
-			     <#input id="fileName" name="文件名称" underline="true" value="${template.fileName}"/>
-			     <#input id="crtUserId" name="创建人" underline="true" value="${template.crtUserId}"/>
-			     <#input id="crtTime" name="创建时间" underline="true" value="${template.crtTime}"/>
-			     <#input id="mdfUserId" name="修改人" underline="true" value="${template.mdfUserId}"/>
-			     <#input id="mdfTime" name="修改时间" underline="true" value="${template.mdfTime}"/>
-			     <#input id="templateType" name="模板类型" underline="true" value="${template.templateType}"/>
+                    <#input id="templateName" name="模板名称" underline="true" value="${template.templateName}"/>
                 </div>
-
                 <div class="col-sm-6">
-
+                    <#input id="templateDesc" name="描述" underline="true" value="${template.templateDesc}"/>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="fileName" name="文件名称" underline="true" value="${template.fileName}"/>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="groupId" name="组" underline="true" value="${template.groupId}">
+                        @ for(g in groups!){
+                        <option value="${g.id}">${g.name}</option>
+                        @}
+                    </#Select>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="templateType" name="类型" underline="true" value="${template.templateType}">
+                        <option value="beetl">beetl</option>
+                        <option value="freeMarker">freeMarker</option>
+                    </#Select>
+                </div>
+                <div class="col-sm-6">
+                    <#Select id="fileType" name="语言" underline="true" value="${file.fileType!}">
+                        <option value="C">C</option>
+                        <option value="C#">C#</option>
+                        <option value="C++">C++</option>
+                        <option value="GO">GO</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Html">Html</option>
+                        <option value="Xml">Xml</option>
+                        <option value="Objective-C">Objective-C</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Python">Python</option>
+                        <option value="SQL">SQL</option>
+                    </#Select>
+                </div>
+                <div class="col-sm-12">
+                    <textarea id="file" name="file" class="form-control" style="display:none"
+                              rows="15">${file.file!}</textarea>
+                    <pre  id="codeFile" style="height: 310px;">
+                        <code class="${file.fileType!}">
+                        </code>
+                    </pre>
                 </div>
             </div>
 
@@ -35,5 +64,5 @@
 
     </div>
 </div>
-<script src="${ctxPath}/static/modular/biz/template/template_info.js"></script>
+<script src="${ctxPath}/static/modular/code/template/template_info.js"></script>
 @}

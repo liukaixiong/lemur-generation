@@ -45,7 +45,7 @@ public class TemplateModel extends Model<TemplateModel> {
      * UserId
      */
     @TableField(value = "USER_ID")
-    private String userId;
+    private Integer userId;
 
     /**
      * TemplateDesc
@@ -148,14 +148,14 @@ public class TemplateModel extends Model<TemplateModel> {
     /**
      * 获取: UserId
      */
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     /**
      * 设置: UserId
      */
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

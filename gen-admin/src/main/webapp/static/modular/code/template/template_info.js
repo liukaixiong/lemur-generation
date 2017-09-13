@@ -19,7 +19,11 @@ TemplateInfoDlg.clearData = function() {
  * @param val 数据的具体值
  */
 TemplateInfoDlg.set = function(key, val) {
-    this.TemplateInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
+    if(key == 'file234213123'){
+        this.TemplateInfoData[key] = (typeof val == "undefined") ? encodeURI($("#" + key).val()) : val;
+    }else {
+        this.TemplateInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
+    }
     return this;
 }
 
@@ -44,7 +48,7 @@ TemplateInfoDlg.close = function() {
  * 收集数据
  */
 TemplateInfoDlg.collectData = function() {
-    this.set('id');
+    this.set('id').set('templateName').set('templateDesc').set('fileName').set('groupId').set('templateType').set('fileType').set('file');
 }
 
 /**
@@ -56,7 +60,7 @@ TemplateInfoDlg.addSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/Template/add", function(data){
+    var ajax = new $ax(Feng.ctxPath + "/template/add", function(data){
         Feng.success("添加成功!");
         window.parent.Template.table.refresh();
         TemplateInfoDlg.close();
@@ -76,7 +80,7 @@ TemplateInfoDlg.editSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/Template/update", function(data){
+    var ajax = new $ax(Feng.ctxPath + "/template/update", function(data){
         Feng.success("修改成功!");
         window.parent.Template.table.refresh();
         TemplateInfoDlg.close();
@@ -88,5 +92,21 @@ TemplateInfoDlg.editSubmit = function() {
 }
 
 $(function() {
+    //hljs.initHighlightingOnLoad();
+    $("#codeFile").find('code').html(hljs.highlight($("#fileType").val(),$("#file").val()).value);
+});
 
+$("#codeFile").click(function () {
+    $(this).hide();
+    $("#file").show();
+});
+
+$("#fileType").change(function () {
+    $("#codeFile").find('code').html(hljs.highlight($("#fileType").val(),$("#file").val()).value);
+});
+
+$("#file").blur(function(){
+    $(this).hide();
+    $("#codeFile").find('code').html(hljs.highlight($("#fileType").val(),$(this).val()).value);
+    $("#codeFile").show();
 });

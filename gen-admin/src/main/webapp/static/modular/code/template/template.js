@@ -49,7 +49,7 @@ Template.openAddTemplate = function () {
     var index = layer.open({
         type: 2,
         title: '添加模板管理',
-        area: ['800px', '420px'], //宽高
+        area: ['100%', '100%'],
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '/template/goto_add'
@@ -64,8 +64,8 @@ Template.openTemplateDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '模板管理详情',
-            area: ['800px', '420px'], //宽高
+            title: '模板管理编辑',
+            area: ['100%', '100%'],//宽高
             fix: false, //不固定
             maxmin: true,
             content: Feng.ctxPath + '/template/goto_update/' + Template.seItem.id
@@ -85,7 +85,7 @@ Template.delete = function () {
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("templateId",this.seItem.id);
+        ajax.set("id",this.seItem.id);
         ajax.start();
     }
 };

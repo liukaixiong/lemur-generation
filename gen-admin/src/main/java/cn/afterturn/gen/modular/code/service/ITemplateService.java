@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import java.util.List;
 
+import cn.afterturn.gen.modular.code.model.TemplateFileModel;
 import cn.afterturn.gen.modular.code.model.TemplateModel;
 
 
@@ -22,7 +23,7 @@ public interface ITemplateService {
      * @param entity 实体对象
      * @return int
      */
-    Integer insert(TemplateModel entity);
+    Integer insert(TemplateModel entity, TemplateFileModel fileModel);
 
     /**
      * <p> 根据 ID 删除 </p>
@@ -38,7 +39,7 @@ public interface ITemplateService {
      * @param entity 实体对象
      * @return int
      */
-    Integer updateById(TemplateModel entity);
+    Integer updateById(TemplateModel entity, TemplateFileModel fileModel);
 
     /**
      * <p> 根据 ID 查询 </p>

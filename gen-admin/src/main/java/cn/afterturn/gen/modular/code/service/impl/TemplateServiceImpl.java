@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import cn.afterturn.gen.modular.code.dao.TemplateDao;
+import cn.afterturn.gen.modular.code.dao.TemplateFileDao;
+import cn.afterturn.gen.modular.code.model.TemplateFileModel;
 import cn.afterturn.gen.modular.code.model.TemplateModel;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
 
@@ -23,19 +25,29 @@ public class TemplateServiceImpl implements ITemplateService {
 
     @Autowired
     private TemplateDao templateDao;
+    @Autowired
+    private TemplateFileDao templateFileDao;
 
     @Override
-    public Integer insert(TemplateModel entity) {
-        return templateDao.insert(entity);
+    public Integer insert(TemplateModel entity, TemplateFileModel fileModel) {
+        templateDao.insert(entity);
+        fileModel.setTemplateId(entity.getId());
+        return templateFileDao.insert(fileModel);
     }
 
     @Override
     public Integer deleteById(Integer id) {
+        templateFileDao.deleteByTemplateId(id);
         return templateDao.deleteById(id);
     }
 
     @Override
-    public Integer updateById(TemplateModel entity) {
+    public Integer updateById(TemplateModel entity, TemplateFileModel fileModel) {
+        fileModel.setTemplateId(entity.getId());
+        int  nums = templateFileDao.updateTemplateId(fileModel);
+        if(nums == 0){
+            templateFileDao.insert(fileModel);
+        }
         return templateDao.updateById(entity);
     }
 
