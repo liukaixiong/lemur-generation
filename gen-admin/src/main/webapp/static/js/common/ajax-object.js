@@ -4,7 +4,7 @@
 		this.type = "post";
 		this.data = {};
 		this.dataType = "json";
-		this.async = false;
+		this.async = true;
 		this.success = success;
 		this.error = error;
 	};

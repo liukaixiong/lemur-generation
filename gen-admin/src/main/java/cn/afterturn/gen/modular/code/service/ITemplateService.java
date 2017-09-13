@@ -84,4 +84,10 @@ public interface ITemplateService {
      */
     List<TemplateModel> selectPage(Pagination pagination, TemplateModel model, Wrapper<TemplateModel> wrapper);
 
+    /**
+     * 查询模板列表
+     * @param templates
+     * @return
+     */
+    List<TemplateModel> getTemplateByIds(String[] templates);
 }

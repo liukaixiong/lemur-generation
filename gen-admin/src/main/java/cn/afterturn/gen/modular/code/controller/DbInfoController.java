@@ -80,6 +80,18 @@ public class DbInfoController extends BaseController {
         return super.packForBT(page);
     }
 
+    /**
+     * 获取列表
+     */
+    @RequestMapping(value = "/queryAll")
+    @ResponseBody
+    public Object queryAll(DbInfoModel model) {
+        Page<DbInfoModel> page = new PageFactory<DbInfoModel>().defaultPage();
+        model.setUserId(ShiroKit.getUser().getId());
+        page.setRecords(dbInfoService.selectPage(page, model, new EntityWrapper<DbInfoModel>()));
+        return super.packForBT(page);
+    }
+
 
     @BussinessLog(value = "数据库管理新增", key = "alias")
     @RequestMapping(value = "/add")

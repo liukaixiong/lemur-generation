@@ -20,11 +20,15 @@ public class GenerationEntity implements Serializable {
     /**
      * Java包名
      */
-    private String javaPackage = "cn.afterturn.code";
+    private String codePackage ;
     /**
-     * JSP包名,如果为空,使用javaPackage
+     * html包名,如果为空,使用javaPackage
      */
-    private String jspPackage = "cn.afterturn.code";
+    private String htmlPackage;
+    /**
+     * js包名,如果为空,使用javaPackage
+     */
+    private String jsPackage;
     /**
      * 功能名称
      */
@@ -44,11 +48,7 @@ public class GenerationEntity implements Serializable {
     /**
      * 类名,不填使用表名
      */
-    private String entityName = "Lemru";
-    /**
-     * 包名,不填使用表名,小写
-     */
-    private String packageName = "lemru";
+    private String entityName;
     /**
      * 生成时间
      **/
@@ -57,22 +57,6 @@ public class GenerationEntity implements Serializable {
      * 作者
      **/
     private String author;
-
-    public String getJavaPackage() {
-        return javaPackage;
-    }
-
-    public void setJavaPackage(String javaPackage) {
-        this.javaPackage = javaPackage;
-    }
-
-    public String getJspPackage() {
-        return StringUtils.isNotEmpty(jspPackage) ? jspPackage : javaPackage;
-    }
-
-    public void setJspPackage(String jspPackage) {
-        this.jspPackage = jspPackage;
-    }
 
     public String getName() {
         return name;
@@ -114,12 +98,28 @@ public class GenerationEntity implements Serializable {
         this.entityName = entityName;
     }
 
-    public String getPackageName() {
-        return packageName == null ? null : packageName.toLowerCase();
+    public String getCodePackage() {
+        return codePackage;
     }
 
-    public void setPackageName(String packageName) {
-        this.packageName = packageName;
+    public void setCodePackage(String codePackage) {
+        this.codePackage = codePackage;
+    }
+
+    public String getHtmlPackage() {
+        return htmlPackage;
+    }
+
+    public void setHtmlPackage(String htmlPackage) {
+        this.htmlPackage = htmlPackage;
+    }
+
+    public String getJsPackage() {
+        return jsPackage;
+    }
+
+    public void setJsPackage(String jsPackage) {
+        this.jsPackage = jsPackage;
     }
 
     public String getDate() {

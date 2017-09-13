@@ -35,4 +35,5 @@ public interface TemplateDao extends BaseMapper<TemplateModel> {
      */
     List<TemplateModel> selectPage(@Param("p") Pagination pagination, @Param("e") TemplateModel model, @Param("w") Wrapper<TemplateModel> wrapper);
 
+    List<TemplateModel> getTemplateByIds(@Param("ids") String[] templates);
 }

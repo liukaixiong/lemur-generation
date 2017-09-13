@@ -76,4 +76,9 @@ public class TemplateServiceImpl implements ITemplateService {
         return templateDao.selectPage(pagination, model, wrapper);
     }
 
+    @Override
+    public List<TemplateModel> getTemplateByIds(String[] templates) {
+        return templateDao.getTemplateByIds(templates);
+    }
+
 }
