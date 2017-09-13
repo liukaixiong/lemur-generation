@@ -42,7 +42,7 @@
             AND t.ID = #{e.id}
         </if>
         <if test="e.userId != null and e.userId != '' ">
-            AND t.USER_ID = #{e.userId}
+            AND (t.USER_ID = #{e.userId} or t.USER_ID is null or t.USER_ID = 0 )
         </if>
         <if test="e.name != null and e.name != '' ">
             AND t.NAME = #{e.name}
