@@ -10,8 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import cn.afterturn.gen.common.constant.state.ManagerStatus;
+import cn.afterturn.gen.common.exception.BizExceptionEnum;
+import cn.afterturn.gen.common.exception.BussinessException;
 import cn.afterturn.gen.common.exception.InvalidKaptchaException;
 import cn.afterturn.gen.common.persistence.dao.UserMapper;
 import cn.afterturn.gen.common.persistence.model.User;
@@ -25,6 +31,7 @@ import cn.afterturn.gen.core.util.ApiMenuFilter;
 import cn.afterturn.gen.core.util.KaptchaUtil;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.system.dao.MenuDao;
+import cn.afterturn.gen.modular.system.dao.UserMgrDao;
 
 import static cn.afterturn.gen.core.support.HttpKit.getIp;
 
@@ -39,6 +46,9 @@ public class LoginController extends BaseController {
 
     @Autowired
     MenuDao menuDao;
+
+    @Resource
+    private UserMgrDao managerDao;
 
     @Autowired
     UserMapper userMapper;
@@ -121,6 +131,38 @@ public class LoginController extends BaseController {
         ShiroKit.getSession().setAttribute("sessionFlag", true);
 
         return REDIRECT + "/";
+    }
+
+    /**
+     * 跳转到注册页面
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+        return "/register.html";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registerVali(String username, String password) {
+        User user = new User();
+        user.setAccount(username.trim());
+        user.setPassword(password.trim());
+        // 判断账号是否重复
+        User theUser = managerDao.getByAccount(user.getAccount());
+        if (theUser != null) {
+            throw new BussinessException(BizExceptionEnum.USER_ALREADY_REG);
+        }
+        // 完善账号信息
+        user.setName(username.trim());
+        user.setBirthday(new Date());
+        user.setSex(1);
+        user.setSalt(ShiroKit.getRandomSalt(5));
+        user.setPassword(ShiroKit.md5(user.getPassword(), user.getSalt()));
+        user.setStatus(ManagerStatus.OK.getCode());
+        user.setCreatetime(new Date());
+        this.userMapper.insert(user);
+        this.managerDao.setRoles(user.getId(), "6");
+
+        return REDIRECT + "/login";
     }
 
     /**
