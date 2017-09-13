@@ -231,5 +231,10 @@ $("#params").change(function(){
 });
 
 $("#groupId").change(function(){
+    var p = GEN.param;
+    GEN.param = {};
+    GEN.param.limit = 100;
+    GEN.param.offset = 0;
     GEN.getData('/template/list?groupId='+$("#groupId").val(), 'templates');
+    GEN.param = p;
 });
