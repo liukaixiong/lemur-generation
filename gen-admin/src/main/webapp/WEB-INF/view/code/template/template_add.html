@@ -18,20 +18,20 @@
                     <#input id="fileName" name="文件名称" underline="true"/>
                 </div>
                 <div class="col-sm-6">
-                    <#Select id="groupId" name="组" underline="true">
+                    <#select id="groupId" name="组" underline="true">
                         @ for(g in groups!){
                         <option value="${g.id}">${g.name}</option>
                         @}
-                    </#Select>
+                    </#select>
                 </div>
                 <div class="col-sm-6">
-                    <#Select id="templateType" name="类型" underline="true" >
+                    <#select id="templateType" name="类型" underline="true" >
                         <option value="beetl">beetl</option>
                         <option value="freeMarker">freeMarker</option>
-                    </#Select>
+                    </#select>
                 </div>
                 <div class="col-sm-6">
-                    <#Select id="fileType" name="语言" underline="true" >
+                    <#select id="fileType" name="语言" underline="true" >
                         <option value="C">C</option>
                         <option value="C#">C#</option>
                         <option value="C++">C++</option>
@@ -44,7 +44,7 @@
                         <option value="PHP">PHP</option>
                         <option value="Python">Python</option>
                         <option value="SQL">SQL</option>
-                    </#Select>
+                    </#select>
                 </div>
                 <textarea id="file" name="file" class="form-control"
                           rows="15"></textarea>

@@ -11,12 +11,12 @@
                         <div class="form-horizontal" id="genForm">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <#Select id="params" name="参数" >
+                                    <#select id="params" name="参数" >
                                         <option value="">全部</option>
                                         @ for(p in params!){
                                         <option value="${p.id}">${p.alias}</option>
                                         @}
-                                    </#Select>
+                                    </#select>
                                 </div>
                                 <div class="col-sm-3">
                                     <#input id="author" name="作者" />
@@ -39,10 +39,10 @@
                                     <#input id="name" name="功能" />
                                 </div>
                                 <div class="col-sm-3">
-                                    <#Select id="encoded" name="编码" >
+                                    <#select id="encoded" name="编码" >
                                         <option value="UTF8">UTF8</option>
                                         <option value="gbk">GBK</option>
-                                    </#Select>
+                                    </#select>
                                 </div>
                             </div>
                         </div>
