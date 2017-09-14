@@ -24,7 +24,7 @@ lemur-generation
 
 **线上环境,支持直接使用,不需本地安装,注册即可使用**
 
-**[gen.afterturn.cn](gen.afterturn.cn)**
+**[http://gen.afterturn.cn](http://gen.afterturn.cn)**
 
 
 功能
