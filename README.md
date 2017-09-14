@@ -11,6 +11,22 @@ lemur-generation
 	一个通用版本的代码生成器,不单单局限于自己用,可以分享,可以浏览别人的代码
 	好的代码是可以共享,好的代码也是促进开发的
 
+**QQ群**
+
+	官网： http://www.afterturn.cn/
+	邮箱： qrb.jueyue@gmail.com
+	QQ群:  364192721
+	
+
+**使用指南**
+
+**[http://lemur-gen.mydoc.io/](http://lemur-gen.mydoc.io/)**
+
+**线上环境,支持直接使用,不需本地安装,注册即可使用**
+
+**[gen.afterturn.cn](gen.afterturn.cn)**
+
+
 功能
 ---------
 |功能|子功能|进度|开始时间|版本支持|
