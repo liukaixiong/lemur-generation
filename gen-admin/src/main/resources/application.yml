@@ -6,16 +6,12 @@
 guns:
   swagger-open: false #是否开启swagger (true/false)
   kaptcha-open: false #是否开启登录时验证码 (true/false)
-  session-open: false #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
+  session-open: true #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
   #file-upload-path: d:/tmp  #文件上传目录(不配置的话为java.io.tmpdir目录)
   muti-datasource-open: false #是否开启多数据源(true/false)
   spring-session-open: false #是否开启spring session,如果是多机环境需要开启(true/false)
   session-invalidate-time: 1800 #session失效时间(只在单机环境下生效，多机环境在SpringSessionConfig类中配置) 单位：秒
   session-validation-interval: 900 #多久检测一次失效的session(只在单机环境下生效) 单位：秒
-
-###################  项目启动端口  ###################
-server:
-  port: 80
 
 ###################  beetl配置  ###################
 beetl:
@@ -75,9 +71,9 @@ mybatis-plus:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://121.42.11.118:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-      username: jueyue
-      password: wqeqeqwwocszjxsfakdfas
+      url: jdbc:mysql://localhost:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: test
+      password: test
       filters: log4j,wall,mergeStat
 
 logging:
@@ -86,17 +82,21 @@ logging:
   path: /home/logs/gencode/
   file: gencode.log
 
+###################  项目启动端口  ###################
+server:
+  port: 80
+
 ---
 
 ##########################################################
 ###################  正式环境的profile  ###################
 ##########################################################
 spring:
-  profiles: produce
+  profiles: pro
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-      username: root
-      password: root
+      url: jdbc:mysql://localhost:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: test
+      password: test
       filters: log4j,wall,mergeStat
 
 logging:
@@ -104,3 +104,6 @@ logging:
   path: /home/logs/gencode/
   file: gencode.log
 
+###################  项目启动端口  ###################
+server:
+  port: 8080

@@ -23,6 +23,14 @@ lemur-generation
     - 字典管理
 
 
+启动方法
+-----------
+    1. 下载代码
+    2. 导入gen.sql的SQL
+    3.运行 GenApplication
+    4.访问 localhost
+    5.登录 admin/111111
+
 使用方法
 ----------
 
