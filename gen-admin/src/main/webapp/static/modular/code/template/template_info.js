@@ -19,11 +19,7 @@ TemplateInfoDlg.clearData = function() {
  * @param val 数据的具体值
  */
 TemplateInfoDlg.set = function(key, val) {
-    if(key == 'file234213123'){
-        this.TemplateInfoData[key] = (typeof val == "undefined") ? encodeURI($("#" + key).val()) : val;
-    }else {
-        this.TemplateInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
-    }
+    this.TemplateInfoData[key] = (typeof val == "undefined") ? $("#" + key).val() : val;
     return this;
 }
 
@@ -48,7 +44,7 @@ TemplateInfoDlg.close = function() {
  * 收集数据
  */
 TemplateInfoDlg.collectData = function() {
-    this.set('id').set('templateName').set('templateDesc').set('fileName').set('groupId').set('templateType').set('fileType').set('file');
+    this.set('id').set('templateName').set('templatePath').set('templateDesc').set('fileName').set('groupId').set('templateType').set('fileType').set('file');
 }
 
 /**

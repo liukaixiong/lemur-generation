@@ -14,17 +14,17 @@ var Template = {
 Template.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-	     {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
-	     {title: '模板名称', field: 'templateName', align: 'center', valign: 'middle'},
-	     //{title: '模板地址', field: 'templatePath', align: 'center', valign: 'middle'},
-         {title: '模板类型', field: 'templateType', align: 'center', valign: 'middle'},
-         {title: '所属组', field: 'groupId', align: 'center', valign: 'middle'},
-	     {title: '模板描述', field: 'templateDesc', align: 'center', valign: 'middle'},
-	     {title: '文件名称', field: 'fileName', align: 'center', valign: 'middle'},
-	     {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
-	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
-	     {title: '修改人', field: 'mdfUserName', align: 'center', valign: 'middle'},
-	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
+        {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
+        {title: '模板名称', field: 'templateName', align: 'center', valign: 'middle'},
+        {title: '模板类型', field: 'templateType', align: 'center', valign: 'middle'},
+        {title: '所属组', field: 'groupId', align: 'center', valign: 'middle'},
+        {title: '模板描述', field: 'templateDesc', align: 'center', valign: 'middle'},
+        {title: '模板路径', field: 'templatePath', align: 'center', valign: 'middle'},
+        {title: '文件名称', field: 'fileName', align: 'center', valign: 'middle'},
+        {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
+        {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
+        {title: '修改人', field: 'mdfUserName', align: 'center', valign: 'middle'},
+        {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
     ];
 };
 
@@ -33,10 +33,10 @@ Template.initColumn = function () {
  */
 Template.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
-    if(selected.length == 0){
+    if (selected.length == 0) {
         Feng.info("请先选中表格中的某一记录！");
         return false;
-    }else{
+    } else {
         Template.seItem = selected[0];
         return true;
     }
@@ -47,13 +47,13 @@ Template.check = function () {
  */
 Template.openAddTemplate = function () {
     var index = layer.open({
-        type: 2,
-        title: '添加模板管理',
-        area: ['100%', '100%'],
-        fix: false, //不固定
-        maxmin: true,
-        content: Feng.ctxPath + '/template/goto_add'
-    });
+                               type: 2,
+                               title: '添加模板管理',
+                               area: ['100%', '100%'],
+                               fix: false, //不固定
+                               maxmin: true,
+                               content: Feng.ctxPath + '/template/goto_add'
+                           });
     this.layerIndex = index;
 };
 
@@ -63,13 +63,14 @@ Template.openAddTemplate = function () {
 Template.openTemplateDetail = function () {
     if (this.check()) {
         var index = layer.open({
-            type: 2,
-            title: '模板管理编辑',
-            area: ['100%', '100%'],//宽高
-            fix: false, //不固定
-            maxmin: true,
-            content: Feng.ctxPath + '/template/goto_update/' + Template.seItem.id
-        });
+                                   type: 2,
+                                   title: '模板管理编辑',
+                                   area: ['100%', '100%'],//宽高
+                                   fix: false, //不固定
+                                   maxmin: true,
+                                   content: Feng.ctxPath + '/template/goto_update/'
+                                            + Template.seItem.id
+                               });
         this.layerIndex = index;
     }
 };
@@ -85,12 +86,12 @@ Template.delete = function () {
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("id",this.seItem.id);
+        ajax.set("id", this.seItem.id);
         ajax.start();
     }
 };
 
-Template.formParams = function() {
+Template.formParams = function () {
     var queryData = {};
     return queryData;
 };

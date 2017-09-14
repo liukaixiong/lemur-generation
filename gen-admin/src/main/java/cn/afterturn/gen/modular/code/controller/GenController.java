@@ -156,16 +156,27 @@ public class GenController {
         try {
             out = new ZipOutputStream(res.getOutputStream());
             for (int i = 0; i < fileList.size(); i++) {
-                if (templateList.get(i).getFileName().endsWith("js") || templateList.get(i).getFileName().endsWith("html")) {
-                    out.putNextEntry(new ZipEntry(String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
+                if (templateList.get(i).getFileName().endsWith("js")) {
+                    out.putNextEntry(new ZipEntry(ge.getJsPackage().replaceAll("\\.", "\\/")
+                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
+                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
+                            + String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
+                } else if (templateList.get(i).getFileName().endsWith("html")) {
+                    out.putNextEntry(new ZipEntry(ge.getHtmlPackage().replaceAll("\\.", "\\/")
+                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
+                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
+                            + String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
                 } else {
-                    out.putNextEntry(new ZipEntry(String.format(templateList.get(i).getFileName(), ge.getEntityName())));
+                    out.putNextEntry(new ZipEntry(ge.getCodePackage().replaceAll("\\.", "\\/")
+                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
+                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
+                            + String.format(templateList.get(i).getFileName(), ge.getEntityName())));
                 }
                 out.write(fileList.get(i).getBytes(), 0, fileList.get(i).getBytes().length);
                 out.closeEntry();
             }
             res.setContentType("application/octet-stream");
-            res.setHeader("Content-Disposition", "attachment;filename=" + "code.zip");
+            res.setHeader("Content-Disposition", "attachment;filename=" + ge.getEntityName() + ".zip");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         } finally {
