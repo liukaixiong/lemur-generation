@@ -137,7 +137,7 @@ public class GenController {
         model.setPasswd(entity.getDbPassword());
         model.setUsername(entity.getDbUserName());
         if (StringUtils.isEmpty(ge.getEntityName())) {
-            ge.setEntityName(NameUtil.getEntityHumpName(dbName));
+            ge.setEntityName(NameUtil.getEntityHumpName(tableName));
         }
         model.setGenerationEntity(ge);
         List<TemplateModel> templateList = templateService.getTemplateByIds(templates);

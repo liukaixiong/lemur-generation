@@ -138,14 +138,19 @@ GEN.getDataBases = function (id) {
     GEN.selectChange(id, 'dblinklist');
     $("#databaseslist").html('');
     $("#tableslist").html('');
+    GEN.param.dbName = null;
+    GEN.param.tableName = null;
     GEN.getData('/code/queryDatabses', 'databases');
+    GEN.genBtnAble();
 }
 
 GEN.getTables = function (name) {
     GEN.param.dbName = name;
     GEN.selectChange(name, 'databaseslist');
     $("#tableslist").html('');
+    GEN.param.tableName = null;
     GEN.getData('/code/queryTables', 'tables');
+    GEN.genBtnAble();
 }
 
 GEN.selectTables = function (tableName,chinaName) {
@@ -154,6 +159,8 @@ GEN.selectTables = function (tableName,chinaName) {
 
     $("#className").val(tableName);
     $("#name").val(chinaName);
+    GEN.genBtnAble();
+
 }
 GEN.selectTemplates = function (id) {
     if (!GEN.param.templates) {
@@ -174,6 +181,7 @@ GEN.selectTemplates = function (id) {
         });
         GEN.param.templates.push(id);
     }
+    GEN.genBtnAble();
 
 }
 
@@ -196,6 +204,14 @@ GEN.selectChange = function (data, eleName) {
     });
 }
 
+GEN.genBtnAble = function () {
+    if(GEN.param.tableName && GEN.param.templates && GEN.param.templates.length >0){
+        $("#genBtn").removeAttr("disabled");
+    }else{
+        $("#genBtn").attr("disabled","disabled");
+    }
+}
+
 GEN.genCode = function () {
     if (!this.validate()) {
         return;
@@ -204,7 +220,7 @@ GEN.genCode = function () {
     GEN.param.codePackage = $("#codePackage").val();
     GEN.param.htmlPackage = $("#htmlPackage").val();
     GEN.param.jsPackage = $("#jsPackage").val();
-    GEN.param.className = $("#className").val();
+    GEN.param.entityName = $("#className").val();
     GEN.param.name = $("#name").val();
     GEN.param.encoded = $("#encoded").val();
     window.location.href = '/code/genCode?' + $.param(GEN.param);

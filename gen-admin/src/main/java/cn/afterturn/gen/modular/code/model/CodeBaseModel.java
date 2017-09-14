@@ -15,6 +15,7 @@ public abstract class CodeBaseModel<T> extends Model {
     @TableField(value = "CRT_USER_ID")
     private Integer crtUserId;
 
+    @TableField(exist = false)
     private String crtUserName;
 
     /**
@@ -29,6 +30,7 @@ public abstract class CodeBaseModel<T> extends Model {
     @TableField(value = "MDF_USER_ID")
     private Integer mdfUserId;
 
+    @TableField(exist = false)
     private String mdfUserName;
 
     /**
