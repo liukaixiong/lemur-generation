@@ -18,7 +18,7 @@ import java.util.Date;
  * @Date 2017-09-13 09:18
  */
 @TableName("t_code_gen_params")
-public class GenParamModel extends Model<GenParamModel> {
+public class GenParamModel extends CodeBaseModel<GenParamModel> {
 
     private static final long serialVersionUID = 1L;
 
@@ -62,31 +62,6 @@ public class GenParamModel extends Model<GenParamModel> {
      */
     @TableField(value = "html_package")
     private String htmlPackage;
-
-    /**
-     * 创建人
-     */
-    @TableField(value = "CRT_USER_ID")
-    private Integer crtUserId;
-
-    /**
-     * 创建时间
-     */
-    @TableField(value = "CRT_TIME")
-    private Date crtTime;
-
-    /**
-     * 修改人
-     */
-    @TableField(value = "MDF_USER_ID")
-    private Integer mdfUserId;
-
-    /**
-     * 修改时间
-     */
-    @TableField(value = "MDF_TIME")
-    private Date mdfTime;
-
 
     /**
      * 获取: Id
@@ -173,63 +148,6 @@ public class GenParamModel extends Model<GenParamModel> {
     public void setHtmlPackage(String htmlPackage) {
         this.htmlPackage = htmlPackage;
     }
-
-    /**
-     * 获取: 创建人
-     */
-    public Integer getCrtUserId() {
-        return crtUserId;
-    }
-
-    /**
-     * 设置: 创建人
-     */
-    public void setCrtUserId(Integer crtUserId) {
-        this.crtUserId = crtUserId;
-    }
-
-    /**
-     * 获取: 创建时间
-     */
-    public Date getCrtTime() {
-        return crtTime;
-    }
-
-    /**
-     * 设置: 创建时间
-     */
-    public void setCrtTime(Date crtTime) {
-        this.crtTime = crtTime;
-    }
-
-    /**
-     * 获取: 修改人
-     */
-    public Integer getMdfUserId() {
-        return mdfUserId;
-    }
-
-    /**
-     * 设置: 修改人
-     */
-    public void setMdfUserId(Integer mdfUserId) {
-        this.mdfUserId = mdfUserId;
-    }
-
-    /**
-     * 获取: 修改时间
-     */
-    public Date getMdfTime() {
-        return mdfTime;
-    }
-
-    /**
-     * 设置: 修改时间
-     */
-    public void setMdfTime(Date mdfTime) {
-        this.mdfTime = mdfTime;
-    }
-
 
     @Override
     protected Serializable pkVal() {

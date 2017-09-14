@@ -25,6 +25,7 @@ import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.code.model.DbInfoModel;
 import cn.afterturn.gen.modular.code.service.IDbInfoService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 /**
  * 数据库管理控制器
@@ -77,6 +78,7 @@ public class DbInfoController extends BaseController {
         Page<DbInfoModel> page = new PageFactory<DbInfoModel>().defaultPage();
         model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(dbInfoService.selectPage(page, model, new EntityWrapper<DbInfoModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

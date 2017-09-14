@@ -3,12 +3,15 @@ package cn.afterturn.gen.common.constant.factory;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.afterturn.gen.common.constant.cache.Cache;
+import cn.afterturn.gen.common.constant.cache.CacheKey;
 import cn.afterturn.gen.common.constant.state.ManagerStatus;
 import cn.afterturn.gen.common.constant.state.MenuStatus;
 import cn.afterturn.gen.common.persistence.dao.DeptMapper;
@@ -57,6 +60,7 @@ public class ConstantFactory implements IConstantFactory {
      * @Date 2017/5/9 23:41
      */
     @Override
+    @Cacheable(value = Cache.USER, key = "'" + CacheKey.USER_NAME + "'+#userId")
     public String getUserNameById(Integer userId) {
         User user = userMapper.selectById(userId);
         if (user != null) {
@@ -86,6 +90,7 @@ public class ConstantFactory implements IConstantFactory {
      * 通过角色ids获取角色名称
      */
     @Override
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.ROLES_NAME + "'+#roleIds")
     public String getRoleName(String roleIds) {
         Integer[] roles = Convert.toIntArray(roleIds);
         StringBuilder sb = new StringBuilder();
@@ -102,6 +107,7 @@ public class ConstantFactory implements IConstantFactory {
      * 通过角色id获取角色名称
      */
     @Override
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_NAME + "'+#roleId")
     public String getSingleRoleName(Integer roleId) {
         if (0 == roleId) {
             return "--";
@@ -117,6 +123,7 @@ public class ConstantFactory implements IConstantFactory {
      * 通过角色id获取角色英文名称
      */
     @Override
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_TIP + "'+#roleId")
     public String getSingleRoleTip(Integer roleId) {
         if (0 == roleId) {
             return "--";
@@ -132,6 +139,7 @@ public class ConstantFactory implements IConstantFactory {
      * 获取部门名称
      */
     @Override
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEPT_NAME + "'+#deptId")
     public String getDeptName(Integer deptId) {
         Dept dept = deptMapper.selectById(deptId);
         if (ToolUtil.isNotEmpty(dept) && ToolUtil.isNotEmpty(dept.getFullname())) {

@@ -29,6 +29,7 @@ import cn.afterturn.gen.modular.code.model.TemplateModel;
 import cn.afterturn.gen.modular.code.service.ITemplateFileService;
 import cn.afterturn.gen.modular.code.service.ITemplateGroupService;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 /**
  * 模板管理控制器
@@ -50,6 +51,7 @@ public class TemplateController extends BaseController {
     private ITemplateFileService templateFileService;
     @Autowired
     private ITemplateGroupService templateGroupService;
+
 
     /**
      * 跳转到首页
@@ -95,6 +97,7 @@ public class TemplateController extends BaseController {
         Page<TemplateModel> page = new PageFactory<TemplateModel>().defaultPage();
         model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(templateService.selectPage(page, model, new EntityWrapper<TemplateModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

@@ -129,12 +129,12 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ErrorTip notFount(RuntimeException e) {
+    public String notFount(RuntimeException e) {
         LogManager.me().executeLog(LogTaskFactory.exceptionLog(ShiroKit.getUser().getId(), e));
         HttpKit.getRequest().setAttribute("tip", "服务器未知运行时异常");
         log.error("运行时异常:", e);
-        return new ErrorTip(BizExceptionEnum.SERVER_ERROR.getCode(), BizExceptionEnum.SERVER_ERROR.getMessage());
+        return "/500.html";
+        //return new ErrorTip(BizExceptionEnum.SERVER_ERROR.getCode(), BizExceptionEnum.SERVER_ERROR.getMessage());
     }
 
     /**

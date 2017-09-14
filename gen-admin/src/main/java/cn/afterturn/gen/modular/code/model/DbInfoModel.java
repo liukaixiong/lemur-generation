@@ -18,7 +18,7 @@ import java.util.Date;
  * @Date 2017-09-11 11:15
  */
 @TableName("t_code_dbinfo")
-public class DbInfoModel extends Model<DbInfoModel> {
+public class DbInfoModel extends CodeBaseModel<DbInfoModel> {
 
     private static final long serialVersionUID = 1L;
     /**
@@ -68,31 +68,6 @@ public class DbInfoModel extends Model<DbInfoModel> {
      */
     @TableField(value = "DB_TYPE")
     private String dbType;
-
-    /**
-     * 创建人
-     */
-    @TableField(value = "CRT_USER_ID")
-    private Integer crtUserId;
-
-    /**
-     * 创建时间
-     */
-    @TableField(value = "CRT_TIME")
-    private Date crtTime;
-
-    /**
-     * 修改人
-     */
-    @TableField(value = "MDF_USER_ID")
-    private Integer mdfUserId;
-
-    /**
-     * 修改时间
-     */
-    @TableField(value = "MDF_TIME")
-    private Date mdfTime;
-
 
     /**
      * 获取: Id
@@ -205,63 +180,6 @@ public class DbInfoModel extends Model<DbInfoModel> {
     public void setDbType(String dbType) {
         this.dbType = dbType;
     }
-
-    /**
-     * 获取: 创建人
-     */
-    public Integer getCrtUserId() {
-        return crtUserId;
-    }
-
-    /**
-     * 设置: 创建人
-     */
-    public void setCrtUserId(Integer crtUserId) {
-        this.crtUserId = crtUserId;
-    }
-
-    /**
-     * 获取: 创建时间
-     */
-    public Date getCrtTime() {
-        return crtTime;
-    }
-
-    /**
-     * 设置: 创建时间
-     */
-    public void setCrtTime(Date crtTime) {
-        this.crtTime = crtTime;
-    }
-
-    /**
-     * 获取: 修改人
-     */
-    public Integer getMdfUserId() {
-        return mdfUserId;
-    }
-
-    /**
-     * 设置: 修改人
-     */
-    public void setMdfUserId(Integer mdfUserId) {
-        this.mdfUserId = mdfUserId;
-    }
-
-    /**
-     * 获取: 修改时间
-     */
-    public Date getMdfTime() {
-        return mdfTime;
-    }
-
-    /**
-     * 设置: 修改时间
-     */
-    public void setMdfTime(Date mdfTime) {
-        this.mdfTime = mdfTime;
-    }
-
 
     @Override
     protected Serializable pkVal() {

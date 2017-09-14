@@ -21,6 +21,7 @@ import cn.afterturn.gen.core.base.controller.BaseController;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.code.model.TemplateShareModel;
 import cn.afterturn.gen.modular.code.service.ITemplateShareService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 /**
  * 模板分享管理控制器
@@ -72,6 +73,7 @@ public class TemplateShareController extends BaseController {
     public Object list(TemplateShareModel model) {
         Page<TemplateShareModel> page = new PageFactory<TemplateShareModel>().defaultPage();
         page.setRecords(templateShareService.selectPage(page, model, new EntityWrapper<TemplateShareModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

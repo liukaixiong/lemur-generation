@@ -24,6 +24,7 @@ import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.code.model.TemplateGroupModel;
 import cn.afterturn.gen.modular.code.service.ITemplateGroupService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 /**
  * 组管理控制器
@@ -76,6 +77,7 @@ public class TemplateGroupController extends BaseController {
         Page<TemplateGroupModel> page = new PageFactory<TemplateGroupModel>().defaultPage();
         model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(templateGroupService.selectPage(page, model, new EntityWrapper<TemplateGroupModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

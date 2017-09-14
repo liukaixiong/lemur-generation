@@ -23,9 +23,9 @@ DbInfo.initColumn = function () {
              return "******";
          }},
 	     {title: '数据库类型', field: 'dbType', align: 'center', valign: 'middle'},
-	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
+	     {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
 	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
-	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
+	     {title: '修改人', field: 'mdfUserName', align: 'center', valign: 'middle'},
 	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
     ];
 };

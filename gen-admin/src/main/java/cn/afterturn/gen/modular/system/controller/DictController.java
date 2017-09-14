@@ -69,7 +69,6 @@ public class DictController extends BaseController {
     /**
      * 跳转到修改字典
      */
-    @Permission(Const.ADMIN_NAME)
     @RequestMapping("/dict_edit/{dictId}")
     public String deptUpdate(@PathVariable Integer dictId, Model model) {
         Dict dict = dictMapper.selectById(dictId);
@@ -87,7 +86,6 @@ public class DictController extends BaseController {
      */
     @BussinessLog(value = "添加字典记录", key = "dictName,dictValues", dict = cn.afterturn.gen.common.constant.Dict.DictMap)
     @RequestMapping(value = "/add")
-    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object add(String dictName, String dictValues) {
         if (ToolUtil.isOneEmpty(dictName, dictValues)) {
@@ -101,7 +99,6 @@ public class DictController extends BaseController {
      * 获取所有字典列表
      */
     @RequestMapping(value = "/list")
-    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object list(String condition) {
         List<Map<String, Object>> list = this.dictDao.list(condition);
@@ -112,7 +109,6 @@ public class DictController extends BaseController {
      * 字典详情
      */
     @RequestMapping(value = "/detail/{dictId}")
-    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object detail(@PathVariable("dictId") Integer dictId) {
         return dictMapper.selectById(dictId);
@@ -123,7 +119,6 @@ public class DictController extends BaseController {
      */
     @BussinessLog(value = "修改字典", key = "dictName,dictValues", dict = cn.afterturn.gen.common.constant.Dict.DictMap)
     @RequestMapping(value = "/update")
-    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object update(Integer dictId, String dictName, String dictValues) {
         if (ToolUtil.isOneEmpty(dictId, dictName, dictValues)) {
@@ -138,13 +133,10 @@ public class DictController extends BaseController {
      */
     @BussinessLog(value = "删除字典记录", key = "dictId", dict = cn.afterturn.gen.common.constant.Dict.DeleteDict)
     @RequestMapping(value = "/delete")
-    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Object delete(@RequestParam Integer dictId) {
-
         //缓存被删除的名称
         LogObjectHolder.me().set(ConstantFactory.me().getDictName(dictId));
-
         this.dictService.delteDict(dictId);
         return SUCCESS_TIP;
     }

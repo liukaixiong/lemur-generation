@@ -13,6 +13,7 @@ import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.code.model.GenParamModel;
 import cn.afterturn.gen.modular.code.service.IGenParamService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,6 @@ public class GenParamController extends BaseController {
 
     @Autowired
     private IGenParamService genParamService;
-
     /**
      * 跳转到首页
      */
@@ -81,6 +81,7 @@ public class GenParamController extends BaseController {
         Page<GenParamModel> page = new PageFactory<GenParamModel>().defaultPage();
         model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(genParamService.selectPage(page,model,new EntityWrapper<GenParamModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

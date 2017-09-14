@@ -19,5 +19,7 @@ public interface CacheKey {
 
     String DEPT_NAME = "dept_name_";
 
+    String USER_NAME = "user_name_";
+
 
 }

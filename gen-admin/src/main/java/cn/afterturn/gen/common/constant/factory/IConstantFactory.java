@@ -1,11 +1,7 @@
 package cn.afterturn.gen.common.constant.factory;
 
-import org.springframework.cache.annotation.Cacheable;
-
 import java.util.List;
 
-import cn.afterturn.gen.common.constant.cache.Cache;
-import cn.afterturn.gen.common.constant.cache.CacheKey;
 import cn.afterturn.gen.common.persistence.model.Dict;
 
 /**
@@ -35,25 +31,21 @@ public interface IConstantFactory {
     /**
      * 通过角色ids获取角色名称
      */
-    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.ROLES_NAME + "'+#roleIds")
     String getRoleName(String roleIds);
 
     /**
      * 通过角色id获取角色名称
      */
-    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_NAME + "'+#roleId")
     String getSingleRoleName(Integer roleId);
 
     /**
      * 通过角色id获取角色英文名称
      */
-    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_TIP + "'+#roleId")
     String getSingleRoleTip(Integer roleId);
 
     /**
      * 获取部门名称
      */
-    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEPT_NAME + "'+#deptId")
     String getDeptName(Integer deptId);
 
     /**

@@ -21,9 +21,9 @@ Template.initColumn = function () {
          {title: '所属组', field: 'groupId', align: 'center', valign: 'middle'},
 	     {title: '模板描述', field: 'templateDesc', align: 'center', valign: 'middle'},
 	     {title: '文件名称', field: 'fileName', align: 'center', valign: 'middle'},
-	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
+	     {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
 	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
-	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
+	     {title: '修改人', field: 'mdfUserName', align: 'center', valign: 'middle'},
 	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
     ];
 };

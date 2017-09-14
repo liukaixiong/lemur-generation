@@ -16,7 +16,7 @@ import java.util.Date;
  * @Date 2017-09-12 13:42
  */
 @TableName("t_code_template_group")
-public class TemplateGroupModel extends Model<TemplateGroupModel> {
+public class TemplateGroupModel extends CodeBaseModel<TemplateGroupModel> {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,31 +44,6 @@ public class TemplateGroupModel extends Model<TemplateGroupModel> {
      */
     @TableField(value = "desc")
     private String desc;
-
-    /**
-     * 创建人
-     */
-    @TableField(value = "CRT_USER_ID")
-    private Integer crtUserId;
-
-    /**
-     * 创建时间
-     */
-    @TableField(value = "CRT_TIME")
-    private Date crtTime;
-
-    /**
-     * 修改人
-     */
-    @TableField(value = "MDF_USER_ID")
-    private Integer mdfUserId;
-
-    /**
-     * 修改时间
-     */
-    @TableField(value = "MDF_TIME")
-    private Date mdfTime;
-
 
     /**
      * 获取: Id
@@ -125,63 +100,6 @@ public class TemplateGroupModel extends Model<TemplateGroupModel> {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    /**
-     * 获取: 创建人
-     */
-    public Integer getCrtUserId() {
-        return crtUserId;
-    }
-
-    /**
-     * 设置: 创建人
-     */
-    public void setCrtUserId(Integer crtUserId) {
-        this.crtUserId = crtUserId;
-    }
-
-    /**
-     * 获取: 创建时间
-     */
-    public Date getCrtTime() {
-        return crtTime;
-    }
-
-    /**
-     * 设置: 创建时间
-     */
-    public void setCrtTime(Date crtTime) {
-        this.crtTime = crtTime;
-    }
-
-    /**
-     * 获取: 修改人
-     */
-    public Integer getMdfUserId() {
-        return mdfUserId;
-    }
-
-    /**
-     * 设置: 修改人
-     */
-    public void setMdfUserId(Integer mdfUserId) {
-        this.mdfUserId = mdfUserId;
-    }
-
-    /**
-     * 获取: 修改时间
-     */
-    public Date getMdfTime() {
-        return mdfTime;
-    }
-
-    /**
-     * 设置: 修改时间
-     */
-    public void setMdfTime(Date mdfTime) {
-        this.mdfTime = mdfTime;
-    }
-
 
     @Override
     protected Serializable pkVal() {
