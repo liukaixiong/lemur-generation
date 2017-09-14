@@ -2,6 +2,7 @@ package cn.afterturn.gen.modular.system.controller;
 
 import com.google.code.kaptcha.Constants;
 
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import javax.annotation.Resource;
 
 import cn.afterturn.gen.common.constant.state.ManagerStatus;
 import cn.afterturn.gen.common.exception.BizExceptionEnum;
-import cn.afterturn.gen.common.exception.BussinessException;
 import cn.afterturn.gen.common.exception.InvalidKaptchaException;
 import cn.afterturn.gen.common.persistence.dao.UserMapper;
 import cn.afterturn.gen.common.persistence.model.User;
@@ -29,6 +29,7 @@ import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.shiro.ShiroUser;
 import cn.afterturn.gen.core.util.ApiMenuFilter;
 import cn.afterturn.gen.core.util.KaptchaUtil;
+import cn.afterturn.gen.core.util.PatternUtil;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.system.dao.MenuDao;
 import cn.afterturn.gen.modular.system.dao.UserMgrDao;
@@ -149,8 +150,13 @@ public class LoginController extends BaseController {
         // 判断账号是否重复
         User theUser = managerDao.getByAccount(user.getAccount());
         if (theUser != null) {
-            throw new BussinessException(BizExceptionEnum.USER_ALREADY_REG);
+            throw new UnknownAccountException(BizExceptionEnum.USER_ALREADY_REG.getMessage());
         }
+
+        if (!PatternUtil.isPhone(username)) {
+            throw new UnknownAccountException("手机号非法");
+        }
+
         // 完善账号信息
         user.setName(username.trim());
         user.setBirthday(new Date());

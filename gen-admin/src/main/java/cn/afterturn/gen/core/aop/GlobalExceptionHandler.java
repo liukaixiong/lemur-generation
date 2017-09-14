@@ -3,6 +3,7 @@ package cn.afterturn.gen.core.aop;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.DisabledAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.UnknownSessionException;
 import org.slf4j.Logger;
@@ -106,6 +107,19 @@ public class GlobalExceptionHandler {
         LogManager.me().executeLog(LogTaskFactory.loginLog(username, "验证码错误", HttpKit.getIp()));
         model.addAttribute("tips", "验证码错误");
         return "/login.html";
+    }
+
+    /**
+     * 注册相关错误
+     * @param e
+     * @param model
+     * @return
+     */
+    @ExceptionHandler(UnknownAccountException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String register(UnknownAccountException e, Model model) {
+        model.addAttribute("tips", e.getMessage());
+        return "/register.html";
     }
 
     /**
