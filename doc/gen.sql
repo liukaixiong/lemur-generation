@@ -33,7 +33,7 @@ CREATE TABLE `t_code_dbinfo` (
 -- ----------------------------
 -- Records of t_code_dbinfo
 -- ----------------------------
-INSERT INTO t_code_dbinfo VALUES ( `ALIAS`, `DB_DRIVER`, `DB_URL`, `DB_USER_NAME`, `DB_PASSWORD`, `USER_ID`, `DB_TYPE`, `CRT_USER_ID`, `CRT_TIME`, `MDF_USER_ID`, `MDF_TIME`) VALUES ('测试', 'com.mysql.jdbc.Driver', 'jdbc:mysql://localhost:3306/information_schema?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull', 'test', 'test', NULL, 'mysql', NULL, NULL, '1', '2017-09-13 22:19:33');
+INSERT INTO t_code_dbinfo ( `ALIAS`, `DB_DRIVER`, `DB_URL`, `DB_USER_NAME`, `DB_PASSWORD`, `USER_ID`, `DB_TYPE`, `CRT_USER_ID`, `CRT_TIME`, `MDF_USER_ID`, `MDF_TIME`) VALUES ('测试', 'com.mysql.jdbc.Driver', 'jdbc:mysql://localhost:3306/information_schema?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull', 'test', 'test', NULL, 'mysql', NULL, NULL, '1', '2017-09-13 22:19:33');
 -- ----------------------------
 -- Table structure for t_code_gen_params
 -- ----------------------------
