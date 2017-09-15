@@ -90,4 +90,8 @@ public interface ITemplateService {
      * @return
      */
     List<TemplateModel> getTemplateByIds(String[] templates);
+    /**
+     * 查询这个组的所有的模板
+     */
+    List<TemplateModel> getAllTemplateByGroupId(String groupId);
 }

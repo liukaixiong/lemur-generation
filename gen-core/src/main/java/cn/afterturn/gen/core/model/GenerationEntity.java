@@ -22,11 +22,11 @@ public class GenerationEntity implements Serializable {
      */
     private String codePackage ;
     /**
-     * html包名,如果为空,使用javaPackage
+     * html包名,如果为空,使用codePackage
      */
     private String htmlPackage;
     /**
-     * js包名,如果为空,使用javaPackage
+     * js包名,如果为空,使用codePackage
      */
     private String jsPackage;
     /**
@@ -34,7 +34,7 @@ public class GenerationEntity implements Serializable {
      */
     private String name;
     /**
-     * 数据库表明
+     * 数据库表名
      */
     private String tableName;
     /**
@@ -107,6 +107,9 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getHtmlPackage() {
+        if(StringUtils.isEmpty(htmlPackage)){
+            return codePackage;
+        }
         return htmlPackage;
     }
 
@@ -115,6 +118,9 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getJsPackage() {
+        if(StringUtils.isEmpty(jsPackage)){
+            return codePackage;
+        }
         return jsPackage;
     }
 

@@ -14,11 +14,16 @@ import org.apache.shiro.web.servlet.ShiroHttpSession;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.apache.shiro.web.session.mgt.ServletContainerSessionManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.core.env.Environment;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -33,7 +38,14 @@ import cn.afterturn.gen.core.shiro.ShiroDbRealm;
  * @date 2016年11月14日 下午3:03:44
  */
 @Configuration
-public class ShiroConfig {
+public class ShiroConfig implements EnvironmentAware {
+
+    private boolean shareOpen;
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        shareOpen = Boolean.valueOf(environment.getProperty("guns.share-open"));
+    }
 
     /**
      * 安全管理器
@@ -127,7 +139,11 @@ public class ShiroConfig {
         /**
          * 默认的登陆访问url
          */
-        shiroFilter.setLoginUrl("/login");
+        if (shareOpen) {
+            shiroFilter.setLoginUrl("/share");
+        } else {
+            shiroFilter.setLoginUrl("/login");
+        }
         /**
          * 登陆成功后跳转的url
          */
@@ -152,6 +168,7 @@ public class ShiroConfig {
         hashMap.put("/static/**", "anon");
         hashMap.put("/login", "anon");
         hashMap.put("/register", "anon");
+        hashMap.put("/share/**", "anon");
         hashMap.put("/global/sessionError", "anon");
         hashMap.put("/kaptcha", "anon");
         hashMap.put("/**", "user");

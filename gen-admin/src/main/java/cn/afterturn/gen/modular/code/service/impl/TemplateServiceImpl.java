@@ -44,8 +44,8 @@ public class TemplateServiceImpl implements ITemplateService {
     @Override
     public Integer updateById(TemplateModel entity, TemplateFileModel fileModel) {
         fileModel.setTemplateId(entity.getId());
-        int  nums = templateFileDao.updateTemplateId(fileModel);
-        if(nums == 0){
+        int nums = templateFileDao.updateTemplateId(fileModel);
+        if (nums == 0) {
             templateFileDao.insert(fileModel);
         }
         return templateDao.updateById(entity);
@@ -79,6 +79,17 @@ public class TemplateServiceImpl implements ITemplateService {
     @Override
     public List<TemplateModel> getTemplateByIds(String[] templates) {
         return templateDao.getTemplateByIds(templates);
+    }
+
+    @Override
+    public List<TemplateModel> getAllTemplateByGroupId(String groupId) {
+        List<TemplateModel> list = templateDao.getAllTemplateByGroupId(groupId);
+        for (int i = 0; i < (list == null ? 0 : list.size()); i++) {
+            TemplateFileModel fileModel = new TemplateFileModel();
+            fileModel.setTemplateId(list.get(i).getId());
+            list.get(i).setFileModel(templateFileDao.selectOne(fileModel));
+        }
+        return list;
     }
 
 }

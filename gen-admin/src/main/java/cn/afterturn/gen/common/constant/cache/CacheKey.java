@@ -21,5 +21,7 @@ public interface CacheKey {
 
     String USER_NAME = "user_name_";
 
+    String TEMPLATE_DATA = "template_data_";
+
 
 }

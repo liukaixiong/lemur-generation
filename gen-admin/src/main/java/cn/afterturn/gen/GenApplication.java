@@ -37,6 +37,6 @@ public class GenApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
         SpringApplication.run(GenApplication.class, args);
-        logger.info("GunsApplication is success!");
+        logger.info("Lemur Gen Application is success!");
     }
 }

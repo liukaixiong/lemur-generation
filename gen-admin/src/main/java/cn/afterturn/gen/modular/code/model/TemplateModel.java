@@ -69,6 +69,7 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
     @TableField(value = "TEMPLATE_TYPE")
     private String templateType;
 
+    private TemplateFileModel fileModel;
 
     /**
      * 获取: Id
@@ -176,6 +177,13 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
         this.templateType = templateType;
     }
 
+    public TemplateFileModel getFileModel() {
+        return fileModel;
+    }
+
+    public void setFileModel(TemplateFileModel fileModel) {
+        this.fileModel = fileModel;
+    }
 
     @Override
     protected Serializable pkVal() {

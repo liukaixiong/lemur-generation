@@ -48,6 +48,10 @@
         select * from t_code_template t where t.ID in
         <foreach collection="ids" item="it" open="(" close=")" separator=",">#{it}</foreach>
     </select>
+    <select id="getAllTemplateByGroupId"
+            resultType="cn.afterturn.gen.modular.code.model.TemplateModel">
+        select * from t_code_template t where t.group_id = #{groupId}
+    </select>
 
     <sql id="select_content">
         <if test="e.id != null and e.id != '' ">
