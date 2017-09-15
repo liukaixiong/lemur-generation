@@ -71,9 +71,9 @@ mybatis-plus:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://121.42.11.118:3308/easycode_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://localhost:3306/easycode_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
       username: jueyue
-      password: wqeqeqwwocszjxsfakdfas
+      password: jueyue
       filters: log4j,wall,mergeStat
 
 logging:
@@ -94,9 +94,9 @@ server:
 spring:
   profiles: pro
   datasource:
-      url: jdbc:mysql://localhost:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://localhost:3306/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
       username: jueyue
-      password: wqeqeqwwocszjxsfakdfas
+      password: jueyue
       filters: log4j,wall,mergeStat
 
 logging:
