@@ -69,6 +69,7 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
     @TableField(value = "TEMPLATE_TYPE")
     private String templateType;
 
+    @TableField(exist = false)
     private TemplateFileModel fileModel;
 
     /**

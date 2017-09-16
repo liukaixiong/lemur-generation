@@ -29,7 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 public class HttpKit {
 
     public static String getIp() {
-        return HttpKit.getRequest().getRemoteHost();
+
+        return HttpKit.getRequest().getHeader("x-forwarded-for");
     }
 
     /**
