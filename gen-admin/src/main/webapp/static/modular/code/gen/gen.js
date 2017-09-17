@@ -64,7 +64,7 @@ var GEN = {
                     message: '只能是数字和字母和-_.'
                 },
                 stringLength: {/*长度提示*/
-                    min: 1,
+                    min: 0,
                     max: 100,
                     message: 'Html目录长度必须在1到100之间'
                 }
@@ -77,9 +77,22 @@ var GEN = {
                     message: '只能是数字和字母和-_.'
                 },
                 stringLength: {/*长度提示*/
-                    min: 1,
+                    min: 0,
                     max: 100,
                     message: 'Js目录长度必须在1到100之间'
+                }
+            }
+        },
+        xmlPackage: {
+            validators: {
+                regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
+                    regexp: /^[a-zA-Z0-9_\-\.]+$/,
+                    message: '只能是数字和字母和-_.'
+                },
+                stringLength: {/*长度提示*/
+                    min: 0,
+                    max: 100,
+                    message: 'Xml目录长度必须在1到100之间'
                 }
             }
         }
@@ -156,12 +169,22 @@ GEN.getTables = function (name) {
 GEN.selectTables = function (tableName,chinaName) {
     GEN.param.tableName = tableName;
     GEN.selectChange(tableName, 'tableslist');
+    tableName = tableName.toLocaleLowerCase();
+    var index = 0;
+    var humpName = '';
+    while ((index = tableName.indexOf("_")) != -1){
+        humpName += tableName.substring(0, index);
+        tableName = tableName.substring(index + 1, index + 2).toUpperCase() + tableName.substring(index + 2);
+    }
+    humpName += tableName;
+    humpName = humpName.substring(0, 1).toUpperCase() + humpName.substring(1);
 
-    $("#className").val(tableName);
+    $("#className").val(humpName);
     $("#name").val(chinaName);
     GEN.genBtnAble();
 
 }
+
 GEN.selectTemplates = function (id) {
     if (!GEN.param.templates) {
         GEN.param.templates = [];
@@ -221,9 +244,16 @@ GEN.genCode = function () {
     GEN.param.htmlPackage = $("#htmlPackage").val();
     GEN.param.jsPackage = $("#jsPackage").val();
     GEN.param.entityName = $("#className").val();
-    GEN.param.name = $("#name").val();
+    GEN.param.xmlPackage = $("#xmlPackage").val();
+    GEN.param.localPath = $("#localPath").val();
     GEN.param.encoded = $("#encoded").val();
-    window.location.href = '/code/genCode?' + $.param(GEN.param);
+    //本地生产就ajax访问后台就可以了
+    if(GEN.param.localPath){
+        $.getJSON('/code/genCode?' + $.param(GEN.param));
+    }else{
+        window.location.href = '/code/genCode?' + $.param(GEN.param);
+    }
+
 }
 
 // 页面初始化
@@ -241,6 +271,9 @@ $("#params").change(function(){
         $("#codePackage").val(data.codePackage);
         $("#htmlPackage").val(data.htmlPackage);
         $("#jsPackage").val(data.jsPackage);
+        $("#xmlPackage").val(data.xmlPackage);
+        $("#localPath").val(data.localPath);
+        $("#encoded").val(data.encoded);
     });
     ajax.set('id',$("#params").val());
     ajax.start();

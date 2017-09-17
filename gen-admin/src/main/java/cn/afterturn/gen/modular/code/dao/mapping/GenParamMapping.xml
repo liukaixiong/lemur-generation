@@ -5,16 +5,20 @@
 
     <resultMap id="BaseResultMap" type="cn.afterturn.gen.modular.code.model.GenParamModel">
         <result column="id" property="id"/>
+        <result column="ALIAS" property="alias"/>
         <result column="author" property="author"/>
-        <result column="alias" property="alias"/>
-        <result column="user_id" property="userId"/>
         <result column="code_package" property="codePackage"/>
+        <result column="xml_package" property="xmlPackage"/>
         <result column="js_package" property="jsPackage"/>
         <result column="html_package" property="htmlPackage"/>
+        <result column="local_path" property="localPath"/>
+        <result column="encoded" property="encoded"/>
+        <result column="user_id" property="userId"/>
         <result column="CRT_USER_ID" property="crtUserId"/>
         <result column="CRT_TIME" property="crtTime"/>
         <result column="MDF_USER_ID" property="mdfUserId"/>
         <result column="MDF_TIME" property="mdfTime"/>
+
     </resultMap>
 
 

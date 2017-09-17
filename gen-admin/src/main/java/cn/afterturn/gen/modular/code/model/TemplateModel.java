@@ -59,6 +59,11 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
     @TableField(value = "FILE_NAME")
     private String fileName;
     /**
+     * 本地路径
+     */
+    @TableField(value = "local_path")
+    private String localPath;
+    /**
      *  组ID
      */
     @TableField(value = "GROUP_ID")
@@ -180,6 +185,14 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
 
     public TemplateFileModel getFileModel() {
         return fileModel;
+    }
+
+    public String getLocalPath() {
+        return localPath;
+    }
+
+    public void setLocalPath(String localPath) {
+        this.localPath = localPath;
     }
 
     public void setFileModel(TemplateFileModel fileModel) {

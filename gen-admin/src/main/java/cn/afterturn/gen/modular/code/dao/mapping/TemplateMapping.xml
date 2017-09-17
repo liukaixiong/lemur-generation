@@ -10,6 +10,7 @@
         <result column="USER_ID" property="userId"/>
         <result column="TEMPLATE_DESC" property="templateDesc"/>
         <result column="FILE_NAME" property="fileName"/>
+        <result column="LOCAL_PATH" property="localPath"/>
         <result column="GROUP_ID" property="groupId"/>
         <result column="CRT_USER_ID" property="crtUserId"/>
         <result column="CRT_TIME" property="crtTime"/>
@@ -35,7 +36,7 @@
 
     <select id="selectPage" resultMap="BaseResultMap">
         select t.ID, t.Template_NAME, t.Template_path, t.USER_ID, t.Template_DESC, t.FILE_NAME,
-        g.name as GROUP_ID, t.TEMPLATE_TYPE,
+        g.name as GROUP_ID, t.TEMPLATE_TYPE,LOCAL_PATH,
         t.CRT_USER_ID, t.CRT_TIME, t.MDF_USER_ID, t.MDF_TIME from t_code_template t
         LEFT OUTER JOIN t_code_template_group g ON g.id = t.GROUP_ID
         <where>

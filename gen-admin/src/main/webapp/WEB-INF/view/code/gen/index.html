@@ -33,20 +33,26 @@
                                     <#input id="jsPackage" name="Js包名" />
                                 </div>
                                 <div class="col-sm-3">
+                                    <#input id="xmlPackage" name="Xml包名" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#input id="localPath" name="本地路径" />
+                                </div>
+                                <div class="col-sm-3">
+                                    <#select id="encoded" name="编码" >
+                                        <option value="UTF-8">UTF-8</option>
+                                        <option value="GBK">GBK</option>
+                                    </#select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
                                     <#input id="className" name="类名" />
                                 </div>
                                 <div class="col-sm-3">
                                     <#input id="name" name="功能" />
                                 </div>
-                                <div class="col-sm-3">
-                                    <#select id="encoded" name="编码" >
-                                        <option value="UTF8">UTF8</option>
-                                        <option value="gbk">GBK</option>
-                                    </#select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-5">
+                                <div class="col-sm-6">
                                     <button id="genBtn" disabled="disabled" type="button" class="btn btn-primary mr10"
                                             onclick="GEN.genCode()">
                                         <span style="padding: 5px 20px;">生成</span>

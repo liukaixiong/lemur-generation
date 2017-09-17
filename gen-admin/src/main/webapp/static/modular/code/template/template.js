@@ -20,6 +20,7 @@ Template.initColumn = function () {
         {title: '所属组', field: 'groupId', align: 'center', valign: 'middle'},
         {title: '模板描述', field: 'templateDesc', align: 'center', valign: 'middle'},
         {title: '模板路径', field: 'templatePath', align: 'center', valign: 'middle'},
+        {title: '本地路径', field: 'localPath', align: 'center', valign: 'middle'},
         {title: '文件名称', field: 'fileName', align: 'center', valign: 'middle'},
         {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
         {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},

@@ -86,7 +86,8 @@ GenParamInfoDlg.close = function() {
  * 收集数据
  */
 GenParamInfoDlg.collectData = function() {
-    this.set('id').set("alias").set("author").set("codePackage").set("jsPackage").set("htmlPackage");
+    this.set('id').set("alias").set("author").set("codePackage").set("jsPackage").set("htmlPackage")
+        .set("xmlPackage").set("localPath").set("encoded");
 }
 
 /**

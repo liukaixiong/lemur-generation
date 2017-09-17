@@ -30,6 +30,10 @@ public class GenerationEntity implements Serializable {
      */
     private String jsPackage;
     /**
+     * xml包名,如果为空,使用codePackage
+     */
+    private String xmlPackage;
+    /**
      * 功能名称
      */
     private String name;
@@ -126,6 +130,17 @@ public class GenerationEntity implements Serializable {
 
     public void setJsPackage(String jsPackage) {
         this.jsPackage = jsPackage;
+    }
+
+    public String getXmlPackage() {
+        if(StringUtils.isEmpty(xmlPackage)){
+            return codePackage;
+        }
+        return xmlPackage;
+    }
+
+    public void setXmlPackage(String xmlPackage) {
+        this.xmlPackage = xmlPackage;
     }
 
     public String getDate() {

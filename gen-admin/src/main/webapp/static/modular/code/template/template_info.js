@@ -44,7 +44,8 @@ TemplateInfoDlg.close = function() {
  * 收集数据
  */
 TemplateInfoDlg.collectData = function() {
-    this.set('id').set('templateName').set('templatePath').set('templateDesc').set('fileName').set('groupId').set('templateType').set('fileType').set('file');
+    this.set('id').set('templateName').set('templatePath').set('templateDesc').set('fileName')
+        .set('groupId').set('templateType').set('fileType').set('file').set('localPath');
 }
 
 /**

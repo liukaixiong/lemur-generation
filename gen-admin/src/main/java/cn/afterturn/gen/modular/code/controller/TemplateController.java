@@ -107,8 +107,8 @@ public class TemplateController extends BaseController {
     @Permission
     @ResponseBody
     public Object add(TemplateModel model, TemplateFileModel fileModel) throws UnsupportedEncodingException {
-        templateService.insert(model, fileModel);
         fileModel.setFile(hanlderFileEncode(fileModel.getFile()));
+        templateService.insert(model, fileModel);
         return SUCCESS_TIP;
     }
 

@@ -52,6 +52,12 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
     private String codePackage;
 
     /**
+     * xml 路径
+     */
+    @TableField(value = "xml_package")
+    private String xmlPackage;
+
+    /**
      * js 目录
      */
     @TableField(value = "js_package")
@@ -62,6 +68,17 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
      */
     @TableField(value = "html_package")
     private String htmlPackage;
+
+    /**
+     * 本地路径
+     */
+    @TableField(value = "local_path")
+    private String localPath;
+    /**
+     * 编码
+     */
+    @TableField(value = "encoded")
+    private String encoded;
 
     /**
      * 获取: Id
@@ -122,6 +139,20 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
     }
 
     /**
+     * 获取: xml 路径
+     */
+    public String getXmlPackage() {
+        return xmlPackage;
+    }
+
+    /**
+     * 设置: xml 路径
+     */
+    public void setXmlPackage(String xmlPackage) {
+        this.xmlPackage = xmlPackage;
+    }
+
+    /**
      * 获取: js 目录
      */
     public String getJsPackage() {
@@ -147,6 +178,34 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
      */
     public void setHtmlPackage(String htmlPackage) {
         this.htmlPackage = htmlPackage;
+    }
+
+    /**
+     * 获取: 本地路径
+     */
+    public String getLocalPath() {
+        return localPath;
+    }
+
+    /**
+     * 设置: 本地路径
+     */
+    public void setLocalPath(String localPath) {
+        this.localPath = localPath;
+    }
+
+    /**
+     * 获取: 编码
+     */
+    public String getEncoded() {
+        return encoded;
+    }
+
+    /**
+     * 设置: 编码
+     */
+    public void setEncoded(String encoded) {
+        this.encoded = encoded;
     }
 
     @Override

@@ -20,6 +20,9 @@
                     <#input id="templatePath" name="路径" underline="true"/>
                 </div>
                 <div class="col-sm-6">
+                    <#input id="localPath" name="本地路径" underline="true"/>
+                </div>
+                <div class="col-sm-6">
                     <#select id="groupId" name="组" underline="true">
                         @ for(g in groups!){
                         <option value="${g.id}">${g.name}</option>
@@ -48,13 +51,15 @@
                         <option value="SQL">SQL</option>
                     </#select>
                 </div>
-                <textarea id="file" name="file" class="form-control"
-                          rows="15"></textarea>
-                <pre  id="codeFile"  style="display:none;height: 310px;">
-                        <code class="${file.fileType!}">
+                <div class="col-sm-12">
+                    <textarea id="file" name="file" class="form-control"
+                              rows="15"></textarea>
+                    <pre  id="codeFile"  style="display:none;height: 310px;">
+                            <code class="${file.fileType!}">
 
-                        </code>
-                </pre>
+                            </code>
+                    </pre>
+                </div>
             </div>
 
             <div class="row btn-group-m-t">

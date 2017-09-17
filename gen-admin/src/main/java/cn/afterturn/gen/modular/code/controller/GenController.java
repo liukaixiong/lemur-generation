@@ -13,6 +13,7 @@
  */
 package cn.afterturn.gen.modular.code.controller;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,7 @@ import cn.afterturn.gen.core.model.RequestModel;
 import cn.afterturn.gen.core.model.ResponseModel;
 import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ConnectionUtil;
+import cn.afterturn.gen.core.util.FileUtil;
 import cn.afterturn.gen.core.util.NameUtil;
 import cn.afterturn.gen.modular.code.model.DbInfoModel;
 import cn.afterturn.gen.modular.code.model.GenParamModel;
@@ -125,7 +128,7 @@ public class GenController {
     }
 
     @RequestMapping(value = "genCode")
-    public void genCode(DbInfoModel entity, String dbName, String tableName, GenerationEntity ge,
+    public void genCode(DbInfoModel entity, String dbName, String tableName, String localPath, String encoded, GenerationEntity ge,
                         HttpServletRequest req, HttpServletResponse res) {
         entity = dbInfoService.selectOne(entity);
         String[] templates = req.getParameterValues("templates[]");
@@ -148,30 +151,46 @@ public class GenController {
             model.setFile(templateFileList.get(i));
             fileList.addAll(CodeGenUtil.codeGen(model));
         }
-        downThisFileList(res, fileList, templateList, ge);
+        if (StringUtils.isNotEmpty(localPath)) {
+            writeThisFileList(localPath, encoded, fileList, templateList, ge);
+        } else {
+            downThisFileList(res, fileList, templateList, ge);
+        }
     }
 
+    /**
+     * 本地输出代码
+     */
+    private void writeThisFileList(String localPath, String encoded, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
+        for (int i = 0; i < fileList.size(); i++) {
+            // 文件路径包括 本地项目路径 + 项目相对路径 + 包路径 + 类的自我路径
+            String filePath = localPath + File.separator +
+                    (StringUtils.isNotEmpty(templateList.get(i).getLocalPath()) ?
+                            templateList.get(i).getLocalPath().replaceAll("\\.", "\\/") +File.separator : "") +
+                    getPackagePath(templateList.get(i), ge);
+            File path = new File(filePath + File.separator);
+            if (!path.exists()) {
+                path.mkdirs();
+            }
+
+            try {
+                File file = new File(filePath + File.separator + getFileName(templateList.get(i), ge));
+                FileUtils.writeStringToFile(file, fileList.get(i), encoded);
+            } catch (IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        }
+    }
+
+    /**
+     * 下载代码
+     */
     private void downThisFileList(HttpServletResponse res, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
         ZipOutputStream out = null;
         try {
             out = new ZipOutputStream(res.getOutputStream());
             for (int i = 0; i < fileList.size(); i++) {
-                if (templateList.get(i).getFileName().endsWith("js")) {
-                    out.putNextEntry(new ZipEntry(ge.getJsPackage().replaceAll("\\.", "\\/")
-                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
-                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
-                            + String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
-                } else if (templateList.get(i).getFileName().endsWith("html")) {
-                    out.putNextEntry(new ZipEntry(ge.getHtmlPackage().replaceAll("\\.", "\\/")
-                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
-                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
-                            + String.format(templateList.get(i).getFileName(), ge.getEntityName().toLowerCase())));
-                } else {
-                    out.putNextEntry(new ZipEntry(ge.getCodePackage().replaceAll("\\.", "\\/")
-                            + (StringUtils.isNotEmpty(templateList.get(i).getTemplatePath()) ? "/"
-                            + templateList.get(i).getTemplatePath().replaceAll("\\.", "\\/") : "") + "/"
-                            + String.format(templateList.get(i).getFileName(), ge.getEntityName())));
-                }
+                out.putNextEntry(new ZipEntry(getPackagePath(templateList.get(i), ge) + File.separator + getFileName(templateList.get(i), ge)));
                 out.write(fileList.get(i).getBytes(), 0, fileList.get(i).getBytes().length);
                 out.closeEntry();
             }
@@ -187,6 +206,39 @@ public class GenController {
             } catch (IOException e) {
                 LOGGER.error(e.getMessage(), e);
             }
+        }
+    }
+
+    private String getFileName(TemplateModel templateModel, GenerationEntity ge) {
+        if (templateModel.getFileName().endsWith("js")) {
+            return String.format(templateModel.getFileName(), ge.getEntityName().toLowerCase());
+        } else if (templateModel.getFileName().endsWith("html")) {
+            return String.format(templateModel.getFileName(), ge.getEntityName().toLowerCase());
+        } else if (templateModel.getFileName().endsWith("xml")) {
+            return String.format(templateModel.getFileName(), ge.getEntityName());
+        } else {
+            return String.format(templateModel.getFileName(), ge.getEntityName());
+        }
+    }
+
+
+    private String getPackagePath(TemplateModel templateModel, GenerationEntity ge) {
+        if (templateModel.getFileName().endsWith("js")) {
+            return ge.getJsPackage().replaceAll("\\.", "\\/")
+                    + (StringUtils.isNotEmpty(templateModel.getTemplatePath()) ? "/"
+                    + templateModel.getTemplatePath().replaceAll("\\.", "\\/") : "");
+        } else if (templateModel.getFileName().endsWith("html")) {
+            return ge.getHtmlPackage().replaceAll("\\.", "\\/")
+                    + (StringUtils.isNotEmpty(templateModel.getTemplatePath()) ? "/"
+                    + templateModel.getTemplatePath().replaceAll("\\.", "\\/") : "");
+        } else if (templateModel.getFileName().endsWith("xml")) {
+            return ge.getXmlPackage().replaceAll("\\.", "\\/")
+                    + (StringUtils.isNotEmpty(templateModel.getTemplatePath()) ? "/"
+                    + templateModel.getTemplatePath().replaceAll("\\.", "\\/") : "");
+        } else {
+            return ge.getCodePackage().replaceAll("\\.", "\\/")
+                    + (StringUtils.isNotEmpty(templateModel.getTemplatePath()) ? "/"
+                    + templateModel.getTemplatePath().replaceAll("\\.", "\\/") : "");
         }
     }
 
