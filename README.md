@@ -1,6 +1,6 @@
 lemur-generation
 ----------------------
-新一代代码生成器 秒数开发
+思考业务,代码它写
 ----------------------
 	
 	Gen是我构思了挺久的一个代码生成项目,之前零零散散也写了不少代码生成,
@@ -20,7 +20,7 @@ lemur-generation
 
 **使用指南**
 
-**[http://lemur-gen.mydoc.io/](http://lemur-gen.mydoc.io/)**
+**[http://www.afterturn.cn/doc/lemur-gen.html](http://www.afterturn.cn/doc/lemur-gen.html)**
 
 **线上环境,支持直接使用,不需本地安装,注册即可使用**
 
