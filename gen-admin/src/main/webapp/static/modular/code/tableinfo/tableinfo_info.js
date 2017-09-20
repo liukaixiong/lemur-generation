@@ -1,5 +1,5 @@
 /**
- * 初始化表信息管理详情对话框
+ * 初始化详情对话框
  */
 var TableInfoInfoDlg = {
     TableInfoInfoData : {}

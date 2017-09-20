@@ -3,7 +3,6 @@ package cn.afterturn.gen.modular.code.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-
 import cn.afterturn.gen.common.annotion.BussinessLog;
 import cn.afterturn.gen.common.annotion.Permission;
 import cn.afterturn.gen.common.constant.factory.PageFactory;
@@ -11,8 +10,8 @@ import cn.afterturn.gen.common.exception.BizExceptionEnum;
 import cn.afterturn.gen.common.exception.BussinessException;
 import cn.afterturn.gen.core.base.controller.BaseController;
 import cn.afterturn.gen.core.util.ToolUtil;
-import cn.afterturn.gen.modular.code.model.TableInfoModel;
-import cn.afterturn.gen.modular.code.service.ITableInfoService;
+import cn.afterturn.gen.modular.code.model.TableFieldVerifyModel;
+import cn.afterturn.gen.modular.code.service.ITableFieldVerifyService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,42 +31,42 @@ import java.util.Map;
  * 控制器
  *
  * @author JueYue
- * @Date 2017-09-20 09:18
+ * @Date 2017-09-20 09:24
  */
 @Controller
-@RequestMapping("/tableinfo")
-public class TableInfoController extends BaseController {
+@RequestMapping("/tablefieldverify")
+public class TableFieldVerifyController extends BaseController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TableInfoController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TableFieldVerifyController.class);
 
-    private String PREFIX = "/biz/tableinfo/";
+    private String PREFIX = "/biz/tablefieldverify/";
 
     @Autowired
-    private ITableInfoService tableInfoService;
+    private ITableFieldVerifyService tableFieldVerifyService;
 
     /**
      * 跳转到首页
      */
     @RequestMapping("")
     public String index() {
-        return PREFIX + "tableinfo.html";
+        return PREFIX + "tablefieldverify.html";
     }
 
     /**
      * 跳转到添加
      */
     @RequestMapping("/goto_add")
-    public String TableInfoAdd() {
-        return PREFIX + "tableinfo_add.html";
+    public String TableFieldVerifyAdd() {
+        return PREFIX + "tablefieldverify_add.html";
     }
 
     /**
      * 跳转到修改
      */
     @RequestMapping("/goto_update/{id}")
-    public String TableInfoUpdate(@PathVariable Integer id, Model model) {
-	model.addAttribute("tableinfo", tableInfoService.selectById(id));
-        return PREFIX + "tableinfo_edit.html";
+    public String TableFieldVerifyUpdate(@PathVariable Integer id, Model model) {
+	model.addAttribute("tablefieldverify", tableFieldVerifyService.selectById(id));
+        return PREFIX + "tablefieldverify_edit.html";
     }
 
     /**
@@ -75,19 +74,19 @@ public class TableInfoController extends BaseController {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Object list(TableInfoModel model) {
-        Page<TableInfoModel> page = new PageFactory<TableInfoModel>().defaultPage();
-        page.setRecords(tableInfoService.selectPage(page,model,new EntityWrapper<TableInfoModel>()));
+    public Object list(TableFieldVerifyModel model) {
+        Page<TableFieldVerifyModel> page = new PageFactory<TableFieldVerifyModel>().defaultPage();
+        page.setRecords(tableFieldVerifyService.selectPage(page,model,new EntityWrapper<TableFieldVerifyModel>()));
         return super.packForBT(page);
     }
 
 
-    @BussinessLog(value = "新增", key = "tableName" )
+    @BussinessLog(value = "新增", key = "companyid" )
     @RequestMapping(value = "/add")
     @Permission
     @ResponseBody
-    public Object add(TableInfoModel model) {
-        tableInfoService.insert(model);
+    public Object add(TableFieldVerifyModel model) {
+        tableFieldVerifyService.insert(model);
         return SUCCESS_TIP;
     }
 
@@ -97,7 +96,7 @@ public class TableInfoController extends BaseController {
     @Permission
     @ResponseBody
     public Object delete(Integer id) {
-        tableInfoService.deleteById(id);
+        tableFieldVerifyService.deleteById(id);
         return SUCCESS_TIP;
     }
 
@@ -106,11 +105,11 @@ public class TableInfoController extends BaseController {
     @RequestMapping(value = "/update")
     @Permission
     @ResponseBody
-    public Object update(TableInfoModel model) {
+    public Object update(TableFieldVerifyModel model) {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
-        tableInfoService.updateById(model);
+        tableFieldVerifyService.updateById(model);
         return super.SUCCESS_TIP;
     }
 
@@ -119,7 +118,7 @@ public class TableInfoController extends BaseController {
      */
     @RequestMapping(value = "/detail")
     @ResponseBody
-    public Object detail(TableInfoModel model) {
-        return tableInfoService.selectOne(model);
+    public Object detail(TableFieldVerifyModel model) {
+        return tableFieldVerifyService.selectOne(model);
     }
 }

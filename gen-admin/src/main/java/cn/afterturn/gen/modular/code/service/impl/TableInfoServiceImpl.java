@@ -2,21 +2,20 @@ package cn.afterturn.gen.modular.code.service.impl;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import cn.afterturn.gen.modular.code.dao.TableInfoDao;
+import cn.afterturn.gen.modular.code.model.TableInfoModel;
+import cn.afterturn.gen.modular.code.service.ITableInfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import cn.afterturn.gen.modular.code.dao.TableInfoDao;
-import cn.afterturn.gen.modular.code.model.TableInfoModel;
-import cn.afterturn.gen.modular.code.service.ITableInfoService;
-
+import java.util.Map;
 /**
- * 表信息管理Service
+ * Service
  *
  * @author JueYue
- * @Date 2017-09-11 11:32
+ * @Date 2017-09-20 09:18
  */
 @Service
 public class TableInfoServiceImpl implements ITableInfoService {
@@ -61,7 +60,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Override
     public List<TableInfoModel> selectPage(Pagination pagination, TableInfoModel model, Wrapper<TableInfoModel> wrapper) {
-        return tableInfoDao.selectPage(pagination, model, wrapper);
+        return tableInfoDao.selectPage(pagination,model,wrapper);
     }
 
 }

@@ -3,7 +3,7 @@ package cn.afterturn.gen.modular.code.dao;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import cn.afterturn.gen.modular.code.model.TableInfoModel;
+import cn.afterturn.gen.modular.code.model.TableFieldModel;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -11,27 +11,27 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * TableInfoDao
+ * TableFieldDao
  *
  * @author JueYue
- * @Date 2017-09-20 09:18
+ * @Date 2017-09-20 09:22
  */
 @Repository
-public interface TableInfoDao extends BaseMapper<TableInfoModel>{
+public interface TableFieldDao extends BaseMapper<TableFieldModel>{
 
     /**
      * 统计数量
      * @param model
      * @return
      */
-    Integer selectCount(@Param("e")TableInfoModel model);
+    Integer selectCount(@Param("e")TableFieldModel model);
 
     /**
      * 查询列表
      * @param model
      * @return
      */
-    List<TableInfoModel> selectList(@Param("e")TableInfoModel model);
+    List<TableFieldModel> selectList(@Param("e")TableFieldModel model);
 
     /**
      * 分页查询信息
@@ -40,6 +40,6 @@ public interface TableInfoDao extends BaseMapper<TableInfoModel>{
      * @param wrapper
      * @return
      */
-    List<TableInfoModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableInfoModel model,@Param("w") Wrapper<TableInfoModel> wrapper);
+    List<TableFieldModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableFieldModel model,@Param("w") Wrapper<TableFieldModel> wrapper);
 
 }

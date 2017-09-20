@@ -1,8 +1,8 @@
 /**
  * 管理初始化
  */
-var TableInfo = {
-    id: "TableInfoTable",	//表格id
+var TableBaseField = {
+    id: "TableBaseFieldTable",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1
@@ -11,18 +11,13 @@ var TableInfo = {
 /**
  * 初始化表格的列
  */
-TableInfo.initColumn = function () {
+TableBaseField.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
 	     {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
-	     {title: '表名', field: 'tableName', align: 'center', valign: 'middle'},
-	     {title: 'ClassName', field: 'className', align: 'center', valign: 'middle'},
-	     {title: '表名称', field: 'content', align: 'center', valign: 'middle'},
-	     {title: '是否导入Excel', field: 'isImport', align: 'center', valign: 'middle'},
-	     {title: '是否导出Excel', field: 'isExport', align: 'center', valign: 'middle'},
-	     {title: '是否分页', field: 'isPagination', align: 'center', valign: 'middle'},
-	     {title: '是否添加日志', field: 'isLog', align: 'center', valign: 'middle'},
-	     {title: '是否添加协议', field: 'isProtocol', align: 'center', valign: 'middle'},
+	     {title: '用户ID', field: 'userId', align: 'center', valign: 'middle'},
+	     {title: '基础字段组名称', field: 'name', align: 'center', valign: 'middle'},
+	     {title: '描述', field: 'desc', align: 'center', valign: 'middle'},
 	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
 	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
 	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
@@ -33,13 +28,13 @@ TableInfo.initColumn = function () {
 /**
  * 检查是否选中
  */
-TableInfo.check = function () {
+TableBaseField.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
     if(selected.length == 0){
         Feng.info("请先选中表格中的某一记录！");
         return false;
     }else{
-        TableInfo.seItem = selected[0];
+        TableBaseField.seItem = selected[0];
         return true;
     }
 };
@@ -47,14 +42,14 @@ TableInfo.check = function () {
 /**
  * 点击添加
  */
-TableInfo.openAddTableInfo = function () {
+TableBaseField.openAddTableBaseField = function () {
     var index = layer.open({
         type: 2,
         title: '添加',
         area: ['800px', '420px'], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Feng.ctxPath + '/tableinfo/goto_add'
+        content: Feng.ctxPath + '/tablebasefield/goto_add'
     });
     this.layerIndex = index;
 };
@@ -62,7 +57,7 @@ TableInfo.openAddTableInfo = function () {
 /**
  * 打开查看详情
  */
-TableInfo.openTableInfoDetail = function () {
+TableBaseField.openTableBaseFieldDetail = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
@@ -70,7 +65,7 @@ TableInfo.openTableInfoDetail = function () {
             area: ['800px', '420px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/tableinfo/goto_update/' + TableInfo.seItem.id
+            content: Feng.ctxPath + '/tablebasefield/goto_update/' + TableBaseField.seItem.id
         });
         this.layerIndex = index;
     }
@@ -79,20 +74,20 @@ TableInfo.openTableInfoDetail = function () {
 /**
  * 删除
  */
-TableInfo.delete = function () {
+TableBaseField.delete = function () {
     if (this.check()) {
-        var ajax = new $ax(Feng.ctxPath + "/tableinfo/delete", function (data) {
+        var ajax = new $ax(Feng.ctxPath + "/tablebasefield/delete", function (data) {
             Feng.success("删除成功!");
-            TableInfo.table.refresh();
+            TableBaseField.table.refresh();
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("tableinfoId",this.seItem.id);
+        ajax.set("tablebasefieldId",this.seItem.id);
         ajax.start();
     }
 };
 
-TableInfo.formParams = function() {
+TableBaseField.formParams = function() {
     var queryData = {};
     return queryData;
 };
@@ -100,16 +95,16 @@ TableInfo.formParams = function() {
 /**
  * 查询列表
  */
-TableInfo.search = function () {
+TableBaseField.search = function () {
     var queryData = {};
     queryData['condition'] = $("#condition").val();
-    TableInfo.table.refresh({query: queryData});
+    TableBaseField.table.refresh({query: queryData});
 };
 
 $(function () {
-    var defaultColunms = TableInfo.initColumn();
-    var table = new BSTable(TableInfo.id, "/tableinfo/list", defaultColunms);
+    var defaultColunms = TableBaseField.initColumn();
+    var table = new BSTable(TableBaseField.id, "/tablebasefield/list", defaultColunms);
     table.setPaginationType("server");
-    table.setQueryParams(TableInfo.formParams());
-    TableInfo.table = table.init();
+    table.setQueryParams(TableBaseField.formParams());
+    TableBaseField.table = table.init();
 });

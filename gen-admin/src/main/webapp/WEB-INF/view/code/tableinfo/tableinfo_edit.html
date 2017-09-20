@@ -8,14 +8,18 @@
             <div class="row">
                 <div class="col-sm-6 b-r">
 			     <#input id="id" name="Id" underline="true" value="${tableinfo.id}"/>
-			     <#input id="content" name="表名称" underline="true" value="${tableinfo.content}"/>
-			     <#input id="createBy" name="CreateBy" underline="true" value="${tableinfo.createBy}"/>
-			     <#input id="createDate" name="CreateDate" underline="true" value="${tableinfo.createDate}"/>
-			     <#input id="isPagination" name="是否分页" underline="true" value="${tableinfo.isPagination}"/>
-			     <#input id="isExport" name="是否带出Excel" underline="true" value="${tableinfo.isExport}"/>
 			     <#input id="tableName" name="表名" underline="true" value="${tableinfo.tableName}"/>
-			     <#input id="updateBy" name="UpdateBy" underline="true" value="${tableinfo.updateBy}"/>
-			     <#input id="updateDate" name="UpdateDate" underline="true" value="${tableinfo.updateDate}"/>
+			     <#input id="className" name="ClassName" underline="true" value="${tableinfo.className}"/>
+			     <#input id="content" name="表名称" underline="true" value="${tableinfo.content}"/>
+			     <#input id="isImport" name="是否导入Excel" underline="true" value="${tableinfo.isImport}"/>
+			     <#input id="isExport" name="是否导出Excel" underline="true" value="${tableinfo.isExport}"/>
+			     <#input id="isPagination" name="是否分页" underline="true" value="${tableinfo.isPagination}"/>
+			     <#input id="isLog" name="是否添加日志" underline="true" value="${tableinfo.isLog}"/>
+			     <#input id="isProtocol" name="是否添加协议" underline="true" value="${tableinfo.isProtocol}"/>
+			     <#input id="crtUserId" name="创建人" underline="true" value="${tableinfo.crtUserId}"/>
+			     <#input id="crtTime" name="创建时间" underline="true" value="${tableinfo.crtTime}"/>
+			     <#input id="mdfUserId" name="修改人" underline="true" value="${tableinfo.mdfUserId}"/>
+			     <#input id="mdfTime" name="修改时间" underline="true" value="${tableinfo.mdfTime}"/>
                 </div>
 
                 <div class="col-sm-6">
@@ -33,5 +37,5 @@
 
     </div>
 </div>
-<script src="${ctxPath}/static/modular/biz/tableinfo/tableinfo_info.js"></script>
+< src="${ctxPath}/static/modular/biz/tableinfo/tableinfo_info.js"></>
 @}

@@ -1,7 +1,7 @@
 package cn.afterturn.gen.modular.code.service;
 
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import cn.afterturn.gen.modular.code.model.TableInfoModel;
+import cn.afterturn.gen.modular.code.model.TableBaseFieldModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.Map;
  * Service
  *
  * @author JueYue
- * @Date 2017-09-20 09:18
+ * @Date 2017-09-18 13:40
  */
-public interface ITableInfoService {
+public interface ITableBaseFieldService {
 
      /**
      * <p>
@@ -24,7 +24,7 @@ public interface ITableInfoService {
      * @param entity 实体对象
      * @return int
      */
-    Integer insert(TableInfoModel entity);
+    Integer insert(TableBaseFieldModel entity);
 
     /**
      * <p>
@@ -44,7 +44,7 @@ public interface ITableInfoService {
      * @param entity 实体对象
      * @return int
      */
-    Integer updateById(TableInfoModel entity);
+    Integer updateById(TableBaseFieldModel entity);
 
     /**
      * <p>
@@ -52,9 +52,9 @@ public interface ITableInfoService {
      * </p>
      *
      * @param id 主键ID
-     * @return TableInfoModel
+     * @return TableBaseFieldModel
      */
-    TableInfoModel selectById(Integer id);
+    TableBaseFieldModel selectById(Integer id);
 
     /**
      * <p>
@@ -62,9 +62,9 @@ public interface ITableInfoService {
      * </p>
      *
      * @param entity 实体对象
-     * @return TableInfoModel
+     * @return TableBaseFieldModel
      */
-    TableInfoModel selectOne(TableInfoModel entity);
+    TableBaseFieldModel selectOne(TableBaseFieldModel entity);
 
     /**
      * <p>
@@ -74,7 +74,7 @@ public interface ITableInfoService {
      * @param model 实体对象
      * @return int
      */
-    Integer selectCount(TableInfoModel model);
+    Integer selectCount(TableBaseFieldModel model);
 
     /**
      * <p>
@@ -82,9 +82,9 @@ public interface ITableInfoService {
      * </p>
      *
      * @param model 实体对象封装操作类（可以为 null）
-     * @return List<TableInfoModel>
+     * @return List<TableBaseFieldModel>
      */
-    List<TableInfoModel> selectList(TableInfoModel model);
+    List<TableBaseFieldModel> selectList(TableBaseFieldModel model);
 
 
     /**
@@ -95,8 +95,8 @@ public interface ITableInfoService {
      * @param pagination 分页查询条件
      * @param model   实体对象封装操作可以为 null）
      * @param wrapper   SQL包装
-     * @return List<TableInfoModel>
+     * @return List<TableBaseFieldModel>
      */
-    List<TableInfoModel> selectPage(Pagination pagination, TableInfoModel model,Wrapper<TableInfoModel> wrapper);
+    List<TableBaseFieldModel> selectPage(Pagination pagination, TableBaseFieldModel model,Wrapper<TableBaseFieldModel> wrapper);
 
 }

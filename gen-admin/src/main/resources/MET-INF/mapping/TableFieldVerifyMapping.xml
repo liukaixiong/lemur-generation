@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.afterturn.gen.modular.code.dao.TableFieldVerifyDao">
+
+	<resultMap id="BaseResultMap" type="cn.afterturn.gen.modular.code.model.TableFieldVerifyModel">
+		    <result column="id" property="id" />
+		    <result column="field_id" property="fieldId" />
+		    <result column="view_verification" property="viewVerification" />
+		    <result column="server_verification" property="serverVerification" />
+		    <result column="not_null" property="notNull" />
+		    <result column="min_num" property="minNum" />
+		    <result column="max_num" property="maxNum" />
+		    <result column="regex" property="regex" />
+		    <result column="is_email" property="isEmail" />
+		    <result column="is_phone" property="isPhone" />
+		    <result column="is_telephone" property="isTelephone" />
+		    <result column="is_idcard" property="isIdcard" />
+	</resultMap>
+
+	
+	<select id="selectCount" resultMap="BaseResultMap">
+			select count(1) from T_CODE_TABLE_FIELD_VERIFICATION t
+		<where>
+			<include refid="select_content"/>
+		</where>
+	</select>
+	
+	<select id="selectList" resultMap="BaseResultMap">
+			select * from T_CODE_TABLE_FIELD_VERIFICATION t
+		<where>
+			<include refid="select_content"/>
+		</where>
+	</select>
+
+	<select id="selectPage" resultMap="BaseResultMap">
+			select * from T_CODE_TABLE_FIELD_VERIFICATION t
+		<where>
+			<include refid="select_content"/>
+			${w.sqlSegment}
+		</where>
+	</select>
+	
+	<sql id="select_content">	
+				<if test="e.id != null and e.id != '' ">
+					AND t.ID = #{e.id}
+				</if>
+				<if test="e.fieldId != null and e.fieldId != '' ">
+					AND t.FIELD_ID = #{e.fieldId}
+				</if>
+				<if test="e.viewVerification != null and e.viewVerification != '' ">
+					AND t.VIEW_VERIFICATION = #{e.viewVerification}
+				</if>
+				<if test="e.serverVerification != null and e.serverVerification != '' ">
+					AND t.SERVER_VERIFICATION = #{e.serverVerification}
+				</if>
+				<if test="e.notNull != null and e.notNull != '' ">
+					AND t.NOT_NULL = #{e.notNull}
+				</if>
+				<if test="e.minNum != null and e.minNum != '' ">
+					AND t.MIN_NUM = #{e.minNum}
+				</if>
+				<if test="e.maxNum != null and e.maxNum != '' ">
+					AND t.MAX_NUM = #{e.maxNum}
+				</if>
+				<if test="e.regex != null and e.regex != '' ">
+					AND t.REGEX = #{e.regex}
+				</if>
+				<if test="e.isEmail != null and e.isEmail != '' ">
+					AND t.IS_EMAIL = #{e.isEmail}
+				</if>
+				<if test="e.isPhone != null and e.isPhone != '' ">
+					AND t.IS_PHONE = #{e.isPhone}
+				</if>
+				<if test="e.isTelephone != null and e.isTelephone != '' ">
+					AND t.IS_TELEPHONE = #{e.isTelephone}
+				</if>
+				<if test="e.isIdcard != null and e.isIdcard != '' ">
+					AND t.IS_IDCARD = #{e.isIdcard}
+				</if>
+	</sql>
+
+</mapper>

@@ -12,10 +12,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 表信息管理
- *
  * @author JueYue
- * @Date 2017-09-11 11:32
+ * @Date 2017-09-20 09:18
  */
 @TableName("t_code_table_head")
 public class TableInfoModel extends Model<TableInfoModel> {
@@ -30,52 +28,76 @@ public class TableInfoModel extends Model<TableInfoModel> {
     private String id;
 
     /**
-     * 表名称
-     */
-    @TableField(value = "content")
-    private String content;
-
-    /**
-     * CreateBy
-     */
-    @TableField(value = "create_by")
-    private String createBy;
-
-    /**
-     * CreateDate
-     */
-    @TableField(value = "create_date")
-    private Date createDate;
-
-    /**
-     * 是否分页
-     */
-    @TableField(value = "is_pagination")
-    private String isPagination;
-
-    /**
-     * 是否带出Excel
-     */
-    @TableField(value = "is_export")
-    private String isExport;
-
-    /**
      * 表名
      */
     @TableField(value = "table_name")
     private String tableName;
 
     /**
-     * UpdateBy
+     * ClassName
      */
-    @TableField(value = "update_by")
-    private String updateBy;
+    @TableField(value = "class_name")
+    private String className;
 
     /**
-     * UpdateDate
+     * 表名称
      */
-    @TableField(value = "update_date")
-    private Date updateDate;
+    @TableField(value = "content")
+    private String content;
+
+    /**
+     * 是否导入Excel
+     */
+    @TableField(value = "is_import")
+    private Integer isImport;
+
+    /**
+     * 是否导出Excel
+     */
+    @TableField(value = "is_export")
+    private Integer isExport;
+
+    /**
+     * 是否分页
+     */
+    @TableField(value = "is_pagination")
+    private Integer isPagination;
+
+    /**
+     * 是否添加日志
+     */
+    @TableField(value = "is_log")
+    private Integer isLog;
+
+    /**
+     * 是否添加协议
+     */
+    @TableField(value = "is_protocol")
+    private Integer isProtocol;
+
+    /**
+     * 创建人
+     */
+    @TableField(value = "CRT_USER_ID")
+    private Integer crtUserId;
+
+    /**
+     * 创建时间
+     */
+    @TableField(value = "CRT_TIME")
+    private Date crtTime;
+
+    /**
+     * 修改人
+     */
+    @TableField(value = "MDF_USER_ID")
+    private Integer mdfUserId;
+
+    /**
+     * 修改时间
+     */
+    @TableField(value = "MDF_TIME")
+    private Date mdfTime;
 
 
     /**
@@ -93,76 +115,6 @@ public class TableInfoModel extends Model<TableInfoModel> {
     }
 
     /**
-     * 获取: 表名称
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * 设置: 表名称
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * 获取: CreateBy
-     */
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    /**
-     * 设置: CreateBy
-     */
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
-     * 获取: CreateDate
-     */
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    /**
-     * 设置: CreateDate
-     */
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    /**
-     * 获取: 是否分页
-     */
-    public String getIsPagination() {
-        return isPagination;
-    }
-
-    /**
-     * 设置: 是否分页
-     */
-    public void setIsPagination(String isPagination) {
-        this.isPagination = isPagination;
-    }
-
-    /**
-     * 获取: 是否带出Excel
-     */
-    public String getIsExport() {
-        return isExport;
-    }
-
-    /**
-     * 设置: 是否带出Excel
-     */
-    public void setIsExport(String isExport) {
-        this.isExport = isExport;
-    }
-
-    /**
      * 获取: 表名
      */
     public String getTableName() {
@@ -177,31 +129,157 @@ public class TableInfoModel extends Model<TableInfoModel> {
     }
 
     /**
-     * 获取: UpdateBy
+     * 获取: ClassName
      */
-    public String getUpdateBy() {
-        return updateBy;
+    public String getClassName() {
+        return className;
     }
 
     /**
-     * 设置: UpdateBy
+     * 设置: ClassName
      */
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     /**
-     * 获取: UpdateDate
+     * 获取: 表名称
      */
-    public Date getUpdateDate() {
-        return updateDate;
+    public String getContent() {
+        return content;
     }
 
     /**
-     * 设置: UpdateDate
+     * 设置: 表名称
      */
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    /**
+     * 获取: 是否导入Excel
+     */
+    public Integer getIsImport() {
+        return isImport;
+    }
+
+    /**
+     * 设置: 是否导入Excel
+     */
+    public void setIsImport(Integer isImport) {
+        this.isImport = isImport;
+    }
+
+    /**
+     * 获取: 是否导出Excel
+     */
+    public Integer getIsExport() {
+        return isExport;
+    }
+
+    /**
+     * 设置: 是否导出Excel
+     */
+    public void setIsExport(Integer isExport) {
+        this.isExport = isExport;
+    }
+
+    /**
+     * 获取: 是否分页
+     */
+    public Integer getIsPagination() {
+        return isPagination;
+    }
+
+    /**
+     * 设置: 是否分页
+     */
+    public void setIsPagination(Integer isPagination) {
+        this.isPagination = isPagination;
+    }
+
+    /**
+     * 获取: 是否添加日志
+     */
+    public Integer getIsLog() {
+        return isLog;
+    }
+
+    /**
+     * 设置: 是否添加日志
+     */
+    public void setIsLog(Integer isLog) {
+        this.isLog = isLog;
+    }
+
+    /**
+     * 获取: 是否添加协议
+     */
+    public Integer getIsProtocol() {
+        return isProtocol;
+    }
+
+    /**
+     * 设置: 是否添加协议
+     */
+    public void setIsProtocol(Integer isProtocol) {
+        this.isProtocol = isProtocol;
+    }
+
+    /**
+     * 获取: 创建人
+     */
+    public Integer getCrtUserId() {
+        return crtUserId;
+    }
+
+    /**
+     * 设置: 创建人
+     */
+    public void setCrtUserId(Integer crtUserId) {
+        this.crtUserId = crtUserId;
+    }
+
+    /**
+     * 获取: 创建时间
+     */
+    public Date getCrtTime() {
+        return crtTime;
+    }
+
+    /**
+     * 设置: 创建时间
+     */
+    public void setCrtTime(Date crtTime) {
+        this.crtTime = crtTime;
+    }
+
+    /**
+     * 获取: 修改人
+     */
+    public Integer getMdfUserId() {
+        return mdfUserId;
+    }
+
+    /**
+     * 设置: 修改人
+     */
+    public void setMdfUserId(Integer mdfUserId) {
+        this.mdfUserId = mdfUserId;
+    }
+
+    /**
+     * 获取: 修改时间
+     */
+    public Date getMdfTime() {
+        return mdfTime;
+    }
+
+    /**
+     * 设置: 修改时间
+     */
+    public void setMdfTime(Date mdfTime) {
+        this.mdfTime = mdfTime;
     }
 
 
