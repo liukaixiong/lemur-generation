@@ -8,6 +8,7 @@ import cn.afterturn.gen.modular.code.service.ITableFieldService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class TableFieldServiceImpl implements ITableFieldService {
     private TableFieldDao tableFieldDao;
 
     @Override
+    @Transactional()
     public Integer insert(TableFieldModel entity) {
         return tableFieldDao.insert(entity);
     }

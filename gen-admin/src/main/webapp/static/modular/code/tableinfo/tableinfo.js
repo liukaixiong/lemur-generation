@@ -14,19 +14,50 @@ var TableInfo = {
 TableInfo.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-	     {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
-	     {title: '表名', field: 'tableName', align: 'center', valign: 'middle'},
-	     {title: 'ClassName', field: 'className', align: 'center', valign: 'middle'},
-	     {title: '表名称', field: 'content', align: 'center', valign: 'middle'},
-	     {title: '是否导入Excel', field: 'isImport', align: 'center', valign: 'middle'},
-	     {title: '是否导出Excel', field: 'isExport', align: 'center', valign: 'middle'},
-	     {title: '是否分页', field: 'isPagination', align: 'center', valign: 'middle'},
-	     {title: '是否添加日志', field: 'isLog', align: 'center', valign: 'middle'},
-	     {title: '是否添加协议', field: 'isProtocol', align: 'center', valign: 'middle'},
-	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
-	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
-	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
-	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
+        {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
+        {title: '表名', field: 'tableName', align: 'center', valign: 'middle'},
+        {title: '类名', field: 'className', align: 'center', valign: 'middle'},
+        {title: '功能', field: 'content', align: 'center', valign: 'middle'},
+        {title: '字段数量', field: 'fieldNum', align: 'center', valign: 'middle'},
+        {
+            title: '导入',
+            field: 'isImport',
+            align: 'center',
+            valign: 'middle',
+            formatter: TableInfo.getIsOrNotName
+        },
+        {
+            title: '导出',
+            field: 'isExport',
+            align: 'center',
+            valign: 'middle',
+            formatter: TableInfo.getIsOrNotName
+        },
+        {
+            title: '分页',
+            field: 'isPagination',
+            align: 'center',
+            valign: 'middle',
+            formatter: TableInfo.getIsOrNotName
+        },
+        {
+            title: '日志',
+            field: 'isLog',
+            align: 'center',
+            valign: 'middle',
+            formatter: TableInfo.getIsOrNotName
+        },
+        {
+            title: '协议',
+            field: 'isProtocol',
+            align: 'center',
+            valign: 'middle',
+            formatter: TableInfo.getIsOrNotName
+        },
+        {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
+        {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
+        {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
+        {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
     ];
 };
 
@@ -35,10 +66,10 @@ TableInfo.initColumn = function () {
  */
 TableInfo.check = function () {
     var selected = $('#' + this.id).bootstrapTable('getSelections');
-    if(selected.length == 0){
+    if (selected.length == 0) {
         Feng.info("请先选中表格中的某一记录！");
         return false;
-    }else{
+    } else {
         TableInfo.seItem = selected[0];
         return true;
     }
@@ -49,29 +80,30 @@ TableInfo.check = function () {
  */
 TableInfo.openAddTableInfo = function () {
     var index = layer.open({
-        type: 2,
-        title: '添加',
-        area: ['800px', '420px'], //宽高
-        fix: false, //不固定
-        maxmin: true,
-        content: Feng.ctxPath + '/tableinfo/goto_add'
-    });
+                               type: 2,
+                               title: '添加',
+                               area: ['100%', '100%'],//宽高
+                               fix: false, //不固定
+                               maxmin: true,
+                               content: Feng.ctxPath + '/tableinfo/goto_add'
+                           });
     this.layerIndex = index;
 };
 
 /**
- * 打开查看详情
+ * 打开查看编辑
  */
-TableInfo.openTableInfoDetail = function () {
+TableInfo.openTableInfoEdit = function () {
     if (this.check()) {
         var index = layer.open({
-            type: 2,
-            title: '详情',
-            area: ['800px', '420px'], //宽高
-            fix: false, //不固定
-            maxmin: true,
-            content: Feng.ctxPath + '/tableinfo/goto_update/' + TableInfo.seItem.id
-        });
+                                   type: 2,
+                                   title: '详情',
+                                   area: ['100%', '100%'],//宽高
+                                   fix: false, //不固定
+                                   maxmin: true,
+                                   content: Feng.ctxPath + '/tableinfo/goto_update/'
+                                            + TableInfo.seItem.id
+                               });
         this.layerIndex = index;
     }
 };
@@ -87,12 +119,12 @@ TableInfo.delete = function () {
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("tableinfoId",this.seItem.id);
+        ajax.set("tableinfoId", this.seItem.id);
         ajax.start();
     }
 };
 
-TableInfo.formParams = function() {
+TableInfo.formParams = function () {
     var queryData = {};
     return queryData;
 };
@@ -105,6 +137,14 @@ TableInfo.search = function () {
     queryData['condition'] = $("#condition").val();
     TableInfo.table.refresh({query: queryData});
 };
+
+TableInfo.getIsOrNotName = function (value, row, index) {
+    if (value == 1) {
+        return '是';
+    } else {
+        return '否';
+    }
+}
 
 $(function () {
     var defaultColunms = TableInfo.initColumn();

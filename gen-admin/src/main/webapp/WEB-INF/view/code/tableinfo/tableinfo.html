@@ -18,13 +18,13 @@
                         </div>
                         <div class="hidden-xs" id="TableInfoTableToolbar" role="group">
                             @if(shiro.hasPermission("/tableinfo/add")){
-                                <#button name="添加" icon="fa-plus" clickFun="TableInfo.openAddTableInfo()"/>
+                            <#button name="添加" icon="fa-plus" clickFun="TableInfo.openAddTableInfo()"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/update")){
-                                <#button name="修改" icon="fa-plus" clickFun="TableInfo.openTableInfoDetail()" space="true"/>
+                            <#button name="修改" icon="fa-plus" clickFun="TableInfo.openTableInfoEdit()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/delete")){
-                                <#button name="删除" icon="fa-plus" clickFun="TableInfo.delete()" space="true"/>
+                            <#button name="删除" icon="fa-plus" clickFun="TableInfo.delete()" space="true"/>
                             @}
                         </div>
                         <#table id="TableInfoTable"/>
@@ -34,5 +34,5 @@
         </div>
     </div>
 </div>
-< src="${ctxPath}/static/modular/biz/tableinfo/tableinfo.js"></>
+<script src="${ctxPath}/static/modular/code/tableinfo/tableinfo.js"></script>
 @}

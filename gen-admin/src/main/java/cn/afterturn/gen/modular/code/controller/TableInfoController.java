@@ -13,6 +13,7 @@ import cn.afterturn.gen.core.base.controller.BaseController;
 import cn.afterturn.gen.core.util.ToolUtil;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import cn.afterturn.gen.modular.code.service.ITableInfoService;
+import cn.afterturn.gen.modular.system.warpper.BeanKeyConvert;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class TableInfoController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableInfoController.class);
 
-    private String PREFIX = "/biz/tableinfo/";
+    private String PREFIX = "/code/tableinfo/";
 
     @Autowired
     private ITableInfoService tableInfoService;
@@ -78,6 +79,7 @@ public class TableInfoController extends BaseController {
     public Object list(TableInfoModel model) {
         Page<TableInfoModel> page = new PageFactory<TableInfoModel>().defaultPage();
         page.setRecords(tableInfoService.selectPage(page,model,new EntityWrapper<TableInfoModel>()));
+        BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);
     }
 

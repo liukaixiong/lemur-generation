@@ -56,7 +56,7 @@ TableInfoInfoDlg.addSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/TableInfo/add", function(data){
+    var ajax = new $ax(Feng.ctxPath + "/tableinfo/add", function(data){
         Feng.success("添加成功!");
         window.parent.TableInfo.table.refresh();
         TableInfoInfoDlg.close();
@@ -76,7 +76,7 @@ TableInfoInfoDlg.editSubmit = function() {
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/TableInfo/update", function(data){
+    var ajax = new $ax(Feng.ctxPath + "/tableinfo/update", function(data){
         Feng.success("修改成功!");
         window.parent.TableInfo.table.refresh();
         TableInfoInfoDlg.close();
@@ -89,4 +89,10 @@ TableInfoInfoDlg.editSubmit = function() {
 
 $(function() {
 
+});
+
+
+$('#tableNav a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
 });

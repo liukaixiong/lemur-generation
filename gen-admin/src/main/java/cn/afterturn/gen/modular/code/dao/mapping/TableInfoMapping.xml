@@ -5,33 +5,37 @@
 
     <resultMap id="BaseResultMap" type="cn.afterturn.gen.modular.code.model.TableInfoModel">
         <result column="id" property="id"/>
-        <result column="content" property="content"/>
-        <result column="create_by" property="createBy"/>
-        <result column="create_date" property="createDate"/>
-        <result column="is_pagination" property="isPagination"/>
-        <result column="is_export" property="isExport"/>
         <result column="table_name" property="tableName"/>
-        <result column="update_by" property="updateBy"/>
-        <result column="update_date" property="updateDate"/>
+        <result column="class_name" property="className"/>
+        <result column="content" property="content"/>
+        <result column="is_import" property="isImport"/>
+        <result column="is_export" property="isExport"/>
+        <result column="is_pagination" property="isPagination"/>
+        <result column="is_log" property="isLog"/>
+        <result column="is_protocol" property="isProtocol"/>
+        <result column="CRT_USER_ID" property="crtUserId"/>
+        <result column="CRT_TIME" property="crtTime"/>
+        <result column="MDF_USER_ID" property="mdfUserId"/>
+        <result column="MDF_TIME" property="mdfTime"/>
     </resultMap>
 
 
     <select id="selectCount" resultMap="BaseResultMap">
-        select count(1) from t_code_table_head t
+        select count(1) from T_CODE_TABLE_HEAD t
         <where>
             <include refid="select_content"/>
         </where>
     </select>
 
     <select id="selectList" resultMap="BaseResultMap">
-        select * from t_code_table_head t
+        select * from T_CODE_TABLE_HEAD t
         <where>
             <include refid="select_content"/>
         </where>
     </select>
 
     <select id="selectPage" resultMap="BaseResultMap">
-        select * from t_code_table_head t
+        select * from T_CODE_TABLE_HEAD t
         <where>
             <include refid="select_content"/>
             ${w.sqlSegment}
@@ -42,29 +46,41 @@
         <if test="e.id != null and e.id != '' ">
             AND t.ID = #{e.id}
         </if>
+        <if test="e.tableName != null and e.tableName != '' ">
+            AND t.TABLE_NAME = #{e.tableName}
+        </if>
+        <if test="e.className != null and e.className != '' ">
+            AND t.CLASS_NAME = #{e.className}
+        </if>
         <if test="e.content != null and e.content != '' ">
             AND t.CONTENT = #{e.content}
         </if>
-        <if test="e.createBy != null and e.createBy != '' ">
-            AND t.CREATE_BY = #{e.createBy}
-        </if>
-        <if test="e.createDate != null and e.createDate != '' ">
-            AND t.CREATE_DATE = #{e.createDate}
-        </if>
-        <if test="e.isPagination != null and e.isPagination != '' ">
-            AND t.IS_PAGINATION = #{e.isPagination}
+        <if test="e.isImport != null and e.isImport != '' ">
+            AND t.IS_IMPORT = #{e.isImport}
         </if>
         <if test="e.isExport != null and e.isExport != '' ">
             AND t.IS_EXPORT = #{e.isExport}
         </if>
-        <if test="e.tableName != null and e.tableName != '' ">
-            AND t.TABLE_NAME = #{e.tableName}
+        <if test="e.isPagination != null and e.isPagination != '' ">
+            AND t.IS_PAGINATION = #{e.isPagination}
         </if>
-        <if test="e.updateBy != null and e.updateBy != '' ">
-            AND t.UPDATE_BY = #{e.updateBy}
+        <if test="e.isLog != null and e.isLog != '' ">
+            AND t.IS_LOG = #{e.isLog}
         </if>
-        <if test="e.updateDate != null and e.updateDate != '' ">
-            AND t.UPDATE_DATE = #{e.updateDate}
+        <if test="e.isProtocol != null and e.isProtocol != '' ">
+            AND t.IS_PROTOCOL = #{e.isProtocol}
+        </if>
+        <if test="e.crtUserId != null and e.crtUserId != '' ">
+            AND t.CRT_USER_ID = #{e.crtUserId}
+        </if>
+        <if test="e.crtTime != null and e.crtTime != '' ">
+            AND t.CRT_TIME = #{e.crtTime}
+        </if>
+        <if test="e.mdfUserId != null and e.mdfUserId != '' ">
+            AND t.MDF_USER_ID = #{e.mdfUserId}
+        </if>
+        <if test="e.mdfTime != null and e.mdfTime != '' ">
+            AND t.MDF_TIME = #{e.mdfTime}
         </if>
     </sql>
 

@@ -39,7 +39,7 @@ public class TableFieldVerifyController extends BaseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TableFieldVerifyController.class);
 
-    private String PREFIX = "/biz/tablefieldverify/";
+    private String PREFIX = "/code/tablefieldverify/";
 
     @Autowired
     private ITableFieldVerifyService tableFieldVerifyService;

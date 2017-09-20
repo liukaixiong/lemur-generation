@@ -1,38 +1,236 @@
-@layout("/common/_container.html"){
-<div class="row">
-    <div class="col-sm-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>管理</h5>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal row">
+            <div class="fixed-table-header col-sm-10" style="margin-right: 0px;">
+                <table id="tableField" class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center; vertical-align: middle; ">
+                            <div class="th-inner "><span style="cursor:pointer;"
+                                    class="glyphicon glyphicon-plus fieldAdd"></span>
+                            </div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="fieldName">
+                            <div class="th-inner ">DB名称</div>
+
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; " data-field="name">
+                            <div class="th-inner ">名称</div>
+
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="content">
+                            <div class="th-inner ">功能</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; " data-field="type">
+                            <div class="th-inner ">类型</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; " data-field="isKey">
+                            <div class="th-inner ">主键</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isShowList">
+                            <div class="th-inner ">列表</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isNull">
+                            <div class="th-inner ">为空</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isShowAdd">
+                            <div class="th-inner ">新增</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isShowEdit">
+                            <div class="th-inner ">编辑</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isShowDetail">
+                            <div class="th-inner ">详情</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isImport">
+                            <div class="th-inner ">导入</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isExport">
+                            <div class="th-inner ">导出</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="isQuery">
+                            <div class="th-inner ">查询</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="queryMode">
+                            <div class="th-inner ">查询类型</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="showType">
+                            <div class="th-inner ">显示</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="orderNum">
+                            <div class="th-inner ">排序</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="dictName">
+                            <div class="th-inner ">字典名称</div>
+                        </th>
+                        <th style="text-align: center; vertical-align: middle; "
+                            data-field="dictType">
+                            <div class="th-inner ">字典类型</div>
+                        </th>
+                        <!--    <th style="text-align: center; vertical-align: middle; "
+                                data-field="fieldDefault">
+                                <div class="th-inner ">字段默认值</div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; "
+                                data-field="fieldContent">
+                                <div class="th-inner ">字段注释</div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; "
+                                data-field="fieldLength">
+                                <div class="th-inner ">字段长度</div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; "
+                                data-field="fieldType">
+                                <div class="th-inner ">字段类型</div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; "
+                                data-field="fieldPointLength">
+                                <div class="th-inner ">字段小数</div>
+                            </th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="fieldTr1" class="fieldTr">
+                        <td style="text-align: center; vertical-align: middle; ">
+                            <div class="th-inner "><span style="cursor:pointer;"
+                                    class="glyphicon glyphicon-minus fieldTrRemove"></span>
+                            </div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="fieldName">
+                            <div class="td-inner "><input type="text" class="form-control"
+                                                          placeholder="数据库字段名称"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; " data-field="name">
+                            <div class="td-inner "><input type="text" class="form-control"
+                                                          placeholder="代码字段名称"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="content">
+                            <div class="td-inner "><input type="text" class="form-control"
+                                                          placeholder="功能"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; " data-field="type">
+                            <div class="td-inner "><select class="form-control">
+                                <option value="String">String</option>
+                            </select></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; " data-field="isKey">
+                            <div class="td-inner "><input type="checkbox"></div>
+
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isShowList">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isNull">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isShowAdd">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isShowEdit">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isShowDetail">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isImport">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isExport">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="isQuery">
+                            <div class="td-inner "><input type="checkbox"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="queryMode">
+                            <div class="td-inner "><select class="form-control">
+                                <option value="1">=</option>
+                                <option value="2">!=</option>
+                                <option value="3">&gt;</option>
+                                <option value="4">&gt;=</option>
+                                <option value="5">&lt;</option>
+                                <option value="6">&lt;=</option>
+                                <option value="7">like</option>
+                                <option value="8">lift like</option>
+                                <option value="9">right like</option>
+                                <option value="10">between</option>
+                            </select></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="showType">
+                            <div class="td-inner "><select class="form-control">
+                                <option value="1">文本</option>
+                                <option value="2">下拉</option>
+                                <option value="3">多行文本</option>
+                                <option value="4">单选</option>
+                                <option value="5">多选</option>
+                                <option value="6">日期</option>
+                                <option value="7">文件</option>
+                            </select></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="orderNum">
+                            <div class="td-inner "><input type="text" class="form-control"
+                                                          placeholder="排序"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="dictName">
+                            <div class="td-inner "><input type="text" class="form-control"
+                                                          placeholder="字典名称"></div>
+                        </td>
+                        <td style="text-align: center; vertical-align: middle; "
+                            data-field="dictType">
+                            <div class="td-inner "><select class="form-control">
+                                <option value="1">枚举</option>
+                                <option value="2">字典</option>
+                                <option value="3">显示列表</option>
+                            </select></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="ibox-content">
-                <div class="row row-lg">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <#NameCon id="condition" name="名称" />
-                            </div>
-                            <div class="col-sm-3">
-                                <#button name="搜索" icon="fa-search" clickFun="TableField.search()"/>
-                            </div>
-                        </div>
-                        <div class="hidden-xs" id="TableFieldTableToolbar" role="group">
-                            @if(shiro.hasPermission("/tablefield/add")){
-                                <#button name="添加" icon="fa-plus" clickFun="TableField.openAddTableField()"/>
-                            @}
-                            @if(shiro.hasPermission("/tablefield/update")){
-                                <#button name="修改" icon="fa-plus" clickFun="TableField.openTableFieldDetail()" space="true"/>
-                            @}
-                            @if(shiro.hasPermission("/tablefield/delete")){
-                                <#button name="删除" icon="fa-plus" clickFun="TableField.delete()" space="true"/>
-                            @}
-                        </div>
-                        <#table id="TableFieldTable"/>
-                    </div>
-                </div>
+            <div id="fieldNav1" class="col-sm-2 fieldNav" style="margin-right: 0px;">
+                <ul class="fieldNavUl nav nav-tabs">
+                    <li role="presentation" class="active"><a href="#fieldVerify">校验</a></li>
+                    <li role="presentation"><a href="#dBFileInfo" data-toggle="tab">DB</a></li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
-< src="${ctxPath}/static/modular/biz/tablefield/tablefield.js"></>
-@}
+
+<div id="templateUi" style="display: none;">
+    <div id="replaceUiId" class="col-sm-2 fieldNav" style="margin-right: 0px;display: none;">
+        <ul class="fieldNavUl nav nav-tabs">
+            <li role="presentation" class="active"><a href="#fieldVerify">校验</a></li>
+            <li role="presentation"><a href="#dBFileInfo" data-toggle="tab">DB</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/code/tablefield/tablefield.js"></script>
