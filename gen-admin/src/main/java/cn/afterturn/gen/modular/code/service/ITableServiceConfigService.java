@@ -99,4 +99,9 @@ public interface ITableServiceConfigService {
      */
     List<TableServiceConfigModel> selectPage(Pagination pagination, TableServiceConfigModel model,Wrapper<TableServiceConfigModel> wrapper);
 
+    /**
+     * 批量保存表格配置信息
+     * @param serviceConfig
+     */
+    void batchSaveOrUpdateServiceConfig(List<TableServiceConfigModel> serviceConfig);
 }

@@ -44,7 +44,37 @@ TableInfoInfoDlg.close = function() {
  * 收集数据
  */
 TableInfoInfoDlg.collectData = function() {
-    this.set('id');
+    //基础表单数据
+    this.set('id').set("tableName").set("className").set("content")
+        .set("isImport").set("isExport").set("isPagination").set("isLog");
+    var serviceConfig = [];
+    //配置数据
+    $("#serviceConfigTable").find('tbody').find('tr').each(function () {
+        var obj = new Object();
+        $(this).find('td').each(function (index,data) {
+            if(index == 0){
+                obj.type = $(data).attr('type');
+            }else {
+                obj[$(data).find('select').attr('name')] = $(data).find('select,input').val();
+            }
+        });
+        serviceConfig.push(obj);
+
+    });
+    this.TableInfoInfoData.serviceConfig = serviceConfig;
+    //字段信息
+    var tableField = [];
+    $("#tableField").find('tbody').find('tr').each(function () {
+        var obj = new Object();
+        $(this).find('td').each(function (index,data) {
+            if(index > 0){
+                obj[$(data).attr('data-field')] = $(data).find('select,input').val();
+            }
+        });
+        tableField.push(obj);
+
+    });
+    this.TableInfoInfoData.tableField = tableField;
 }
 
 /**
@@ -63,7 +93,7 @@ TableInfoInfoDlg.addSubmit = function() {
     },function(data){
         Feng.error("添加失败!" + data.responseJSON.message + "!");
     });
-    ajax.set(this.TableInfoInfoData);
+    ajax.setData(JSON.stringify(this.TableInfoInfoData));
     ajax.start();
 }
 

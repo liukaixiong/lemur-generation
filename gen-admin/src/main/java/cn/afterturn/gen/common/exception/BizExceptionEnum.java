@@ -23,6 +23,10 @@ public enum BizExceptionEnum {
     UPLOAD_ERROR(500, "上传图片出错"),
 
     /**
+     * 操作拒绝
+     */
+    NOT_ALLOW_GEN_LOCAL_FILE(500, "NOT_ALLOW_GEN_LOCAL_FILE!"),
+    /**
      * 权限和数据问题
      */
     DB_RESOURCE_NULL(400, "数据库中没有该资源"),

@@ -11,9 +11,19 @@
 		    <result column="is_transactional" property="isTransactional" />
 		    <result column="transactional_type" property="transactionalType" />
 	</resultMap>
+    <insert id="batchInsert">
+		<if test="_databaseType == 'MySQL'">
+			INSERT INTO T_CODE_TABLE_SERVICE_CONFIG
+			(TABLE_ID, TYPE, IS_ENABLE, IS_PERMISSION, IS_TRANSACTIONAL, TRANSACTIONAL_TYPE)
+			VALUES
+			<foreach collection="list" item="s" separator=",">
+				(#{s.tableId},#{s.type},#{s.isEnable},#{s.isPermission},#{s.isTransactional},#{s.transactionalType})
+			</foreach>
+		</if>
+	</insert>
 
-	
-	<select id="selectCount" resultMap="BaseResultMap">
+
+    <select id="selectCount" resultMap="BaseResultMap">
 			select count(1) from T_CODE_TABLE_SERVICE_CONFIG t
 		<where>
 			<include refid="select_content"/>

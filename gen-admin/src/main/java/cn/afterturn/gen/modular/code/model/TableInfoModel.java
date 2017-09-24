@@ -10,13 +10,14 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author JueYue
  * @Date 2017-09-20 09:18
  */
 @TableName("t_code_table_head")
-public class TableInfoModel extends Model<TableInfoModel> {
+public class TableInfoModel extends CodeBaseModel<TableInfoModel> {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,7 +26,12 @@ public class TableInfoModel extends Model<TableInfoModel> {
      * Id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private String id;
+    private Integer id;
+    /**
+     * 拥有人
+     */
+    @TableField(value = "user_id")
+    private Integer userId;
 
     /**
      * 表名
@@ -75,43 +81,29 @@ public class TableInfoModel extends Model<TableInfoModel> {
     @TableField(value = "is_protocol")
     private Integer isProtocol;
 
-    /**
-     * 创建人
-     */
-    @TableField(value = "CRT_USER_ID")
-    private Integer crtUserId;
-
-    /**
-     * 创建时间
-     */
-    @TableField(value = "CRT_TIME")
-    private Date crtTime;
-
-    /**
-     * 修改人
-     */
-    @TableField(value = "MDF_USER_ID")
-    private Integer mdfUserId;
-
-    /**
-     * 修改时间
-     */
-    @TableField(value = "MDF_TIME")
-    private Date mdfTime;
-
+    @TableField(exist = false)
+    private List<TableServiceConfigModel> serviceConfig;
 
     /**
      * 获取: Id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * 设置: Id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     /**
@@ -226,62 +218,13 @@ public class TableInfoModel extends Model<TableInfoModel> {
         this.isProtocol = isProtocol;
     }
 
-    /**
-     * 获取: 创建人
-     */
-    public Integer getCrtUserId() {
-        return crtUserId;
+    public List<TableServiceConfigModel> getServiceConfig() {
+        return serviceConfig;
     }
 
-    /**
-     * 设置: 创建人
-     */
-    public void setCrtUserId(Integer crtUserId) {
-        this.crtUserId = crtUserId;
+    public void setServiceConfig(List<TableServiceConfigModel> serviceConfig) {
+        this.serviceConfig = serviceConfig;
     }
-
-    /**
-     * 获取: 创建时间
-     */
-    public Date getCrtTime() {
-        return crtTime;
-    }
-
-    /**
-     * 设置: 创建时间
-     */
-    public void setCrtTime(Date crtTime) {
-        this.crtTime = crtTime;
-    }
-
-    /**
-     * 获取: 修改人
-     */
-    public Integer getMdfUserId() {
-        return mdfUserId;
-    }
-
-    /**
-     * 设置: 修改人
-     */
-    public void setMdfUserId(Integer mdfUserId) {
-        this.mdfUserId = mdfUserId;
-    }
-
-    /**
-     * 获取: 修改时间
-     */
-    public Date getMdfTime() {
-        return mdfTime;
-    }
-
-    /**
-     * 设置: 修改时间
-     */
-    public void setMdfTime(Date mdfTime) {
-        this.mdfTime = mdfTime;
-    }
-
 
     @Override
     protected Serializable pkVal() {

@@ -2,6 +2,7 @@ package cn.afterturn.gen.modular.code.service.impl;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+
 import cn.afterturn.gen.modular.code.dao.TableServiceConfigDao;
 import cn.afterturn.gen.modular.code.model.TableServiceConfigModel;
 import cn.afterturn.gen.modular.code.service.ITableServiceConfigService;
@@ -9,8 +10,10 @@ import cn.afterturn.gen.modular.code.service.ITableServiceConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Service
  *
@@ -60,7 +63,17 @@ public class TableServiceConfigServiceImpl implements ITableServiceConfigService
 
     @Override
     public List<TableServiceConfigModel> selectPage(Pagination pagination, TableServiceConfigModel model, Wrapper<TableServiceConfigModel> wrapper) {
-        return tableServiceConfigDao.selectPage(pagination,model,wrapper);
+        return tableServiceConfigDao.selectPage(pagination, model, wrapper);
+    }
+
+    @Override
+    public void batchSaveOrUpdateServiceConfig(List<TableServiceConfigModel> serviceConfig) {
+        // 删除旧数据
+        Map<String,Object> temp = new HashMap<String, Object>();
+        temp.put("table_id",serviceConfig.get(0).getTableId());
+        tableServiceConfigDao.deleteByMap(temp);
+        //插入新数据
+        tableServiceConfigDao.batchInsert(serviceConfig);
     }
 
 }

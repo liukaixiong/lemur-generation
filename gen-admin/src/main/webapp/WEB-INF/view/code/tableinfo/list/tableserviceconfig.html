@@ -1,6 +1,6 @@
 <div class="row fixed-table-container">
     <div class="fixed-table-header">
-        <table class="table table-bordered">
+        <table id="serviceConfigTable" class="table table-bordered">
             <thead>
             <tr>
                 <th style="text-align: center; vertical-align: middle; ">功能</th>
@@ -15,160 +15,160 @@
             <tr>
                 <td style="text-align: center; vertical-align: middle; " type="list">列表</td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isEnable">
+                    <select class="form-control" name="isEnable">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isPermission">
+                    <select class="form-control" name="isPermission">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isTransactional">
+                    <select class="form-control " name="isTransactional">
                         <option value="1">是</option>
                         <option value="2" selected="selected">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control transactionalType">
-                        <option value="REQUIRED">REQUIRED</option>
-                        <option value="SUPPORTS" selected="selected">SUPPORTS</option>
-                        <option value="MANDATORY">MANDATORY</option>
-                        <option value="REQUIRES_NEW">REQUIRES_NEW</option>
-                        <option value="NOT_SUPPORTED">NOT_SUPPORTED</option>
-                        <option value="NEVER">NEVER</option>
-                        <option value="NESTED">NESTED</option>
+                    <select class="form-control " name="transactionalType">
+                        <option value="01">REQUIRED</option>
+                        <option value="02" selected="selected">SUPPORTS</option>
+                        <option value="03">MANDATORY</option>
+                        <option value="04">REQUIRES_NEW</option>
+                        <option value="05">NOT_SUPPORTED</option>
+                        <option value="06">NEVER</option>
+                        <option value="07">NESTED</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align: middle; " type="add">新增</td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isEnable">
+                    <select class="form-control " name="isEnable">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isPermission">
+                    <select class="form-control " name="isPermission">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isTransactional">
+                    <select class="form-control " name="isTransactional">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control transactionalType">
-                        <option value="REQUIRED">REQUIRED</option>
-                        <option value="SUPPORTS">SUPPORTS</option>
-                        <option value="MANDATORY">MANDATORY</option>
-                        <option value="REQUIRES_NEW">REQUIRES_NEW</option>
-                        <option value="NOT_SUPPORTED">NOT_SUPPORTED</option>
-                        <option value="NEVER">NEVER</option>
-                        <option value="NESTED">NESTED</option>
+                    <select class="form-control " name="transactionalType">
+                        <option value="01">REQUIRED</option>
+                        <option value="02">SUPPORTS</option>
+                        <option value="03">MANDATORY</option>
+                        <option value="04">REQUIRES_NEW</option>
+                        <option value="05">NOT_SUPPORTED</option>
+                        <option value="06">NEVER</option>
+                        <option value="07">NESTED</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align: middle; " type="edit">修改</td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isEnable">
+                    <select class="form-control " name="isEnable">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isPermission">
+                    <select class="form-control " name="isPermission">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isTransactional">
+                    <select class="form-control " name="isTransactional">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control transactionalType">
-                        <option value="REQUIRED">REQUIRED</option>
-                        <option value="SUPPORTS">SUPPORTS</option>
-                        <option value="MANDATORY">MANDATORY</option>
-                        <option value="REQUIRES_NEW">REQUIRES_NEW</option>
-                        <option value="NOT_SUPPORTED">NOT_SUPPORTED</option>
-                        <option value="NEVER">NEVER</option>
-                        <option value="NESTED">NESTED</option>
+                    <select class="form-control " name="transactionalType">
+                        <option value="01">REQUIRED</option>
+                        <option value="02">SUPPORTS</option>
+                        <option value="03">MANDATORY</option>
+                        <option value="04">REQUIRES_NEW</option>
+                        <option value="05">NOT_SUPPORTED</option>
+                        <option value="06">NEVER</option>
+                        <option value="07">NESTED</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align: middle; " type="delete">删除</td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isEnable">
+                    <select class="form-control " name="isEnable">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isPermission">
+                    <select class="form-control " name="isPermission">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isTransactional">
+                    <select class="form-control " name="isTransactional">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control transactionalType">
-                        <option value="REQUIRED">REQUIRED</option>
-                        <option value="SUPPORTS">SUPPORTS</option>
-                        <option value="MANDATORY">MANDATORY</option>
-                        <option value="REQUIRES_NEW">REQUIRES_NEW</option>
-                        <option value="NOT_SUPPORTED">NOT_SUPPORTED</option>
-                        <option value="NEVER">NEVER</option>
-                        <option value="NESTED">NESTED</option>
+                    <select class="form-control " name="transactionalType">
+                        <option value="01">REQUIRED</option>
+                        <option value="02">SUPPORTS</option>
+                        <option value="03">MANDATORY</option>
+                        <option value="04">REQUIRES_NEW</option>
+                        <option value="05">NOT_SUPPORTED</option>
+                        <option value="06">NEVER</option>
+                        <option value="07">NESTED</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td style="text-align: center; vertical-align: middle; " type="detail">详情</td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isEnable">
+                    <select class="form-control " name="isEnable">
                         <option value="1">是</option>
                         <option value="2" selected="selected">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isPermission">
+                    <select class="form-control " name="isPermission">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control isTransactional">
+                    <select class="form-control " name="isTransactional">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </select>
                 </td>
                 <td style="text-align: center; vertical-align: middle; ">
-                    <select class="form-control transactionalType">
-                        <option value="REQUIRED">REQUIRED</option>
-                        <option value="SUPPORTS" selected="selected">SUPPORTS</option>
-                        <option value="MANDATORY">MANDATORY</option>
-                        <option value="REQUIRES_NEW">REQUIRES_NEW</option>
-                        <option value="NOT_SUPPORTED">NOT_SUPPORTED</option>
-                        <option value="NEVER">NEVER</option>
-                        <option value="NESTED">NESTED</option>
+                    <select class="form-control " name="transactionalType">
+                        <option value="01">REQUIRED</option>
+                        <option value="02" selected="selected">SUPPORTS</option>
+                        <option value="03">MANDATORY</option>
+                        <option value="04">REQUIRES_NEW</option>
+                        <option value="05">NOT_SUPPORTED</option>
+                        <option value="06">NEVER</option>
+                        <option value="07">NESTED</option>
                     </select>
                 </td>
             </tr>

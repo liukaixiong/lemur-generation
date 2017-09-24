@@ -42,4 +42,10 @@ public interface TableServiceConfigDao extends BaseMapper<TableServiceConfigMode
      */
     List<TableServiceConfigModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableServiceConfigModel model,@Param("w") Wrapper<TableServiceConfigModel> wrapper);
 
+    /**
+     * 批量插入
+     * @param serviceConfig
+     */
+    void batchInsert(List<TableServiceConfigModel> serviceConfig);
+
 }

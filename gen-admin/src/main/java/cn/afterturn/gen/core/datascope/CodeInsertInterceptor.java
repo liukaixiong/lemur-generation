@@ -8,6 +8,8 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
@@ -22,6 +24,8 @@ import cn.afterturn.gen.core.shiro.ShiroKit;
  */
 @Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})})
 public class CodeInsertInterceptor implements Interceptor {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CodeInsertInterceptor.class);
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -53,14 +57,18 @@ public class CodeInsertInterceptor implements Interceptor {
     private void setProperty(Object parameterObject) {
         //设置参数值
         Method method;
-        if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setUserId", Integer.class)) != null) {
-            ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
-        }
-        if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtUserId", Integer.class)) != null) {
-            ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
-        }
-        if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtTime", Date.class)) != null) {
-            ReflectionUtils.invokeMethod(method, parameterObject, new Date());
+        try {
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setUserId", Integer.class)) != null) {
+                ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
+            }
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtUserId", Integer.class)) != null) {
+                ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
+            }
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtTime", Date.class)) != null) {
+                ReflectionUtils.invokeMethod(method, parameterObject, new Date());
+            }
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
         }
     }
 

@@ -1,16 +1,17 @@
 (function () {
-	var $ax = function (url, success, error) {
+	var $ax = function (url, success, error, async) {
 		this.url = url;
 		this.type = "post";
 		this.data = {};
 		this.dataType = "json";
-		this.async = false;
+		this.async = async?async:false;
 		this.success = success;
 		this.error = error;
-	};
+        this.contentType = "application/x-www-form-urlencoded;charset=UTF-8";
+    };
 	
 	$ax.prototype = {
-		start : function () {	
+		start : function () {
 			var me = this;
 			
 			if (this.url.indexOf("?") == -1) {
@@ -18,13 +19,14 @@
 			} else {
 				this.url = this.url + "&jstime=" + new Date().getTime();
 			}
-			
+
 			$.ajax({
 		        type: this.type,
 		        url: this.url,
 		        dataType: this.dataType,
 		        async: this.async,
 		        data: this.data,
+			    contentType: this.contentType,
 				beforeSend: function(data) {
 					
 				},
@@ -51,6 +53,9 @@
 		},
 		
 		setData : function(data){
+			if(this.isJSON(data)){
+                this.contentType = "application/json;charset=UTF-8";
+			}
 			this.data = data;
 			return this;
 		},
@@ -58,7 +63,25 @@
 		clear : function () {
 			this.data = {};
 			return this;
-		}
+		},
+
+		isJSON : function (str) {
+            if (typeof str == 'string') {
+                try {
+                    var obj=JSON.parse(str);
+                    if(str.indexOf('{')>-1){
+                        return true;
+                    }else{
+                        return false;
+                    }
+
+                } catch(e) {
+                    console.log(e);
+                    return false;
+                }
+            }
+            return false;
+        }
 	};
 	
 	window.$ax = $ax;

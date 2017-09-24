@@ -33,6 +33,8 @@ import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.afterturn.gen.common.exception.BussinessException;
+import cn.afterturn.gen.config.properties.GunsProperties;
 import cn.afterturn.gen.core.CodeGenModel;
 import cn.afterturn.gen.core.CodeGenUtil;
 import cn.afterturn.gen.core.GenCoreConstant;
@@ -56,6 +58,8 @@ import cn.afterturn.gen.modular.code.service.IGenService;
 import cn.afterturn.gen.modular.code.service.ITemplateGroupService;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
 
+import cn.afterturn.gen.common.exception.BizExceptionEnum;
+
 /**
  * @author JueYue 2017年4月22日
  */
@@ -77,6 +81,8 @@ public class GenController {
     private ITemplateGroupService templateGroupService;
     @Autowired
     private IGenParamService genParamService;
+    @Autowired
+    private GunsProperties gunsProperties;
 
     /**
      * 跳转到首页
@@ -162,6 +168,9 @@ public class GenController {
      * 本地输出代码
      */
     private void writeThisFileList(String localPath, String encoded, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
+        if(!gunsProperties.getGenLocal()){
+            throw  new BussinessException(BizExceptionEnum.NOT_ALLOW_GEN_LOCAL_FILE);
+        }
         for (int i = 0; i < fileList.size(); i++) {
             // 文件路径包括 本地项目路径 + 项目相对路径 + 包路径 + 类的自我路径
             String filePath = localPath + File.separator +

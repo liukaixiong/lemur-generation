@@ -18,6 +18,7 @@ import cn.afterturn.gen.config.properties.DruidProperties;
 import cn.afterturn.gen.core.datascope.CodeInsertInterceptor;
 import cn.afterturn.gen.core.datascope.CodeUpdateInterceptor;
 import cn.afterturn.gen.core.datascope.DataScopeInterceptor;
+import cn.afterturn.gen.core.datascope.DbTypeInterceptor;
 import cn.afterturn.gen.core.mutidatasource.DynamicDataSource;
 import cn.afterturn.gen.core.mutidatasource.config.MutiDataSourceProperties;
 
@@ -117,5 +118,9 @@ public class MybatisPlusConfig {
     @Bean
     public CodeUpdateInterceptor codeUpdateInterceptor() {
         return new CodeUpdateInterceptor();
+    }
+    @Bean
+    public DbTypeInterceptor dbTypeInterceptor() {
+        return new DbTypeInterceptor();
     }
 }

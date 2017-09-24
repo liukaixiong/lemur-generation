@@ -5,9 +5,11 @@ import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import cn.afterturn.gen.modular.code.dao.TableInfoDao;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import cn.afterturn.gen.modular.code.service.ITableInfoService;
+import cn.afterturn.gen.modular.code.service.ITableServiceConfigService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -22,10 +24,18 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Autowired
     private TableInfoDao tableInfoDao;
+    @Autowired
+    private ITableServiceConfigService tableServiceConfigService;
 
     @Override
+    @Transactional
     public Integer insert(TableInfoModel entity) {
-        return tableInfoDao.insert(entity);
+        tableInfoDao.insert(entity);
+        for (int i = 0; i < entity.getServiceConfig().size(); i++) {
+            entity.getServiceConfig().get(i).setTableId(entity.getId());
+        }
+        tableServiceConfigService.batchSaveOrUpdateServiceConfig(entity.getServiceConfig());
+        return 1;
     }
 
     @Override

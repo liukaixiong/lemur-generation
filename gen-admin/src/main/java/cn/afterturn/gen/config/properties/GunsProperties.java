@@ -32,6 +32,8 @@ public class GunsProperties {
 
     private Boolean shareOpen = false;
 
+    private Boolean genLocal = false;
+
     private Integer sessionInvalidateTime = 30 * 60;  //session 失效时间（默认为30分钟 单位：秒）
 
     private Integer sessionValidationInterval = 15 * 60;  //session 验证失效时间（默认为15分钟 单位：秒）
@@ -73,6 +75,14 @@ public class GunsProperties {
 
     public void setSwaggerOpen(Boolean swaggerOpen) {
         this.swaggerOpen = swaggerOpen;
+    }
+
+    public Boolean getGenLocal() {
+        return genLocal;
+    }
+
+    public void setGenLocal(Boolean genLocal) {
+        this.genLocal = genLocal;
     }
 
     public Boolean getSpringSessionOpen() {
