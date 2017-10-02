@@ -10,8 +10,8 @@ import java.util.HashMap;
  */
 public abstract class AbstractDictMap {
 
-    protected HashMap<String, String> dictory = new HashMap<>();
-    protected HashMap<String, String> fieldWarpperDictory = new HashMap<>();
+    protected HashMap<String, String> dictory = new HashMap<String, String>();
+    protected HashMap<String, String> fieldWarpperDictory = new HashMap<String, String>();
 
     public AbstractDictMap() {
         put("id", "主键id");

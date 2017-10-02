@@ -164,7 +164,7 @@ public class ShiroConfig implements EnvironmentAware {
          * 顺序从上到下,优先级依次降低
          *
          */
-        Map<String, String> hashMap = new LinkedHashMap<>();
+        Map<String, String> hashMap = new LinkedHashMap<String, String>();
         hashMap.put("/static/**", "anon");
         hashMap.put("/login", "anon");
         hashMap.put("/register", "anon");

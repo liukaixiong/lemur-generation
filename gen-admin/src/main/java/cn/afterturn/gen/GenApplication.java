@@ -21,20 +21,6 @@ public class GenApplication extends WebMvcConfigurerAdapter {
 
     protected final static Logger logger = LoggerFactory.getLogger(GenApplication.class);
 
-    @Autowired
-    GunsProperties gunsProperties;
-
-    /**
-     * 增加swagger的支持
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (gunsProperties.getSwaggerOpen()) {
-            registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
-            registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-        }
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(GenApplication.class, args);
         logger.info("Lemur Gen Application is success!");

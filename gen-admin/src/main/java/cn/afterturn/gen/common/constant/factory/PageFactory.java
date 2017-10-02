@@ -23,11 +23,11 @@ public class PageFactory<T> {
         String sort = request.getParameter("sort");
         String order = request.getParameter("order");
         if (ToolUtil.isEmpty(sort)) {
-            Page<T> page = new Page<>((offset / limit + 1), limit);
+            Page<T> page = new Page<T>((offset / limit + 1), limit);
             page.setOpenSort(false);
             return page;
         } else {
-            Page<T> page = new Page<>((offset / limit + 1), limit, sort);
+            Page<T> page = new Page<T>((offset / limit + 1), limit, sort);
             if (Order.ASC.getDes().equals(order)) {
                 page.setAsc(true);
             } else {

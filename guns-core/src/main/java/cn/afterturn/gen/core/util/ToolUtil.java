@@ -200,7 +200,7 @@ public class ToolUtil {
     /**
      * 对象是否不为空(新增)
      *
-     * @param obj String,List,Map,Object[],int[],long[]
+     * @param o String,List,Map,Object[],int[],long[]
      * @return
      */
     public static boolean isNotEmpty(Object o) {
@@ -210,7 +210,7 @@ public class ToolUtil {
     /**
      * 对象是否为空
      *
-     * @param obj String,List,Map,Object[],int[],long[]
+     * @param o String,List,Map,Object[],int[],long[]
      * @return
      */
     @SuppressWarnings("rawtypes")
@@ -411,7 +411,7 @@ public class ToolUtil {
      * @return Map<String,Object>
      */
     public static Map<String, Object> caseInsensitiveMap(Map<String, Object> map) {
-        Map<String, Object> tempMap = new HashMap<>();
+        Map<String, Object> tempMap = new HashMap<String, Object>();
         for (String key : map.keySet()) {
             tempMap.put(key.toLowerCase(), map.get(key));
         }

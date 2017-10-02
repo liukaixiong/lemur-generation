@@ -370,7 +370,7 @@ public class Convert {
     /**
      * 转换为Integer数组<br>
      *
-     * @param split 被转换的值
+     * @param str 被转换的值
      * @return 结果
      */
     public static Integer[] toIntArray(String str) {
@@ -400,7 +400,7 @@ public class Convert {
     /**
      * 转换为String数组<br>
      *
-     * @param split 被转换的值
+     * @param str 被转换的值
      * @return 结果
      */
     public static String[] toStrArray(String str) {
@@ -619,24 +619,13 @@ public class Convert {
             return defaultValue;
         }
         valueStr = valueStr.trim().toLowerCase();
-        switch (valueStr) {
-            case "true":
-                return true;
-            case "false":
-                return false;
-            case "yes":
-                return true;
-            case "ok":
-                return true;
-            case "no":
-                return false;
-            case "1":
-                return true;
-            case "0":
-                return false;
-            default:
-                return defaultValue;
+        if("true".equals(valueStr) ||"yes".equals(valueStr) ||"ok".equals(valueStr) ||"1".equals(valueStr)){
+            return true;
         }
+        if("false".equals(valueStr) ||"no".equals(valueStr) ||"0".equals(valueStr)){
+            return false;
+        }
+        return defaultValue;
     }
 
     /**

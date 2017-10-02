@@ -42,4 +42,10 @@ public interface TableFieldDbinfoDao extends BaseMapper<TableFieldDbinfoModel>{
      */
     List<TableFieldDbinfoModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableFieldDbinfoModel model,@Param("w") Wrapper<TableFieldDbinfoModel> wrapper);
 
+    /**
+     * 批量删除数据
+     * @param fieldIds
+     * @return
+     */
+    Integer deleteByFieldIds(@Param("fieldIds")List<Integer> fieldIds);
 }

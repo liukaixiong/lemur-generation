@@ -16,17 +16,23 @@
 		    <result column="is_telephone" property="isTelephone" />
 		    <result column="is_idcard" property="isIdcard" />
 	</resultMap>
+    <delete id="deleteByFieldIds">
+		DELETE FROM t_code_table_field_verification WHERE field_id IN
+		<foreach collection="fieldIds" item="fieldId" separator="," open="(" close=")">
+			#{fieldId}
+		</foreach>
+	</delete>
 
-	
-	<select id="selectCount" resultMap="BaseResultMap">
-			select count(1) from T_CODE_TABLE_FIELD_VERIFICATION t
+
+    <select id="selectCount" resultMap="BaseResultMap">
+			select count(1) from t_code_table_field_verification t
 		<where>
 			<include refid="select_content"/>
 		</where>
 	</select>
 	
 	<select id="selectList" resultMap="BaseResultMap">
-			select * from T_CODE_TABLE_FIELD_VERIFICATION t
+			select * from t_code_table_field_verification t
 		<where>
 			<include refid="select_content"/>
 		</where>

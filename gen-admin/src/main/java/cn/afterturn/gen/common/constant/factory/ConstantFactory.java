@@ -245,7 +245,7 @@ public class ConstantFactory implements IConstantFactory {
         if (dict == null) {
             return "";
         } else {
-            Wrapper<Dict> wrapper = new EntityWrapper<>();
+            Wrapper<Dict> wrapper = new EntityWrapper<Dict>();
             wrapper = wrapper.eq("pid", dict.getId());
             List<Dict> dicts = dictMapper.selectList(wrapper);
             for (Dict item : dicts) {
@@ -289,7 +289,7 @@ public class ConstantFactory implements IConstantFactory {
         if (ToolUtil.isEmpty(id)) {
             return null;
         } else {
-            EntityWrapper<Dict> wrapper = new EntityWrapper<>();
+            EntityWrapper<Dict> wrapper = new EntityWrapper<Dict>();
             List<Dict> dicts = dictMapper.selectList(wrapper.eq("pid", id));
             if (dicts == null || dicts.size() == 0) {
                 return null;
@@ -312,11 +312,11 @@ public class ConstantFactory implements IConstantFactory {
      */
     @Override
     public List<Integer> getSubDeptId(Integer deptid) {
-        Wrapper<Dept> wrapper = new EntityWrapper<>();
+        Wrapper<Dept> wrapper = new EntityWrapper<Dept>();
         wrapper = wrapper.like("pids", "%[" + deptid + "]%");
         List<Dept> depts = this.deptMapper.selectList(wrapper);
 
-        ArrayList<Integer> deptids = new ArrayList<>();
+        ArrayList<Integer> deptids = new ArrayList<Integer>();
 
         if (depts != null || depts.size() > 0) {
             for (Dept dept : depts) {
@@ -335,7 +335,7 @@ public class ConstantFactory implements IConstantFactory {
         Dept dept = deptMapper.selectById(deptid);
         String pids = dept.getPids();
         String[] split = pids.split(",");
-        ArrayList<Integer> parentDeptIds = new ArrayList<>();
+        ArrayList<Integer> parentDeptIds = new ArrayList<Integer>();
         for (String s : split) {
             parentDeptIds.add(Integer.valueOf(StrKit.removeSuffix(StrKit.removePrefix(s, "["), "]")));
         }

@@ -151,7 +151,7 @@ public class GenController {
         model.setGenerationEntity(ge);
         List<TemplateModel> templateList = templateService.getTemplateByIds(templates);
         List<String> templateFileList = genService.loadTemplateFile(templateList);
-        List<String> fileList = new ArrayList<>();
+        List<String> fileList = new ArrayList<String>();
         for (int i = 0; i < templateList.size(); i++) {
             model.setParseType(templateList.get(i).getTemplateType());
             model.setFile(templateFileList.get(i));

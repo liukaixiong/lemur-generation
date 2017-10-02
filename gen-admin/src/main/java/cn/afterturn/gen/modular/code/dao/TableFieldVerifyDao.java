@@ -42,4 +42,10 @@ public interface TableFieldVerifyDao extends BaseMapper<TableFieldVerifyModel>{
      */
     List<TableFieldVerifyModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableFieldVerifyModel model,@Param("w") Wrapper<TableFieldVerifyModel> wrapper);
 
+    /**
+     * 批量删除数据
+     * @param fieldIds
+     * @return
+     */
+    Integer deleteByFieldIds(@Param("fieldIds")List<Integer> fieldIds);
 }

@@ -49,13 +49,13 @@ public class MutiStrFactory {
      */
     public static List<Map<String, String>> parseKeyValue(String mutiString) {
         if (ToolUtil.isEmpty(mutiString)) {
-            return new ArrayList<>();
+            return new ArrayList<Map<String, String>>();
         } else {
-            ArrayList<Map<String, String>> results = new ArrayList<>();
+            ArrayList<Map<String, String>> results = new ArrayList<Map<String, String>>();
             String[] items = StrKit.split(StrKit.removeSuffix(mutiString, ITEM_SPLIT), ITEM_SPLIT);
             for (String item : items) {
                 String[] attrs = item.split(ATTR_SPLIT);
-                HashMap<String, String> itemMap = new HashMap<>();
+                HashMap<String, String> itemMap = new HashMap<String, String>();
                 itemMap.put(MUTI_STR_KEY, attrs[0]);
                 itemMap.put(MUTI_STR_VALUE, attrs[1]);
                 results.add(itemMap);
@@ -72,13 +72,13 @@ public class MutiStrFactory {
      */
     public static List<Map<String, String>> parseIdKeyValue(String mutiString) {
         if (ToolUtil.isEmpty(mutiString)) {
-            return new ArrayList<>();
+            return new ArrayList<Map<String, String>>();
         } else {
-            ArrayList<Map<String, String>> results = new ArrayList<>();
+            ArrayList<Map<String, String>> results = new ArrayList<Map<String, String>>();
             String[] items = StrKit.split(StrKit.removeSuffix(mutiString, ITEM_SPLIT), ITEM_SPLIT);
             for (String item : items) {
                 String[] attrs = item.split(ATTR_SPLIT);
-                HashMap<String, String> itemMap = new HashMap<>();
+                HashMap<String, String> itemMap = new HashMap<String, String>();
                 itemMap.put(MUTI_STR_ID, attrs[0]);
                 itemMap.put(MUTI_STR_KEY, attrs[1]);
                 itemMap.put(MUTI_STR_VALUE, attrs[2]);

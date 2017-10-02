@@ -26,7 +26,7 @@ public class DeptServiceImpl implements IDeptService {
 
         Dept dept = deptMapper.selectById(deptId);
 
-        Wrapper<Dept> wrapper = new EntityWrapper<>();
+        Wrapper<Dept> wrapper = new EntityWrapper<Dept>();
         wrapper = wrapper.like("pids", "%[" + dept.getId() + "]%");
         List<Dept> subDepts = deptMapper.selectList(wrapper);
         for (Dept temp : subDepts) {

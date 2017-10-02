@@ -37,7 +37,7 @@ public class GenServiceImpl implements IGenService {
 
     @Override
     public List<String> loadTemplateFile(List<TemplateModel> templateList) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         for (TemplateModel templateEntity : templateList) {
             list.add(getTemplateFile(templateEntity));
         }

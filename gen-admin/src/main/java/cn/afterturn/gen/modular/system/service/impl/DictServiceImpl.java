@@ -75,7 +75,7 @@ public class DictServiceImpl implements IDictService {
     @Override
     public void delteDict(Integer dictId) {
         //删除这个字典的子词典
-        Wrapper<Dict> dictEntityWrapper = new EntityWrapper<>();
+        Wrapper<Dict> dictEntityWrapper = new EntityWrapper<Dict>();
         dictEntityWrapper = dictEntityWrapper.eq("pid", dictId);
         dictMapper.delete(dictEntityWrapper);
 

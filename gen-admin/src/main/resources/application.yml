@@ -12,14 +12,13 @@ guns:
   spring-session-open: false #是否开启spring session,如果是多机环境需要开启(true/false)
   session-invalidate-time: 1800 #session失效时间(只在单机环境下生效，多机环境在SpringSessionConfig类中配置) 单位：秒
   session-validation-interval: 900 #多久检测一次失效的session(只在单机环境下生效) 单位：秒
-  share-open: false #是否开启分享,自己用可以关闭(true/false)
+
 ###################  beetl配置  ###################
 beetl:
   delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
   delimiter-statement-end: null
   resource-tagroot: common/tags   #自定义标签文件Root目录和后缀
   resource-tagsuffix: tag
-  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
 
 
 ###################  spring配置  ###################
@@ -71,21 +70,29 @@ mybatis-plus:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://localhost:3306/easycode_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://121.42.11.118:3308/easycode_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
       username: jueyue
-      password: jueyue
+      password: wqeqeqwwocszjxsfakdfas
       filters: log4j,wall,mergeStat
 
 logging:
   level.root: info
   level.cn.afterturn: debug
+  level.org.springframework: debug
+  level.org.apache.ibatis: debug
   path: /home/logs/gencode/
   file: gencode.log
 
-###################  项目启动端口  ###################
+beetl:
+  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
 server:
   port: 80
-
+mybatis-plus:
+  global-config:
+    refresh-mapper: true
+guns:
+  share-open: false #是否开启分享,自己用可以关闭(true/false)
+  gen-local: true #是否允许在本地生成代码
 ---
 
 ##########################################################
@@ -94,9 +101,9 @@ server:
 spring:
   profiles: pro
   datasource:
-      url: jdbc:mysql://localhost:3306/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://localhost:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
       username: jueyue
-      password: jueyue
+      password: wqeqeqwwocszjxsfakdfas
       filters: log4j,wall,mergeStat
 
 logging:
@@ -104,6 +111,14 @@ logging:
   path: /home/logs/gencode/
   file: gencode.log
 
+beetl:
+  resource-auto-check: false #是否检测文件变化,开发用true合适，但线上要改为false
+mybatis-plus:
+  global-config:
+    refresh-mapper: false
+guns:
+  share-open: true #是否开启分享,自己用可以关闭(true/false)
+  gen-local: false #是否允许在本地生成代码
 ###################  项目启动端口  ###################
 server:
   port: 8080

@@ -89,7 +89,7 @@ public abstract class BaseReadTable {
 
     public List<String> getAllDB(String sql) throws SQLException {
         Statement statement = null;
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(String.format(sql));
             while (rs.next()) {
@@ -111,7 +111,7 @@ public abstract class BaseReadTable {
 
     protected List<GenBeanEntity> getAllTableEntiy(String dbName, String sql) throws Exception {
         Statement statement = null;
-        List<GenBeanEntity> list = new ArrayList<>();
+        List<GenBeanEntity> list = new ArrayList<GenBeanEntity>();
         try {
             ResultSet rs = ConnectionUtil.createStatement().executeQuery(String.format(sql, dbName));
             String dbTableName = null;

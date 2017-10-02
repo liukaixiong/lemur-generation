@@ -42,4 +42,10 @@ public interface TableFieldDao extends BaseMapper<TableFieldModel>{
      */
     List<TableFieldModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableFieldModel model,@Param("w") Wrapper<TableFieldModel> wrapper);
 
+    /**
+     * 批量插入列信息
+     * @param tableFields
+     * @return
+     */
+    Integer batchInsert(List<TableFieldModel> tableFields);
 }

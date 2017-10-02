@@ -62,7 +62,7 @@ public class BeanKit {
      */
     public static Map<String, PropertyDescriptor> getFieldNamePropertyDescriptorMap(Class<?> clazz) throws IntrospectionException {
         final PropertyDescriptor[] propertyDescriptors = getPropertyDescriptors(clazz);
-        Map<String, PropertyDescriptor> map = new HashMap<>();
+        Map<String, PropertyDescriptor> map = new HashMap<String, PropertyDescriptor>();
         for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
             map.put(propertyDescriptor.getName(), propertyDescriptor);
         }

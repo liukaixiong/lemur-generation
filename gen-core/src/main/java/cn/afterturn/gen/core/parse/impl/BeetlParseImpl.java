@@ -53,7 +53,7 @@ public class BeetlParseImpl implements IParse {
 
     @Override
     public List<String> parse(GenerationEntity generationEntity, GenBeanEntity tableEntity, List<String> fileList) {
-        List<String> renderList = new ArrayList<>();
+        List<String> renderList = new ArrayList<String>();
         Template t;
         for (String file : fileList) {
             t = gt.getTemplate(file);

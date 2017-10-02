@@ -63,7 +63,7 @@ public class DefaultFastjsonConfig {
      * 支持的mediaType类型
      */
     public List<MediaType> getSupportedMediaType() {
-        ArrayList<MediaType> mediaTypes = new ArrayList<>();
+        ArrayList<MediaType> mediaTypes = new ArrayList<MediaType>();
         mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         return mediaTypes;
     }

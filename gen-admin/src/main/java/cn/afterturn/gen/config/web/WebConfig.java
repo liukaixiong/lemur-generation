@@ -114,7 +114,7 @@ public class WebConfig {
      */
     @Bean
     public ServletListenerRegistrationBean<RequestContextListener> requestContextListenerRegistration() {
-        return new ServletListenerRegistrationBean<>(new RequestContextListener());
+        return new ServletListenerRegistrationBean<RequestContextListener>(new RequestContextListener());
     }
 
     /**
@@ -122,7 +122,7 @@ public class WebConfig {
      */
     @Bean
     public ServletListenerRegistrationBean<ConfigListener> configListenerRegistration() {
-        return new ServletListenerRegistrationBean<>(new ConfigListener());
+        return new ServletListenerRegistrationBean<ConfigListener>(new ConfigListener());
     }
 
     /**

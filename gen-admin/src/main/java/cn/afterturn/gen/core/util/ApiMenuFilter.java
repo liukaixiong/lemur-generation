@@ -21,7 +21,7 @@ public class ApiMenuFilter extends MenuNode {
         //如果关闭了接口文档,则不显示接口文档菜单
         GunsProperties gunsProperties = SpringContextHolder.getBean(GunsProperties.class);
         if (!gunsProperties.getSwaggerOpen()) {
-            List<MenuNode> menuNodesCopy = new ArrayList<>();
+            List<MenuNode> menuNodesCopy = new ArrayList<MenuNode>();
             for (MenuNode menuNode : nodes) {
                 if (Const.API_MENU_NAME.equals(menuNode.getName())) {
                     continue;

@@ -24,9 +24,20 @@
 		    <result column="dict_name" property="dictName" />
 		    <result column="dict_type" property="dictType" />
 	</resultMap>
+    <insert id="batchInsert">
+		<if test="_databaseType == 'MySQL'">
+			INSERT INTO t_code_table_field (table_id, field_name, name, content, type, is_key, is_null, is_show_add, is_show_edit,
+			is_show_detail, is_show_list, is_import, is_export, is_query, query_mode, show_type, order_num, dict_name, dict_type)
+			VALUES
+			<foreach collection="list" item="s" separator=",">
+				(#{s.tableId},#{s.fieldName},#{s.name},#{s.content},#{s.type},#{s.isKey},#{s.isNull},#{s.isShowAdd},#{s.isShowEdit},
+				#{s.isShowDetail},#{s.isShowList},#{s.isImport},#{s.isExport},#{s.isQuery},#{s.queryMode},#{s.showType},#{s.orderNum},#{s.dictName},#{s.dictType})
+			</foreach>
+		</if>
+	</insert>
 
-	
-	<select id="selectCount" resultMap="BaseResultMap">
+
+    <select id="selectCount" resultMap="BaseResultMap">
 			select count(1) from T_CODE_TABLE_FIELD t
 		<where>
 			<include refid="select_content"/>

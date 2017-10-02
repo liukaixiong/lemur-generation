@@ -62,5 +62,8 @@ public class TableFieldDbinfoServiceImpl implements ITableFieldDbinfoService {
     public List<TableFieldDbinfoModel> selectPage(Pagination pagination, TableFieldDbinfoModel model, Wrapper<TableFieldDbinfoModel> wrapper) {
         return tableFieldDbinfoDao.selectPage(pagination,model,wrapper);
     }
-
+    @Override
+    public Integer deleteByFieldIds(List<Integer> fieldIds) {
+        return tableFieldDbinfoDao.deleteByFieldIds(fieldIds);
+    }
 }

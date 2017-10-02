@@ -99,4 +99,9 @@ public interface ITableFieldDbinfoService {
      */
     List<TableFieldDbinfoModel> selectPage(Pagination pagination, TableFieldDbinfoModel model,Wrapper<TableFieldDbinfoModel> wrapper);
 
+    /**
+     * 批量删除,根据字段的数据
+     * @param fieldIds
+     */
+    Integer deleteByFieldIds(List<Integer> fieldIds);
 }

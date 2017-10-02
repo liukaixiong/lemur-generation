@@ -18,7 +18,7 @@ import javax.servlet.ServletContextListener;
 
 public class ConfigListener implements ServletContextListener {
 
-    private static Map<String, String> conf = new HashMap<>();
+    private static Map<String, String> conf = new HashMap<String, String>();
 
     public static Map<String, String> getConf() {
         return conf;

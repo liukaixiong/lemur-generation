@@ -26,10 +26,4 @@ public class SqlUtil {
         return str;
     }
 
-    public static void main(String[] args) {
-        ArrayList<Object> arrayList = new ArrayList<>();
-        arrayList.add(2);
-        arrayList.add(2);
-        System.out.println(parse(arrayList));
-    }
 }

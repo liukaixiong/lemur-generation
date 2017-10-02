@@ -36,7 +36,7 @@ public class BeetlParseImplTest {
         generationEntity.setEntityName("小明");
         GenBeanEntity tableEntity = new GenBeanEntity();
         tableEntity.setChinaName("绝月");
-        List<String> fileList = new ArrayList<>();
+        List<String> fileList = new ArrayList<String>();
         fileList.add("hello,entity Name :${g.entityName}  ,chinaName: ${t.chinaName}");
         fileList = parse.parse(generationEntity, tableEntity, fileList);
         for (String string : fileList) {

@@ -48,7 +48,7 @@ public class MenuServiceImpl implements IMenuService {
         delMenu(menuId);
 
         //删除所有子菜单
-        Wrapper<Menu> wrapper = new EntityWrapper<>();
+        Wrapper<Menu> wrapper = new EntityWrapper<Menu>();
         wrapper = wrapper.like("pcodes", "%[" + menu.getCode() + "]%");
         List<Menu> menus = menuMapper.selectList(wrapper);
         for (Menu temp : menus) {

@@ -1,19 +1,20 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
-import com.google.common.collect.Lists;
-
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import cn.afterturn.gen.core.support.CollectionKit;
 import cn.afterturn.gen.modular.code.dao.TableFieldDao;
 import cn.afterturn.gen.modular.code.model.TableFieldModel;
+import cn.afterturn.gen.modular.code.service.ITableFieldDbinfoService;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;
+import cn.afterturn.gen.modular.code.service.ITableFieldVerifyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +30,13 @@ public class TableFieldServiceImpl implements ITableFieldService {
     @Autowired
     private TableFieldDao tableFieldDao;
 
+    @Autowired
+    private ITableFieldVerifyService tableFieldVerifyService;
+    @Autowired
+    private ITableFieldDbinfoService tableFieldDbinfoService;
+
     @Override
-    @Transactional()
+    @Transactional
     public Integer insert(TableFieldModel entity) {
         return tableFieldDao.insert(entity);
     }
@@ -79,8 +85,14 @@ public class TableFieldServiceImpl implements ITableFieldService {
         if(CollectionKit.isNotEmpty(list)){
             List<Integer> ids = getIds(list);
             tableFieldDao.deleteBatchIds(ids);
+            tableFieldVerifyService.deleteByFieldIds(ids);
+            tableFieldDbinfoService.deleteByFieldIds(ids);
         }
-        //tableFieldDao.batchInsert();
+        tableFieldDao.batchInsert(tableFields);
+
+        for (int i = 0; i < tableFields.size(); i++) {
+            
+        }
     }
 
     /**
@@ -89,7 +101,7 @@ public class TableFieldServiceImpl implements ITableFieldService {
      * @return
      */
     private List<Integer> getIds(List<TableFieldModel> list) {
-        List<Integer> ids = Lists.newArrayList();
+        List<Integer> ids = new ArrayList<Integer>(list.size());
         for (int i = 0; i < list.size(); i++) {
             ids.add(list.get(i).getId());
         }

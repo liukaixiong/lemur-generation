@@ -17,7 +17,7 @@ public class BeanKeyConvert {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BeanKeyConvert.class);
 
-    private static Map<Class, Reflector> clazzMap = new HashMap<>();
+    private static Map<Class, Reflector> clazzMap = new HashMap<Class, Reflector>();
 
     /**
      * 系统用户名称转换类

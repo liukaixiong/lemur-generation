@@ -46,14 +46,14 @@ public class FreeMarkerParseImpl implements IParse {
 
     @Override
     public List<String> parse(GenerationEntity generationEntity, GenBeanEntity tableEntity, List<String> fileList) {
-        List<String> renderList = new ArrayList<>();
+        List<String> renderList = new ArrayList<String>();
         Template t;
         try {
             for (String file : fileList) {
                 resourceLoader.putTemplate(file.hashCode() + "_FTL+KEY", file);
                 t = cfg.getTemplate(file.hashCode() + "_FTL+KEY");
                 Writer write = new StringWriter();
-                Map<String, Object> paramsMap = new HashMap<>();
+                Map<String, Object> paramsMap = new HashMap<String, Object>();
                 paramsMap.put(IParse.GEN_PARAMS, generationEntity);
                 paramsMap.put(IParse.TABLE_DETAIL, tableEntity);
                 t.process(paramsMap, write);

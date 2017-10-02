@@ -14,6 +14,12 @@
         <result column="field_point_length" property="fieldPointLength"/>
     </resultMap>
 
+    <delete id="deleteByFieldIds">
+        DELETE FROM t_code_table_field_dbinfo WHERE field_id IN
+        <foreach collection="fieldIds" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
 
     <select id="selectCount" resultMap="BaseResultMap">
         select count(1) from T_CODE_TABLE_FIELD_DBINFO t

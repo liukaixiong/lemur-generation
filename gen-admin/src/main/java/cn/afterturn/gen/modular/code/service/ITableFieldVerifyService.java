@@ -99,4 +99,9 @@ public interface ITableFieldVerifyService {
      */
     List<TableFieldVerifyModel> selectPage(Pagination pagination, TableFieldVerifyModel model,Wrapper<TableFieldVerifyModel> wrapper);
 
+    /**
+     * 批量删除,根据字段的数据
+     * @param fieldIds
+     */
+    Integer deleteByFieldIds(List<Integer> fieldIds);
 }

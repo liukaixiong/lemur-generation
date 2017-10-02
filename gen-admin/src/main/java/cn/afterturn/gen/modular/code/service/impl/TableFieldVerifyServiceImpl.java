@@ -63,4 +63,9 @@ public class TableFieldVerifyServiceImpl implements ITableFieldVerifyService {
         return tableFieldVerifyDao.selectPage(pagination,model,wrapper);
     }
 
+    @Override
+    public Integer deleteByFieldIds(List<Integer> fieldIds) {
+        return tableFieldVerifyDao.deleteByFieldIds(fieldIds);
+    }
+
 }

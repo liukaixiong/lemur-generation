@@ -117,7 +117,7 @@ public class CodeGenModel {
     }
 
     public void setFile(String file) {
-        this.fileList = new ArrayList<>();
+        this.fileList = new ArrayList<String>();
         this.fileList.add(file);
     }
 

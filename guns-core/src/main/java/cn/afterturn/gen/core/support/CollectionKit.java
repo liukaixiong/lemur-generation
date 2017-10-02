@@ -262,7 +262,6 @@ public class CollectionKit {
      *
      * @return ArrayList对象
      */
-    @SafeVarargs
     public static <T> ArrayList<T> newArrayList(T... values) {
         return new ArrayList<T>(Arrays.asList(values));
     }
@@ -323,7 +322,6 @@ public class CollectionKit {
      * @param arrays 数组集合
      * @return 合并后的数组
      */
-    @SafeVarargs
     public static <T> T[] addAll(T[]... arrays) {
         if (arrays.length == 1) {
             return arrays[0];
@@ -799,26 +797,31 @@ public class CollectionKit {
                 return Arrays.deepToString((Object[]) obj);
             } catch (Exception e) {
                 final String className = obj.getClass().getComponentType().getName();
-                switch (className) {
-                    case "long":
-                        return Arrays.toString((long[]) obj);
-                    case "int":
-                        return Arrays.toString((int[]) obj);
-                    case "short":
-                        return Arrays.toString((short[]) obj);
-                    case "char":
-                        return Arrays.toString((char[]) obj);
-                    case "byte":
-                        return Arrays.toString((byte[]) obj);
-                    case "boolean":
-                        return Arrays.toString((boolean[]) obj);
-                    case "float":
-                        return Arrays.toString((float[]) obj);
-                    case "double":
-                        return Arrays.toString((double[]) obj);
-                    default:
-                        throw new ToolBoxException(e);
+                if("long".equals(className)){
+                    return Arrays.toString((long[]) obj);
                 }
+                if("int".equals(className)){
+                    return Arrays.toString((int[]) obj);
+                }
+                if("short".equals(className)){
+                    return Arrays.toString((short[]) obj);
+                }
+                if("char".equals(className)){
+                    return Arrays.toString((char[]) obj);
+                }
+                if("byte".equals(className)){
+                    return Arrays.toString((byte[]) obj);
+                }
+                if("boolean".equals(className)){
+                    return Arrays.toString((boolean[]) obj);
+                }
+                if("float".equals(className)){
+                    return Arrays.toString((float[]) obj);
+                }
+                if("double".equals(className)){
+                    return Arrays.toString((double[]) obj);
+                }
+                throw new ToolBoxException(e);
             }
         }
         return obj.toString();
