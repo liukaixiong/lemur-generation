@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import cn.afterturn.gen.modular.code.dao.TableInfoDao;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
+import cn.afterturn.gen.modular.code.service.ITableFieldService;
 import cn.afterturn.gen.modular.code.service.ITableInfoService;
 import cn.afterturn.gen.modular.code.service.ITableServiceConfigService;
 
@@ -26,20 +27,31 @@ public class TableInfoServiceImpl implements ITableInfoService {
     private TableInfoDao tableInfoDao;
     @Autowired
     private ITableServiceConfigService tableServiceConfigService;
+    @Autowired
+    private ITableFieldService tableFieldService;
 
     @Override
     @Transactional
     public Integer insert(TableInfoModel entity) {
+        //table插入
         tableInfoDao.insert(entity);
+        //table 配置更新
         for (int i = 0; i < entity.getServiceConfig().size(); i++) {
             entity.getServiceConfig().get(i).setTableId(entity.getId());
         }
         tableServiceConfigService.batchSaveOrUpdateServiceConfig(entity.getServiceConfig());
+        for (int i = 0; i < entity.getTableFields().size(); i++) {
+            entity.getTableFields().get(i).setTableId(entity.getId());
+        }
+        //table字段更新
+        tableFieldService.batchSaveOrUpdate(entity.getTableFields());
         return 1;
     }
 
     @Override
     public Integer deleteById(Integer id) {
+        //删除数据需要把所有关联的都删除了
+
         return tableInfoDao.deleteById(id);
     }
 

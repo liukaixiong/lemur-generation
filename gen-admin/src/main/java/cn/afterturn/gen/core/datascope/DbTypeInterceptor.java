@@ -1,11 +1,12 @@
 package cn.afterturn.gen.core.datascope;
 
+import com.baomidou.mybatisplus.toolkit.GlobalConfigUtils;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
@@ -32,7 +33,7 @@ import java.util.Properties;
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})})
 public class DbTypeInterceptor implements Interceptor {
 
-    private static String TYPE;
+    private static String TYPE = "";
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -44,7 +45,7 @@ public class DbTypeInterceptor implements Interceptor {
             //第一个参数处理。根据它判断是否给“操作属性”赋值。
             if (StringUtils.isEmpty(TYPE) && parameterObject instanceof MappedStatement) {//如果是第一个参数 MappedStatement
                 MappedStatement ms = (MappedStatement) parameterObject;
-                type = ms.getConfiguration().getEnvironment().getDataSource().getConnection().getMetaData().getDatabaseProductName();
+                type = GlobalConfigUtils.getGlobalConfig(ms.getConfiguration()).getDbType().getDb().toUpperCase();
             } else if (parameterObject instanceof Map) {//如果是map，有两种情况：（1）使用@Param多参数传入，由Mybatis包装成map。（2）原始传入Map
                 Map map = (Map) parameterObject;
                 map.put("_databaseType",type);

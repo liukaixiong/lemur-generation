@@ -1,7 +1,11 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
+import com.google.common.collect.Lists;
+
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+
+import cn.afterturn.gen.core.support.CollectionKit;
 import cn.afterturn.gen.modular.code.dao.TableFieldDao;
 import cn.afterturn.gen.modular.code.model.TableFieldModel;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;
@@ -10,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
@@ -63,6 +68,32 @@ public class TableFieldServiceImpl implements ITableFieldService {
     @Override
     public List<TableFieldModel> selectPage(Pagination pagination, TableFieldModel model, Wrapper<TableFieldModel> wrapper) {
         return tableFieldDao.selectPage(pagination,model,wrapper);
+    }
+
+    @Override
+    public void batchSaveOrUpdate(List<TableFieldModel> tableFields) {
+        // 删除旧数据
+        Map<String,Object> temp = new HashMap<String, Object>();
+        temp.put("table_id",tableFields.get(0).getTableId());
+        List<TableFieldModel> list = tableFieldDao.selectByMap(temp);
+        if(CollectionKit.isNotEmpty(list)){
+            List<Integer> ids = getIds(list);
+            tableFieldDao.deleteBatchIds(ids);
+        }
+        //tableFieldDao.batchInsert();
+    }
+
+    /**
+     *
+     * @param list
+     * @return
+     */
+    private List<Integer> getIds(List<TableFieldModel> list) {
+        List<Integer> ids = Lists.newArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            ids.add(list.get(i).getId());
+        }
+        return ids;
     }
 
 }

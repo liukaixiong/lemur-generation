@@ -84,6 +84,9 @@ public class TableInfoModel extends CodeBaseModel<TableInfoModel> {
     @TableField(exist = false)
     private List<TableServiceConfigModel> serviceConfig;
 
+    @TableField(exist = false)
+    private List<TableFieldModel> tableFields;
+
     /**
      * 获取: Id
      */
@@ -224,6 +227,14 @@ public class TableInfoModel extends CodeBaseModel<TableInfoModel> {
 
     public void setServiceConfig(List<TableServiceConfigModel> serviceConfig) {
         this.serviceConfig = serviceConfig;
+    }
+
+    public List<TableFieldModel> getTableFields() {
+        return tableFields;
+    }
+
+    public void setTableFields(List<TableFieldModel> tableFields) {
+        this.tableFields = tableFields;
     }
 
     @Override

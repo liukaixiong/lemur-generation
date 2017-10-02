@@ -1,7 +1,7 @@
 package cn.afterturn.gen.modular.code.service;
 
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import cn.afterturn.gen.modular.code.model.TableFieldModel;
+import cn.afterturn.gen.modular.code.model.TableFieldDbinfoModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.Map;
  * Service
  *
  * @author JueYue
- * @Date 2017-09-20 09:22
+ * @Date 2017-09-27 20:46
  */
-public interface ITableFieldService {
+public interface ITableFieldDbinfoService {
 
      /**
      * <p>
@@ -24,7 +24,7 @@ public interface ITableFieldService {
      * @param entity 实体对象
      * @return int
      */
-    Integer insert(TableFieldModel entity);
+    Integer insert(TableFieldDbinfoModel entity);
 
     /**
      * <p>
@@ -44,7 +44,7 @@ public interface ITableFieldService {
      * @param entity 实体对象
      * @return int
      */
-    Integer updateById(TableFieldModel entity);
+    Integer updateById(TableFieldDbinfoModel entity);
 
     /**
      * <p>
@@ -52,9 +52,9 @@ public interface ITableFieldService {
      * </p>
      *
      * @param id 主键ID
-     * @return TableFieldModel
+     * @return TableFieldDbinfoModel
      */
-    TableFieldModel selectById(Integer id);
+    TableFieldDbinfoModel selectById(Integer id);
 
     /**
      * <p>
@@ -62,9 +62,9 @@ public interface ITableFieldService {
      * </p>
      *
      * @param entity 实体对象
-     * @return TableFieldModel
+     * @return TableFieldDbinfoModel
      */
-    TableFieldModel selectOne(TableFieldModel entity);
+    TableFieldDbinfoModel selectOne(TableFieldDbinfoModel entity);
 
     /**
      * <p>
@@ -74,7 +74,7 @@ public interface ITableFieldService {
      * @param model 实体对象
      * @return int
      */
-    Integer selectCount(TableFieldModel model);
+    Integer selectCount(TableFieldDbinfoModel model);
 
     /**
      * <p>
@@ -82,9 +82,9 @@ public interface ITableFieldService {
      * </p>
      *
      * @param model 实体对象封装操作类（可以为 null）
-     * @return List<TableFieldModel>
+     * @return List<TableFieldDbinfoModel>
      */
-    List<TableFieldModel> selectList(TableFieldModel model);
+    List<TableFieldDbinfoModel> selectList(TableFieldDbinfoModel model);
 
 
     /**
@@ -95,15 +95,8 @@ public interface ITableFieldService {
      * @param pagination 分页查询条件
      * @param model   实体对象封装操作可以为 null）
      * @param wrapper   SQL包装
-     * @return List<TableFieldModel>
+     * @return List<TableFieldDbinfoModel>
      */
-    List<TableFieldModel> selectPage(Pagination pagination, TableFieldModel model,Wrapper<TableFieldModel> wrapper);
-
-    /**
-     * 批量保存或者更新
-     * @param tableFields
-     */
-    void batchSaveOrUpdate(List<TableFieldModel> tableFields);
-
+    List<TableFieldDbinfoModel> selectPage(Pagination pagination, TableFieldDbinfoModel model,Wrapper<TableFieldDbinfoModel> wrapper);
 
 }

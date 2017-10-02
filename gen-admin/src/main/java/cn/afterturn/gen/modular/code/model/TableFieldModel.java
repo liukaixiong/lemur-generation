@@ -140,35 +140,10 @@ public class TableFieldModel extends Model<TableFieldModel> {
     @TableField(value = "dict_type")
     private Integer dictType;
 
-    /**
-     * 字段默认值
-     */
-    @TableField(value = "field_default")
-    private String fieldDefault;
-
-    /**
-     * 字段注释
-     */
-    @TableField(value = "field_content")
-    private String fieldContent;
-
-    /**
-     * 字段长度
-     */
-    @TableField(value = "field_length")
-    private Integer fieldLength;
-
-    /**
-     * 字段类型
-     */
-    @TableField(value = "field_type")
-    private String fieldType;
-
-    /**
-     * 小数点位数
-     */
-    @TableField(value = "field_point_length")
-    private Integer fieldPointLength;
+    @TableField(exist = false)
+    private TableFieldVerifyModel verifyModel;
+    @TableField(exist = false)
+    private TableFieldDbinfoModel dbinfoModel;
 
 
     /**
@@ -451,76 +426,21 @@ public class TableFieldModel extends Model<TableFieldModel> {
         this.dictType = dictType;
     }
 
-    /**
-     * 获取: 字段默认值
-     */
-    public String getFieldDefault() {
-        return fieldDefault;
+    public TableFieldVerifyModel getVerifyModel() {
+        return verifyModel;
     }
 
-    /**
-     * 设置: 字段默认值
-     */
-    public void setFieldDefault(String fieldDefault) {
-        this.fieldDefault = fieldDefault;
+    public void setVerifyModel(TableFieldVerifyModel verifyModel) {
+        this.verifyModel = verifyModel;
     }
 
-    /**
-     * 获取:  字段注释
-     */
-    public String getFieldContent() {
-        return fieldContent;
+    public TableFieldDbinfoModel getDbinfoModel() {
+        return dbinfoModel;
     }
 
-    /**
-     * 设置:  字段注释
-     */
-    public void setFieldContent(String fieldContent) {
-        this.fieldContent = fieldContent;
+    public void setDbinfoModel(TableFieldDbinfoModel dbinfoModel) {
+        this.dbinfoModel = dbinfoModel;
     }
-
-    /**
-     * 获取: 字段长度
-     */
-    public Integer getFieldLength() {
-        return fieldLength;
-    }
-
-    /**
-     * 设置: 字段长度
-     */
-    public void setFieldLength(Integer fieldLength) {
-        this.fieldLength = fieldLength;
-    }
-
-    /**
-     * 获取: 字段类型
-     */
-    public String getFieldType() {
-        return fieldType;
-    }
-
-    /**
-     * 设置: 字段类型
-     */
-    public void setFieldType(String fieldType) {
-        this.fieldType = fieldType;
-    }
-
-    /**
-     * 获取: 小数点位数
-     */
-    public Integer getFieldPointLength() {
-        return fieldPointLength;
-    }
-
-    /**
-     * 设置: 小数点位数
-     */
-    public void setFieldPointLength(Integer fieldPointLength) {
-        this.fieldPointLength = fieldPointLength;
-    }
-
 
     @Override
     protected Serializable pkVal() {

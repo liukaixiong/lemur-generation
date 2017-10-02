@@ -23,11 +23,6 @@
 		    <result column="order_num" property="orderNum" />
 		    <result column="dict_name" property="dictName" />
 		    <result column="dict_type" property="dictType" />
-		    <result column="field_default" property="fieldDefault" />
-		    <result column="field_content" property="fieldContent" />
-		    <result column="field_length" property="fieldLength" />
-		    <result column="field_type" property="fieldType" />
-		    <result column="field_point_length" property="fieldPointLength" />
 	</resultMap>
 
 	
@@ -113,21 +108,6 @@
 				</if>
 				<if test="e.dictType != null and e.dictType != '' ">
 					AND t.DICT_TYPE = #{e.dictType}
-				</if>
-				<if test="e.fieldDefault != null and e.fieldDefault != '' ">
-					AND t.FIELD_DEFAULT = #{e.fieldDefault}
-				</if>
-				<if test="e.fieldContent != null and e.fieldContent != '' ">
-					AND t.FIELD_CONTENT = #{e.fieldContent}
-				</if>
-				<if test="e.fieldLength != null and e.fieldLength != '' ">
-					AND t.FIELD_LENGTH = #{e.fieldLength}
-				</if>
-				<if test="e.fieldType != null and e.fieldType != '' ">
-					AND t.FIELD_TYPE = #{e.fieldType}
-				</if>
-				<if test="e.fieldPointLength != null and e.fieldPointLength != '' ">
-					AND t.FIELD_POINT_LENGTH = #{e.fieldPointLength}
 				</if>
 	</sql>
 
