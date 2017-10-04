@@ -1,4 +1,4 @@
-package cn.afterturn.gen.core.datascope;
+package cn.afterturn.gen.core.intercept;
 
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -20,10 +20,10 @@ import java.util.Properties;
 import cn.afterturn.gen.core.shiro.ShiroKit;
 
 /**
- * 统一更新拦截 Created by JueYue on 2017/9/13.
+ * 统一插入拦截器 Created by JueYue on 2017/9/13.
  */
 @Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})})
-public class CodeUpdateInterceptor implements Interceptor {
+public class CodeInsertInterceptor implements Interceptor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CodeInsertInterceptor.class);
 
@@ -37,7 +37,7 @@ public class CodeUpdateInterceptor implements Interceptor {
             if (parameterObject instanceof MappedStatement) {//如果是第一个参数 MappedStatement
                 MappedStatement ms = (MappedStatement) parameterObject;
                 SqlCommandType sqlCommandType = ms.getSqlCommandType();
-                if (sqlCommandType == SqlCommandType.UPDATE) {//如果是“增加”或“更新”操作，则继续进行默认操作信息赋值。否则，则退出
+                if (sqlCommandType == SqlCommandType.INSERT) {//如果是“增加”或“更新”操作，则继续进行默认操作信息赋值。否则，则退出
                     continue;
                 } else {
                     break;
@@ -58,10 +58,13 @@ public class CodeUpdateInterceptor implements Interceptor {
         //设置参数值
         Method method;
         try {
-            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setMdfUserId", Integer.class)) != null) {
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setUserId", Integer.class)) != null) {
                 ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
             }
-            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setMdfTime", Date.class)) != null) {
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtUserId", Integer.class)) != null) {
+                ReflectionUtils.invokeMethod(method, parameterObject, ShiroKit.getUser().getId());
+            }
+            if ((method = ReflectionUtils.findMethod(parameterObject.getClass(), "setCrtTime", Date.class)) != null) {
                 ReflectionUtils.invokeMethod(method, parameterObject, new Date());
             }
         } catch (Exception e) {

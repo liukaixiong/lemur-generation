@@ -104,4 +104,11 @@ public interface ITableFieldDbinfoService {
      * @param fieldIds
      */
     Integer deleteByFieldIds(List<Integer> fieldIds);
+
+    /**
+     * 批量插入
+     * @param dbInfoModelList
+     * @return
+     */
+    Integer batchInsert(List<TableFieldDbinfoModel> dbInfoModelList);
 }

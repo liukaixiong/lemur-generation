@@ -1,4 +1,4 @@
-package cn.afterturn.gen.core.datascope;
+package cn.afterturn.gen.core.intercept;
 
 import com.baomidou.mybatisplus.toolkit.GlobalConfigUtils;
 

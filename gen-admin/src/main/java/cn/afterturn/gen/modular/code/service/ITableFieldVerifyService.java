@@ -104,4 +104,11 @@ public interface ITableFieldVerifyService {
      * @param fieldIds
      */
     Integer deleteByFieldIds(List<Integer> fieldIds);
+
+    /**
+     * 批量插入
+     * @param verifyModelList
+     * @return
+     */
+    Integer batchInsert(List<TableFieldVerifyModel> verifyModelList);
 }

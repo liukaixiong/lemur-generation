@@ -66,4 +66,9 @@ public class TableFieldDbinfoServiceImpl implements ITableFieldDbinfoService {
     public Integer deleteByFieldIds(List<Integer> fieldIds) {
         return tableFieldDbinfoDao.deleteByFieldIds(fieldIds);
     }
+
+    @Override
+    public Integer batchInsert(List<TableFieldDbinfoModel> dbInfoModelList) {
+        return tableFieldDbinfoDao.batchInsert(dbInfoModelList);
+    }
 }

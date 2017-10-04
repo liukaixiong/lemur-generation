@@ -71,29 +71,10 @@ public class TableFieldVerifyModel extends Model<TableFieldVerifyModel> {
     private String regex;
 
     /**
-     * 是否邮箱
+     * 0 自定义 1 -邮箱 2 手机 3- 电话 4-身份证
      */
-    @TableField(value = "is_email")
-    private Integer isEmail;
-
-    /**
-     * 是否手机
-     */
-    @TableField(value = "is_phone")
-    private Integer isPhone;
-
-    /**
-     * 是否电话
-     */
-    @TableField(value = "is_telephone")
-    private Integer isTelephone;
-
-    /**
-     * 是否身份证
-     */
-    @TableField(value = "is_idcard")
-    private Integer isIdcard;
-
+    @TableField(value = "regex_type")
+    private Integer regexType;
 
     /**
      * 获取: Id
@@ -206,63 +187,6 @@ public class TableFieldVerifyModel extends Model<TableFieldVerifyModel> {
     public void setRegex(String regex) {
         this.regex = regex;
     }
-
-    /**
-     * 获取: 是否邮箱
-     */
-    public Integer getIsEmail() {
-        return isEmail;
-    }
-
-    /**
-     * 设置: 是否邮箱
-     */
-    public void setIsEmail(Integer isEmail) {
-        this.isEmail = isEmail;
-    }
-
-    /**
-     * 获取: 是否手机
-     */
-    public Integer getIsPhone() {
-        return isPhone;
-    }
-
-    /**
-     * 设置: 是否手机
-     */
-    public void setIsPhone(Integer isPhone) {
-        this.isPhone = isPhone;
-    }
-
-    /**
-     * 获取: 是否电话
-     */
-    public Integer getIsTelephone() {
-        return isTelephone;
-    }
-
-    /**
-     * 设置: 是否电话
-     */
-    public void setIsTelephone(Integer isTelephone) {
-        this.isTelephone = isTelephone;
-    }
-
-    /**
-     * 获取: 是否身份证
-     */
-    public Integer getIsIdcard() {
-        return isIdcard;
-    }
-
-    /**
-     * 设置: 是否身份证
-     */
-    public void setIsIdcard(Integer isIdcard) {
-        this.isIdcard = isIdcard;
-    }
-
 
     @Override
     protected Serializable pkVal() {

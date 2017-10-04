@@ -68,4 +68,9 @@ public class TableFieldVerifyServiceImpl implements ITableFieldVerifyService {
         return tableFieldVerifyDao.deleteByFieldIds(fieldIds);
     }
 
+    @Override
+    public Integer batchInsert(List<TableFieldVerifyModel> verifyModelList) {
+        return tableFieldVerifyDao.batchInsert(verifyModelList);
+    }
+
 }

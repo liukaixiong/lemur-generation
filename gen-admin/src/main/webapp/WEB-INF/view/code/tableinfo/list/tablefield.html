@@ -1,6 +1,6 @@
 <div class="ibox float-e-margins">
     <div class="ibox-content">
-        <div class="form-horizontal row">
+        <div id="fieldInfoDiv" class="form-horizontal row">
             <div class="fixed-table-header col-sm-10" style="margin-right: 0px;">
                 <table id="tableField" class="table table-bordered">
                     <thead>
@@ -216,20 +216,15 @@
             </div>
             <div id="fieldNav1" class="col-sm-2 fieldNav" style="margin-right: 0px;">
                 <ul class="fieldNavUl nav nav-tabs">
-                    <li role="presentation" class="active"><a href="#fieldVerify">校验</a></li>
-                    <li role="presentation"><a href="#dBFileInfo" data-toggle="tab">DB</a></li>
+                    <li role="presentation" class="active"><a href=".fieldVerify"  data-toggle="tab">校验</a></li>
+                    <li role="presentation"><a href=".fieldDbinfo">DB</a></li>
                 </ul>
+                <div class="tab-content fieldNavContent" style="margin-top: 10px;">
+                    @include("/code/tableinfo/list/tablefieldverify.html"){}
+                    @include("/code/tableinfo/list/tablefielddbinfo.html"){}
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div id="templateUi" style="display: none;">
-    <div id="replaceUiId" class="col-sm-2 fieldNav" style="margin-right: 0px;display: none;">
-        <ul class="fieldNavUl nav nav-tabs">
-            <li role="presentation" class="active"><a href="#fieldVerify">校验</a></li>
-            <li role="presentation"><a href="#dBFileInfo" data-toggle="tab">DB</a></li>
-        </ul>
     </div>
 </div>
 

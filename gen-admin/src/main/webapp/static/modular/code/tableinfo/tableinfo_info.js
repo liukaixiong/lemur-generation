@@ -118,7 +118,7 @@ TableInfoInfoDlg.editSubmit = function() {
 }
 
 $(function() {
-
+    parent.layer.full(window.parent.TableInfo.layerIndex);
 });
 
 

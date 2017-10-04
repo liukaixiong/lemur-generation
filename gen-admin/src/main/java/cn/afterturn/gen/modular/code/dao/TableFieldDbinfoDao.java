@@ -48,4 +48,11 @@ public interface TableFieldDbinfoDao extends BaseMapper<TableFieldDbinfoModel>{
      * @return
      */
     Integer deleteByFieldIds(@Param("fieldIds")List<Integer> fieldIds);
+
+    /**
+     * 批量插入
+     * @param dbInfoModelList
+     * @return
+     */
+    Integer batchInsert(@Param("list")List<TableFieldDbinfoModel> dbInfoModelList);
 }

@@ -48,4 +48,11 @@ public interface TableFieldVerifyDao extends BaseMapper<TableFieldVerifyModel>{
      * @return
      */
     Integer deleteByFieldIds(@Param("fieldIds")List<Integer> fieldIds);
+
+    /**
+     * 批量插入
+     * @param verifyModelList
+     * @return
+     */
+    Integer batchInsert(@Param("list") List<TableFieldVerifyModel> verifyModelList);
 }

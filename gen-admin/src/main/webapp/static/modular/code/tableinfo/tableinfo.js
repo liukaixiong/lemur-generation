@@ -85,6 +85,8 @@ TableInfo.openAddTableInfo = function () {
                                area: ['100%', '100%'],//宽高
                                fix: false, //不固定
                                maxmin: true,
+                               shade: 0,
+                               anim: 2,
                                content: Feng.ctxPath + '/tableinfo/goto_add'
                            });
     this.layerIndex = index;

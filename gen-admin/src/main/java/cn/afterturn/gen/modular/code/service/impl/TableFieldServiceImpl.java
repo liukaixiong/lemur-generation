@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import cn.afterturn.gen.core.support.CollectionKit;
 import cn.afterturn.gen.modular.code.dao.TableFieldDao;
+import cn.afterturn.gen.modular.code.model.TableFieldDbinfoModel;
 import cn.afterturn.gen.modular.code.model.TableFieldModel;
+import cn.afterturn.gen.modular.code.model.TableFieldVerifyModel;
 import cn.afterturn.gen.modular.code.service.ITableFieldDbinfoService;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;
 import cn.afterturn.gen.modular.code.service.ITableFieldVerifyService;
@@ -90,9 +92,17 @@ public class TableFieldServiceImpl implements ITableFieldService {
         }
         tableFieldDao.batchInsert(tableFields);
 
+        List<TableFieldVerifyModel> verifyModelList = new ArrayList<TableFieldVerifyModel>(tableFields.size());
+        List<TableFieldDbinfoModel> dbInfoModelList = new ArrayList<TableFieldDbinfoModel>(tableFields.size());
         for (int i = 0; i < tableFields.size(); i++) {
-            
+            list.get(i).getVerifyModel().setFieldId(list.get(i).getId());
+            verifyModelList.add(list.get(i).getVerifyModel());
+            list.get(i).getDbinfoModel().setFieldId(list.get(i).getId());
+            dbInfoModelList.add(list.get(i).getDbinfoModel());
         }
+        tableFieldVerifyService.batchInsert(verifyModelList);
+        tableFieldDbinfoService.batchInsert(dbInfoModelList);
+
     }
 
     /**

@@ -15,10 +15,10 @@ import java.util.HashMap;
 
 import cn.afterturn.gen.common.constant.DSEnum;
 import cn.afterturn.gen.config.properties.DruidProperties;
-import cn.afterturn.gen.core.datascope.CodeInsertInterceptor;
-import cn.afterturn.gen.core.datascope.CodeUpdateInterceptor;
+import cn.afterturn.gen.core.intercept.CodeInsertInterceptor;
+import cn.afterturn.gen.core.intercept.CodeUpdateInterceptor;
 import cn.afterturn.gen.core.datascope.DataScopeInterceptor;
-import cn.afterturn.gen.core.datascope.DbTypeInterceptor;
+import cn.afterturn.gen.core.intercept.DbTypeInterceptor;
 import cn.afterturn.gen.core.mutidatasource.DynamicDataSource;
 import cn.afterturn.gen.core.mutidatasource.config.MutiDataSourceProperties;
 

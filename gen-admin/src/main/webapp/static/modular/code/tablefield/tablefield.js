@@ -3,114 +3,12 @@
  */
 var TableField = {};
 
-TableField.trTemplate = "<tr id=\"replaceId\" class=\"fieldTr\">\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \">\n"
-                        + "            <div class=\"th-inner \"><span style='cursor:pointer;' class=\"glyphicon glyphicon-minus fieldTrRemove\"></span>\n"
-                        + "            </div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"fieldName\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"text\" class=\"form-control\"\n"
-                        + "                                          placeholder=\"数据库字段名称\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \" data-field=\"name\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"text\" class=\"form-control\"\n"
-                        + "                                          placeholder=\"代码字段名称\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"content\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"text\" class=\"form-control\"\n"
-                        + "                                          placeholder=\"功能\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \" data-field=\"type\">\n"
-                        + "            <div class=\"td-inner \"><select class=\"form-control\">\n"
-                        + "                <option value=\"String\">String</option>\n"
-                        + "            </select></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \" data-field=\"isKey\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isShowList\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isNull\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isShowAdd\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isShowEdit\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isShowDetail\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isImport\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isExport\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"isQuery\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"checkbox\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"queryMode\">\n"
-                        + "            <div class=\"td-inner \"><select class=\"form-control\">\n"
-                        + "                <option value=\"1\">=</option>\n"
-                        + "                <option value=\"2\">!=</option>\n"
-                        + "                <option value=\"3\">&gt;</option>\n"
-                        + "                <option value=\"4\">&gt;=</option>\n"
-                        + "                <option value=\"5\">&lt;</option>\n"
-                        + "                <option value=\"6\">&lt;=</option>\n"
-                        + "                <option value=\"7\">like</option>\n"
-                        + "                <option value=\"8\">lift like</option>\n"
-                        + "                <option value=\"9\">right like</option>\n"
-                        + "                <option value=\"10\">between</option>\n"
-                        + "            </select></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"showType\">\n"
-                        + "            <div class=\"td-inner \"><select class=\"form-control\">\n"
-                        + "                <option value=\"1\">文本</option>\n"
-                        + "                <option value=\"2\">下拉</option>\n"
-                        + "                <option value=\"3\">多行文本</option>\n"
-                        + "                <option value=\"4\">单选</option>\n"
-                        + "                <option value=\"5\">多选</option>\n"
-                        + "                <option value=\"6\">日期</option>\n"
-                        + "                <option value=\"7\">文件</option>\n"
-                        + "            </select></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"orderNum\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"text\" class=\"form-control\"\n"
-                        + "                                          placeholder=\"排序\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"dictName\">\n"
-                        + "            <div class=\"td-inner \"><input type=\"text\" class=\"form-control\"\n"
-                        + "                                          placeholder=\"字典名称\"></div>\n"
-                        + "        </td>\n"
-                        + "        <td style=\"text-align: center; vertical-align: middle; \"\n"
-                        + "            data-field=\"dictType\">\n"
-                        + "            <div class=\"td-inner \"><select class=\"form-control\">\n"
-                        + "                <option value=\"1\">枚举</option>\n"
-                        + "                <option value=\"2\">字典</option>\n"
-                        + "                <option value=\"3\">显示列表</option>\n"
-                        + "            </select></div>\n"
-                        + "        </td>\n"
-                        + "    </tr>";
-
 TableField.trClink = function () {
+    $("#fieldInfoDiv").find('.fieldNav').each(function () {
+        $(this).css('display','none');
+    });
+    var maxId = $(this).attr("id").replace('fieldTr', '');
+    $("#fieldNav"+maxId).css('display','');
 }
 
 TableField.fieldAdd = function () {
@@ -123,16 +21,67 @@ TableField.fieldAdd = function () {
     } else {
         maxId = 1;
     }
-    $("#tableField").find('tbody')
-        .append(TableField.trTemplate.replace("replaceId", 'fieldTr' + maxId));
+    //初始化数据
+    var tr = $("#tableField tbody tr").eq(0).clone();
+    $(tr).find('[type="checkbox"]').each(function () {
+        $(this).removeAttr("checked");
+    });
+    $(tr).find('[type="text"]').each(function () {
+        $(this).val('');
+    });
+    $(tr).find('select').each(function () {
+        $(this).find("option:selected").attr("selected", false);
+        $(this).find("option").first().attr("selected", true);
+    });
+    tr = $(tr).attr('id','fieldTr'+maxId);
+    $("#tableField").find('tbody').append(tr);
+
+    $("#fieldInfoDiv").find('.fieldNav').each(function () {
+       $(this).css('display','none');
+    });
+    // 校验值 和 数据字段
+    var div = $("#fieldInfoDiv .fieldNav").eq(0).clone();
+    div = $(div).attr('id','fieldNav'+maxId);
+    $(div).find('[type="text"]').each(function () {
+        $(this).val('');
+    });
+    $(div).find('select').each(function () {
+        $(this).find("option:selected").attr("selected", false);
+        $(this).find("option").first().attr("selected", true);
+    });
+    // 设置初始化数据
+    $(div).find('.tab-pane').each(function () {
+        $(this).removeClass('in active');
+    });
+    $($(div).find('.tab-pane')[0]).addClass('in active');
+    $(div).find('li').each(function () {
+        $(this).removeClass('active');
+    });
+    $($(div).find('li')[0]).addClass('active');
+    $(div).css('display','');
+    $("#fieldInfoDiv").append(div);
+
 }
 
 TableField.fieldTrRemove = function () {
-    $(this).parent().parent().parent().remove();
+    if($("#tableField").find('tbody').find('tr').length > 1){
+        $(this).parent().parent().parent().remove();
+    }
+}
+
+TableField.tabSwitch = function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+    var div = $(this).parent().parent().parent();
+    $(div).find('.tab-pane').each(function () {
+        $(this).removeClass('in active');
+    });
+    $(div).find($(this).attr('href')).addClass('in active');
 }
 
 $(function () {
     $(document).on('click',".fieldTr",TableField.trClink);
     $(document).on('click',".fieldAdd",TableField.fieldAdd);
     $(document).on('click',".fieldTrRemove",TableField.fieldTrRemove);
+    $(document).on('click',".fieldNav a",TableField.tabSwitch);
 });
