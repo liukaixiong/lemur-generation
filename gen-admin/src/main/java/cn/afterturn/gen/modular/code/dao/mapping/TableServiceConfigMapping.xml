@@ -12,7 +12,7 @@
 		    <result column="transactional_type" property="transactionalType" />
 	</resultMap>
     <insert id="batchInsert">
-		<if test="_databaseType == 'MySQL'">
+		<if test="_databaseType == 'MYSQL'">
 			INSERT INTO T_CODE_TABLE_SERVICE_CONFIG
 			(TABLE_ID, TYPE, IS_ENABLE, IS_PERMISSION, IS_TRANSACTIONAL, TRANSACTIONAL_TYPE)
 			VALUES

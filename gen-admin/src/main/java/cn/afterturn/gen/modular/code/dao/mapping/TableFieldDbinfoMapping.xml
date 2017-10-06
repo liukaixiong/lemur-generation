@@ -14,7 +14,7 @@
         <result column="field_point_length" property="fieldPointLength"/>
     </resultMap>
     <insert id="batchInsert">
-        <if test="_databaseType == 'MySQL'">
+        <if test="_databaseType == 'MYSQL'">
             INSERT INTO t_code_table_field_dbinfo
             (FIELD_ID, FIELD_NAME, FIELD_DEFAULT, FIELD_CONTENT, FIELD_LENGTH, FIELD_TYPE, FIELD_POINT_LENGTH)
             VALUES

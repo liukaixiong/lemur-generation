@@ -24,8 +24,8 @@
 		    <result column="dict_name" property="dictName" />
 		    <result column="dict_type" property="dictType" />
 	</resultMap>
-    <insert id="batchInsert">
-		<if test="_databaseType == 'MySQL'">
+    <insert id="batchInsert"  parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+		<if test="_databaseType == 'MYSQL'">
 			INSERT INTO t_code_table_field (table_id, field_name, name, content, type, is_key, is_null, is_show_add, is_show_edit,
 			is_show_detail, is_show_list, is_import, is_export, is_query, query_mode, show_type, order_num, dict_name, dict_type)
 			VALUES

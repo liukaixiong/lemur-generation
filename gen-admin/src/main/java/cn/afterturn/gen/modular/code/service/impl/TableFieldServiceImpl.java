@@ -95,10 +95,11 @@ public class TableFieldServiceImpl implements ITableFieldService {
         List<TableFieldVerifyModel> verifyModelList = new ArrayList<TableFieldVerifyModel>(tableFields.size());
         List<TableFieldDbinfoModel> dbInfoModelList = new ArrayList<TableFieldDbinfoModel>(tableFields.size());
         for (int i = 0; i < tableFields.size(); i++) {
-            list.get(i).getVerifyModel().setFieldId(list.get(i).getId());
-            verifyModelList.add(list.get(i).getVerifyModel());
-            list.get(i).getDbinfoModel().setFieldId(list.get(i).getId());
-            dbInfoModelList.add(list.get(i).getDbinfoModel());
+            tableFields.get(i).getVerifyModel().setFieldId(tableFields.get(i).getId());
+            verifyModelList.add(tableFields.get(i).getVerifyModel());
+            tableFields.get(i).getDbinfoModel().setFieldId(tableFields.get(i).getId());
+            tableFields.get(i).getDbinfoModel().setFieldName(tableFields.get(i).getFieldName());
+            dbInfoModelList.add(tableFields.get(i).getDbinfoModel());
         }
         tableFieldVerifyService.batchInsert(verifyModelList);
         tableFieldDbinfoService.batchInsert(dbInfoModelList);

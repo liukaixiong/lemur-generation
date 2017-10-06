@@ -14,7 +14,7 @@
 		    <result column="regex_type" property="regexType" />
 	</resultMap>
     <insert id="batchInsert">
-		<if test="_databaseType == 'MySQL'">
+		<if test="_databaseType == 'MYSQL'">
 			INSERT INTO t_code_table_field_verification
 			(FIELD_ID, VIEW_VERIFICATION, SERVER_VERIFICATION, NOT_NULL, MIN_NUM, MAX_NUM, REGEX, REGEX_TYPE)
 			VALUES

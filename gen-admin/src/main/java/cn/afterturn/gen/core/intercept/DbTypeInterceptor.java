@@ -39,16 +39,15 @@ public class DbTypeInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         Object[] args = invocation.getArgs();
         //遍历处理所有参数，update方法有两个参数，参见Executor类中的update()方法。
-        String type= null;
         for (int i = 0; i < args.length; i++) {
             Object parameterObject = args[i];
             //第一个参数处理。根据它判断是否给“操作属性”赋值。
             if (StringUtils.isEmpty(TYPE) && parameterObject instanceof MappedStatement) {//如果是第一个参数 MappedStatement
                 MappedStatement ms = (MappedStatement) parameterObject;
-                type = GlobalConfigUtils.getGlobalConfig(ms.getConfiguration()).getDbType().getDb().toUpperCase();
+                TYPE = GlobalConfigUtils.getGlobalConfig(ms.getConfiguration()).getDbType().getDb().toUpperCase();
             } else if (parameterObject instanceof Map) {//如果是map，有两种情况：（1）使用@Param多参数传入，由Mybatis包装成map。（2）原始传入Map
                 Map map = (Map) parameterObject;
-                map.put("_databaseType",type);
+                map.put("_databaseType",TYPE);
             }
         }
         return invocation.proceed();
