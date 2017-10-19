@@ -9,6 +9,7 @@
  */
 package cn.afterturn.gen.core.support;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -28,9 +29,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HttpKit {
 
-    public static String getIp() {
-
-        return HttpKit.getRequest().getHeader("x-forwarded-for");
+   public static String getIp() {
+        String ip = HttpKit.getRequest().getHeader("x-forwarded-for");
+        if (StringUtils.isEmpty(ip)) {
+            ip = HttpKit.getRequest().getRemoteHost();
+        }
+        return ip;
     }
 
     /**
