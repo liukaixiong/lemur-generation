@@ -6,7 +6,7 @@
     <artifactId>lemur-gen-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>guns-parent</name>
+    <name>lemur-gen</name>
     <packaging>pom</packaging>
 
     <modules>

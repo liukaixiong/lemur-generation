@@ -2,6 +2,8 @@ package cn.afterturn.gen.modular.code.service.impl;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+
+import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.modular.code.dao.TableInfoDao;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;

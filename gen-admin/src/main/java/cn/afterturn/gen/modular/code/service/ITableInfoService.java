@@ -1,6 +1,8 @@
 package cn.afterturn.gen.modular.code.service;
 
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+
+import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 

@@ -24,16 +24,12 @@ import cn.afterturn.gen.core.parse.ParseFactory;
 import cn.afterturn.gen.core.util.ConnectionUtil;
 
 /**
- *
- * @author JueYue
- * 2017年4月18日
+ * @author JueYue 2017年4月18日
  */
 public class CodeGenUtil {
 
     /**
      * 生产代码
-     * @param model
-     * @return
      */
     public static List<String> codeGen(CodeGenModel model) {
         try {
@@ -46,6 +42,22 @@ public class CodeGenUtil {
             //Step 3 解析模板,生产代码
             return ParseFactory.getParse(model.getParseType()).parse(model.getGenerationEntity(), tableEntity,
                     model.getFileList());
+        } finally {
+            ConnectionUtil.close();
+        }
+    }
+
+    /**
+     * 获取数据库信息
+     */
+    public static GenBeanEntity getTableBean(CodeGenModel model) {
+        try {
+            //Step 1 初始化数据库连接
+            ConnectionUtil.init(ReadTableFactory.getDeiver(model.getDbType()), model.getUrl(), model.getUsername(), model.getPasswd());
+            //Step 2 读取数据源列表
+            GenBeanEntity tableEntity = ReadTableFactory.getReadTable(model.getDbType()).read(model.getDbName(),
+                    model.getTableName());
+            return tableEntity;
         } finally {
             ConnectionUtil.close();
         }

@@ -142,46 +142,4 @@ public abstract class BaseReadTable {
         return list;
     }
 
-    protected String getFieldName(String fieldName, String comment) {
-        if (StringUtils.isNotEmpty(comment)) {
-            String[] nameAndComment = comment.split(",");
-            return nameAndComment[0];
-        }
-        return NameUtil.getEntityHumpName(fieldName);
-    }
-
-    protected String convertType(String dataType, String precision, String scale) {
-        if (dataType.contains("char") || dataType.contains("text")) {
-            dataType = "String";
-        } else if (dataType.contains("int")) {
-            dataType = "Integer";
-        } else if (dataType.contains("float")) {
-            dataType = "Float";
-        } else if (dataType.contains("double")) {
-            dataType = "Double";
-        } else if (dataType.contains("number")) {
-            if (StringUtils.isNotEmpty(scale) && Integer.parseInt(scale) > 0) {
-                dataType = "Double";
-            } else if (StringUtils.isNotEmpty(precision) && Integer.parseInt(precision) > 10) {
-                dataType = "Long";
-            } else {
-                dataType = "Integer";
-            }
-        } else if (dataType.contains("decimal")) {
-            dataType = "BigDecimal";
-        } else if (dataType.contains("date")) {
-            dataType = "Date";
-        } else if (dataType.contains("time")) {
-            dataType = "Date";
-        } else if (dataType.contains("blob")) {
-            dataType = "byte[]";
-        } else if (dataType.contains("clob")) {
-            dataType = "java.sql.Clob";
-        } else if (dataType.contains("numeric")) {
-            dataType = "BigDecimal";
-        } else {
-            dataType = "Object";
-        }
-        return dataType;
-    }
 }

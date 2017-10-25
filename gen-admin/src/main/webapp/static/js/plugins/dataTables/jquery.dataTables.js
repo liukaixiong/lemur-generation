@@ -153,7 +153,7 @@
 		var out = [];
 		var i=0, ien=a.length;
 
-		// Could have the test in the loop for slightly smaller code, but speed
+		// Could have the export in the loop for slightly smaller code, but speed
 		// is essential here
 		if ( prop2 !== undefined ) {
 			for ( ; i<ien ; i++ ) {
@@ -181,7 +181,7 @@
 		var out = [];
 		var i=0, ien=order.length;
 
-		// Could have the test in the loop for slightly smaller code, but speed
+		// Could have the export in the loop for slightly smaller code, but speed
 		// is essential here
 		if ( prop2 !== undefined ) {
 			for ( ; i<ien ; i++ ) {
@@ -440,7 +440,7 @@
 						overflow: 'scroll'
 					} )
 					.append(
-						$('<div class="test"/>')
+						$('<div class="export"/>')
 							.css( {
 								width: '100%',
 								height: 10
@@ -1087,7 +1087,7 @@
 		{
 			/* If there is a . in the source string then the data source is in a
 			 * nested object so we loop over the data for each level to get the next
-			 * level down. On each loop we test for undefined, and if found immediately
+			 * level down. On each loop we export for undefined, and if found immediately
 			 * return. This allows entire objects to be missing and sDefaultContent to
 			 * be used if defined, rather than throwing an error
 			 */
@@ -4238,8 +4238,8 @@
 			 *      return iTest;
 			 *    return oSort['numeric-asc']( aiOrig[a], aiOrig[b] );
 			 *  }
-			 * Basically we have a test for each sorting column, if the data in that column is equal,
-			 * test the next column. If all columns match, then we use a numeric sort on the row
+			 * Basically we have a export for each sorting column, if the data in that column is equal,
+			 * export the next column. If all columns match, then we use a numeric sort on the row
 			 * positions in the original data array to provide a stable sort.
 			 *
 			 * Note - I know it seems excessive to have two sorting methods, but the first is around
@@ -5268,7 +5268,7 @@
 		 *      var oTable = $('#example').dataTable();
 		 *
 		 *      // Sometime later - filter...
-		 *      oTable.fnFilter( 'test string' );
+		 *      oTable.fnFilter( 'export string' );
 		 *    } );
 		 */
 		this.fnFilter = function( sInput, iColumn, bRegex, bSmart, bShowGlobal, bCaseInsensitive )
@@ -8380,7 +8380,7 @@
 	 * Check if a `<table>` node is a DataTable table already or not.
 	 *
 	 *  @param {node|jquery|string} table Table node, jQuery object or jQuery
-	 *      selector for the table to test. Note that if more than more than one
+	 *      selector for the table to export. Note that if more than more than one
 	 *      table is passed on, only the first will be checked
 	 *  @returns {boolean} true the table given is a DataTable, or false otherwise
 	 *  @static
@@ -9986,7 +9986,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "preDrawCallback": function( settings ) {
-		 *          if ( $('#test').val() == 1 ) {
+		 *          if ( $('#export').val() == 1 ) {
 		 *            return false;
 		 *          }
 		 *        }

@@ -13,6 +13,10 @@ public class GenFieldEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 是否为主键
+     */
+    private boolean isKey;
+    /**
      * 数据库字段名称
      */
     private String fieldName;
@@ -56,6 +60,14 @@ public class GenFieldEntity implements Serializable {
      * 对象
      */
     private GenBeanEntity bean;
+
+    public boolean getKey() {
+        return isKey;
+    }
+
+    public void setKey(boolean key) {
+        isKey = key;
+    }
 
     public String getFieldName() {
         return fieldName;

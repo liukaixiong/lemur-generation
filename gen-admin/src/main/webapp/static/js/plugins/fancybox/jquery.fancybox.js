@@ -2008,11 +2008,11 @@
 		//Get real width of page scroll-bar
 		w1 = $(window).width();
 
-		H.addClass('fancybox-lock-test');
+		H.addClass('fancybox-lock-export');
 
 		w2 = $(window).width();
 
-		H.removeClass('fancybox-lock-test');
+		H.removeClass('fancybox-lock-export');
 
 		$("<style type='text/css'>.fancybox-margin{margin-right:" + (w2 - w1) + "px;}</style>").appendTo("head");
 	});

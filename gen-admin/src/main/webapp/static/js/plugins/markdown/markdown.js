@@ -20,9 +20,9 @@
  *  - is easily extensible to add new dialects without having to rewrite the
  *    entire parsing mechanics
  *
- *  - has a good test suite
+ *  - has a good export suite
  *
- *  This implementation fulfills all of these (except that the test suite could
+ *  This implementation fulfills all of these (except that the export suite could
  *  do with expanding to automatically run all the fixtures from other Markdown
  *  implementations.)
  *
@@ -864,7 +864,7 @@ Markdown.dialects.Gruber.inline = {
       //                 1            2       3         <--- captures
       // This will capture up to the last paren in the block. We then pull
       // back based on if there a matching ones in the url
-      //    ([here](/url/(test))
+      //    ([here](/url/(export))
       // The parens have to be balanced
       var m = text.match( /^\s*\([ \t]*(\S+)(?:[ \t]+(["'])(.*?)\2)?[ \t]*\)/ );
       if ( m ) {

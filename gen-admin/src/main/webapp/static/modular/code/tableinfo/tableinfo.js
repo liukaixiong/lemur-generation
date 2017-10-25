@@ -126,6 +126,36 @@ TableInfo.delete = function () {
     }
 };
 
+/**
+ * DB导入-from table
+ */
+TableInfo.dbimport = function () {
+    var index = layer.open({
+                               type: 2,
+                               title: 'DB导入',
+                               area: ['100%', '100%'],//宽高
+                               fix: false, //不固定
+                               maxmin: true,
+                               content: Feng.ctxPath + '/tableinfo/goto_dbimport/'
+                           });
+    this.layerIndex = index;
+};
+
+/**
+ * 导入-from sql
+ */
+TableInfo.sqlimport = function () {
+    var index = layer.open({
+                               type: 2,
+                               title: 'DB导入',
+                               area: ['70%', '70%'],//宽高
+                               fix: false, //不固定
+                               maxmin: true,
+                               content: Feng.ctxPath + '/tableinfo/goto_sqlimport/'
+                           });
+    this.layerIndex = index;
+};
+
 TableInfo.formParams = function () {
     var queryData = {};
     return queryData;

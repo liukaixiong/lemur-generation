@@ -20,6 +20,18 @@ public class TableServiceConfigModel extends Model<TableServiceConfigModel> {
 
     private static final long serialVersionUID = 1L;
 
+    public TableServiceConfigModel() {
+
+    }
+
+    public TableServiceConfigModel(String type, Integer isEnable, Integer isPermission,
+                                   Integer isTransactional, String transactionalType) {
+        this.type = type;
+        this.isEnable = isEnable;
+        this.isPermission = isPermission;
+        this.isTransactional = isTransactional;
+        this.transactionalType = transactionalType;
+    }
 
     /**
      * Id
@@ -40,7 +52,7 @@ public class TableServiceConfigModel extends Model<TableServiceConfigModel> {
     private String type;
 
     /**
-     * 是否启用改功能
+     * 是否启用该功能
      */
     @TableField(value = "is_enable")
     private Integer isEnable;

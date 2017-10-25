@@ -11,6 +11,7 @@ import cn.afterturn.gen.core.db.read.IReadTable;
 import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.core.model.GenFieldEntity;
 import cn.afterturn.gen.core.util.NameUtil;
+import cn.afterturn.gen.core.util.TableHanlderUtil;
 
 /**
  * MySql数据库的实现类
@@ -36,27 +37,11 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
             GenBeanEntity entity = getTableEntiy(dbName, tableName, TABLE_SQL);
             entity.setName(NameUtil.getEntityHumpName(entity.getTableName()));
             entity.setFields(getTableFields(dbName, tableName, FIELDS_SQL));
-            hanlderFields(entity.getFields());
+            TableHanlderUtil.hanlderFields(entity.getFields());
             return entity;
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             throw new GenerationRunTimeException("获取表格数据发生异常");
-        }
-    }
-
-    /**
-     * 处理一遍字段,根据字段类型做合适的处理
-     */
-    private void hanlderFields(List<GenFieldEntity> fields) {
-        GenFieldEntity entity;
-        for (int i = 0, le = fields.size(); i < le; i++) {
-            entity = fields.get(i);
-            entity.setChinaName(getFieldName(entity.getFieldName(), entity.getComment()));
-            if (entity.getChinaName().equals(entity.getComment())) {
-                entity.setComment(null);
-            }
-            entity.setName(NameUtil.getFieldHumpName(entity.getFieldName()));
-            entity.setType(convertType(entity.getFieldType(), entity.getPrecision(), entity.getScale()));
         }
     }
 
