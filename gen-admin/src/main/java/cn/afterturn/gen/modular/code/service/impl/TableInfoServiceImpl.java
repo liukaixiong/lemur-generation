@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+
 /**
  * Service
  *
@@ -59,12 +60,27 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Override
     public Integer updateById(TableInfoModel entity) {
-        return tableInfoDao.updateById(entity);
+        //table插入
+        tableInfoDao.updateById(entity);
+        //table 配置更新
+        for (int i = 0; i < entity.getServiceConfig().size(); i++) {
+            entity.getServiceConfig().get(i).setTableId(entity.getId());
+        }
+        tableServiceConfigService.batchSaveOrUpdateServiceConfig(entity.getServiceConfig());
+        for (int i = 0; i < entity.getTableFields().size(); i++) {
+            entity.getTableFields().get(i).setTableId(entity.getId());
+        }
+        //table字段更新
+        tableFieldService.batchSaveOrUpdate(entity.getTableFields());
+        return 1;
     }
 
     @Override
     public TableInfoModel selectById(Integer id) {
-        return tableInfoDao.selectById(id);
+        TableInfoModel model = tableInfoDao.selectById(id);
+        model.setServiceConfig(tableServiceConfigService.selectByTableId(id));
+        model.setTableFields(tableFieldService.selectByTableId(id));
+        return model;
     }
 
     @Override
@@ -84,7 +100,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Override
     public List<TableInfoModel> selectPage(Pagination pagination, TableInfoModel model, Wrapper<TableInfoModel> wrapper) {
-        return tableInfoDao.selectPage(pagination,model,wrapper);
+        return tableInfoDao.selectPage(pagination, model, wrapper);
     }
 
 }

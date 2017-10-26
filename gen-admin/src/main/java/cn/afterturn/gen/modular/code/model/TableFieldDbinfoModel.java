@@ -20,6 +20,12 @@ public class TableFieldDbinfoModel extends Model<TableFieldDbinfoModel> {
 
     private static final long serialVersionUID = 1L;
 
+    public TableFieldDbinfoModel() {
+    }
+
+    public TableFieldDbinfoModel(Integer fieldId) {
+        this.fieldId = fieldId;
+    }
 
     /**
      * Id
@@ -68,7 +74,6 @@ public class TableFieldDbinfoModel extends Model<TableFieldDbinfoModel> {
      */
     @TableField(value = "field_point_length")
     private Integer fieldPointLength;
-
 
     /**
      * 获取: Id

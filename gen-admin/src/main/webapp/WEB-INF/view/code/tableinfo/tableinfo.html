@@ -24,13 +24,16 @@
                             <#button name="修改" icon="fa-plus" clickFun="TableInfo.openTableInfoEdit()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/delete")){
-                            <#button name="删除" icon="fa-plus" clickFun="TableInfo.delete()" space="true"/>
+                            <#button name="删除" icon="fa-minus" clickFun="TableInfo.delete()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/dbimport")){
-                            <#button name="DB导入" icon="fa-plus" clickFun="TableInfo.dbimport()" space="true"/>
+                            <#button name="DB导入" icon="fa-database" clickFun="TableInfo.dbimport()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/sqlimport")){
-                            <#button name="SQL导入" icon="fa-plus" clickFun="TableInfo.sqlimport()" space="true"/>
+                            <#button name="SQL导入" icon="fa-code" clickFun="TableInfo.sqlimport()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tableinfo/sqlimport")){
+                            <#button name="生成" icon="fa-play" clickFun="TableInfo.sqlimport()" space="true"/>
                             @}
                         </div>
                         <#table id="TableInfoTable"/>

@@ -104,4 +104,6 @@ public interface ITableServiceConfigService {
      * @param serviceConfig
      */
     void batchSaveOrUpdateServiceConfig(List<TableServiceConfigModel> serviceConfig);
+
+    List<TableServiceConfigModel> selectByTableId(int tableId);
 }

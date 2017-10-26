@@ -69,11 +69,18 @@ public class TableServiceConfigServiceImpl implements ITableServiceConfigService
     @Override
     public void batchSaveOrUpdateServiceConfig(List<TableServiceConfigModel> serviceConfig) {
         // 删除旧数据
-        Map<String,Object> temp = new HashMap<String, Object>();
-        temp.put("table_id",serviceConfig.get(0).getTableId());
+        Map<String, Object> temp = new HashMap<String, Object>();
+        temp.put("table_id", serviceConfig.get(0).getTableId());
         tableServiceConfigDao.deleteByMap(temp);
         //插入新数据
         tableServiceConfigDao.batchInsert(serviceConfig);
+    }
+
+    @Override
+    public List<TableServiceConfigModel> selectByTableId(int tableId) {
+        TableServiceConfigModel entity = new TableServiceConfigModel();
+        entity.setTableId(tableId);
+        return selectList(entity);
     }
 
 }

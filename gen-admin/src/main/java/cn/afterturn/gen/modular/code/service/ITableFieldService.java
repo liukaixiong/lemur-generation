@@ -105,5 +105,10 @@ public interface ITableFieldService {
      */
     void batchSaveOrUpdate(List<TableFieldModel> tableFields);
 
-
+    /**
+     * 通过table查询集合
+     * @param tableId
+     * @return
+     */
+    List<TableFieldModel> selectByTableId(Integer tableId);
 }

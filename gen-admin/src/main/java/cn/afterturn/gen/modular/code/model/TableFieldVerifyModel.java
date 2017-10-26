@@ -13,6 +13,7 @@ import java.util.Date;
 
 /**
  * 字段的校验信息
+ *
  * @author JueYue
  * @Date 2017-09-20 09:24
  */
@@ -21,6 +22,13 @@ public class TableFieldVerifyModel extends Model<TableFieldVerifyModel> {
 
     private static final long serialVersionUID = 1L;
 
+    public TableFieldVerifyModel() {
+
+    }
+
+    public TableFieldVerifyModel(Integer fieldId) {
+        this.fieldId = fieldId;
+    }
 
     /**
      * Id
@@ -186,6 +194,14 @@ public class TableFieldVerifyModel extends Model<TableFieldVerifyModel> {
      */
     public void setRegex(String regex) {
         this.regex = regex;
+    }
+
+    public Integer getRegexType() {
+        return regexType;
+    }
+
+    public void setRegexType(Integer regexType) {
+        this.regexType = regexType;
     }
 
     @Override

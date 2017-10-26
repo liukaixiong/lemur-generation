@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * Service
  *
@@ -75,16 +76,16 @@ public class TableFieldServiceImpl implements ITableFieldService {
 
     @Override
     public List<TableFieldModel> selectPage(Pagination pagination, TableFieldModel model, Wrapper<TableFieldModel> wrapper) {
-        return tableFieldDao.selectPage(pagination,model,wrapper);
+        return tableFieldDao.selectPage(pagination, model, wrapper);
     }
 
     @Override
     public void batchSaveOrUpdate(List<TableFieldModel> tableFields) {
         // 删除旧数据
-        Map<String,Object> temp = new HashMap<String, Object>();
-        temp.put("table_id",tableFields.get(0).getTableId());
+        Map<String, Object> temp = new HashMap<String, Object>();
+        temp.put("table_id", tableFields.get(0).getTableId());
         List<TableFieldModel> list = tableFieldDao.selectByMap(temp);
-        if(CollectionKit.isNotEmpty(list)){
+        if (CollectionKit.isNotEmpty(list)) {
             List<Integer> ids = getIds(list);
             tableFieldDao.deleteBatchIds(ids);
             tableFieldVerifyService.deleteByFieldIds(ids);
@@ -104,6 +105,20 @@ public class TableFieldServiceImpl implements ITableFieldService {
         tableFieldVerifyService.batchInsert(verifyModelList);
         tableFieldDbinfoService.batchInsert(dbInfoModelList);
 
+    }
+
+    @Override
+    public List<TableFieldModel> selectByTableId(Integer tableId) {
+        TableFieldModel entity = new TableFieldModel();
+        entity.setTableId(tableId);
+        List<TableFieldModel> list = selectList(entity);
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).setVerifyModel(tableFieldVerifyService.
+                    selectOne(new TableFieldVerifyModel(list.get(i).getId())));
+            list.get(i).setDbinfoModel(tableFieldDbinfoService.
+                    selectOne(new TableFieldDbinfoModel(list.get(i).getId())));
+        }
+        return list;
     }
 
     /**

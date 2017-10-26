@@ -170,9 +170,13 @@ TableInfoInfoDlg.addSubmit = function () {
     if (!this.validate()) {
         return;
     }
+    var url = Feng.ctxPath + "/tableinfo/add";
+    if($("#tableId").val() && $("#tableId").val() != ''){
+        url = Feng.ctxPath + "/tableinfo/update";
+    }
 
     //提交信息
-    var ajax = new $ax(Feng.ctxPath + "/tableinfo/add", function (data) {
+    var ajax = new $ax(url, function (data) {
         Feng.success("添加成功!");
         window.parent.TableInfo.table.refresh();
         TableInfoInfoDlg.close();

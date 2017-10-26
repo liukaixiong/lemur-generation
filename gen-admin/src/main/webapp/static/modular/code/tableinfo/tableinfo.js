@@ -99,7 +99,7 @@ TableInfo.openTableInfoEdit = function () {
     if (this.check()) {
         var index = layer.open({
                                    type: 2,
-                                   title: '详情',
+                                   title: '修改',
                                    area: ['100%', '100%'],//宽高
                                    fix: false, //不固定
                                    maxmin: true,
