@@ -59,6 +59,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
     }
 
     @Override
+    @Transactional
     public Integer updateById(TableInfoModel entity) {
         //table插入
         tableInfoDao.updateById(entity);

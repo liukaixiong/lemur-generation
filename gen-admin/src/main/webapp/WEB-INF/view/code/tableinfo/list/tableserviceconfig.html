@@ -31,26 +31,26 @@
                     详情
                     @}
                 </td>
-                <td style="text-align: center; vertical-align: middle; ">
-                    <#select class="form-control" id="isEnable" value="${sc.isEnable}">
+                <td style="text-align: center; vertical-align: middle; " data-field="isEnable">
+                    <#select class="form-control" id="isEnable${scLP.index}" value="${sc.isEnable}">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </#select>
                 </td>
-                <td style="text-align: center; vertical-align: middle; ">
-                    <#select class="form-control" id="isPermission" value="${sc.isPermission}">
+                <td style="text-align: center; vertical-align: middle; " data-field="isPermission">
+                    <#select class="form-control" id="isPermission${scLP.index}" value="${sc.isPermission}">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </#select>
                 </td>
-                <td style="text-align: center; vertical-align: middle; ">
-                    <#select class="form-control " id="isTransactional" value="${sc.isTransactional}">
+                <td style="text-align: center; vertical-align: middle; " data-field="isTransactional">
+                    <#select class="form-control " id="isTransactional${scLP.index}" value="${sc.isTransactional}">
                         <option value="1">是</option>
                         <option value="2">否</option>
                     </#select>
                 </td>
-                <td style="text-align: center; vertical-align: middle; ">
-                    <#select class="form-control " id="transactionalType" value="${sc.transactionalType}">
+                <td style="text-align: center; vertical-align: middle; " data-field="transactionalType">
+                    <#select class="form-control " id="transactionalType${scLP.index}" value="${sc.transactionalType}">
                         <option value="01">REQUIRED</option>
                         <option value="02">SUPPORTS</option>
                         <option value="03">MANDATORY</option>

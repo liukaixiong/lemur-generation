@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -124,7 +125,7 @@ public class TableInfoController extends BaseController {
     @RequestMapping(value = "/update")
     @Permission
     @ResponseBody
-    public Object update(TableInfoModel model) {
+    public Object update(@RequestBody TableInfoModel model) {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }

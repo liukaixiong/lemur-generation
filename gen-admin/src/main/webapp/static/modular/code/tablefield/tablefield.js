@@ -66,6 +66,9 @@ TableField.fieldAdd = function () {
 TableField.fieldTrRemove = function () {
     if($("#tableField").find('tbody').find('tr').length > 1){
         $(this).parent().parent().parent().remove();
+        var id = $(this).parent().parent().parent().attr('id');
+        id = id.replace('fieldTr','fieldNav');
+        $('#'+id).remove();
     }
 }
 

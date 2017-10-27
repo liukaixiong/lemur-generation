@@ -9,7 +9,7 @@
     <label class="col-sm-3 control-label">${name}</label>
     @}
     <div class="col-sm-9">
-        <select class="form-control" id="${id}" name="${id}">
+        <select class="form-control" id="${id}" name="${id}" style="${style!}">
             ${tagBody!}
         </select>
         @if(isNotEmpty(hidden)){

@@ -11,8 +11,8 @@ var TableInfoInfoDlg = {
                 },
                 stringLength: {/*长度提示*/
                     min: 3,
-                    max: 20,
-                    message: '别名长度必须在3到20之间'
+                    max: 50,
+                    message: '别名长度必须在3到50之间'
                 },
                 regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
                     regexp: /^[a-zA-Z0-9\_]+$/,
@@ -27,8 +27,8 @@ var TableInfoInfoDlg = {
                 },
                 stringLength: {/*长度提示*/
                     min: 3,
-                    max: 20,
-                    message: '用户名长度必须在3到20之间'
+                    max: 50,
+                    message: '用户名长度必须在3到50之间'
                 },
                 regexp: {/* 只需加此键值对，包含正则表达式，和提示 */
                     regexp: /^[a-zA-Z0-9\_]+$/,
@@ -101,7 +101,7 @@ TableInfoInfoDlg.collectData = function () {
             if (index == 0) {
                 obj.type = $(data).attr('type');
             } else {
-                obj[$(data).find('select').attr('name')] = $(data).find('select,input').val();
+                obj[$(data).attr('data-field')] = $(data).find('select').val();
             }
         });
         serviceConfig.push(obj);
@@ -117,6 +117,7 @@ TableInfoInfoDlg.collectData = function () {
                 obj[$(data).attr('data-field')] = $(data).find('select,input[type="text"],input[type="checkbox"]:checked').val();
             }
         });
+        TableInfoInfoDlg.getViewData(obj,this);
         obj.verifyModel = TableInfoInfoDlg.getVerifyModel(this);
         obj.dbinfoModel = TableInfoInfoDlg.getDbinfoModel(this);
         tableField.push(obj);
@@ -133,7 +134,7 @@ TableInfoInfoDlg.getVerifyModel = function (tr) {
     var obj = new Object();
     var trId = '#fieldNav' + $(tr).attr("id").replace('fieldTr', '');
     $(trId).find('.fieldVerify .row div').each(function (index, data) {
-        obj[$(data).find('select,input').attr('name')] = $(data).find('select,input').val();
+        obj[$(data).attr('data-field')] = $(data).find('select,input').val();
     });
     return obj;
 };
@@ -150,6 +151,17 @@ TableInfoInfoDlg.getDbinfoModel = function (tr) {
     return obj;
 };
 
+/**
+ * 页面详情字段
+ * @param obj
+ * @param param2
+ */
+TableInfoInfoDlg.getViewData = function (obj, tr) {
+    var trId = '#fieldNav' + $(tr).attr("id").replace('fieldTr', '');
+    $(trId).find('.fieldShow .row div').each(function (index, data) {
+        obj[$(data).attr('data-field')] = $(data).find('select,input').val();
+    });
+};
 
 /**
  * 验证数据
@@ -170,18 +182,21 @@ TableInfoInfoDlg.addSubmit = function () {
     if (!this.validate()) {
         return;
     }
+    var message = "添加成功!";
     var url = Feng.ctxPath + "/tableinfo/add";
     if($("#tableId").val() && $("#tableId").val() != ''){
         url = Feng.ctxPath + "/tableinfo/update";
+        this.TableInfoInfoData.id = $("#tableId").val();
+        message = "更新成功!";
     }
 
     //提交信息
     var ajax = new $ax(url, function (data) {
-        Feng.success("添加成功!");
+        Feng.success(message);
         window.parent.TableInfo.table.refresh();
         TableInfoInfoDlg.close();
     }, function (data) {
-        Feng.error("添加失败!" + data.responseJSON.message + "!");
+        Feng.error("失败!" + data.responseJSON.message + "!");
     });
     ajax.setData(JSON.stringify(this.TableInfoInfoData));
     ajax.start();
