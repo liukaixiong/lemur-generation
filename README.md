@@ -34,10 +34,10 @@ lemur-generation
 |数据库管理| |80%|2017-9-01|1.0|
 | | CURD|100%|2017-9-01|1.0|
 | | 密码加密| | | |
-|表管理| |0%| | |
-| |CURD| | | |
-| |数据库生成表| | | |
-| |SQL生成表| | | |
+|表管理| |60%| | |
+| |CURD| 100%| | |
+| |数据库生成表| 100%| | |
+| |SQL生成表| 30%| | |
 | |JSON生成表| | | |
 | |XML生成表| | | |
 |模板管理| |80%|2017-9-01|1.0|
@@ -73,16 +73,31 @@ lemur-generation
     4.建立自己的模板
     5.代码生成,选择想要生成的表
 
+版本
+---------------------------------------------------------------------------------
+ - 1.1.0
+    - 表管理 
+    - 数据库导入
+    - SQL导入
+    - 代码生成
+ - 1.0.1
+    - 基础版本
+    - 数据库管理
+    - 数据库生成 
+
 界面演示
 ----------------------------------------------------------------------------------
-
+**DB导入**
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27173859_57Vh.png "在这里输入图片标题")
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27173923_DDpH.png "在这里输入图片标题")
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27173956_jiym.png "在这里输入图片标题")
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27174039_hzhe.png "在这里输入图片标题")
+**SQL导入**
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27174109_UeHH.png "在这里输入图片标题")
+![输入图片说明](https://static.oschina.net/uploads/img/201710/27174217_sRvy.png "在这里输入图片标题")
+**数据库生成**
 ![代码生成界面](https://git.oschina.net/uploads/images/2017/0913/214120_a097692e_69288.png "gencode.png")
-
 ![组](https://git.oschina.net/uploads/images/2017/0913/215434_b40e7468_69288.png "group.png")
-
 ![db](https://git.oschina.net/uploads/images/2017/0913/215453_fb373cfc_69288.png "db.png")
-
 ![tt](https://git.oschina.net/uploads/images/2017/0913/215501_81a29e95_69288.png "params.png")
-
-
 ![ttt](https://git.oschina.net/uploads/images/2017/0913/215537_c0e2a3b6_69288.png "template.png")

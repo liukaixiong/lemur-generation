@@ -147,7 +147,7 @@ TableInfo.dbimport = function () {
 TableInfo.sqlimport = function () {
     var index = layer.open({
                                type: 2,
-                               title: 'DB导入',
+                               title: 'SQL导入',
                                area: ['70%', '70%'],//宽高
                                fix: false, //不固定
                                maxmin: true,
