@@ -121,7 +121,7 @@ TableInfo.delete = function () {
         }, function (data) {
             Feng.error("删除失败!" + data.responseJSON.message + "!");
         });
-        ajax.set("tableinfoId", this.seItem.id);
+        ajax.set("id", this.seItem.id);
         ajax.start();
     }
 };

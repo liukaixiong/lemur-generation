@@ -46,7 +46,16 @@ public class TableFieldServiceImpl implements ITableFieldService {
 
     @Override
     public Integer deleteById(Integer id) {
-        return tableFieldDao.deleteById(id);
+        Map<String, Object> temp = new HashMap<String, Object>();
+        temp.put("table_id", id);
+        List<TableFieldModel> list = tableFieldDao.selectByMap(temp);
+        if (CollectionKit.isNotEmpty(list)) {
+            List<Integer> ids = getIds(list);
+            tableFieldDao.deleteBatchIds(ids);
+            tableFieldVerifyService.deleteByFieldIds(ids);
+            tableFieldDbinfoService.deleteByFieldIds(ids);
+        }
+        return 1;
     }
 
     @Override
@@ -82,15 +91,7 @@ public class TableFieldServiceImpl implements ITableFieldService {
     @Override
     public void batchSaveOrUpdate(List<TableFieldModel> tableFields) {
         // 删除旧数据
-        Map<String, Object> temp = new HashMap<String, Object>();
-        temp.put("table_id", tableFields.get(0).getTableId());
-        List<TableFieldModel> list = tableFieldDao.selectByMap(temp);
-        if (CollectionKit.isNotEmpty(list)) {
-            List<Integer> ids = getIds(list);
-            tableFieldDao.deleteBatchIds(ids);
-            tableFieldVerifyService.deleteByFieldIds(ids);
-            tableFieldDbinfoService.deleteByFieldIds(ids);
-        }
+        deleteById(tableFields.get(0).getTableId());
         tableFieldDao.batchInsert(tableFields);
 
         List<TableFieldVerifyModel> verifyModelList = new ArrayList<TableFieldVerifyModel>(tableFields.size());

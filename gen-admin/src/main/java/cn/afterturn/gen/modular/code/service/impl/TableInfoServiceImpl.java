@@ -52,9 +52,11 @@ public class TableInfoServiceImpl implements ITableInfoService {
     }
 
     @Override
+    @Transactional
     public Integer deleteById(Integer id) {
         //删除数据需要把所有关联的都删除了
-
+        tableServiceConfigService.deleteById(id);
+        tableFieldService.deleteById(id);
         return tableInfoDao.deleteById(id);
     }
 
