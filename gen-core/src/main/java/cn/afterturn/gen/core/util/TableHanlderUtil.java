@@ -29,7 +29,7 @@ public class TableHanlderUtil {
                 entity.setComment(null);
             }
             entity.setName(NameUtil.getFieldHumpName(entity.getFieldName()));
-            entity.setType(convertType(entity.getFieldType(), entity.getPrecision(), entity.getScale()));
+            entity.setType(convertType(entity.getFieldType(), entity.getFieldPointLength()));
         }
     }
 
@@ -47,7 +47,7 @@ public class TableHanlderUtil {
     /**
      * 转换类型
      */
-    public static String convertType(String dataType, String precision, String scale) {
+    public static String convertType(String dataType, Integer pointLength) {
         dataType = dataType.toLowerCase();
         if (dataType.contains("char") || dataType.contains("text")) {
             dataType = "String";
@@ -58,13 +58,13 @@ public class TableHanlderUtil {
         } else if (dataType.contains("double")) {
             dataType = "Double";
         } else if (dataType.contains("number")) {
-            if (StringUtils.isNotEmpty(scale) && Integer.parseInt(scale) > 0) {
+            if (pointLength != null && pointLength > 0) {
                 dataType = "Double";
-            } else if (StringUtils.isNotEmpty(precision) && Integer.parseInt(precision) > 10) {
+            }/* else if (StringUtils.isNotEmpty(precision) && Integer.parseInt(precision) > 10) {
                 dataType = "Long";
             } else {
                 dataType = "Integer";
-            }
+            }*/
         } else if (dataType.contains("decimal")) {
             dataType = "BigDecimal";
         } else if (dataType.contains("date")) {

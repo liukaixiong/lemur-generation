@@ -101,4 +101,10 @@ public interface ITableInfoService {
      */
     List<TableInfoModel> selectPage(Pagination pagination, TableInfoModel model,Wrapper<TableInfoModel> wrapper);
 
+    /**
+     * 返回生成代码的对象
+     * @param tableId
+     * @return
+     */
+    GenBeanEntity getGenBean(Integer tableId);
 }

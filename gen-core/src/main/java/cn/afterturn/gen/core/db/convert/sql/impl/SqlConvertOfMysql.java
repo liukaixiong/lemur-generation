@@ -45,7 +45,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
                 for (int j = 0; j < keys.length; j++) {
                     for (int k = 0; k < fields.size(); k++) {
                         if (fields.get(k).getFieldName().equalsIgnoreCase(keys[j])) {
-                            fields.get(k).setKey(true);
+                            fields.get(k).setKey(2);
                             break;
                         }
                     }
@@ -67,14 +67,14 @@ public class SqlConvertOfMysql implements ISqlConvert {
                         }
                     }
                     String[] points = type.substring(type.indexOf("(") + 1, type.indexOf(")")).split(",");
-                    field.setCharmaxLength(points[0]);
+                    field.setFieldLength(Integer.parseInt(points[0]));
                     if (points.length == 2) {
-                        field.setScale(points[1]);
+                        field.setFieldPointLength(Integer.parseInt(points[1]));
                     }
                 } else {
                     field.setFieldType(keys[1]);
                 }
-                field.setNullable(columns[i].contains("NOT NULL") ? "Y" : "N");
+                field.setNotNull(columns[i].contains("NOT NULL") ? 2 : 1);
                 for (int j = 2; j < keys.length; j++) {
                     if ("COMMENT".equalsIgnoreCase(keys[j]) && keys.length > j + 1) {
                         field.setComment(keys[j + 1]);

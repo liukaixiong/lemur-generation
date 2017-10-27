@@ -21,6 +21,13 @@ public class TableInfoModel extends CodeBaseModel<TableInfoModel> {
 
     private static final long serialVersionUID = 1L;
 
+    public TableInfoModel() {
+
+    }
+
+    public TableInfoModel(Integer id) {
+        this.id = id;
+    }
 
     /**
      * Id

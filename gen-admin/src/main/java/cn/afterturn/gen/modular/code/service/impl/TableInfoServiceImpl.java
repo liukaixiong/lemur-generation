@@ -4,16 +4,19 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import cn.afterturn.gen.core.model.GenBeanEntity;
+import cn.afterturn.gen.core.model.GenFieldEntity;
 import cn.afterturn.gen.modular.code.dao.TableInfoDao;
 import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;
 import cn.afterturn.gen.modular.code.service.ITableInfoService;
 import cn.afterturn.gen.modular.code.service.ITableServiceConfigService;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +107,25 @@ public class TableInfoServiceImpl implements ITableInfoService {
     @Override
     public List<TableInfoModel> selectPage(Pagination pagination, TableInfoModel model, Wrapper<TableInfoModel> wrapper) {
         return tableInfoDao.selectPage(pagination, model, wrapper);
+    }
+
+    @Override
+    public GenBeanEntity getGenBean(Integer tableId) {
+        TableInfoModel model = selectById(tableId);
+        GenBeanEntity genBean = new GenBeanEntity();
+        genBean.setTableName(model.getTableName());
+        genBean.setName(model.getClassName());
+        genBean.setChinaName(model.getContent());
+        genBean.setFields(new ArrayList<GenFieldEntity>());
+        for (int i = 0; i < model.getTableFields().size(); i++) {
+            GenFieldEntity fieldEntity = new GenFieldEntity();
+            fieldEntity.setChinaName(model.getTableFields().get(i).getContent());
+            BeanUtils.copyProperties(model.getTableFields().get(i), fieldEntity);
+            BeanUtils.copyProperties(model.getTableFields().get(i).getDbinfoModel(), fieldEntity);
+            BeanUtils.copyProperties(model.getTableFields().get(i).getVerifyModel(), fieldEntity);
+            genBean.getFields().add(fieldEntity);
+        }
+        return genBean;
     }
 
 }

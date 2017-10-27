@@ -33,7 +33,7 @@
                             <#button name="SQL导入" icon="fa-code" clickFun="TableInfo.sqlimport()" space="true"/>
                             @}
                             @if(shiro.hasPermission("/tableinfo/sqlimport")){
-                            <#button name="生成" icon="fa-play" clickFun="TableInfo.sqlimport()" space="true"/>
+                            <#button name="生成" icon="fa-play" clickFun="TableInfo.gen()" space="true"/>
                             @}
                         </div>
                         <#table id="TableInfoTable"/>

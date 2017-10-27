@@ -35,13 +35,17 @@ public abstract class BaseReadTable {
             GenFieldEntity field;
             while (rs.next()) {
                 field = new GenFieldEntity();
-                field.setCharmaxLength(rs.getString("charmaxLength"));
+                if (StringUtils.isNotEmpty(rs.getString("charmaxLength"))) {
+                    field.setFieldLength(rs.getInt("charmaxLength"));
+                } else {
+                    field.setFieldLength(rs.getInt("numeric_precision"));
+                }
                 field.setComment(rs.getString("column_comment"));
                 field.setFieldName(rs.getString("fieldName"));
-                field.setNullable(rs.getString("nullable"));
+                field.setNotNull("Y".equalsIgnoreCase(rs.getString("nullable")) ? 2 : 1);
                 field.setFieldType(rs.getString("fieldType"));
-                field.setPrecision(rs.getString("numeric_precision"));
-                field.setScale(rs.getString("scale"));
+                //field.setPrecision(rs.getString("numeric_precision"));
+                field.setFieldPointLength(rs.getInt("scale"));
                 list.add(field);
             }
         } catch (Exception e) {

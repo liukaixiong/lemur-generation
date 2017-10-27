@@ -156,6 +156,24 @@ TableInfo.sqlimport = function () {
     this.layerIndex = index;
 };
 
+/**
+ * 代码生成
+ */
+TableInfo.gen = function () {
+    if (this.check()) {
+        var index = layer.open({
+                                   type: 2,
+                                   title: '代码生成',
+                                   area: ['80%', '70%'],//宽高
+                                   fix: false, //不固定
+                                   maxmin: true,
+                                   content: Feng.ctxPath + '/code/tableGen/'
+                                            + TableInfo.seItem.id
+                               });
+        this.layerIndex = index;
+    }
+};
+
 TableInfo.formParams = function () {
     var queryData = {};
     return queryData;

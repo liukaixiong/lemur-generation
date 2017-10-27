@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,20 +42,24 @@ import cn.afterturn.gen.core.GenCoreConstant;
 import cn.afterturn.gen.core.db.read.IReadTable;
 import cn.afterturn.gen.core.db.read.ReadTableFactory;
 import cn.afterturn.gen.core.model.BaseModel;
+import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.core.model.GenerationEntity;
 import cn.afterturn.gen.core.model.RequestModel;
 import cn.afterturn.gen.core.model.ResponseModel;
+import cn.afterturn.gen.core.parse.ParseFactory;
 import cn.afterturn.gen.core.shiro.ShiroKit;
 import cn.afterturn.gen.core.util.ConnectionUtil;
 import cn.afterturn.gen.core.util.FileUtil;
 import cn.afterturn.gen.core.util.NameUtil;
 import cn.afterturn.gen.modular.code.model.DbInfoModel;
 import cn.afterturn.gen.modular.code.model.GenParamModel;
+import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import cn.afterturn.gen.modular.code.model.TemplateGroupModel;
 import cn.afterturn.gen.modular.code.model.TemplateModel;
 import cn.afterturn.gen.modular.code.service.IDbInfoService;
 import cn.afterturn.gen.modular.code.service.IGenParamService;
 import cn.afterturn.gen.modular.code.service.IGenService;
+import cn.afterturn.gen.modular.code.service.ITableInfoService;
 import cn.afterturn.gen.modular.code.service.ITemplateGroupService;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
 
@@ -83,6 +88,8 @@ public class GenController {
     private IGenParamService genParamService;
     @Autowired
     private GunsProperties gunsProperties;
+    @Autowired
+    private ITableInfoService tableInfoService;
 
     /**
      * 跳转到首页
@@ -96,6 +103,21 @@ public class GenController {
         model.setUserId(ShiroKit.getUser().getId());
         modelMap.addAttribute("params", genParamService.selectList(params));
         return PREFIX + "index.html";
+    }
+
+    /**
+     * 跳转到首页
+     */
+    @RequestMapping("/tableGen/{id}")
+    public String tableGen(Model modelMap, @PathVariable Integer id) {
+        TemplateGroupModel model = new TemplateGroupModel();
+        model.setUserId(ShiroKit.getUser().getId());
+        modelMap.addAttribute("groups", templateGroupService.selectList(model));
+        GenParamModel params = new GenParamModel();
+        model.setUserId(ShiroKit.getUser().getId());
+        modelMap.addAttribute("params", genParamService.selectList(params));
+        modelMap.addAttribute("table", tableInfoService.selectOne(new TableInfoModel(id)));
+        return PREFIX + "tableinfo_gen.html";
     }
 
     @RequestMapping(value = "queryDatabses")
@@ -164,18 +186,43 @@ public class GenController {
         }
     }
 
+
+    @RequestMapping(value = "genTableCode")
+    public void genTableCode(Integer tableId, String localPath, String encoded, GenerationEntity ge,
+                        HttpServletRequest req, HttpServletResponse res) {
+        String[] templates = req.getParameterValues("templates[]");
+        List<TemplateModel> templateList = templateService.getTemplateByIds(templates);
+        final List<String> templateFileList = genService.loadTemplateFile(templateList);
+        List<String> fileList = new ArrayList<String>();
+        GenBeanEntity tableEntity = tableInfoService.getGenBean(tableId);
+        for (int i = 0; i < templateList.size(); i++) {
+            final int index = i;
+            fileList.addAll(ParseFactory.getParse(templateList.get(i).getTemplateType()).parse(ge, tableEntity,
+                    new ArrayList<String>() {
+                        {
+                            add(templateFileList.get(index));
+                        }
+                    }));
+        }
+        if (StringUtils.isNotEmpty(localPath)) {
+            writeThisFileList(localPath, encoded, fileList, templateList, ge);
+        } else {
+            downThisFileList(res, fileList, templateList, ge);
+        }
+    }
+
     /**
      * 本地输出代码
      */
     private void writeThisFileList(String localPath, String encoded, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
-        if(!gunsProperties.getGenLocal()){
-            throw  new BussinessException(BizExceptionEnum.NOT_ALLOW_GEN_LOCAL_FILE);
+        if (!gunsProperties.getGenLocal()) {
+            throw new BussinessException(BizExceptionEnum.NOT_ALLOW_GEN_LOCAL_FILE);
         }
         for (int i = 0; i < fileList.size(); i++) {
             // 文件路径包括 本地项目路径 + 项目相对路径 + 包路径 + 类的自我路径
             String filePath = localPath + File.separator +
                     (StringUtils.isNotEmpty(templateList.get(i).getLocalPath()) ?
-                            templateList.get(i).getLocalPath().replaceAll("\\.", "\\/") +File.separator : "") +
+                            templateList.get(i).getLocalPath().replaceAll("\\.", "\\/") + File.separator : "") +
                     getPackagePath(templateList.get(i), ge);
             File path = new File(filePath + File.separator);
             if (!path.exists()) {

@@ -21,6 +21,7 @@ import cn.afterturn.gen.modular.code.service.ITableInfoService;
 
 /**
  * 导入的数据库版本实现
+ *
  * @author JueYue on 2017/10/25.
  */
 @Service("dbTableConvertServer")
@@ -59,19 +60,15 @@ public class TableConvertServiceOfDbImpl implements ITableConvertServer {
             fieldModel.setName(tableFiedl.getName());
             fieldModel.setContent(tableFiedl.getComment());
             fieldModel.setType(tableFiedl.getType());
-            fieldModel.setIsKey(tableFiedl.getKey() ? "1" : "2");
+            fieldModel.setIsKey(tableFiedl.getKey());
             verifyModel = new TableFieldVerifyModel();
-            verifyModel.setNotNull("Y".equals(tableFiedl.getNullable()) ? 1 : 2);
+            verifyModel.setNotNull(tableFiedl.getNotNull());
             fieldModel.setVerifyModel(verifyModel);
             dbinfoModel = new TableFieldDbinfoModel();
             dbinfoModel.setFieldName(tableFiedl.getFieldName());
             dbinfoModel.setFieldContent(tableFiedl.getComment());
-            if (StringUtils.isNoneEmpty(tableFiedl.getCharmaxLength())) {
-                dbinfoModel.setFieldLength(Integer.parseInt(tableFiedl.getCharmaxLength()));
-            }
-            if (StringUtils.isNoneEmpty(tableFiedl.getScale())) {
-                dbinfoModel.setFieldPointLength(Integer.parseInt(tableFiedl.getScale()));
-            }
+            dbinfoModel.setFieldLength(tableFiedl.getFieldLength());
+            dbinfoModel.setFieldPointLength(tableFiedl.getFieldPointLength());
             dbinfoModel.setFieldType(tableFiedl.getFieldType());
             fieldModel.setDbinfoModel(dbinfoModel);
             list.add(fieldModel);

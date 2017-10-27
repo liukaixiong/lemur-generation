@@ -228,10 +228,18 @@ GEN.selectChange = function (data, eleName) {
 }
 
 GEN.genBtnAble = function () {
-    if(GEN.param.tableName && GEN.param.templates && GEN.param.templates.length >0){
-        $("#genBtn").removeAttr("disabled");
-    }else{
-        $("#genBtn").attr("disabled","disabled");
+    if($("#tableId").val() && $("#tableId").val() != ''){
+        if(GEN.param.templates && GEN.param.templates.length >0){
+            $("#genBtn").removeAttr("disabled");
+        }else{
+            $("#genBtn").attr("disabled","disabled");
+        }
+    }else {
+        if(GEN.param.tableName && GEN.param.templates && GEN.param.templates.length >0){
+            $("#genBtn").removeAttr("disabled");
+        }else{
+            $("#genBtn").attr("disabled","disabled");
+        }
     }
 }
 
@@ -256,6 +264,27 @@ GEN.genCode = function () {
 
 }
 
+GEN.genTableCode = function () {
+    if (!this.validate()) {
+        return;
+    }
+    GEN.param.tableId = $("#tableId").val();
+    GEN.param.codePackage = $("#codePackage").val();
+    GEN.param.htmlPackage = $("#htmlPackage").val();
+    GEN.param.jsPackage = $("#jsPackage").val();
+    GEN.param.entityName = $("#className").val();
+    GEN.param.xmlPackage = $("#xmlPackage").val();
+    GEN.param.localPath = $("#localPath").val();
+    GEN.param.encoded = $("#encoded").val();
+    //本地生产就ajax访问后台就可以了
+    if(GEN.param.localPath){
+        $.getJSON('/code/genTableCode?' + $.param(GEN.param));
+    }else{
+        window.location.href = '/code/genTableCode?' + $.param(GEN.param);
+    }
+
+}
+
 // 页面初始化
 $(function () {
     GEN.param.limit = 100;
@@ -266,7 +295,7 @@ $(function () {
 });
 
 $("#params").change(function(){
-    var ajax = new $ax(Feng.ctxPath + 'genparam/detail', function (data) {
+    var ajax = new $ax(Feng.ctxPath + '/genparam/detail', function (data) {
         $("#author").val(data.author);
         $("#codePackage").val(data.codePackage);
         $("#htmlPackage").val(data.htmlPackage);
@@ -284,6 +313,6 @@ $("#groupId").change(function(){
     GEN.param = {};
     GEN.param.limit = 100;
     GEN.param.offset = 0;
-    GEN.getData('/template/list?groupId='+$("#groupId").val(), 'templates');
+    GEN.getData(Feng.ctxPath + '/template/list?groupId='+$("#groupId").val(), 'templates');
     GEN.param = p;
 });

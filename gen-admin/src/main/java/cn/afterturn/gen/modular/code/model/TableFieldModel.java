@@ -60,13 +60,13 @@ public class TableFieldModel extends Model<TableFieldModel> {
      * 是否主键
      */
     @TableField(value = "is_key")
-    private String isKey;
+    private Integer isKey;
 
     /**
      * 是否可以为空
      */
     @TableField(value = "is_null")
-    private String isNull;
+    private Integer isNull;
 
     /**
      * 是否显示新增
@@ -108,7 +108,7 @@ public class TableFieldModel extends Model<TableFieldModel> {
      * 是否查询
      */
     @TableField(value = "is_query")
-    private String isQuery;
+    private Integer isQuery;
 
     /**
      * 查询类型
@@ -233,28 +233,28 @@ public class TableFieldModel extends Model<TableFieldModel> {
     /**
      * 获取: 是否主键
      */
-    public String getIsKey() {
+    public Integer getIsKey() {
         return isKey;
     }
 
     /**
      * 设置: 是否主键
      */
-    public void setIsKey(String isKey) {
+    public void setIsKey(Integer isKey) {
         this.isKey = isKey;
     }
 
     /**
      * 获取: 是否可以为空
      */
-    public String getIsNull() {
+    public Integer getIsNull() {
         return isNull;
     }
 
     /**
      * 设置: 是否可以为空
      */
-    public void setIsNull(String isNull) {
+    public void setIsNull(Integer isNull) {
         this.isNull = isNull;
     }
 
@@ -345,14 +345,14 @@ public class TableFieldModel extends Model<TableFieldModel> {
     /**
      * 获取: 是否查询
      */
-    public String getIsQuery() {
+    public Integer getIsQuery() {
         return isQuery;
     }
 
     /**
      * 设置: 是否查询
      */
-    public void setIsQuery(String isQuery) {
+    public void setIsQuery(Integer isQuery) {
         this.isQuery = isQuery;
     }
 
