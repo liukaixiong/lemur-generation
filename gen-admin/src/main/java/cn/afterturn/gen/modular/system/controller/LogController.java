@@ -86,6 +86,6 @@ public class LogController extends BaseController {
     @ResponseBody
     public Object delLog() {
         SqlRunner.db().delete("delete from operation_log");
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 }

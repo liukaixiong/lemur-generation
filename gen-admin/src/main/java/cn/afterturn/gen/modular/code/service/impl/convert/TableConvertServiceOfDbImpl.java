@@ -58,7 +58,7 @@ public class TableConvertServiceOfDbImpl implements ITableConvertServer {
             tableFiedl = fields.get(i);
             fieldModel.setFieldName(tableFiedl.getFieldName());
             fieldModel.setName(tableFiedl.getName());
-            fieldModel.setContent(tableFiedl.getComment());
+            fieldModel.setContent(tableFiedl.getChinaName());
             fieldModel.setType(tableFiedl.getType());
             fieldModel.setIsKey(tableFiedl.getKey());
             verifyModel = new TableFieldVerifyModel();

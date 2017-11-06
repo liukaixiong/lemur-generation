@@ -110,7 +110,7 @@ public class TableFieldController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         tableFieldService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

@@ -115,7 +115,7 @@ public class GenParamController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         genParamService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

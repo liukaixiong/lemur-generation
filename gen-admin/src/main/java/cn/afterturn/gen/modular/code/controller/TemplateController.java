@@ -132,7 +132,7 @@ public class TemplateController extends BaseController {
         }
         fileModel.setFile(hanlderFileEncode(fileModel.getFile()));
         templateService.updateById(model, fileModel);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

@@ -125,7 +125,7 @@ public class DictController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         dictService.editDict(dictId, dictName, dictValues);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

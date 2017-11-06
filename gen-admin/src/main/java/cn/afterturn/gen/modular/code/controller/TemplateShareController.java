@@ -107,7 +107,7 @@ public class TemplateShareController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         templateShareService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

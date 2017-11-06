@@ -112,7 +112,7 @@ public class TableServiceConfigController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         tableServiceConfigService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

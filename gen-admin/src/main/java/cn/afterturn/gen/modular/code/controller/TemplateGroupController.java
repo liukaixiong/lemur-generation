@@ -111,7 +111,7 @@ public class TemplateGroupController extends BaseController {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
         templateGroupService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**

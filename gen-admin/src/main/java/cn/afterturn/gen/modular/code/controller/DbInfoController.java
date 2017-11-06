@@ -126,7 +126,7 @@ public class DbInfoController extends BaseController {
         }
         model.setDbDriver(DBType.getDbTypeByType(model.getDbType()).getDriver());
         dbInfoService.updateById(model);
-        return super.SUCCESS_TIP;
+        return SUCCESS_TIP;
     }
 
     /**
