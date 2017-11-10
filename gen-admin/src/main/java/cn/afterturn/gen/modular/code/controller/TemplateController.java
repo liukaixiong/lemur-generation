@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -106,9 +107,9 @@ public class TemplateController extends BaseController {
     @RequestMapping(value = "/add")
     @Permission
     @ResponseBody
-    public Object add(TemplateModel model, TemplateFileModel fileModel) throws UnsupportedEncodingException {
-        fileModel.setFile(hanlderFileEncode(fileModel.getFile()));
-        templateService.insert(model, fileModel);
+    public Object add(@RequestBody TemplateModel model) throws UnsupportedEncodingException {
+        model.getFileModel().setFile(hanlderFileEncode(model.getFileModel().getFile()));
+        templateService.insert(model, model.getFileModel());
         return SUCCESS_TIP;
     }
 
@@ -126,12 +127,12 @@ public class TemplateController extends BaseController {
     @RequestMapping(value = "/update")
     @Permission
     @ResponseBody
-    public Object update(TemplateModel model, TemplateFileModel fileModel) throws UnsupportedEncodingException {
+    public Object update(@RequestBody TemplateModel model) throws UnsupportedEncodingException {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
-        fileModel.setFile(hanlderFileEncode(fileModel.getFile()));
-        templateService.updateById(model, fileModel);
+        model.getFileModel().setFile(hanlderFileEncode(model.getFileModel().getFile()));
+        templateService.updateById(model, model.getFileModel());
         return SUCCESS_TIP;
     }
 

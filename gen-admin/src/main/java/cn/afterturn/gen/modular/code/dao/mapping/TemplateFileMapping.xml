@@ -12,7 +12,7 @@
         <result column="MDF_TIME" property="mdfTime"/>
     </resultMap>
     <update id="updateTemplateId">
-        UPDATE T_CODE_TEMPLATE_FILE SET file = #{e.file} ,file_type = #{e.fileType} WHERE TEMPLATE_ID = #{e.id}
+        UPDATE T_CODE_TEMPLATE_FILE SET file = #{e.file} ,file_type = #{e.fileType} WHERE TEMPLATE_ID = #{e.templateId}
     </update>
     <delete id="deleteByTemplateId">
         DELETE FROM T_CODE_TEMPLATE_FILE WHERE TEMPLATE_ID = #{id}

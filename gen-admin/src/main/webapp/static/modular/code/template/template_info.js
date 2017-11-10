@@ -45,7 +45,12 @@ TemplateInfoDlg.close = function() {
  */
 TemplateInfoDlg.collectData = function() {
     this.set('id').set('templateName').set('templatePath').set('templateDesc').set('fileName')
-        .set('groupId').set('templateType').set('fileType').set('file').set('localPath');
+        .set('groupId').set('templateType').set('localPath');
+    //.set('fileType').set('file')
+    this.TemplateInfoData.fileModel = new Object();
+    this.TemplateInfoData.fileModel.fileType = $("#fileType").val();
+    this.TemplateInfoData.fileModel.file = $("#file").val();
+
 }
 
 /**
@@ -64,7 +69,7 @@ TemplateInfoDlg.addSubmit = function() {
     },function(data){
         Feng.error("添加失败!" + data.responseJSON.message + "!");
     });
-    ajax.set(this.TemplateInfoData);
+    ajax.setData(JSON.stringify(this.TemplateInfoData));
     ajax.start();
 }
 
@@ -84,7 +89,7 @@ TemplateInfoDlg.editSubmit = function() {
     },function(data){
         Feng.error("修改失败!" + data.responseJSON.message + "!");
     });
-    ajax.set(this.TemplateInfoData);
+    ajax.setData(JSON.stringify(this.TemplateInfoData));
     ajax.start();
 }
 
