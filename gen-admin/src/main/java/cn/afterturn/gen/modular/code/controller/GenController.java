@@ -179,7 +179,7 @@ public class GenController {
             model.setFile(templateFileList.get(i));
             fileList.addAll(CodeGenUtil.codeGen(model));
         }
-        if (StringUtils.isNotEmpty(localPath)) {
+        if (StringUtils.isNotEmpty(localPath) && gunsProperties.getGenLocal()) {
             writeThisFileList(localPath, encoded, fileList, templateList, ge);
         } else {
             downThisFileList(res, fileList, templateList, ge);
@@ -195,6 +195,7 @@ public class GenController {
         final List<String> templateFileList = genService.loadTemplateFile(templateList);
         List<String> fileList = new ArrayList<String>();
         GenBeanEntity tableEntity = tableInfoService.getGenBean(tableId);
+        ge.setTableName(tableEntity.getTableName());
         for (int i = 0; i < templateList.size(); i++) {
             final int index = i;
             fileList.addAll(ParseFactory.getParse(templateList.get(i).getTemplateType()).parse(ge, tableEntity,
@@ -204,7 +205,7 @@ public class GenController {
                         }
                     }));
         }
-        if (StringUtils.isNotEmpty(localPath)) {
+        if (StringUtils.isNotEmpty(localPath) && gunsProperties.getGenLocal()) {
             writeThisFileList(localPath, encoded, fileList, templateList, ge);
         } else {
             downThisFileList(res, fileList, templateList, ge);
@@ -215,9 +216,6 @@ public class GenController {
      * 本地输出代码
      */
     private void writeThisFileList(String localPath, String encoded, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
-        if (!gunsProperties.getGenLocal()) {
-            throw new BussinessException(BizExceptionEnum.NOT_ALLOW_GEN_LOCAL_FILE);
-        }
         for (int i = 0; i < fileList.size(); i++) {
             // 文件路径包括 本地项目路径 + 项目相对路径 + 包路径 + 类的自我路径
             String filePath = localPath + File.separator +

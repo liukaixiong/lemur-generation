@@ -61,7 +61,7 @@
             AND t.HTML_PACKAGE = #{e.htmlPackage}
         </if>
         <if test="e.userId != null and e.userId != '' ">
-            AND (t.USER_ID = #{e.userId} or t.USER_ID is null or t.USER_ID = 0 )
+            AND t.USER_ID = #{e.userId}
         </if>
     </sql>
 

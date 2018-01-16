@@ -6,6 +6,7 @@
     <resultMap id="BaseResultMap" type="cn.afterturn.gen.modular.code.model.TableInfoModel">
         <result column="id" property="id"/>
         <result column="table_name" property="tableName"/>
+        <result column="user_id" property="userId"/>
         <result column="class_name" property="className"/>
         <result column="content" property="content"/>
         <result column="is_import" property="isImport"/>
@@ -48,6 +49,9 @@
         </if>
         <if test="e.tableName != null and e.tableName != '' ">
             AND t.TABLE_NAME = #{e.tableName}
+        </if>
+        <if test="e.userId != null">
+            AND t.USER_ID = #{e.userId}
         </if>
         <if test="e.className != null and e.className != '' ">
             AND t.CLASS_NAME = #{e.className}

@@ -61,6 +61,10 @@ public class GenerationEntity implements Serializable {
      * 作者
      **/
     private String author;
+    /**
+     * 作者
+     **/
+    private String copyright;
 
     public String getName() {
         return name;
@@ -157,5 +161,13 @@ public class GenerationEntity implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 }

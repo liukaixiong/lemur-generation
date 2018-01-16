@@ -95,6 +95,7 @@ public class TableInfoController extends BaseController {
     @ResponseBody
     public Object list(TableInfoModel model) {
         Page<TableInfoModel> page = new PageFactory<TableInfoModel>().defaultPage();
+        model.setUserId(ShiroKit.getUser().getId());
         page.setRecords(tableInfoService.selectPage(page, model, new EntityWrapper<TableInfoModel>()));
         BeanKeyConvert.systemUserNameConvert(page.getRecords());
         return super.packForBT(page);

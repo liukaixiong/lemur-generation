@@ -65,7 +65,7 @@
             AND t.TEMPLATE_PATH = #{e.templatePath}
         </if>
         <if test="e.userId != null and e.userId != '' ">
-            AND (t.USER_ID = #{e.userId} or t.USER_ID is null or t.USER_ID = 0 )
+            AND t.USER_ID = #{e.userId}
         </if>
         <if test="e.templateDesc != null and e.templateDesc != '' ">
             AND t.TEMPLATE_DESC = #{e.templateDesc}
