@@ -20,7 +20,7 @@ public class GenerationEntity implements Serializable {
     /**
      * Java包名
      */
-    private String codePackage ;
+    private String codePackage;
     /**
      * html包名,如果为空,使用codePackage
      */
@@ -53,6 +53,10 @@ public class GenerationEntity implements Serializable {
      * 类名,不填使用表名
      */
     private String entityName;
+    /**
+     * 首字母小写类名
+     */
+    private String lowerEntityName;
     /**
      * 生成时间
      **/
@@ -106,6 +110,17 @@ public class GenerationEntity implements Serializable {
         this.entityName = entityName;
     }
 
+    public String getLowerEntityName() {
+        if (StringUtils.isEmpty(lowerEntityName)) {
+            lowerEntityName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);
+        }
+        return lowerEntityName;
+    }
+
+    public void setLowerEntityName(String lowerEntityName) {
+        this.lowerEntityName = lowerEntityName;
+    }
+
     public String getCodePackage() {
         return codePackage;
     }
@@ -115,7 +130,7 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getHtmlPackage() {
-        if(StringUtils.isEmpty(htmlPackage)){
+        if (StringUtils.isEmpty(htmlPackage)) {
             return codePackage;
         }
         return htmlPackage;
@@ -126,7 +141,7 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getJsPackage() {
-        if(StringUtils.isEmpty(jsPackage)){
+        if (StringUtils.isEmpty(jsPackage)) {
             return codePackage;
         }
         return jsPackage;
@@ -137,7 +152,7 @@ public class GenerationEntity implements Serializable {
     }
 
     public String getXmlPackage() {
-        if(StringUtils.isEmpty(xmlPackage)){
+        if (StringUtils.isEmpty(xmlPackage)) {
             return codePackage;
         }
         return xmlPackage;

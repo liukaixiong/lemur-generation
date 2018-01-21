@@ -1,8 +1,10 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,45 +21,24 @@ import cn.afterturn.gen.modular.code.service.IDbInfoService;
  * @Date 2017-09-11 11:15
  */
 @Service
-public class DbInfoServiceImpl implements IDbInfoService {
+public class DbInfoServiceImpl extends ServiceImpl<DbInfoDao, DbInfoModel> implements IDbInfoService {
 
     @Autowired
     private DbInfoDao dbInfoDao;
 
     @Override
-    public Integer insert(DbInfoModel entity) {
-
-        return dbInfoDao.insert(entity);
-    }
-
-    @Override
-    public Integer deleteById(Integer id) {
-        return dbInfoDao.deleteById(id);
-    }
-
-    @Override
-    public Integer updateById(DbInfoModel entity) {
-        return dbInfoDao.updateById(entity);
-    }
-
-    @Override
-    public DbInfoModel selectById(Integer id) {
-        return dbInfoDao.selectById(id);
-    }
-
-    @Override
-    public DbInfoModel selectOne(DbInfoModel entity) {
-        return dbInfoDao.selectOne(entity);
-    }
-
-    @Override
-    public Integer selectCount(DbInfoModel model) {
-        return dbInfoDao.selectCount(model);
+    public DbInfoModel selectOne(DbInfoModel model) {
+        return dbInfoDao.selectOne(model);
     }
 
     @Override
     public List<DbInfoModel> selectList(DbInfoModel model) {
-        return dbInfoDao.selectList(model);
+        return dbInfoDao.selectList(model, new EntityWrapper<DbInfoModel>());
+    }
+
+    @Override
+    public List<DbInfoModel> selectList(DbInfoModel model, Wrapper<DbInfoModel> wrapper) {
+        return dbInfoDao.selectList(model, wrapper);
     }
 
     @Override

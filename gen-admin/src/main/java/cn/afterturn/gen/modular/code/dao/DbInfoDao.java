@@ -28,7 +28,7 @@ public interface DbInfoDao extends BaseMapper<DbInfoModel> {
     /**
      * 查询列表
      */
-    List<DbInfoModel> selectList(@Param("e") DbInfoModel model);
+    List<DbInfoModel> selectList(@Param("e") DbInfoModel model, @Param("w") Wrapper<DbInfoModel> wrapper);
 
     /**
      * 分页查询信息

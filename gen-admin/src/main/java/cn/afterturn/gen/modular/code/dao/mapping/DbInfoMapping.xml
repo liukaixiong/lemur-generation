@@ -30,6 +30,7 @@
         select * from t_code_dbinfo t
         <where>
             <include refid="select_content"/>
+            ${w.sqlSegment}
         </where>
     </select>
 
