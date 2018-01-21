@@ -73,7 +73,7 @@ public class GenFieldEntity implements Serializable {
     /**
      * 是否查询
      */
-    private String isQuery;
+    private Integer isQuery;
 
     /**
      * 查询类型
@@ -271,11 +271,11 @@ public class GenFieldEntity implements Serializable {
         this.isExport = isExport;
     }
 
-    public String getIsQuery() {
+    public Integer getIsQuery() {
         return isQuery;
     }
 
-    public void setIsQuery(String isQuery) {
+    public void setIsQuery(Integer isQuery) {
         this.isQuery = isQuery;
     }
 

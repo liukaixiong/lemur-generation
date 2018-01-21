@@ -27,49 +27,48 @@ import java.util.Date;
 @TableName("${g.tableName}")
 public class ${g.entityName}Model extends Model<${g.entityName}Model> {
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 
 <%for(field in t.fields){%>
-/**
- * ${field.chinaName}
- * ${field.comment}
- */
-<%if (field.name == g.idName) {%>
-@TableId(value = "g.idName",type = IdType.AUTO)
-<%}else{%>
-@TableField(value="${field.fieldName}")
-<%}%>
-
-private ${field.type} ${field.name};
-<%}%>
-<%if (t.isImport == 1 || t.isExport == 1) {%>
-@Excel(name = "${field.chinaName}")
+    /**
+     * ${field.chinaName}
+     * ${field.comment}
+     */
+    <%if (field.name == g.idName) {%>
+    @TableId(value = "g.idName",type = IdType.AUTO)
+    <%}else{%>
+    @TableField(value="${field.fieldName}")
+    <%}%>
+    <%if (t.isImport == 1 || t.isExport == 1) {%>
+    @Excel(name = "${field.chinaName}")
+    <%}%>
+    private ${field.type} ${field.name};
 <%}%>
 <%for(field in t.fields){%>
-/**
- * 获取: ${field.chinaName}
- * ${field.comment}
- */
-public ${field.type} get${strutil.toUpperCase(strutil.subStringTo (field.name,0,1))}${strutil.subString  (field.name,1)}() {
-return ${field.name};
-}
-/**
- * 设置: ${field.chinaName}
- * ${field.comment}
- */
-public void set${strutil.toUpperCase(strutil.subStringTo (field.name,0,1))}${strutil.subString  (field.name,1)}(${field.type} ${field.name}) {
-this.${field.name} = ${field.name};
-}
+    /**
+     * 获取: ${field.chinaName}
+     * ${field.comment}
+     */
+    public ${field.type} get${strutil.toUpperCase(strutil.subStringTo (field.name,0,1))}${strutil.subString  (field.name,1)}() {
+    return ${field.name};
+    }
+    /**
+     * 设置: ${field.chinaName}
+     * ${field.comment}
+     */
+    public void set${strutil.toUpperCase(strutil.subStringTo (field.name,0,1))}${strutil.subString  (field.name,1)}(${field.type} ${field.name}) {
+    this.${field.name} = ${field.name};
+    }
 <%}%>
 
-@Override
-protected Serializable pkVal() {
-return this.id;
-}
+    @Override
+    protected Serializable pkVal() {
+    return this.id;
+    }
 
-@Override
-public String toString() {
-return ReflectionToStringBuilder.toString(this);
-}
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
+    }
 }

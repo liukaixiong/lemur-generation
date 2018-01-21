@@ -9,6 +9,8 @@ import ${g.codePackage}.dao.${g.entityName}Dao;
 import ${g.codePackage}.model.${g.entityName}Model;
 import ${g.codePackage}.service.I${g.entityName}Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
@@ -24,6 +26,8 @@ import java.util.Map;
  */
 @Service
 public class ${g.entityName}ServiceImpl extends ServiceImpl<${g.entityName}Dao, ${g.entityName}Model> implements I${g.entityName}Service{
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(${g.entityName}ServiceImpl.class);
 
     @Autowired
     private ${g.entityName}Dao ${g.lowerEntityName}Dao;
