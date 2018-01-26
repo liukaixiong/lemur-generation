@@ -26,6 +26,7 @@ lemur-generation
 
 **[http://gen.afterturn.cn](http://gen.afterturn.cn)**
 
+新增了模板代码在admin/resources/template下面,供大家参考修改,希望大家提供优秀的代码模板
 
 功能
 ---------

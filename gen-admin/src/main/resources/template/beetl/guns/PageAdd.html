@@ -1,13 +1,14 @@
 @layout("/common/_container.html"){
 <div class="ibox float-e-margins">
     <div class="ibox-content">
-        <div class="form-horizontal">
+        <div class="form-horizontal" id="${g.lowerEntityName}Form">
             <div class="row">
                 <%for(field in t.fields){%>
+                <%if(field.isShowAdd == 1){%>
                 <div class="col-sm-4">
                     <${"#"}input id="${field.name}" name="${field.chinaName}" underline="true"/>
                 </div>
-                <%}%>
+                <%}}%>
             </div>
         </div>
 
