@@ -1,8 +1,11 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
+import cn.afterturn.gen.modular.code.dao.TemplateGroupDao;
+import cn.afterturn.gen.modular.code.model.TemplateGroupModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,7 @@ import cn.afterturn.gen.modular.code.dao.TemplateFileDao;
 import cn.afterturn.gen.modular.code.model.TemplateFileModel;
 import cn.afterturn.gen.modular.code.model.TemplateModel;
 import cn.afterturn.gen.modular.code.service.ITemplateService;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 模板管理Service
@@ -27,8 +31,11 @@ public class TemplateServiceImpl implements ITemplateService {
     private TemplateDao templateDao;
     @Autowired
     private TemplateFileDao templateFileDao;
+    @Autowired
+    private TemplateGroupDao templateGroupDao;
 
     @Override
+    @Transactional
     public Integer insert(TemplateModel entity, TemplateFileModel fileModel) {
         templateDao.insert(entity);
         fileModel.setTemplateId(entity.getId());
@@ -36,12 +43,14 @@ public class TemplateServiceImpl implements ITemplateService {
     }
 
     @Override
+    @Transactional
     public Integer deleteById(Integer id) {
         templateFileDao.deleteByTemplateId(id);
         return templateDao.deleteById(id);
     }
 
     @Override
+    @Transactional
     public Integer updateById(TemplateModel entity, TemplateFileModel fileModel) {
         fileModel.setTemplateId(entity.getId());
         int nums = templateFileDao.updateTemplateId(fileModel);
@@ -90,6 +99,33 @@ public class TemplateServiceImpl implements ITemplateService {
             list.get(i).setFileModel(templateFileDao.selectOne(fileModel));
         }
         return list;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void cloneGroup(String groupId, Integer userId) {
+        TemplateGroupModel groupModel = templateGroupDao.selectById(groupId);
+        TemplateGroupModel tempGroupModel = new TemplateGroupModel();
+        BeanUtils.copyProperties(groupModel, tempGroupModel);
+        tempGroupModel.setId(null);
+        tempGroupModel.setUserId(userId);
+        templateGroupDao.insert(tempGroupModel);
+        List<TemplateModel> list = templateDao.getAllTemplateByGroupId(groupId);
+        for (int i = 0; i < (list == null ? 0 : list.size()); i++) {
+            TemplateModel templateModel = new TemplateModel();
+            BeanUtils.copyProperties(list.get(i), templateModel);
+            templateModel.setId(null);
+            templateModel.setUserId(userId);
+            templateModel.setGroupId(groupModel.getId() + "");
+
+            TemplateFileModel fileModel = new TemplateFileModel();
+            list.get(i).setFileModel(templateFileDao.selectOne(fileModel));
+            fileModel.setTemplateId(list.get(i).getId());
+            fileModel.setFile(list.get(i).getFileModel().getFile());
+            fileModel.setFileType(list.get(i).getFileModel().getFileType());
+
+            insert(templateModel, fileModel);
+        }
     }
 
 }

@@ -94,4 +94,11 @@ public interface ITemplateService {
      * 查询这个组的所有的模板
      */
     List<TemplateModel> getAllTemplateByGroupId(String groupId);
+
+    /**
+     * 克隆一个公开的模板
+     * @param groupId
+     * @param userId
+     */
+    void cloneGroup(String groupId, Integer userId);
 }
