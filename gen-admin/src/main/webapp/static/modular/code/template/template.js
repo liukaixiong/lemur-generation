@@ -76,6 +76,21 @@ Template.openTemplateDetail = function () {
     }
 };
 
+
+Template.history = function () {
+    if (this.check()) {
+        var index = layer.open({
+            type: 2,
+            title: '模板历史',
+            area: ['100%', '100%'],
+            fix: false, //不固定
+            maxmin: true,
+            content: Feng.ctxPath + '/template/history?originalId=' + Template.seItem.id
+        });
+        this.layerIndex = index;
+    }
+};
+
 /**
  * 删除模板管理
  */
@@ -110,7 +125,7 @@ Template.search = function () {
 
 $(function () {
     var defaultColunms = Template.initColumn();
-    var table = new BSTable(Template.id, "/template/list", defaultColunms);
+    var table = new BSTable(Template.id, "/template/list?version=1", defaultColunms);
     table.setPaginationType("server");
     table.setQueryParams(Template.formParams());
     Template.table = table.init();

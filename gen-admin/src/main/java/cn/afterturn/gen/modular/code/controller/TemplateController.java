@@ -65,11 +65,17 @@ public class TemplateController extends BaseController {
         return PREFIX + "template.html";
     }
 
+    @RequestMapping("/history")
+    public String history(Model modelMap,String originalId) {
+        modelMap.addAttribute("originalId",originalId);
+        return PREFIX + "template_history.html";
+    }
+
     /**
      * 跳转到添加
      */
     @RequestMapping("/goto_add")
-    public String TemplateAdd(Model modelMap) {
+    public String gotoAdd(Model modelMap) {
         TemplateGroupModel model = new TemplateGroupModel();
         model.setUserId(ShiroKit.getUser().getId());
         modelMap.addAttribute("groups", templateGroupService.selectList(model));
@@ -80,13 +86,24 @@ public class TemplateController extends BaseController {
      * 跳转到修改
      */
     @RequestMapping("/goto_update/{id}")
-    public String TemplateUpdate(@PathVariable Integer id, Model modelMap) {
+    public String gotoUpdate(@PathVariable Integer id, Model modelMap) {
         TemplateGroupModel model = new TemplateGroupModel();
         model.setUserId(ShiroKit.getUser().getId());
         modelMap.addAttribute("groups", templateGroupService.selectList(model));
         modelMap.addAttribute("template", templateService.selectById(id));
         modelMap.addAttribute("file", templateFileService.selectOne(new TemplateFileModel(id)));
         return PREFIX + "template_edit.html";
+    }
+
+
+    @RequestMapping("/goto_detail/{id}")
+    public String gotoDetail(@PathVariable Integer id, Model modelMap) {
+        TemplateGroupModel model = new TemplateGroupModel();
+        model.setUserId(ShiroKit.getUser().getId());
+        modelMap.addAttribute("groups", templateGroupService.selectList(model));
+        modelMap.addAttribute("template", templateService.selectById(id));
+        modelMap.addAttribute("file", templateFileService.selectOne(new TemplateFileModel(id)));
+        return PREFIX + "template_detail.html";
     }
 
     /**
@@ -109,6 +126,7 @@ public class TemplateController extends BaseController {
     @ResponseBody
     public Object add(@RequestBody TemplateModel model) throws UnsupportedEncodingException {
         model.getFileModel().setFile(hanlderFileEncode(model.getFileModel().getFile()));
+        model.setVersion(1);
         templateService.insert(model, model.getFileModel());
         return SUCCESS_TIP;
     }

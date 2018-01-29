@@ -63,7 +63,7 @@ public class ${g.entityName}Controller extends BaseController {
      * 跳转到添加
      */
     @RequestMapping("/goto_add")
-    public String ${g.entityName}Add() {
+    public String gotoAdd() {
         return PREFIX + "${strutil.toLowerCase(g.entityName)}_add.html";
     }
 
@@ -71,7 +71,7 @@ public class ${g.entityName}Controller extends BaseController {
      * 跳转到修改
      */
     @RequestMapping("/goto_update/{id}")
-    public String ${g.entityName}Update(@PathVariable Integer id, Model model) {
+    public String gotoUpdate(@PathVariable Integer id, Model model) {
         model.addAttribute("${strutil.toLowerCase(g.entityName)}", ${g.lowerEntityName}Service.selectById(id));
         return PREFIX + "${strutil.toLowerCase(g.entityName)}_edit.html";
     }

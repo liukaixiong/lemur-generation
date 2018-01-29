@@ -32,6 +32,11 @@ public class TemplateGroupModel extends CodeBaseModel<TemplateGroupModel> {
      */
     @TableField(value = "user_id")
     private Integer userId;
+    /**
+     * 分享状态
+     */
+    @TableField(value = "share_status")
+    private Integer shareStatus;
 
     /**
      * 组名称
@@ -85,6 +90,14 @@ public class TemplateGroupModel extends CodeBaseModel<TemplateGroupModel> {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getShareStatus() {
+        return shareStatus;
+    }
+
+    public void setShareStatus(Integer shareStatus) {
+        this.shareStatus = shareStatus;
     }
 
     /**

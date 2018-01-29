@@ -79,6 +79,12 @@
         <if test="e.templateType != null and e.templateType != '' ">
             AND t.TEMPLATE_TYPE = #{e.templateType}
         </if>
+        <if test="e.version != null and e.version != '' ">
+            AND t.VERSION = #{e.version}
+        </if>
+        <if test="e.originalId != null and e.originalId != '' ">
+            AND t.ORIGINAL_ID = #{e.originalId}
+        </if>
     </sql>
 
 </mapper>

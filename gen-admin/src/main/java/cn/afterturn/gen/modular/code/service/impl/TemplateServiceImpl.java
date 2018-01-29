@@ -52,6 +52,17 @@ public class TemplateServiceImpl implements ITemplateService {
     @Override
     @Transactional
     public Integer updateById(TemplateModel entity, TemplateFileModel fileModel) {
+        //保存历史版本
+        TemplateModel temp = templateDao.selectById(entity.getId());
+        temp.setId(null);
+        temp.setVersion(2);
+        temp.setOriginalId(entity.getId());
+        TemplateFileModel tempFileModel = new TemplateFileModel();
+        tempFileModel.setTemplateId(entity.getId());
+        tempFileModel = templateFileDao.selectOne(tempFileModel);
+        tempFileModel.setId(null);
+        insert(temp, tempFileModel);
+        //修改当前版本
         fileModel.setTemplateId(entity.getId());
         int nums = templateFileDao.updateTemplateId(fileModel);
         if (nums == 0) {
@@ -119,11 +130,12 @@ public class TemplateServiceImpl implements ITemplateService {
             templateModel.setGroupId(groupModel.getId() + "");
 
             TemplateFileModel fileModel = new TemplateFileModel();
+            fileModel.setTemplateId(list.get(i).getId());
             list.get(i).setFileModel(templateFileDao.selectOne(fileModel));
             fileModel.setTemplateId(list.get(i).getId());
             fileModel.setFile(list.get(i).getFileModel().getFile());
             fileModel.setFileType(list.get(i).getFileModel().getFileType());
-
+            templateModel.setVersion(1);
             insert(templateModel, fileModel);
         }
     }

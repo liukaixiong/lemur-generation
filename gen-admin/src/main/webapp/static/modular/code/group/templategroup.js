@@ -17,6 +17,9 @@ TemplateGroup.initColumn = function () {
         {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
         {title: '组名称', field: 'name', align: 'center', valign: 'middle'},
         {title: '描述', field: 'desc', align: 'center', valign: 'middle'},
+        {title: '分享', field: 'shareStatus', align: 'center', valign: 'middle',formatter: function (value, row, index) {
+            if(value === 1){ return "私有";}else{return "已分享";}
+        }},
         {title: '创建人', field: 'crtUserName', align: 'center', valign: 'middle'},
         {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
         {title: '修改人', field: 'mdfUserName', align: 'center', valign: 'middle'},

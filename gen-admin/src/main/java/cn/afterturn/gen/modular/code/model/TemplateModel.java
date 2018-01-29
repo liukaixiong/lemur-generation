@@ -69,6 +69,16 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
     @TableField(value = "GROUP_ID")
     private String groupId;
     /**
+     *  原ID
+     */
+    @TableField(value = "ORIGINAL_ID")
+    private Integer originalId;
+    /**
+     *  版本 1 正常版本 2 历史版本
+     */
+    @TableField(value = "VERSION")
+    private Integer version;
+    /**
      * 模板类型
      */
     @TableField(value = "TEMPLATE_TYPE")
@@ -197,6 +207,22 @@ public class TemplateModel extends CodeBaseModel<TemplateModel> {
 
     public void setFileModel(TemplateFileModel fileModel) {
         this.fileModel = fileModel;
+    }
+
+    public Integer getOriginalId() {
+        return originalId;
+    }
+
+    public void setOriginalId(Integer originalId) {
+        this.originalId = originalId;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Override
