@@ -17,10 +17,11 @@ import java.util.List;
  * @Date 2017-09-12 13:42
  */
 @Repository
-public interface TemplateGroupDao extends BaseMapper<TemplateGroupModel>{
+public interface TemplateGroupDao extends BaseMapper<TemplateGroupModel> {
 
     /**
      * 统计数量
+     *
      * @param model
      * @return
      */
@@ -28,6 +29,7 @@ public interface TemplateGroupDao extends BaseMapper<TemplateGroupModel>{
 
     /**
      * 查询列表
+     *
      * @param model
      * @return
      */
@@ -35,6 +37,7 @@ public interface TemplateGroupDao extends BaseMapper<TemplateGroupModel>{
 
     /**
      * 分页查询信息
+     *
      * @param pagination
      * @param model
      * @param wrapper
@@ -42,4 +45,10 @@ public interface TemplateGroupDao extends BaseMapper<TemplateGroupModel>{
      */
     List<TemplateGroupModel> selectPage(@Param("p") Pagination pagination, @Param("e") TemplateGroupModel model, @Param("w") Wrapper<TemplateGroupModel> wrapper);
 
+    /**
+     * 分享
+     *
+     * @param id
+     */
+    void share(@Param("id") Integer id);
 }

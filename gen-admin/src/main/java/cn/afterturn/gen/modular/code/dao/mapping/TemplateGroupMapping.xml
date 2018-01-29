@@ -8,11 +8,15 @@
         <result column="user_id" property="userId"/>
         <result column="name" property="name"/>
         <result column="desc" property="desc"/>
+        <result column="share_status" property="shareStatus"/>
         <result column="CRT_USER_ID" property="crtUserId"/>
         <result column="CRT_TIME" property="crtTime"/>
         <result column="MDF_USER_ID" property="mdfUserId"/>
         <result column="MDF_TIME" property="mdfTime"/>
     </resultMap>
+    <update id="share">
+        UPDATE t_code_template_GROUP set share_status = 2 WHERE id = #{id}
+    </update>
 
 
     <select id="selectCount" resultMap="BaseResultMap">

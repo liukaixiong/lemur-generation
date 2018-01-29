@@ -99,4 +99,9 @@ public interface ITemplateGroupService {
      */
     List<TemplateGroupModel> selectPage(Pagination pagination, TemplateGroupModel model, Wrapper<TemplateGroupModel> wrapper);
 
+    /**
+     * 分享模板
+     * @param id
+     */
+    void share(Integer id);
 }

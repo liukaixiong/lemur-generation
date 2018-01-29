@@ -114,6 +114,15 @@ public class TemplateGroupController extends BaseController {
         return SUCCESS_TIP;
     }
 
+    @BussinessLog(value = "组管理分享", key = "id")
+    @RequestMapping(value = "/share/{id}")
+    @Permission
+    @ResponseBody
+    public Object share(@PathVariable Integer id) {
+        templateGroupService.share(id);
+        return SUCCESS_TIP;
+    }
+
     /**
      * 详情
      */

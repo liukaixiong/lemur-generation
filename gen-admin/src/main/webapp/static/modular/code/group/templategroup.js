@@ -74,6 +74,20 @@ TemplateGroup.openTemplateGroupDetail = function () {
     }
 };
 
+
+TemplateGroup.share = function () {
+    if (this.check() && TemplateGroup.seItem.shareStatus != 2) {
+        Feng.confirm("确认分享? 分享不可逆!",function () {
+            $.getJSON(Feng.ctxPath + '/templategroup/share/'+TemplateGroup.seItem.id,function(data){
+                Feng.alert(data.message);
+                TemplateGroup.search();
+            })
+        })
+    }else{
+        Feng.alert("请选择有效数据");
+    }
+};
+
 /**
  * 删除
  */

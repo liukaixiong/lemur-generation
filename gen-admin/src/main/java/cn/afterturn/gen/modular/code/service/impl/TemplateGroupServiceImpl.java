@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 /**
  * Service
  *
@@ -60,7 +61,12 @@ public class TemplateGroupServiceImpl implements ITemplateGroupService {
 
     @Override
     public List<TemplateGroupModel> selectPage(Pagination pagination, TemplateGroupModel model, Wrapper<TemplateGroupModel> wrapper) {
-        return templateGroupDao.selectPage(pagination,model,wrapper);
+        return templateGroupDao.selectPage(pagination, model, wrapper);
+    }
+
+    @Override
+    public void share(Integer id) {
+        templateGroupDao.share(id);
     }
 
 }
