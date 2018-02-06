@@ -60,8 +60,12 @@ public class TemplateServiceImpl implements ITemplateService {
         TemplateFileModel tempFileModel = new TemplateFileModel();
         tempFileModel.setTemplateId(entity.getId());
         tempFileModel = templateFileDao.selectOne(tempFileModel);
-        tempFileModel.setId(null);
-        insert(temp, tempFileModel);
+        if(tempFileModel != null){
+            tempFileModel.setId(null);
+            insert(temp, tempFileModel);
+        }else{
+            templateDao.insert(temp);
+        }
         //修改当前版本
         fileModel.setTemplateId(entity.getId());
         int nums = templateFileDao.updateTemplateId(fileModel);

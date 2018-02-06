@@ -11,7 +11,7 @@ import cn.afterturn.gen.core.db.read.IReadTable;
 import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.core.model.GenFieldEntity;
 import cn.afterturn.gen.core.util.NameUtil;
-import cn.afterturn.gen.core.util.TableHanlderUtil;
+import cn.afterturn.gen.core.util.TableHandlerUtil;
 
 /**
  * MySql数据库的实现类
@@ -37,7 +37,7 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
             GenBeanEntity entity = getTableEntiy(dbName, tableName, TABLE_SQL);
             entity.setName(NameUtil.getEntityHumpName(entity.getTableName()));
             entity.setFields(getTableFields(dbName, tableName, FIELDS_SQL));
-            TableHanlderUtil.hanlderFields(entity.getFields());
+            TableHandlerUtil.handlerFields(entity.getFields());
             return entity;
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

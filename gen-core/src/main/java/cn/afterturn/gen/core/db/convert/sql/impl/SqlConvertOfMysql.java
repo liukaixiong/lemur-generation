@@ -14,7 +14,7 @@ import cn.afterturn.gen.core.db.convert.sql.ISqlConvert;
 import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.core.model.GenFieldEntity;
 import cn.afterturn.gen.core.util.NameUtil;
-import cn.afterturn.gen.core.util.TableHanlderUtil;
+import cn.afterturn.gen.core.util.TableHandlerUtil;
 
 /**
  * Mysql 语句解析
@@ -85,7 +85,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
                 fields.add(field);
             }
         }
-        TableHanlderUtil.hanlderFields(fields);
+        TableHandlerUtil.handlerFields(fields);
         bean.setFields(fields);
         String tableInfo = sql.substring(sql.lastIndexOf(")") + 1);
         if (tableInfo.contains("COMMENT")) {

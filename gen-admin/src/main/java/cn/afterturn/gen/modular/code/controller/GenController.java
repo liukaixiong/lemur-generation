@@ -114,7 +114,7 @@ public class GenController {
         model.setUserId(ShiroKit.getUser().getId());
         modelMap.addAttribute("groups", templateGroupService.selectList(model));
         GenParamModel params = new GenParamModel();
-        model.setUserId(ShiroKit.getUser().getId());
+        params.setUserId(ShiroKit.getUser().getId());
         modelMap.addAttribute("params", genParamService.selectList(params));
         modelMap.addAttribute("table", tableInfoService.selectOne(new TableInfoModel(id)));
         return PREFIX + "tableinfo_gen.html";

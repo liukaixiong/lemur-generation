@@ -290,7 +290,7 @@ $(function () {
     GEN.param.limit = 100;
     GEN.param.offset = 0;
     GEN.getData('/dbinfo/queryAll', 'dbconnects');
-    GEN.getData('/template/list', 'templates');
+    GEN.getData('/template/list?version=1', 'templates');
     Feng.initValidator("genForm", GEN.validateFields);
 });
 
@@ -313,6 +313,6 @@ $("#groupId").change(function(){
     GEN.param = {};
     GEN.param.limit = 100;
     GEN.param.offset = 0;
-    GEN.getData(Feng.ctxPath + '/template/list?groupId='+$("#groupId").val(), 'templates');
+    GEN.getData(Feng.ctxPath + '/template/list?version=1&groupId='+$("#groupId").val(), 'templates');
     GEN.param = p;
 });
