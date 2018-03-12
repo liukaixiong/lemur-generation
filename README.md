@@ -18,6 +18,13 @@ lemur-generation
 	QQ群:  364192721(满) 116844390
 	
 
+[VIP技术服务](https://lemur.taobao.com)
+
+    提供一年的技术支持服务
+    提供10次内的1V1服务,限1小时
+    提供升级指导
+    针对lemur提供的所有开源项目提供支持服务
+
 **使用指南**
 
 **[http://www.afterturn.cn/doc/lemur-gen.html](http://www.afterturn.cn/doc/lemur-gen.html)**
