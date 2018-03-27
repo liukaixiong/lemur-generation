@@ -131,7 +131,7 @@ public class TemplateServiceImpl implements ITemplateService {
             BeanUtils.copyProperties(list.get(i), templateModel);
             templateModel.setId(null);
             templateModel.setUserId(userId);
-            templateModel.setGroupId(groupModel.getId() + "");
+            templateModel.setGroupId(tempGroupModel.getId() + "");
 
             TemplateFileModel fileModel = new TemplateFileModel();
             fileModel.setTemplateId(list.get(i).getId());
