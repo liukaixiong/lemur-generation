@@ -43,6 +43,7 @@
             <include refid="select_content"/>
             ${w.sqlSegment}
         </where>
+        ORDER BY t.ID DESC
     </select>
 
     <sql id="select_content">

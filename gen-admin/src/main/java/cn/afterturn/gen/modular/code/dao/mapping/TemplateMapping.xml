@@ -43,6 +43,7 @@
             <include refid="select_content"/>
             ${w.sqlSegment}
         </where>
+        ORDER BY t.ID DESC
     </select>
     <select id="getTemplateByIds"
             resultType="cn.afterturn.gen.modular.code.model.TemplateModel">

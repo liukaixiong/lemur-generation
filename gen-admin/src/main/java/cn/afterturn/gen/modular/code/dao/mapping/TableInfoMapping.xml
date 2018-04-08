@@ -41,6 +41,7 @@
             <include refid="select_content"/>
             ${w.sqlSegment}
         </where>
+        ORDER BY t.CRT_TIME DESC
     </select>
 
     <sql id="select_content">
