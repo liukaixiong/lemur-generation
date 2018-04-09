@@ -13,16 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DB2 语句解析
+ * Oracle 语句解析
  *
  * @author JueYue on 2017/10/25.
  */
-public class SqlConvertOfDB2 implements ISqlConvert {
+public class SqlConvertOfOracle implements ISqlConvert {
 
     @Override
     public GenBeanEntity parseSql(String sql) {
         sql = sql.replace("`", "");
-        sql = SQLUtils.format(sql, JdbcConstants.DB2, new SQLUtils.FormatOption());
+        sql = sql.replace("\"", "");
+        sql = SQLUtils.format(sql, JdbcConstants.ORACLE, new SQLUtils.FormatOption());
         GenBeanEntity bean = new GenBeanEntity();
         String tableName = sql.substring(sql.indexOf("TABLE") + 5, sql.indexOf("(")).trim();
         String newTableName = handlerDBName(tableName);
