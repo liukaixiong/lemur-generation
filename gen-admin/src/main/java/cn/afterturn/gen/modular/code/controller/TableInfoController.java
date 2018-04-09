@@ -32,9 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.util.HtmlUtils;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -178,7 +176,7 @@ public class TableInfoController extends BaseController {
     @ResponseBody
     public Object sqlImport(String dbType, String sql) {
         //sql = HtmlUtils.htmlUnescape(sql);
-        sql =hanlderFileEncode(sql);
+        sql = handlerFileEncode(sql);
         Map<String, String> map = new HashMap<String, String>();
         map.put("dbType", dbType);
         map.put("sql", sql);
@@ -186,7 +184,7 @@ public class TableInfoController extends BaseController {
         return SUCCESS_TIP;
     }
 
-    private String hanlderFileEncode(String sql) {
+    private String handlerFileEncode(String sql) {
         return sql.replaceAll("& #40;","(")
                 .replaceAll("& #41;",")")
                 .replaceAll("& lt;","<")

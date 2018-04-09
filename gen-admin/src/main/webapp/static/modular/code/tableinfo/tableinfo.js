@@ -80,15 +80,15 @@ TableInfo.check = function () {
  */
 TableInfo.openAddTableInfo = function () {
     var index = layer.open({
-                               type: 2,
-                               title: '添加',
-                               area: ['100%', '100%'],//宽高
-                               fix: false, //不固定
-                               maxmin: true,
-                               shade: 0,
-                               anim: 2,
-                               content: Feng.ctxPath + '/tableinfo/goto_add'
-                           });
+        type: 2,
+        title: '添加',
+        area: ['100%', '100%'],//宽高
+        fix: false, //不固定
+        maxmin: true,
+        shade: 0,
+        anim: 2,
+        content: Feng.ctxPath + '/tableinfo/goto_add'
+    });
     this.layerIndex = index;
 };
 
@@ -98,14 +98,14 @@ TableInfo.openAddTableInfo = function () {
 TableInfo.openTableInfoEdit = function () {
     if (this.check()) {
         var index = layer.open({
-                                   type: 2,
-                                   title: '修改',
-                                   area: ['100%', '100%'],//宽高
-                                   fix: false, //不固定
-                                   maxmin: true,
-                                   content: Feng.ctxPath + '/tableinfo/goto_update/'
-                                            + TableInfo.seItem.id
-                               });
+            type: 2,
+            title: '修改',
+            area: ['100%', '100%'],//宽高
+            fix: false, //不固定
+            maxmin: true,
+            content: Feng.ctxPath + '/tableinfo/goto_update/'
+            + TableInfo.seItem.id
+        });
         this.layerIndex = index;
     }
 };
@@ -131,13 +131,13 @@ TableInfo.delete = function () {
  */
 TableInfo.dbimport = function () {
     var index = layer.open({
-                               type: 2,
-                               title: 'DB导入',
-                               area: ['100%', '100%'],//宽高
-                               fix: false, //不固定
-                               maxmin: true,
-                               content: Feng.ctxPath + '/tableinfo/goto_dbimport/'
-                           });
+        type: 2,
+        title: 'DB导入',
+        area: ['100%', '100%'],//宽高
+        fix: false, //不固定
+        maxmin: true,
+        content: Feng.ctxPath + '/tableinfo/goto_dbimport/'
+    });
     this.layerIndex = index;
 };
 
@@ -146,13 +146,16 @@ TableInfo.dbimport = function () {
  */
 TableInfo.sqlimport = function () {
     var index = layer.open({
-                               type: 2,
-                               title: 'SQL导入',
-                               area: ['70%', '70%'],//宽高
-                               fix: false, //不固定
-                               maxmin: true,
-                               content: Feng.ctxPath + '/tableinfo/goto_sqlimport/'
-                           });
+        type: 2,
+        title: 'SQL导入',
+        area: ['70%', '70%'],//宽高
+        fix: false, //不固定
+        maxmin: true,
+        content: Feng.ctxPath + '/tableinfo/goto_sqlimport/',
+        cancel: function (index, layero) {
+            TableInfo.search();
+        }
+    });
     this.layerIndex = index;
 };
 
@@ -162,14 +165,13 @@ TableInfo.sqlimport = function () {
 TableInfo.gen = function () {
     if (this.check()) {
         var index = layer.open({
-                                   type: 2,
-                                   title: '代码生成',
-                                   area: ['80%', '70%'],//宽高
-                                   fix: false, //不固定
-                                   maxmin: true,
-                                   content: Feng.ctxPath + '/code/tableGen/'
-                                            + TableInfo.seItem.id
-                               });
+            type: 2,
+            title: '代码生成',
+            area: ['80%', '70%'],//宽高
+            fix: false, //不固定
+            maxmin: true,
+            content: Feng.ctxPath + '/code/tableGen/' + TableInfo.seItem.id
+        });
         this.layerIndex = index;
     }
 };

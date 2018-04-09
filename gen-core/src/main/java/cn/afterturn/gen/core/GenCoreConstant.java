@@ -22,6 +22,8 @@ public interface GenCoreConstant {
 
     public static final String MYSQL = "mysql";
 
+    public static final String DB2 = "db2";
+
     public static final String ORACLE = "oracle";
 
     public static final String SQLSERVER = "sqlserver";
