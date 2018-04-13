@@ -186,7 +186,9 @@ TableInfo.formParams = function () {
  */
 TableInfo.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+    queryData['content'] = $("#content").val();
+    queryData['tableName'] = $("#tableName").val();
+    queryData['className'] = $("#className").val();
     TableInfo.table.refresh({query: queryData});
 };
 

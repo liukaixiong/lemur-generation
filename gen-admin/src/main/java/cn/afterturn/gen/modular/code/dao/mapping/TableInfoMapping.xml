@@ -49,16 +49,16 @@
             AND t.ID = #{e.id}
         </if>
         <if test="e.tableName != null and e.tableName != '' ">
-            AND t.TABLE_NAME = #{e.tableName}
+            AND t.TABLE_NAME LIKE CONCAT('%',#{e.tableName},'%')
         </if>
         <if test="e.userId != null">
             AND t.USER_ID = #{e.userId}
         </if>
         <if test="e.className != null and e.className != '' ">
-            AND t.CLASS_NAME = #{e.className}
+            AND t.CLASS_NAME LIKE CONCAT('%',#{e.className},'%')
         </if>
         <if test="e.content != null and e.content != '' ">
-            AND t.CONTENT = #{e.content}
+            AND t.CONTENT LIKE CONCAT('%',#{e.content},'%')
         </if>
         <if test="e.isImport != null and e.isImport != '' ">
             AND t.IS_IMPORT = #{e.isImport}
