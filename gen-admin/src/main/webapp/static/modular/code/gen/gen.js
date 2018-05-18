@@ -12,8 +12,8 @@ var GEN = {
                 },
                 stringLength: {/*长度提示*/
                     min: 3,
-                    max: 20,
-                    message: '类名长度必须在3到20之间'
+                    max: 40,
+                    message: '类名长度必须在3到40之间'
                 }
             }
         },
