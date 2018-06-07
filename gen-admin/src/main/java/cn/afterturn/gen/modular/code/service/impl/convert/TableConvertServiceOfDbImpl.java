@@ -50,26 +50,27 @@ public class TableConvertServiceOfDbImpl implements ITableConvertServer {
     private List<TableFieldModel> getTableFields(List<GenFieldEntity> fields) {
         List<TableFieldModel> list = new ArrayList<TableFieldModel>();
         TableFieldModel fieldModel;
-        GenFieldEntity tableFiedl;
+        GenFieldEntity tableField;
         TableFieldVerifyModel verifyModel;
         TableFieldDbinfoModel dbinfoModel;
         for (int i = 0; i < fields.size(); i++) {
             fieldModel = new TableFieldModel();
-            tableFiedl = fields.get(i);
-            fieldModel.setFieldName(tableFiedl.getFieldName());
-            fieldModel.setName(tableFiedl.getName());
-            fieldModel.setContent(tableFiedl.getChinaName());
-            fieldModel.setType(tableFiedl.getType());
-            fieldModel.setIsKey(tableFiedl.getKey());
+            tableField = fields.get(i);
+            fieldModel.setFieldName(tableField.getFieldName());
+            fieldModel.setName(tableField.getName());
+            fieldModel.setContent(tableField.getChinaName());
+            fieldModel.setType(tableField.getType());
+            fieldModel.setIsKey(tableField.getKey());
+            fieldModel.setIsQuery(2);
             verifyModel = new TableFieldVerifyModel();
-            verifyModel.setNotNull(tableFiedl.getNotNull());
+            verifyModel.setNotNull(tableField.getNotNull());
             fieldModel.setVerifyModel(verifyModel);
             dbinfoModel = new TableFieldDbinfoModel();
-            dbinfoModel.setFieldName(tableFiedl.getFieldName());
-            dbinfoModel.setFieldContent(tableFiedl.getComment());
-            dbinfoModel.setFieldLength(tableFiedl.getFieldLength());
-            dbinfoModel.setFieldPointLength(tableFiedl.getFieldPointLength());
-            dbinfoModel.setFieldType(tableFiedl.getFieldType());
+            dbinfoModel.setFieldName(tableField.getFieldName());
+            dbinfoModel.setFieldContent(tableField.getComment());
+            dbinfoModel.setFieldLength(tableField.getFieldLength());
+            dbinfoModel.setFieldPointLength(tableField.getFieldPointLength());
+            dbinfoModel.setFieldType(tableField.getFieldType());
             fieldModel.setDbinfoModel(dbinfoModel);
             list.add(fieldModel);
         }
