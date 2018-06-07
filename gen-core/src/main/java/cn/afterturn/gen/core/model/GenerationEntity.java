@@ -113,7 +113,7 @@ public class GenerationEntity implements Serializable {
     public String getLowerEntityName() {
         if (StringUtils.isEmpty(lowerEntityName)
                 || lowerEntityName.equals(entityName)) {
-            lowerEntityName = entityName.substring(0, 1).toUpperCase() + entityName.substring(1);
+            lowerEntityName = entityName.substring(0, 1).toLowerCase() + entityName.substring(1);
         }
         return lowerEntityName;
     }
