@@ -242,14 +242,14 @@ public class GenController {
     private void downThisFileList(HttpServletResponse res, List<String> fileList, List<TemplateModel> templateList, GenerationEntity ge) {
         ZipOutputStream out = null;
         try {
+            res.setContentType("application/octet-stream");
+            res.setHeader("Content-Disposition", "attachment;filename=" + ge.getEntityName() + ".zip");
             out = new ZipOutputStream(res.getOutputStream());
             for (int i = 0; i < fileList.size(); i++) {
                 out.putNextEntry(new ZipEntry(getPackagePath(templateList.get(i), ge) + File.separator + getFileName(templateList.get(i), ge)));
                 out.write(fileList.get(i).getBytes(), 0, fileList.get(i).getBytes().length);
                 out.closeEntry();
             }
-            res.setContentType("application/octet-stream");
-            res.setHeader("Content-Disposition", "attachment;filename=" + ge.getEntityName() + ".zip");
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         } finally {

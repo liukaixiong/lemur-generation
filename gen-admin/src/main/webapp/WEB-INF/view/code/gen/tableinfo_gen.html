@@ -60,13 +60,18 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                                        <span><h2>模板</h2>
-                                       <#SelectCon id="groupId" name="组" >
+                                        <span><h2>模板</h2></span>
+                            <div class="row"></div>
+                            <#SelectCon id="groupId" name="组" >
                                             <option value="">全部</option>
                                             @ for(g in groups!){
                                                 <option value="${g.id}">${g.name}</option>
                                             @}
-                                        </#SelectCon></span>
+                                        </#SelectCon>
+                                        <button id="selectAll" type="button" class="btn btn-primary mr10"
+                                                             onclick="GEN.selectAll()">
+                                            <span style="padding: 5px 20px;">全/反选</span>
+                                        </button>
                             <div class="list-group" id="templatesList"
                                  style="height: 500px; overflow-y: scroll">
                             </div>

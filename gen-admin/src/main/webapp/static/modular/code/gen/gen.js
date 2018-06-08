@@ -208,6 +208,11 @@ GEN.selectTemplates = function (id) {
 
 }
 
+GEN.selectAll = function () {
+    $("#templatesList").find('button').each(function () {
+        GEN.selectTemplates($(this).attr('value'));
+    })
+}
 /**
  * 验证数据
  */
