@@ -1,5 +1,7 @@
 package cn.afterturn.gen.core.db.convert.sql.impl;
 
+import cn.afterturn.gen.core.model.enmus.BooleanType;
+import cn.afterturn.gen.core.model.enmus.DBType;
 import com.alibaba.druid.sql.SQLUtils;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.druid.util.JdbcConstants;
@@ -30,6 +32,11 @@ public class SqlConvertOfMysql implements ISqlConvert {
         sql = SQLUtils.format(sql, JdbcConstants.MYSQL);
         GenBeanEntity bean = new GenBeanEntity();
         String tableName = sql.substring(sql.indexOf("TABLE") + 5, sql.indexOf("(")).trim();
+        String newTableName = handlerDBName(tableName);
+        if (!newTableName.equals(tableName)) {
+            sql = sql.replace(tableName, newTableName);
+            tableName = newTableName;
+        }
         bean.setTableName(tableName);
         bean.setName(NameUtil.getEntityHumpName(bean.getTableName()));
         String[] columns = sql.substring(sql.indexOf("(") + 1, sql.lastIndexOf(")")).split("\n");
@@ -45,7 +52,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
                 for (int j = 0; j < keys.length; j++) {
                     for (int k = 0; k < fields.size(); k++) {
                         if (fields.get(k).getFieldName().equalsIgnoreCase(keys[j])) {
-                            fields.get(k).setKey(2);
+                            fields.get(k).setKey(BooleanType.YES.getIntD());
                             break;
                         }
                     }
@@ -53,7 +60,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
             } else {
                 field = new GenFieldEntity();
                 String[] keys = columns[i].trim().split(" ");
-                field.setFieldName(keys[0]);
+                field.setFieldName(handlerDBName(keys[0]));
                 if (keys[1].indexOf("(") > 0) {
                     String type = keys[1];
                     field.setFieldType(type.substring(0, type.indexOf("(")));
@@ -85,7 +92,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
                 fields.add(field);
             }
         }
-        TableHandlerUtil.handlerFields(fields);
+        TableHandlerUtil.handlerFields(fields, getDbType());
         bean.setFields(fields);
         String tableInfo = sql.substring(sql.lastIndexOf(")") + 1);
         if (tableInfo.contains("COMMENT")) {
@@ -101,4 +108,8 @@ public class SqlConvertOfMysql implements ISqlConvert {
         return bean;
     }
 
+    @Override
+    public DBType getDbType() {
+        return DBType.MYSQL;
+    }
 }

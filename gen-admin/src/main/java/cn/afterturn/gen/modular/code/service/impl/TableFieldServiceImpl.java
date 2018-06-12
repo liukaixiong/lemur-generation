@@ -1,5 +1,6 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
+import cn.afterturn.gen.core.model.enmus.BooleanType;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
@@ -92,6 +93,17 @@ public class TableFieldServiceImpl implements ITableFieldService {
     public void batchSaveOrUpdate(List<TableFieldModel> tableFields) {
         // 删除旧数据
         deleteById(tableFields.get(0).getTableId());
+        //设置默认值
+        for (int i = 0; i < tableFields.size(); i++) {
+            tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
+            tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
+            tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+        }
         tableFieldDao.batchInsert(tableFields);
 
         List<TableFieldVerifyModel> verifyModelList = new ArrayList<TableFieldVerifyModel>(tableFields.size());

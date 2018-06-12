@@ -1,5 +1,6 @@
 package cn.afterturn.gen.core.db.read.impl;
 
+import cn.afterturn.gen.core.model.enmus.DBType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +38,7 @@ public class ReadTableForMysqlImpl extends BaseReadTable implements IReadTable {
             GenBeanEntity entity = getTableEntiy(dbName, tableName, TABLE_SQL);
             entity.setName(NameUtil.getEntityHumpName(entity.getTableName()));
             entity.setFields(getTableFields(dbName, tableName, FIELDS_SQL));
-            TableHandlerUtil.handlerFields(entity.getFields());
+            TableHandlerUtil.handlerFields(entity.getFields(), DBType.MYSQL);
             return entity;
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

@@ -42,14 +42,14 @@ lemur-generation
 | |clob|clob|String|
 | |date|date|Date|
 | |number|decimal|BigDecimal|
-| |long|varbinary|byte[]|
+| |long|longvarchar|String|
 | |nclob,nvarchar2|other||
 | |smallint|smallint|Integer|
 | |timestamp|timestamp|Date|
 | |raw|varbinary|byte[]|
 | |varchar2|varchar|String|
 |Sql server|bigint (2005,2008) |bigint|Integer|
-| |timstamp,binary|binary|byte[]|
+| |timestamp,binary|binary|byte[]|
 | |bit|bit|Boolean|
 | |char,nchar,unqualified |char|String|
 | |datetime|date|Date|
@@ -59,18 +59,17 @@ lemur-generation
 | |int|integer|Integer|
 | |image|longvarbinary|byte[]|
 | |text,ntext,xml|longvarchar|byte[]|
-| |bit|bit|Boolean|
 | |numeric|numeric|BigDecimal|
 | |real|real|Float|
-| |smallint|smallint||
-| |datetime,smalldatetime|timestamp|Date|
+| |smallint|smallint|Short|
+| |smalldatetime|timestamp|Date|
 | |tinyint|tinyint|byte|
 | |varbinary|varbinay|byte[]|
 | |nvarchar,varchar|varchar|String|
 |DB2|bigint|bigint|Long|
 | |blob|blob|byte[]|
 | |character,graphic|char|String|
-| |clob|clob||
+| |clob|clob|String|
 | |date|date|Date|
 | |decimal|decimal|BigDecimal|
 | |double|double|Double|
@@ -83,6 +82,7 @@ lemur-generation
 | |vargraphic,varchar|varchar|String|
 |MySQL|bigint|bigint|Long|
 | |tinyblob|binary|byte[]|
+| |int|integer|Integer|
 | |bit|bit|Boolean|
 | |enum,set,char|char|String|
 | |date,year|date|Date|

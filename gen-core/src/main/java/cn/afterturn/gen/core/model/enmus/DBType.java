@@ -7,7 +7,8 @@ public enum DBType {
     MYSQL("mysql", "com.mysql.jdbc.Driver"),
     ORACLE("oracle", "oracle.jdbc.driver.OracleDriver"),
     SQLSERVER("sqlserver", "com.microsoft.sqlserver.jdbc.SQLServerDriver"),
-    POSTGRESQL("postgresql", "org.postgresql.Driver");
+    POSTGRESQL("postgresql", "org.postgresql.Driver"),
+    DB2("bd2", "org.postgresql.Driver");
 
 
     private String type;

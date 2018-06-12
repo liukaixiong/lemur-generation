@@ -90,14 +90,15 @@
                                     <option value="Double">Double</option>
                                     <option value="BigDecimal">BigDecimal</option>
                                     <option value="Date">Date</option>
+                                    <option value="byte">byte</option>
                                     <option value="byte[]">byte[]</option>
                                     <option value="Object">Object</option>
                                 </#select>
                             </div>
                         </td>
                         <td style="text-align: center; vertical-align: middle; " data-field="isKey">
-                            <div class="td-inner "><input type="checkbox" value="2"
-                                                          @if(tf.isKey== 2){
+                            <div class="td-inner "><input type="checkbox" value="1"
+                                                          @if(tf.isKey== 1){
                                                           checked="checked"
                                                           @}
                             ></div>
@@ -105,16 +106,16 @@
                         </td>
                         <td style="text-align: center; vertical-align: middle; "
                             data-field="isShowList">
-                            <div class="td-inner "><input type="checkbox" value="2"
-                                                          @if(tf.isShowList== 2){
+                            <div class="td-inner "><input type="checkbox" value="1"
+                                                          @if(tf.isShowList== 1){
                                                           checked="checked"
                                                           @}
                             ></div>
                         </td>
                         <td style="text-align: center; vertical-align: middle; "
                             data-field="isQuery">
-                            <div class="td-inner "><input type="checkbox" value="2"
-                                                          @if(tf.isQuery== 2){
+                            <div class="td-inner "><input type="checkbox" value="1"
+                                                          @if(tf.isQuery== 1){
                                 checked="checked"
                                 @}
                                 ></div>

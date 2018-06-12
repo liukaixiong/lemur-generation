@@ -1,5 +1,6 @@
 package cn.afterturn.gen.modular.code.service.impl.convert;
 
+import cn.afterturn.gen.core.model.enmus.BooleanType;
 import com.alibaba.fastjson.JSON;
 
 import org.apache.commons.lang3.StringUtils;
@@ -61,7 +62,7 @@ public class TableConvertServiceOfDbImpl implements ITableConvertServer {
             fieldModel.setContent(tableField.getChinaName());
             fieldModel.setType(tableField.getType());
             fieldModel.setIsKey(tableField.getKey());
-            fieldModel.setIsQuery(2);
+            fieldModel.setIsQuery(BooleanType.YES.getIntD());
             verifyModel = new TableFieldVerifyModel();
             verifyModel.setNotNull(tableField.getNotNull());
             fieldModel.setVerifyModel(verifyModel);

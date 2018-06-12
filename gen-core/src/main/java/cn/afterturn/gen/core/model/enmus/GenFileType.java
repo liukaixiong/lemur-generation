@@ -1,17 +1,20 @@
 package cn.afterturn.gen.core.model.enmus;
 
 /**
- * 不同语言,不同类型的字段
- * Created by JueYue on 2017/9/21.
+ * 内部字段类型
+ *
+ * @author JueYue on 2017/9/21.
  */
 public enum GenFileType {
 
+    OBJECT("Object"),
     STRING("String"),
     CHAR("char"),
     BOOLEAN("Boolean"),
     SHORT("Short"),
     LONG("Long"),
-    BYTE_ARR("byteArr"),
+    BYTE_ARR("byte[]"),
+    BYTE("byte"),
     DATE("Date"),
     BIG_DECIMAL("BigDecimal"),
     DOUBLE("Double"),
@@ -25,4 +28,7 @@ public enum GenFileType {
         this.type = type;
     }
 
+    public String getType() {
+        return type;
+    }
 }

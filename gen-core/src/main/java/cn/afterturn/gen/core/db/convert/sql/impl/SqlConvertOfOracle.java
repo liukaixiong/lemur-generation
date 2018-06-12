@@ -3,6 +3,8 @@ package cn.afterturn.gen.core.db.convert.sql.impl;
 import cn.afterturn.gen.core.db.convert.sql.ISqlConvert;
 import cn.afterturn.gen.core.model.GenBeanEntity;
 import cn.afterturn.gen.core.model.GenFieldEntity;
+import cn.afterturn.gen.core.model.enmus.BooleanType;
+import cn.afterturn.gen.core.model.enmus.DBType;
 import cn.afterturn.gen.core.util.NameUtil;
 import cn.afterturn.gen.core.util.TableHandlerUtil;
 import com.alibaba.druid.sql.SQLUtils;
@@ -46,7 +48,7 @@ public class SqlConvertOfOracle implements ISqlConvert {
                 for (int j = 0; j < keys.length; j++) {
                     for (int k = 0; k < fields.size(); k++) {
                         if (fields.get(k).getFieldName().equalsIgnoreCase(keys[j])) {
-                            fields.get(k).setKey(2);
+                            fields.get(k).setKey(BooleanType.YES.getIntD());
                             break;
                         }
                     }
@@ -74,7 +76,7 @@ public class SqlConvertOfOracle implements ISqlConvert {
                 if (keys.length < 2) {
                     continue;
                 }
-                field.setFieldName(keys[0]);
+                field.setFieldName(handlerDBName(keys[0]));
                 if (keys[1].indexOf("(") > 0) {
                     String type = keys[1];
                     field.setFieldType(type.substring(0, type.indexOf("(")));
@@ -99,7 +101,7 @@ public class SqlConvertOfOracle implements ISqlConvert {
                 fields.add(field);
             }
         }
-        TableHandlerUtil.handlerFields(fields);
+        TableHandlerUtil.handlerFields(fields, getDbType());
         bean.setFields(fields);
         return bean;
     }
@@ -112,11 +114,9 @@ public class SqlConvertOfOracle implements ISqlConvert {
         return sb.toString().replace("'", "").replace(";", "");
     }
 
-    private String handlerDBName(String tableName) {
-        if (tableName.indexOf(".") != -1) {
-            return tableName.substring(tableName.indexOf(".") + 1);
-        }
-        return tableName;
+    @Override
+    public DBType getDbType() {
+        return DBType.ORACLE;
     }
 
 }
