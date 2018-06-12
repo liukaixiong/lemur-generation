@@ -51,7 +51,9 @@ public class TableHandlerUtil {
         dataType = dataType.toLowerCase();
         if (dataType.contains("char") || dataType.contains("text")) {
             dataType = "String";
-        } else if (dataType.contains("int")) {
+        } else if (dataType.contains("bigint")) {
+            dataType = "Long";
+        }  else if (dataType.contains("int")) {
             dataType = "Integer";
         } else if (dataType.contains("float")) {
             dataType = "Float";

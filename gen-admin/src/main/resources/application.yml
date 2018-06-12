@@ -70,9 +70,9 @@ mybatis-plus:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://localhost:3306/easycode_dev?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-      username: test
-      password: test
+      url: jdbc:mysql://localhost:3307/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 123456
       filters: log4j,wall,mergeStat
 
 logging:
@@ -101,9 +101,9 @@ guns:
 spring:
   profiles: pro
   datasource:
-      url: jdbc:mysql://localhost:3306/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-      username: test
-      password: test
+      url: jdbc:mysql://127.0.0.1:3308/easycode?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: easycode
+      password: easycode
       filters: log4j,wall,mergeStat
 
 logging:
