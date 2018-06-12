@@ -35,69 +35,68 @@ lemur-generation
 
 数据类型和平台类型对比表
 -----------------------
-
-/数据库/数据库类型/java.sql.Types/输出类型/
-/----/----/----/----/
-/Oracle/blob/blob//
-/ /char/char//
-/ /clob/clob//
-/ /date/date//
-/ /number/decimal//
-/ /long/varbinary//
-/ /nclob,nvarchar2/other//
-/ /smallint/smallint//
-/ /timestamp/timestamp//
-/ /raw/varbinary//
-/ /varchar2/varchar//
-/Sql server/bigint (2005,2008) /bigint//
-/ /timstamp,binary/binary//
-/ /bit/bit//
-/ /char,nchar,unqualified /char//
-/ /datetime/date//
-/ /money,smallmoney,decimal/decimal//
-/ /float (2005,2008)/double//
-/ /float(2000)/float//
-/ /int/integer//
-/ /image/longvarbinary//
-/ /text,ntext,xml/longvarchar//
-/ /bit/bit//
-/ /numeric/numeric//
-/ /real/real//
-/ /smallint/smallint//
-/ /datetime,smalldatetime/timestamp//
-/ /tinyint/tinyint//
-/ /varbinary/varbinay//
-/ /nvarchar,varchar/varchar//
-/DB2/bigint/bigint//
-/ /blob/blob//
-/ /character,graphic/char//
-/ /clob/clob//
-/ /date/date//
-/ /decimal/decimal//
-/ /double/double//
-/ /integer/integer//
-/ /longvargraphic,longvarchar/longvarchar//
-/ /real/real//
-/ /smallint/smallint//
-/ /time/time//
-/ /timestamp/timestamp//
-/ /vargraphic,varchar/varchar//
-/MySQL/bigint/bigint//
-/ /tinyblob/binary//
-/ /bit/bit//
-/ /enum,set,char/char//
-/ /date,year/date//
-/ /decimal,numeric/decimal//
-/ /double,real/double//
-/ /mediumint,int/integer//
-/ /blob,mediumblob,longblob/blob//
-/ /float/real//
-/ /smallint/smallint//
-/ /time/time//
-/ /timestamp,datetime/timestamp//
-/ /tinyint/tinyint//
-/ /varbinary,binary/varbinay//
-/ /varchar,tinytext,text/varchar//
+|数据库|数据库类型|java.sql.Types|输出类型|
+|----|----|----|----|
+|Oracle|blob|blob||
+| |char|char||
+| |clob|clob||
+| |date|date||
+| |number|decimal||
+| |long|varbinary||
+| |nclob,nvarchar2|other||
+| |smallint|smallint||
+| |timestamp|timestamp||
+| |raw|varbinary||
+| |varchar2|varchar||
+|Sql server|bigint (2005,2008) |bigint||
+| |timstamp,binary|binary||
+| |bit|bit||
+| |char,nchar,unqualified |char||
+| |datetime|date||
+| |money,smallmoney,decimal|decimal||
+| |float (2005,2008)|double||
+| |float(2000)|float||
+| |int|integer||
+| |image|longvarbinary||
+| |text,ntext,xml|longvarchar||
+| |bit|bit||
+| |numeric|numeric||
+| |real|real||
+| |smallint|smallint||
+| |datetime,smalldatetime|timestamp||
+| |tinyint|tinyint||
+| |varbinary|varbinay||
+| |nvarchar,varchar|varchar||
+|DB2|bigint|bigint||
+| |blob|blob||
+| |character,graphic|char||
+| |clob|clob||
+| |date|date||
+| |decimal|decimal||
+| |double|double||
+| |integer|integer||
+| |longvargraphic,longvarchar|longvarchar||
+| |real|real||
+| |smallint|smallint||
+| |time|time||
+| |timestamp|timestamp||
+| |vargraphic,varchar|varchar||
+|MySQL|bigint|bigint||
+| |tinyblob|binary||
+| |bit|bit||
+| |enum,set,char|char||
+| |date,year|date||
+| |decimal,numeric|decimal||
+| |double,real|double||
+| |mediumint,int|integer||
+| |blob,mediumblob,longblob|blob||
+| |float|real||
+| |smallint|smallint||
+| |time|time||
+| |timestamp,datetime|timestamp||
+| |tinyint|tinyint||
+| |varbinary,binary|varbinay||
+| |varchar,tinytext,text|varchar||
 
 
 新增了模板代码在admin/resources/template下面,供大家参考修改,希望大家提供优秀的代码模板
