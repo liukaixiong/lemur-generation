@@ -29,4 +29,6 @@ public interface DictDao {
      * @Date 2017/4/26 13:04
      */
     List<Map<String, Object>> list(@Param("condition") String conditiion);
+
+    Dict getDataByKey(String dictName, int num);
 }

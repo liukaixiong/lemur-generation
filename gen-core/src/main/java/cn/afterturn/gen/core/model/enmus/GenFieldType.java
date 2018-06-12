@@ -5,7 +5,7 @@ package cn.afterturn.gen.core.model.enmus;
  *
  * @author JueYue on 2017/9/21.
  */
-public enum GenFileType {
+public enum GenFieldType {
 
     OBJECT("Object"),
     STRING("String"),
@@ -24,7 +24,7 @@ public enum GenFileType {
 
     private String type;
 
-    GenFileType(String type) {
+    GenFieldType(String type) {
         this.type = type;
     }
 

@@ -1,8 +1,11 @@
 package cn.afterturn.gen.modular.code.service;
 
+import cn.afterturn.gen.modular.code.model.TableFieldModel;
+import cn.afterturn.gen.modular.code.model.TableFieldVerifyModel;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import cn.afterturn.gen.modular.code.model.TableBaseFieldModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 import java.util.Map;
@@ -10,21 +13,12 @@ import java.util.Map;
 
 /**
  * Service
+ * 基础字段
  *
- * @author JueYue
- * @Date 2017-09-18 13:40
+ * @author
+ * @Date
  */
-public interface ITableBaseFieldService {
-
-     /**
-     * <p>
-     * 插入一条记录
-     * </p>
-     *
-     * @param entity 实体对象
-     * @return int
-     */
-    Integer insert(TableBaseFieldModel entity);
+public interface ITableBaseFieldService extends IService<TableBaseFieldModel> {
 
     /**
      * <p>
@@ -32,49 +26,19 @@ public interface ITableBaseFieldService {
      * </p>
      *
      * @param id 主键ID
-     * @return int
+     * @return boolean
      */
-    Integer deleteById(Integer id);
+    boolean deleteById(Integer id);
 
     /**
      * <p>
-     * 根据 ID 修改
+     * 根据 model 条件，查询一条记录
      * </p>
      *
-     * @param entity 实体对象
-     * @return int
-     */
-    Integer updateById(TableBaseFieldModel entity);
-
-    /**
-     * <p>
-     * 根据 ID 查询
-     * </p>
-     *
-     * @param id 主键ID
+     * @param model 实体对象 非空
      * @return TableBaseFieldModel
      */
-    TableBaseFieldModel selectById(Integer id);
-
-    /**
-     * <p>
-     * 根据 entity 条件，查询一条记录
-     * </p>
-     *
-     * @param entity 实体对象
-     * @return TableBaseFieldModel
-     */
-    TableBaseFieldModel selectOne(TableBaseFieldModel entity);
-
-    /**
-     * <p>
-     * 根据 model 条件，查询总记录数
-     * </p>
-     *
-     * @param model 实体对象
-     * @return int
-     */
-    Integer selectCount(TableBaseFieldModel model);
+    TableBaseFieldModel selectOne(TableBaseFieldModel model);
 
     /**
      * <p>
@@ -86,6 +50,17 @@ public interface ITableBaseFieldService {
      */
     List<TableBaseFieldModel> selectList(TableBaseFieldModel model);
 
+    /**
+     * <p>
+     * 根据 entity 条件，查询全部记录
+     * </p>
+     *
+     * @param model   实体对象封装操作类（可以为 null）
+     * @param wrapper SQL包装
+     * @return List<TableBaseFieldModel>
+     */
+    List<TableBaseFieldModel> selectList(TableBaseFieldModel model, Wrapper<TableBaseFieldModel> wrapper);
+
 
     /**
      * <p>
@@ -93,10 +68,27 @@ public interface ITableBaseFieldService {
      * </p>
      *
      * @param pagination 分页查询条件
-     * @param model   实体对象封装操作可以为 null）
-     * @param wrapper   SQL包装
+     * @param model      实体对象封装操作可以为 null）
+     * @param wrapper    SQL包装
      * @return List<TableBaseFieldModel>
      */
-    List<TableBaseFieldModel> selectPage(Pagination pagination, TableBaseFieldModel model,Wrapper<TableBaseFieldModel> wrapper);
+    List<TableBaseFieldModel> selectPage(Pagination pagination, TableBaseFieldModel model, Wrapper<TableBaseFieldModel> wrapper);
 
+    /**
+     * 插入
+     *
+     * @param model
+     * @param fieldModel
+     * @param verifyModel
+     */
+    void insert(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel);
+
+    /**
+     * 更新
+     *
+     * @param model
+     * @param fieldModel
+     * @param verifyModel
+     */
+    void updateById(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel);
 }

@@ -3,9 +3,9 @@
  */
 var TableBaseField = {
     id: "TableBaseFieldTable",	//表格id
-    seItem: null,		//选中的条目
-    table: null,
-    layerIndex: -1
+        seItem: null,		//选中的条目
+        table: null,
+        layerIndex: -1
 };
 
 /**
@@ -13,15 +13,15 @@ var TableBaseField = {
  */
 TableBaseField.initColumn = function () {
     return [
-        {field: 'selectItem', radio: true},
-	     {title: 'Id', field: 'id', align: 'center', valign: 'middle'},
-	     {title: '用户ID', field: 'userId', align: 'center', valign: 'middle'},
-	     {title: '基础字段组名称', field: 'name', align: 'center', valign: 'middle'},
-	     {title: '描述', field: 'desc', align: 'center', valign: 'middle'},
-	     {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
-	     {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
-	     {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
-	     {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
+            {field: 'selectItem', radio: true},
+        {title: '主键', field: 'id', align: 'center', valign: 'middle'},
+        {title: '用户', field: 'userId', align: 'center', valign: 'middle'},
+        {title: '别名', field: 'alias', align: 'center', valign: 'middle'},
+        {title: '字段ID', field: 'fieldId', align: 'center', valign: 'middle'},
+        {title: '创建人', field: 'crtUserId', align: 'center', valign: 'middle'},
+        {title: '创建时间', field: 'crtTime', align: 'center', valign: 'middle'},
+        {title: '修改人', field: 'mdfUserId', align: 'center', valign: 'middle'},
+        {title: '修改时间', field: 'mdfTime', align: 'center', valign: 'middle'},
     ];
 };
 
@@ -46,7 +46,7 @@ TableBaseField.openAddTableBaseField = function () {
     var index = layer.open({
         type: 2,
         title: '添加',
-        area: ['800px', '420px'], //宽高
+        area: ['100%', '100%'], //宽高
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '/tablebasefield/goto_add'
@@ -62,11 +62,28 @@ TableBaseField.openTableBaseFieldDetail = function () {
         var index = layer.open({
             type: 2,
             title: '详情',
-            area: ['800px', '420px'], //宽高
+            area: ['100%', '100%'], //宽高
+            fix: false, //不固定
+            maxmin: true,
+            content: Feng.ctxPath + '/tablebasefield/goto_detail/' + TableBaseField.seItem.id
+    });
+        this.layerIndex = index;
+    }
+};
+
+/**
+ * 打开查看修改
+ */
+TableBaseField.openTableBaseFieldUpdate = function () {
+    if (this.check()) {
+        var index = layer.open({
+            type: 2,
+            title: '修改',
+            area: ['100%', '100%'], //宽高
             fix: false, //不固定
             maxmin: true,
             content: Feng.ctxPath + '/tablebasefield/goto_update/' + TableBaseField.seItem.id
-        });
+    });
         this.layerIndex = index;
     }
 };
@@ -97,7 +114,15 @@ TableBaseField.formParams = function() {
  */
 TableBaseField.search = function () {
     var queryData = {};
-    queryData['condition'] = $("#condition").val();
+        queryData['id'] = $("#id").val();
+        queryData['userId'] = $("#userId").val();
+        queryData['alias'] = $("#alias").val();
+        queryData['fieldId'] = $("#fieldId").val();
+        queryData['crtUserId'] = $("#crtUserId").val();
+        queryData['crtTime'] = $("#crtTime").val();
+        queryData['mdfUserId'] = $("#mdfUserId").val();
+        queryData['mdfTime'] = $("#mdfTime").val();
+
     TableBaseField.table.refresh({query: queryData});
 };
 

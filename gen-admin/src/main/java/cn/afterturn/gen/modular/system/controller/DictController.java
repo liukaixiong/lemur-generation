@@ -141,4 +141,17 @@ public class DictController extends BaseController {
         return SUCCESS_TIP;
     }
 
+    @RequestMapping(value = "/getKeys/{dictName}")
+    @ResponseBody
+    public Object getKeys(@PathVariable("dictName") String dictName) {
+        return dictDao.selectByCode(dictName);
+    }
+
+
+    @RequestMapping(value = "/getDataByKey/{dictName}/{num}")
+    @ResponseBody
+    public Object getDataByKey(@PathVariable("dictName") String dictName ,@PathVariable("num") int num) {
+        return dictDao.getDataByKey(dictName,num);
+    }
+
 }

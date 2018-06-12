@@ -37,13 +37,19 @@ public class DictServiceImpl implements IDictService {
             throw new BussinessException(BizExceptionEnum.DICT_EXISTED);
         }
 
+        dictValues = dictValues.replaceAll("& #40;","(")
+                    .replaceAll("& #41;",")")
+                    .replaceAll("& lt;","<")
+                    .replaceAll("& gt;",">")
+                    .replaceAll("& #39;","'");
+
         //解析dictValues
         List<Map<String, String>> items = MutiStrFactory.parseKeyValue(dictValues);
 
         //添加字典
         Dict dict = new Dict();
         dict.setName(dictName);
-        dict.setNum(0);
+        dict.setNum("0");
         dict.setPid(0);
         this.dictMapper.insert(dict);
 
@@ -55,7 +61,7 @@ public class DictServiceImpl implements IDictService {
             itemDict.setPid(dict.getId());
             itemDict.setName(name);
             try {
-                itemDict.setNum(Integer.valueOf(num));
+                itemDict.setNum(num);
             } catch (NumberFormatException e) {
                 throw new BussinessException(BizExceptionEnum.DICT_MUST_BE_NUMBER);
             }

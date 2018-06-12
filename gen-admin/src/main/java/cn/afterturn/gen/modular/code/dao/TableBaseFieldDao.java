@@ -12,26 +12,19 @@ import java.util.List;
 
 /**
  * TableBaseFieldDao
- *
- * @author JueYue
- * @Date 2017-09-18 13:40
+ * 基础字段
+ * @author 
+ * @Date 
  */
 @Repository
 public interface TableBaseFieldDao extends BaseMapper<TableBaseFieldModel>{
-
-    /**
-     * 统计数量
-     * @param model
-     * @return
-     */
-    Integer selectCount(@Param("e")TableBaseFieldModel model);
 
     /**
      * 查询列表
      * @param model
      * @return
      */
-    List<TableBaseFieldModel> selectList(@Param("e")TableBaseFieldModel model);
+    List<TableBaseFieldModel> selectList(@Param("e") TableBaseFieldModel model, @Param("ew") Wrapper<TableBaseFieldModel> wrapper);
 
     /**
      * 分页查询信息
@@ -40,6 +33,6 @@ public interface TableBaseFieldDao extends BaseMapper<TableBaseFieldModel>{
      * @param wrapper
      * @return
      */
-    List<TableBaseFieldModel> selectPage(@Param("p")Pagination pagination,@Param("e") TableBaseFieldModel model,@Param("w") Wrapper<TableBaseFieldModel> wrapper);
+    List<TableBaseFieldModel> selectPage(@Param("p") Pagination pagination, @Param("e") TableBaseFieldModel model, @Param("ew") Wrapper<TableBaseFieldModel> wrapper);
 
 }

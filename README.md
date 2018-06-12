@@ -33,6 +33,8 @@ lemur-generation
 
 **[http://gen.afterturn.cn](http://gen.afterturn.cn)**
 
+新增了模板代码在admin/resources/template下面,供大家参考修改,希望大家提供优秀的代码模板
+
 数据类型和平台类型对比表
 -----------------------
 |数据库|数据库类型|java.sql.Types|输出类型|
@@ -98,8 +100,6 @@ lemur-generation
 | |varbinary,binary|varbinay|byte[]|
 | |varchar,tinytext,text|varchar|String|
 
-
-新增了模板代码在admin/resources/template下面,供大家参考修改,希望大家提供优秀的代码模板
 
 功能
 ---------

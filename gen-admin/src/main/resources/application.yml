@@ -78,7 +78,7 @@ spring:
 logging:
   level.root: info
   level.cn.afterturn: debug
-  level.org.springframework: debug
+  level.org.springframework: info
   level.org.apache.ibatis: debug
   path: /home/logs/gencode/
   file: gencode.log

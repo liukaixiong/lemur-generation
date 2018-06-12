@@ -26,7 +26,7 @@ public class Dict extends Model<Dict> {
     /**
      * 排序
      */
-    private Integer num;
+    private String num;
     /**
      * 父级字典
      */
@@ -49,11 +49,11 @@ public class Dict extends Model<Dict> {
         this.id = id;
     }
 
-    public Integer getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(String num) {
         this.num = num;
     }
 

@@ -1,7 +1,7 @@
 package cn.afterturn.gen.core.util;
 
 import cn.afterturn.gen.core.model.enmus.DBType;
-import cn.afterturn.gen.core.model.enmus.GenFileType;
+import cn.afterturn.gen.core.model.enmus.GenFieldType;
 import cn.afterturn.gen.core.model.enmus.TypeConvertEnum;
 import org.apache.commons.lang.StringUtils;
 
@@ -54,7 +54,7 @@ public class TableHandlerUtil {
         dataType = dataType.toUpperCase();
         String type = TypeConvertEnum.getTypeByDb(dbType, dataType);
         if (type == null) {
-            return GenFileType.OBJECT.getType();
+            return GenFieldType.OBJECT.getType();
         }
         return type;
     }
