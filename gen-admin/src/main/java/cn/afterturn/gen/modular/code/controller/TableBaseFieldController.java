@@ -102,6 +102,8 @@ public class TableBaseFieldController extends BaseController {
     @ResponseBody
     public Object add(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel) {
         model.setUserId(ShiroKit.getUser().id);
+        //统一强制大写
+        fieldModel.setFieldName(fieldModel.getFieldName().toUpperCase());
         tableBaseFieldService.insert(model, fieldModel, verifyModel);
         return SUCCESS_TIP;
     }
@@ -121,6 +123,8 @@ public class TableBaseFieldController extends BaseController {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
+        //统一强制大写
+        fieldModel.setFieldName(fieldModel.getFieldName().toUpperCase());
         tableBaseFieldService.updateById(model, fieldModel, verifyModel);
         return SUCCESS_TIP;
     }

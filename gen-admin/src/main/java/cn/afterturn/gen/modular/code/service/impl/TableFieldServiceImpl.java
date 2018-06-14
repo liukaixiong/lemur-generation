@@ -1,6 +1,8 @@
 package cn.afterturn.gen.modular.code.service.impl;
 
 import cn.afterturn.gen.core.model.enmus.BooleanType;
+import cn.afterturn.gen.modular.code.model.TableBaseFieldModel;
+import cn.afterturn.gen.modular.code.service.ITableBaseFieldService;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
@@ -13,6 +15,7 @@ import cn.afterturn.gen.modular.code.service.ITableFieldDbinfoService;
 import cn.afterturn.gen.modular.code.service.ITableFieldService;
 import cn.afterturn.gen.modular.code.service.ITableFieldVerifyService;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +41,8 @@ public class TableFieldServiceImpl implements ITableFieldService {
     private ITableFieldVerifyService tableFieldVerifyService;
     @Autowired
     private ITableFieldDbinfoService tableFieldDbinfoService;
+    @Autowired
+    private ITableBaseFieldService tableBaseFieldService;
 
     @Override
     @Transactional
@@ -90,19 +95,33 @@ public class TableFieldServiceImpl implements ITableFieldService {
     }
 
     @Override
-    public void batchSaveOrUpdate(List<TableFieldModel> tableFields) {
+    public void batchSaveOrUpdate(List<TableFieldModel> tableFields, int userId) {
         // 删除旧数据
         deleteById(tableFields.get(0).getTableId());
         //设置默认值
         for (int i = 0; i < tableFields.size(); i++) {
-            tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
-            tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
-            tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+            //判断是不是基础参数如果是,就是用基础参数
+            TableBaseFieldModel baseFieldModel = tableBaseFieldService.queryBaseField(tableFields.get(i).getFieldName().toUpperCase(), userId);
+            if (baseFieldModel != null) {
+                if (baseFieldModel.getFieldModel() != null && tableFields.get(i) != null) {
+                    BeanUtils.copyProperties(baseFieldModel.getFieldModel(), tableFields.get(i),
+                            "id", "tableId", "verifyModel", "dbinfoModel");
+                }
+                if (baseFieldModel.getVerifyModel() != null &&
+                        tableFields.get(i).getVerifyModel() != null) {
+                    BeanUtils.copyProperties(baseFieldModel.getVerifyModel(),
+                            tableFields.get(i).getVerifyModel(), "id", "fieldId");
+                }
+            } else {
+                tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
+                tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
+                tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+            }
         }
         tableFieldDao.batchInsert(tableFields);
 
@@ -135,7 +154,6 @@ public class TableFieldServiceImpl implements ITableFieldService {
     }
 
     /**
-     *
      * @param list
      * @return
      */

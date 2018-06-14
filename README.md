@@ -14,7 +14,7 @@ lemur-generation
 **QQ群**
 
 	官网： http://www.afterturn.cn/
-	邮箱： qrb.jueyue@gmail.com
+	邮箱： qrb.jueyue@foxmail.com
 	QQ群:  364192721(满) 116844390
 	
 

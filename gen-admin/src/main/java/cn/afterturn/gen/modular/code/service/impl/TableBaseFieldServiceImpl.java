@@ -68,9 +68,12 @@ public class TableBaseFieldServiceImpl extends ServiceImpl<TableBaseFieldDao, Ta
     @Transactional(rollbackFor = RuntimeException.class)
     public void insert(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel) {
         tableFieldService.insert(fieldModel);
+
         verifyModel.setFieldId(fieldModel.getId());
         tableFieldVerifyService.insert(verifyModel);
+
         model.setFieldId(fieldModel.getId());
+        model.setFieldNameCheck(fieldModel.getFieldName());
         tableBaseFieldDao.insert(model);
     }
 
@@ -89,6 +92,7 @@ public class TableBaseFieldServiceImpl extends ServiceImpl<TableBaseFieldDao, Ta
     public void updateById(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel) {
         TableBaseFieldModel old = tableBaseFieldDao.selectById(model.getId());
         old.setAlias(model.getAlias());
+        old.setFieldNameCheck(fieldModel.getFieldName());
         // 删除旧数据
         tableFieldService.deleteById(old.getFieldId());
         tableFieldVerifyService.deleteByFieldIds(Arrays.asList(new Integer[]{old.getFieldId()}));
@@ -98,6 +102,19 @@ public class TableBaseFieldServiceImpl extends ServiceImpl<TableBaseFieldDao, Ta
         tableFieldVerifyService.insert(verifyModel);
         old.setFieldId(fieldModel.getId());
         tableBaseFieldDao.updateById(old);
+    }
+
+    @Override
+    public TableBaseFieldModel queryBaseField(String fieldName, int userId) {
+        TableBaseFieldModel fieldModel = new TableBaseFieldModel();
+        fieldModel.setUserId(userId);
+        fieldModel.setFieldNameCheck(fieldName);
+        fieldModel = tableBaseFieldDao.selectOne(fieldModel);
+        if (fieldModel != null) {
+            fieldModel.setFieldModel(tableFieldService.selectById(fieldModel.getFieldId()));
+            fieldModel.setVerifyModel(tableFieldVerifyService.selectOne(new TableFieldVerifyModel(fieldModel.getFieldId())));
+        }
+        return fieldModel;
     }
 
 }

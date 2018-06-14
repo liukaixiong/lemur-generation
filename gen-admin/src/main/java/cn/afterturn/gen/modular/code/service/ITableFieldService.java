@@ -5,7 +5,6 @@ import cn.afterturn.gen.modular.code.model.TableFieldModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -102,8 +101,9 @@ public interface ITableFieldService {
     /**
      * 批量保存或者更新
      * @param tableFields
+     * @param userId
      */
-    void batchSaveOrUpdate(List<TableFieldModel> tableFields);
+    void batchSaveOrUpdate(List<TableFieldModel> tableFields, int userId);
 
     /**
      * 通过table查询集合

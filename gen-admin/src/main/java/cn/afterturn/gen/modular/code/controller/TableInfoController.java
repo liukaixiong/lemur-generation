@@ -105,7 +105,7 @@ public class TableInfoController extends BaseController {
     @Permission
     @ResponseBody
     public Object add(@RequestBody TableInfoModel model) {
-        tableInfoService.insert(model);
+        tableInfoService.insert(model,ShiroKit.getUser().getId());
         return SUCCESS_TIP;
     }
 
@@ -128,7 +128,7 @@ public class TableInfoController extends BaseController {
         if (ToolUtil.isOneEmpty(model.getId())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
         }
-        tableInfoService.updateById(model);
+        tableInfoService.updateById(model,ShiroKit.getUser().getId());
         return SUCCESS_TIP;
     }
 

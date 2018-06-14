@@ -4,6 +4,7 @@ import org.apache.ibatis.reflection.Reflector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,8 +87,9 @@ public class BeanKeyConvert {
             //好了现在有内容了:   反射 作为值,class 作为键
             for (int i = 0; i < keys.length; i++) {
                 Object val = reflector.getGetInvoker(keys[i]).invoke(obj, null);
-                if (val != null)
+                if (val != null){
                     reflector.getSetInvoker(keys[i]).invoke(obj, new Object[]{ConstantFactory.me().getUserNameById(Integer.parseInt(val.toString()))});
+                }
             }
         }
     }
@@ -109,8 +111,12 @@ public class BeanKeyConvert {
             }
             for (int i = 0; i < keys.length; i += 2) {
                 Object val = reflector.getGetInvoker(keys[i]).invoke(obj, null);
-                if (val != null)
-                    reflector.getSetInvoker(keys[i + 1]).invoke(obj, new Object[]{ConstantFactory.me().getUserNameById(Integer.parseInt(val.toString()))});
+                if (val != null) {
+                    try {
+                        reflector.getSetInvoker(keys[i + 1]).invoke(obj, new Object[]{ConstantFactory.me().getUserNameById(Integer.parseInt(val.toString()))});
+                    } catch (Exception e) {
+                    }
+                }
             }
         }
     }

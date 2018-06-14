@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Service
@@ -38,7 +37,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Override
     @Transactional
-    public Integer insert(TableInfoModel entity) {
+    public Integer insert(TableInfoModel entity, int userId) {
         //table插入
         tableInfoDao.insert(entity);
         //table 配置更新
@@ -50,7 +49,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
             entity.getTableFields().get(i).setTableId(entity.getId());
         }
         //table字段更新
-        tableFieldService.batchSaveOrUpdate(entity.getTableFields());
+        tableFieldService.batchSaveOrUpdate(entity.getTableFields(), userId);
         return 1;
     }
 
@@ -65,7 +64,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
     @Override
     @Transactional
-    public Integer updateById(TableInfoModel entity) {
+    public Integer updateById(TableInfoModel entity, Integer userId) {
         //table插入
         tableInfoDao.updateById(entity);
         //table 配置更新
@@ -77,7 +76,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
             entity.getTableFields().get(i).setTableId(entity.getId());
         }
         //table字段更新
-        tableFieldService.batchSaveOrUpdate(entity.getTableFields());
+        tableFieldService.batchSaveOrUpdate(entity.getTableFields(), userId);
         return 1;
     }
 

@@ -91,4 +91,11 @@ public interface ITableBaseFieldService extends IService<TableBaseFieldModel> {
      * @param verifyModel
      */
     void updateById(TableBaseFieldModel model, TableFieldModel fieldModel, TableFieldVerifyModel verifyModel);
+
+    /**
+     * 查询这个用户下是否有这个基础字段
+     * @param fileName
+     * @param userId
+     */
+    TableBaseFieldModel queryBaseField(String fileName, int userId);
 }

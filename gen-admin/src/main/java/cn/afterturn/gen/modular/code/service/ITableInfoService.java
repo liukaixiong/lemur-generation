@@ -7,7 +7,6 @@ import cn.afterturn.gen.modular.code.model.TableInfoModel;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -24,9 +23,10 @@ public interface ITableInfoService {
      * </p>
      *
      * @param entity 实体对象
-     * @return int
+     * @param userId 用户
+      * @return int
      */
-    Integer insert(TableInfoModel entity);
+    Integer insert(TableInfoModel entity, int userId);
 
     /**
      * <p>
@@ -44,9 +44,10 @@ public interface ITableInfoService {
      * </p>
      *
      * @param entity 实体对象
+     * @param userId
      * @return int
      */
-    Integer updateById(TableInfoModel entity);
+    Integer updateById(TableInfoModel entity, Integer userId);
 
     /**
      * <p>

@@ -45,7 +45,7 @@ public class TableConvertServiceOfDbImpl implements ITableConvertServer {
         entity.setUserId(userId);
         entity.setServiceConfig(getDefaultServceConfig());
         entity.setTableFields(getTableFields(bean.getFields()));
-        tableInfoService.insert(entity);
+        tableInfoService.insert(entity, userId);
     }
 
     private List<TableFieldModel> getTableFields(List<GenFieldEntity> fields) {
