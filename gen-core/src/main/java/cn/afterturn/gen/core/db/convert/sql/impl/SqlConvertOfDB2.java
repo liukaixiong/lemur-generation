@@ -27,7 +27,7 @@ public class SqlConvertOfDB2 implements ISqlConvert {
         sql = SQLUtils.format(sql, JdbcConstants.DB2, new SQLUtils.FormatOption());
         GenBeanEntity bean = new GenBeanEntity();
         String tableName = sql.substring(sql.indexOf("TABLE") + 5, sql.indexOf("(")).trim();
-        String newTableName = handlerDBName(tableName);
+        String newTableName = NameUtil.handlerDBName(tableName);
         if (!newTableName.equals(tableName)) {
             sql = sql.replace(tableName, newTableName);
             tableName = newTableName;

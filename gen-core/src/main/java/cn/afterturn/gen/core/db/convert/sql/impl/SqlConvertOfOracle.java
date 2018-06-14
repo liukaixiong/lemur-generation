@@ -28,7 +28,7 @@ public class SqlConvertOfOracle implements ISqlConvert {
         sql = SQLUtils.format(sql, JdbcConstants.ORACLE, new SQLUtils.FormatOption());
         GenBeanEntity bean = new GenBeanEntity();
         String tableName = sql.substring(sql.indexOf("TABLE") + 5, sql.indexOf("(")).trim();
-        String newTableName = handlerDBName(tableName);
+        String newTableName = NameUtil.handlerDBName(tableName);
         if (!newTableName.equals(tableName)) {
             sql = sql.replace(tableName, newTableName);
             tableName = newTableName;
@@ -76,7 +76,7 @@ public class SqlConvertOfOracle implements ISqlConvert {
                 if (keys.length < 2) {
                     continue;
                 }
-                field.setFieldName(handlerDBName(keys[0]));
+                field.setFieldName(NameUtil.handlerDBName(keys[0]));
                 if (keys[1].indexOf("(") > 0) {
                     String type = keys[1];
                     field.setFieldType(type.substring(0, type.indexOf("(")));

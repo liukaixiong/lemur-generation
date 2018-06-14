@@ -54,4 +54,24 @@ public class NameUtil {
         return builder.toString();
     }
 
+    /**
+     * 独钓无用字符
+     *
+     * @param name
+     * @return
+     */
+    public static String handlerDBName(String name) {
+        if (name.indexOf(".") != -1) {
+            return name.substring(name.indexOf(".") + 1);
+        }
+        name = name.trim();
+        if (name.startsWith("\"")) {
+            name = name.substring(1);
+        }
+        if (name.endsWith("\"")) {
+            name = name.substring(0, name.length() - 1);
+        }
+        return name;
+    }
+
 }

@@ -32,7 +32,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
         sql = SQLUtils.format(sql, JdbcConstants.MYSQL);
         GenBeanEntity bean = new GenBeanEntity();
         String tableName = sql.substring(sql.indexOf("TABLE") + 5, sql.indexOf("(")).trim();
-        String newTableName = handlerDBName(tableName);
+        String newTableName = NameUtil.handlerDBName(tableName);
         if (!newTableName.equals(tableName)) {
             sql = sql.replace(tableName, newTableName);
             tableName = newTableName;
@@ -60,7 +60,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
             } else {
                 field = new GenFieldEntity();
                 String[] keys = columns[i].trim().split(" ");
-                field.setFieldName(handlerDBName(keys[0]));
+                field.setFieldName(NameUtil.handlerDBName(keys[0]));
                 if (keys[1].indexOf("(") > 0) {
                     String type = keys[1];
                     field.setFieldType(type.substring(0, type.indexOf("(")));
