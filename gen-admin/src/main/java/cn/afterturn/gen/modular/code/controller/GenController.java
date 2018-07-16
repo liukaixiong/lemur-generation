@@ -13,6 +13,7 @@
  */
 package cn.afterturn.gen.modular.code.controller;
 
+import cn.afterturn.gen.core.util.DateUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -196,6 +198,7 @@ public class GenController {
         List<String> fileList = new ArrayList<String>();
         GenBeanEntity tableEntity = tableInfoService.getGenBean(tableId);
         ge.setTableName(tableEntity.getTableName());
+        ge.setDate(DateUtil.getTime());
         for (int i = 0; i < templateList.size(); i++) {
             final int index = i;
             fileList.addAll(ParseFactory.getParse(templateList.get(i).getTemplateType()).parse(ge, tableEntity,

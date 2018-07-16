@@ -274,6 +274,8 @@ GEN.genTableCode = function () {
         return;
     }
     GEN.param.tableId = $("#tableId").val();
+    GEN.param.author = $("#author").val();
+    GEN.param.name = $("#name").val();
     GEN.param.codePackage = $("#codePackage").val();
     GEN.param.htmlPackage = $("#htmlPackage").val();
     GEN.param.jsPackage = $("#jsPackage").val();
@@ -281,6 +283,7 @@ GEN.genTableCode = function () {
     GEN.param.xmlPackage = $("#xmlPackage").val();
     GEN.param.localPath = $("#localPath").val();
     GEN.param.encoded = $("#encoded").val();
+    GEN.param.copyright = $("#copyright").val();
     //本地生产就ajax访问后台就可以了
     if(GEN.param.localPath){
         $.getJSON('/code/genTableCode?' + $.param(GEN.param));
@@ -308,6 +311,7 @@ $("#params").change(function(){
         $("#xmlPackage").val(data.xmlPackage);
         $("#localPath").val(data.localPath);
         $("#encoded").val(data.encoded);
+        $("#copyright").val(data.copyright);
     });
     ajax.set('id',$("#params").val());
     ajax.start();

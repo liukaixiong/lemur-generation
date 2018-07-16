@@ -67,7 +67,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
         //You'll need to remove the spaces from the html entities below
 
-        value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
+       /* value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
 
         value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");
 
@@ -77,7 +77,7 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
         value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
 
-        value = value.replaceAll("script", "");
+        value = value.replaceAll("script", "");*/
 
         return value;
 

@@ -51,7 +51,7 @@ GenParam.openAddGenParam = function () {
     var index = layer.open({
         type: 2,
         title: '添加生成参数',
-        area: ['800px', '420px'], //宽高
+        area: ['100%', '100%'], //宽高
         fix: false, //不固定
         maxmin: true,
         content: Feng.ctxPath + '/genparam/goto_add'
@@ -60,14 +60,14 @@ GenParam.openAddGenParam = function () {
 };
 
 /**
- * 打开查看生成参数详情
+ * 修改
  */
-GenParam.openGenParamDetail = function () {
+GenParam.openGenParamUpdate = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '生成参数详情',
-            area: ['800px', '420px'], //宽高
+            title: '修改',
+            area: ['100%', '100%'], //宽高
             fix: false, //不固定
             maxmin: true,
             content: Feng.ctxPath + '/genparam/goto_update/' + GenParam.seItem.id

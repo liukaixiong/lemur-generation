@@ -87,7 +87,7 @@ GenParamInfoDlg.close = function() {
  */
 GenParamInfoDlg.collectData = function() {
     this.set('id').set("alias").set("author").set("codePackage").set("jsPackage").set("htmlPackage")
-        .set("xmlPackage").set("localPath").set("encoded");
+        .set("xmlPackage").set("localPath").set("encoded").set("copyright");
 }
 
 /**
