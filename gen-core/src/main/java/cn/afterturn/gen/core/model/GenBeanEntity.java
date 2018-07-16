@@ -31,27 +31,31 @@ public class GenBeanEntity implements Serializable {
     /**
      * 是否导入Excel
      */
-    private Integer isImport;
+    private Integer isImport = 1;
 
     /**
      * 是否导出Excel
      */
-    private Integer isExport;
+    private Integer isExport = 1;
+    /**
+     * 是否生产API接口
+     */
+    private Integer api = 1;
 
     /**
      * 是否分页
      */
-    private Integer isPagination;
+    private Integer isPagination = 1;
 
     /**
      * 是否添加日志
      */
-    private Integer isLog;
+    private Integer isLog = 1;
 
     /**
      * 是否添加协议
      */
-    private Integer isProtocol;
+    private Integer isProtocol = 1;
     /**
      * 表字段
      */
@@ -135,5 +139,13 @@ public class GenBeanEntity implements Serializable {
 
     public void setIsProtocol(Integer isProtocol) {
         this.isProtocol = isProtocol;
+    }
+
+    public Integer getApi() {
+        return api;
+    }
+
+    public void setApi(Integer api) {
+        this.api = api;
     }
 }

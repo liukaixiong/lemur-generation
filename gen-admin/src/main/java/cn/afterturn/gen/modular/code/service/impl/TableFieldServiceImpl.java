@@ -113,14 +113,30 @@ public class TableFieldServiceImpl implements ITableFieldService {
                             tableFields.get(i).getVerifyModel(), "id", "fieldId");
                 }
             } else {
-                tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
-                tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
-                tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+                if (tableFields.get(i).getIsQuery() == null) {
+                    tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsShowAdd() == null) {
+                    tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsShowDetail() == null) {
+                    tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsShowEdit() == null) {
+                    tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsQuery() == null) {
+                    tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsShowList() == null) {
+                    tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
+                }
+                if (tableFields.get(i).getIsExport() == null) {
+                    tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
+                }
+                if (tableFields.get(i).getIsImport() == null) {
+                    tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+                }
             }
         }
         tableFieldDao.batchInsert(tableFields);

@@ -86,7 +86,7 @@ logging:
 beetl:
   resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
 server:
-  port: 80
+  port: 7080
 mybatis-plus:
   global-config:
     refresh-mapper: true

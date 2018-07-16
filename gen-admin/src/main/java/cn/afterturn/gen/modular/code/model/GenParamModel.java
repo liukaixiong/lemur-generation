@@ -75,6 +75,11 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
     @TableField(value = "local_path")
     private String localPath;
     /**
+     * 版权
+     */
+    @TableField(value = "copyright")
+    private String copyright;
+    /**
      * 编码
      */
     @TableField(value = "encoded")
@@ -206,6 +211,14 @@ public class GenParamModel extends CodeBaseModel<GenParamModel> {
      */
     public void setEncoded(String encoded) {
         this.encoded = encoded;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 
     @Override
