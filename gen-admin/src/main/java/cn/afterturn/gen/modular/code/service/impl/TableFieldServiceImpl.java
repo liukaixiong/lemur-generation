@@ -61,7 +61,7 @@ public class TableFieldServiceImpl implements ITableFieldService {
             tableFieldVerifyService.deleteByFieldIds(ids);
             tableFieldDbinfoService.deleteByFieldIds(ids);
         }
-        return 1;
+        return list.size();
     }
 
     @Override
@@ -97,45 +97,48 @@ public class TableFieldServiceImpl implements ITableFieldService {
     @Override
     public void batchSaveOrUpdate(List<TableFieldModel> tableFields, int userId) {
         // 删除旧数据
-        deleteById(tableFields.get(0).getTableId());
+        int isUpdate = deleteById(tableFields.get(0).getTableId());
         //设置默认值
         for (int i = 0; i < tableFields.size(); i++) {
-            //判断是不是基础参数如果是,就是用基础参数
-            TableBaseFieldModel baseFieldModel = tableBaseFieldService.queryBaseField(tableFields.get(i).getFieldName().toUpperCase(), userId);
-            if (baseFieldModel != null) {
-                if (baseFieldModel.getFieldModel() != null && tableFields.get(i) != null) {
-                    BeanUtils.copyProperties(baseFieldModel.getFieldModel(), tableFields.get(i),
-                            "id", "tableId", "verifyModel", "dbinfoModel");
-                }
-                if (baseFieldModel.getVerifyModel() != null &&
-                        tableFields.get(i).getVerifyModel() != null) {
-                    BeanUtils.copyProperties(baseFieldModel.getVerifyModel(),
-                            tableFields.get(i).getVerifyModel(), "id", "fieldId");
-                }
-            } else {
-                if (tableFields.get(i).getIsQuery() == null) {
-                    tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsShowAdd() == null) {
-                    tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsShowDetail() == null) {
-                    tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsShowEdit() == null) {
-                    tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsQuery() == null) {
-                    tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsShowList() == null) {
-                    tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
-                }
-                if (tableFields.get(i).getIsExport() == null) {
-                    tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
-                }
-                if (tableFields.get(i).getIsImport() == null) {
-                    tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+            //只在新增的时候处理数据,修改的时候不处理
+            if(isUpdate == 0){
+                //判断是不是基础参数如果是,就是用基础参数
+                TableBaseFieldModel baseFieldModel = tableBaseFieldService.queryBaseField(tableFields.get(i).getFieldName().toUpperCase(), userId);
+                if (baseFieldModel != null) {
+                    if (baseFieldModel.getFieldModel() != null && tableFields.get(i) != null) {
+                        BeanUtils.copyProperties(baseFieldModel.getFieldModel(), tableFields.get(i),
+                                "id", "tableId", "verifyModel", "dbinfoModel");
+                    }
+                    if (baseFieldModel.getVerifyModel() != null &&
+                            tableFields.get(i).getVerifyModel() != null) {
+                        BeanUtils.copyProperties(baseFieldModel.getVerifyModel(),
+                                tableFields.get(i).getVerifyModel(), "id", "fieldId");
+                    }
+                } else {
+                    if (tableFields.get(i).getIsQuery() == null) {
+                        tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsShowAdd() == null) {
+                        tableFields.get(i).setIsShowAdd(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsShowDetail() == null) {
+                        tableFields.get(i).setIsShowDetail(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsShowEdit() == null) {
+                        tableFields.get(i).setIsShowEdit(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsQuery() == null) {
+                        tableFields.get(i).setIsQuery(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsShowList() == null) {
+                        tableFields.get(i).setIsShowList(BooleanType.YES.getIntD());
+                    }
+                    if (tableFields.get(i).getIsExport() == null) {
+                        tableFields.get(i).setIsExport(BooleanType.NO.getIntD());
+                    }
+                    if (tableFields.get(i).getIsImport() == null) {
+                        tableFields.get(i).setIsImport(BooleanType.NO.getIntD());
+                    }
                 }
             }
         }

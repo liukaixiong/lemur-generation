@@ -115,6 +115,9 @@ TableInfoInfoDlg.collectData = function () {
         $(this).find('td').each(function (index, data) {
             if (index > 0) {
                 obj[$(data).attr('data-field')] = $(data).find('select,input[type="text"],input[type="checkbox"]:checked').val();
+                if(!obj[$(data).attr('data-field')]){
+                    obj[$(data).attr('data-field')] = 2;
+                }
             }
         });
         TableInfoInfoDlg.getViewData(obj,this);

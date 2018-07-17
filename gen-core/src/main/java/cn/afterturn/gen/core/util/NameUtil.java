@@ -37,7 +37,9 @@ public class NameUtil {
      */
     public static String getFieldHumpName(String name) {
         StringBuilder builder = new StringBuilder();
-        if (name.contains("_")) {//不强制小写,兼容数据库按照java写法的代码 -包含下划线才强制
+        //不强制小写,兼容数据库按照java写法的代码 -包含下划线才强制
+        //如果全都是大写也全部转为小写,只有大小写混合材认为是按照java逻辑写的
+        if (name.contains("_") || name.toUpperCase().equals(name)) {
             name = name.toLowerCase();
         }
         int index = 0;
@@ -55,7 +57,7 @@ public class NameUtil {
     }
 
     /**
-     * 独钓无用字符
+     * 去掉无用字符
      *
      * @param name
      * @return

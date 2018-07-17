@@ -18,7 +18,7 @@ TableInfo.initColumn = function () {
         {title: '表名', field: 'tableName', align: 'center', valign: 'middle'},
         {title: '类名', field: 'className', align: 'center', valign: 'middle'},
         {title: '功能', field: 'content', align: 'center', valign: 'middle'},
-        {title: '字段数量', field: 'fieldNum', align: 'center', valign: 'middle'},
+        // {title: '字段数量', field: 'fieldNum', align: 'center', valign: 'middle'},
         {
             title: '导入',
             field: 'isImport',
