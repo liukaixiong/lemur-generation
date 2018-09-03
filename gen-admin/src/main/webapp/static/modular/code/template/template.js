@@ -59,9 +59,9 @@ Template.openAddTemplate = function () {
 };
 
 /**
- * 打开查看模板管理详情
+ * 打开编辑模板管理详情
  */
-Template.openTemplateDetail = function () {
+Template.openTemplateUpdate = function () {
     if (this.check()) {
         var index = layer.open({
                                    type: 2,
@@ -70,6 +70,23 @@ Template.openTemplateDetail = function () {
                                    fix: false, //不固定
                                    maxmin: true,
                                    content: Feng.ctxPath + '/template/goto_update/'
+                                            + Template.seItem.id
+                               });
+        this.layerIndex = index;
+    }
+};
+/**
+ * 打开另存为模板管理详情
+ */
+Template.openTemplateSaveAs = function () {
+    if (this.check()) {
+        var index = layer.open({
+                                   type: 2,
+                                   title: '模板管理另存为',
+                                   area: ['100%', '100%'],//宽高
+                                   fix: false, //不固定
+                                   maxmin: true,
+                                   content: Feng.ctxPath + '/template/goto_save_as/'
                                             + Template.seItem.id
                                });
         this.layerIndex = index;

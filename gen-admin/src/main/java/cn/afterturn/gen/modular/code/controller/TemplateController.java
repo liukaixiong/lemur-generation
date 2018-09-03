@@ -66,8 +66,8 @@ public class TemplateController extends BaseController {
     }
 
     @RequestMapping("/history")
-    public String history(Model modelMap,String originalId) {
-        modelMap.addAttribute("originalId",originalId);
+    public String history(Model modelMap, String originalId) {
+        modelMap.addAttribute("originalId", originalId);
         return PREFIX + "template_history.html";
     }
 
@@ -93,6 +93,19 @@ public class TemplateController extends BaseController {
         modelMap.addAttribute("template", templateService.selectById(id));
         modelMap.addAttribute("file", templateFileService.selectOne(new TemplateFileModel(id)));
         return PREFIX + "template_edit.html";
+    }
+
+    /**
+     * 跳转到另存为
+     */
+    @RequestMapping("/goto_save_as/{id}")
+    public String gotoSaveAs(@PathVariable Integer id, Model modelMap) {
+        TemplateGroupModel model = new TemplateGroupModel();
+        model.setUserId(ShiroKit.getUser().getId());
+        modelMap.addAttribute("groups", templateGroupService.selectList(model));
+        modelMap.addAttribute("template", templateService.selectById(id));
+        modelMap.addAttribute("file", templateFileService.selectOne(new TemplateFileModel(id)));
+        return PREFIX + "template_save_as.html";
     }
 
 
@@ -147,10 +160,11 @@ public class TemplateController extends BaseController {
     @ResponseBody
     public Object update(@RequestBody TemplateModel model) throws UnsupportedEncodingException {
         if (ToolUtil.isOneEmpty(model.getId())) {
-            throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
+            add(model);
+        } else {
+            model.getFileModel().setFile(hanlderFileEncode(model.getFileModel().getFile()));
+            templateService.updateById(model, model.getFileModel());
         }
-        model.getFileModel().setFile(hanlderFileEncode(model.getFileModel().getFile()));
-        templateService.updateById(model, model.getFileModel());
         return SUCCESS_TIP;
     }
 
@@ -164,10 +178,10 @@ public class TemplateController extends BaseController {
     }
 
     private String hanlderFileEncode(String file) {
-        return file.replaceAll("& #40;","(")
-                .replaceAll("& #41;",")")
-                .replaceAll("& lt;","<")
-                .replaceAll("& gt;",">")
-                .replaceAll("& #39;","'");
+        return file.replaceAll("& #40;", "(")
+                .replaceAll("& #41;", ")")
+                .replaceAll("& lt;", "<")
+                .replaceAll("& gt;", ">")
+                .replaceAll("& #39;", "'");
     }
 }

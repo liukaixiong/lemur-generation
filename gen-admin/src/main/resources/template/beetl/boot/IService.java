@@ -4,7 +4,7 @@
 package ${g.codePackage}.service;
 
 import ${g.codePackage}.model.${g.entityName}Model;
-import cn.afterturn.boot.third.mybatisplus.IBaseService;
+import cn.afterturn.boot.bussiness.base.service.IBaseService;
 
 
 /**

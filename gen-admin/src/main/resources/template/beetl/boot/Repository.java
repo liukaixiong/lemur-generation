@@ -1,7 +1,7 @@
 <%if (t.isProtocol == 1) {%>
         ${g.copyright!}
 <%}%>
-package ${g.codePackage}.dao;
+package ${g.codePackage}.repository;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import ${g.codePackage}.model.${g.entityName}Model;
@@ -18,6 +18,6 @@ import java.util.List;
  * @Date ${g.date}
  */
 @Repository
-public interface ${g.entityName}Dao extends BaseMapper<${g.entityName}Model>{
+public interface ${g.entityName}Repository extends BaseMapper<${g.entityName}Model>{
 
 }

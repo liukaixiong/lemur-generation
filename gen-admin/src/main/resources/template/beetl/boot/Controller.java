@@ -7,6 +7,7 @@ import cn.afterturn.boot.bussiness.base.controller.BaseController;
 import ${g.codePackage}.model.${g.entityName}Model;
 import ${g.codePackage}.service.I${g.entityName}Service;
 
+import cn.afterturn.boot.facade.I${g.entityName}Facade;
 <%if (t.api == 1) {%>
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
 <%}%>
 @RestController
 @RequestMapping("/${strutil.toLowerCase(g.entityName)}")
-public class ${g.entityName}Controller extends BaseController {
+public class ${g.entityName}Controller extends BaseController<I${g.entityName}Service, ${g.entityName}Model> implements I${g.entityName}Facade {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(${g.entityName}Controller.class);
 

@@ -1,5 +1,7 @@
 package cn.afterturn.gen.core.model;
 
+import cn.afterturn.gen.core.model.enmus.QueryType;
+
 import java.io.Serializable;
 
 /**
@@ -78,7 +80,7 @@ public class GenFieldEntity implements Serializable {
     /**
      * 查询类型
      */
-    private String queryMode;
+    private int queryMode = QueryType.EQ.getCode();
 
     /**
      * 显示类型
@@ -279,11 +281,11 @@ public class GenFieldEntity implements Serializable {
         this.isQuery = isQuery;
     }
 
-    public String getQueryMode() {
+    public int getQueryMode() {
         return queryMode;
     }
 
-    public void setQueryMode(String queryMode) {
+    public void setQueryMode(int queryMode) {
         this.queryMode = queryMode;
     }
 
