@@ -80,7 +80,7 @@ public class GenFieldEntity implements Serializable {
     /**
      * 查询类型
      */
-    private int queryMode = QueryType.EQ.getCode();
+    private Integer queryMode = QueryType.EQ.getCode();
 
     /**
      * 显示类型

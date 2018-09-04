@@ -114,13 +114,13 @@ public class TableFieldModel extends Model<TableFieldModel> {
      * 查询类型
      */
     @TableField(value = "query_mode")
-    private String queryMode;
+    private Integer queryMode;
 
     /**
      * 显示类型
      */
     @TableField(value = "show_type")
-    private String showType;
+    private Integer showType;
 
     /**
      * 排序
@@ -359,28 +359,28 @@ public class TableFieldModel extends Model<TableFieldModel> {
     /**
      * 获取: 查询类型
      */
-    public String getQueryMode() {
+    public Integer getQueryMode() {
         return queryMode;
     }
 
     /**
      * 设置: 查询类型
      */
-    public void setQueryMode(String queryMode) {
+    public void setQueryMode(Integer queryMode) {
         this.queryMode = queryMode;
     }
 
     /**
      * 获取: 显示类型
      */
-    public String getShowType() {
+    public Integer getShowType() {
         return showType;
     }
 
     /**
      * 设置: 显示类型
      */
-    public void setShowType(String showType) {
+    public void setShowType(Integer showType) {
         this.showType = showType;
     }
 

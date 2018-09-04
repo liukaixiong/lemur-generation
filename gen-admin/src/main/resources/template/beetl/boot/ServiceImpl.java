@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import cn.afterturn.boot.bussiness.base.service.BaseServiceCacheImpl;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +22,7 @@ import java.util.Map;
  * @Date ${g.date}
  */
 @Service("${g.lowerEntityName}Service")
-public class ${g.entityName}ServiceImpl extends ServiceImpl<${g.entityName}Repository, ${g.entityName}Model> implements I${g.entityName}Service {
+public class ${g.entityName}ServiceImpl extends BaseServiceCacheImpl<${g.entityName}Repository, ${g.entityName}Model> implements I${g.entityName}Service {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(${g.entityName}ServiceImpl.class);
 

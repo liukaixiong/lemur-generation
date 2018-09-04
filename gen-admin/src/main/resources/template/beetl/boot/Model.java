@@ -36,7 +36,7 @@ public class ${g.entityName}Model extends IdTenantBaseModel<${g.entityName}Model
 
 <%for(field in t.fields){%>
 
-    <%if (strutil.length(field.comment) > 0) {%>
+    <%if (isNotEmpty (field.comment) && strutil.length(field.comment) > 0) {%>
      /**
       *${field.comment}
       **/
