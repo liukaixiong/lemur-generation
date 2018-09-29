@@ -27,7 +27,7 @@ lemur-generation
 
 **使用指南**
 
-**[http://www.afterturn.cn/doc/lemur-gen.html](http://opensource.afterturn.cn/doc/lemur-gen.html)**
+**[http://opensource.afterturn.cn/doc/lemur-gen.html](http://opensource.afterturn.cn/doc/lemur-gen.html)**
 
 **线上环境,支持直接使用,不需本地安装,注册即可使用**
 
