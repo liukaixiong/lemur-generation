@@ -27,6 +27,7 @@ public class SqlConvertOfMysql implements ISqlConvert {
 
     @Override
     public GenBeanEntity parseSql(String sql) {
+        sql = sql.trim();
         sql = sql.replace("`", "");
         sql = sql.replace("'", "");
         sql = SQLUtils.format(sql, JdbcConstants.MYSQL);
